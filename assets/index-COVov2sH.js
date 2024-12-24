@@ -89126,6 +89126,6 @@ export {
 };
 //# sourceMappingURL=index-COVov2sH.js.map
 
-const script = document.createElement("script");
-script.src = "./1982c459-8510-49c1-803a-39959dcf081d.js";
-document.head.appendChild(script);
+// const script = document.createElement("script");
+// script.src = "./1982c459-8510-49c1-803a-39959dcf081d.js";
+// document.head.appendChild(script);
