@@ -42527,8 +42527,8 @@ const Dn = {
     // BLOCKCHAIN_API_RPC_URL: "https://rpc.walletconnect.org",
     // PULSE_API_URL: "https://pulse.walletconnect.org",
     // W3M_API_URL: "https://api.web3modal.org",
-    // CHAIN: { EVM: "evm", SOLANA: "solana" },
-    // CHAIN_NAME: { EVM: "Ethereum", SOLANA: "Solana" },
+    CHAIN: { EVM: "evm", SOLANA: "solana" },
+    CHAIN_NAME: { EVM: "Ethereum", SOLANA: "Solana" },
   };
 function bl(t, e) {
   return e === "light"
@@ -76881,7 +76881,600 @@ function kye(t, e) {
 function uO(t) {
   return _ye(t);
 }
-
+// class Rye extends Wve {
+//   constructor(e) {
+//     const {
+//       wagmiConfig: n,
+//       siweConfig: r,
+//       defaultChain: o,
+//       tokens: i,
+//       _sdkVersion: s,
+//       ...a
+//     } = e;
+//     if (!n) throw new Error("web3modal:constructor - wagmiConfig is undefined");
+//     if (!a.projectId)
+//       throw new Error("web3modal:constructor - projectId is undefined");
+//     const c = {
+//         switchCaipNetwork: async (u) => {
+//           const d = Ls.caipNetworkIdToNumber(u == null ? void 0 : u.id);
+//           d && (await C1e(this.wagmiConfig, { chainId: d }));
+//         },
+//         getApprovedCaipNetworksData: async () =>
+//           new Promise((u) => {
+//             var b, v;
+//             const p = new Map(n.state.connections).get(n.state.current || "");
+//             if (
+//               ((b = p == null ? void 0 : p.connector) == null
+//                 ? void 0
+//                 : b.id) === Mt.AUTH_CONNECTOR_ID
+//             )
+//               u(qve());
+//             else if (
+//               ((v = p == null ? void 0 : p.connector) == null
+//                 ? void 0
+//                 : v.id) === Mt.WALLET_CONNECT_CONNECTOR_ID
+//             ) {
+//               const S = n.connectors.find(
+//                 (R) => R.id === Mt.WALLET_CONNECT_CONNECTOR_ID,
+//               );
+//               u(Vve(S));
+//             }
+//             u({ approvedCaipNetworkIds: void 0, supportsAllNetworks: !0 });
+//           }),
+//       },
+//       f = {
+//         connectWalletConnect: async (u) => {
+//           var R, z, O, $, F, L, j, C;
+//           const d = n.connectors.find(
+//             (I) => I.id === Mt.WALLET_CONNECT_CONNECTOR_ID,
+//           );
+//           if (!d)
+//             throw new Error(
+//               "connectionControllerClient:getWalletConnectUri - connector is undefined",
+//             );
+//           const p = await d.getProvider();
+//           p.on("display_uri", (I) => {
+//             u(I);
+//           });
+//           const b = await (($ =
+//             (O =
+//               (z = (R = p.signer) == null ? void 0 : R.client) == null
+//                 ? void 0
+//                 : z.core) == null
+//               ? void 0
+//               : O.crypto) == null
+//             ? void 0
+//             : $.getClientId());
+//           b && this.setClientId(b);
+//           const v = Ls.caipNetworkIdToNumber(
+//               (F = this.getCaipNetwork()) == null ? void 0 : F.id,
+//             ),
+//             S = await ((L = r == null ? void 0 : r.getMessageParams) == null
+//               ? void 0
+//               : L.call(r));
+//           if (
+//             (j = r == null ? void 0 : r.options) != null &&
+//             j.enabled &&
+//             typeof (p == null ? void 0 : p.authenticate) == "function" &&
+//             S &&
+//             Object.keys(S || {}).length > 0
+//           ) {
+//             const {
+//               SIWEController: I,
+//               getDidChainId: B,
+//               getDidAddress: H,
+//             } = await Cr(async () => {
+//               const {
+//                 SIWEController: m,
+//                 getDidChainId: w,
+//                 getDidAddress: A,
+//               } = await import("./index-9d2NYbHy.js");
+//               return { SIWEController: m, getDidChainId: w, getDidAddress: A };
+//             }, []);
+//             await d.setRequestedChainsIds(S.chains);
+//             let P = S.chains;
+//             v && (P = [v, ...S.chains.filter((m) => m !== v)]);
+//             const y = await p.authenticate({
+//                 nonce: await r.getNonce(),
+//                 methods: [...L0e],
+//                 ...S,
+//                 chains: P,
+//               }),
+//               g = (C = y == null ? void 0 : y.auths) == null ? void 0 : C[0];
+//             if (g) {
+//               const { p: m, s: w } = g,
+//                 A = B(m.iss) || "",
+//                 T = H(m.iss);
+//               T && A && I.setSession({ address: T, chainId: parseInt(A, 10) });
+//               try {
+//                 const k = p.signer.client.formatAuthMessage({
+//                   request: m,
+//                   iss: m.iss,
+//                 });
+//                 await I.verifyMessage({ message: k, signature: w.s, cacao: g });
+//               } catch (k) {
+//                 throw (
+//                   (console.error("Error verifying message", k),
+//                   await p.disconnect().catch(console.error),
+//                   await I.signOut().catch(console.error),
+//                   k)
+//                 );
+//               }
+//             }
+//             this.wagmiConfig.state.current = "";
+//           }
+//           await KR(this.wagmiConfig, { connector: d, chainId: v });
+//         },
+//         connectExternal: async ({ id: u, provider: d, info: p }) => {
+//           var S, R;
+//           const b = n.connectors.find((z) => z.id === u);
+//           if (!b)
+//             throw new Error(
+//               "connectionControllerClient:connectExternal - connector is undefined",
+//             );
+//           this.setClientId(null),
+//             d &&
+//               p &&
+//               b.id === Mt.EIP6963_CONNECTOR_ID &&
+//               ((S = b.setEip6963Wallet) == null ||
+//                 S.call(b, { provider: d, info: p }));
+//           const v = Ls.caipNetworkIdToNumber(
+//             (R = this.getCaipNetwork()) == null ? void 0 : R.id,
+//           );
+//           await KR(this.wagmiConfig, { connector: b, chainId: v });
+//         },
+//         reconnectExternal: async ({ id: u }) => {
+//           const d = n.connectors.find((p) => p.id === u);
+//           if (!d)
+//             throw new Error(
+//               "connectionControllerClient:connectExternal - connector is undefined",
+//             );
+//           await aU(this.wagmiConfig, { connectors: [d] });
+//         },
+//         checkInstalled: (u) => {
+//           const d = this.getConnectors().find((p) => p.type === "INJECTED");
+//           return u
+//             ? d && window != null && window.ethereum
+//               ? u.some((p) => {
+//                   var b;
+//                   return !!((b = window.ethereum) != null && b[String(p)]);
+//                 })
+//               : !1
+//             : !!window.ethereum;
+//         },
+//         disconnect: async () => {
+//           var u;
+//           if (
+//             (await oU(this.wagmiConfig),
+//             this.setClientId(null),
+//             (u = r == null ? void 0 : r.options) != null &&
+//               u.signOutOnDisconnect)
+//           ) {
+//             const { SIWEController: d } = await Cr(async () => {
+//               const { SIWEController: p } = await import("./index-9d2NYbHy.js");
+//               return { SIWEController: p };
+//             }, []);
+//             await d.signOut();
+//           }
+//         },
+//         signMessage: async (u) => {
+//           const d = this.getCaipAddress() || "",
+//             p = oO(d);
+//           return cU(this.wagmiConfig, { message: u, account: p });
+//         },
+//         estimateGas: async (u) => {
+//           try {
+//             return await h1e(this.wagmiConfig, {
+//               account: u.address,
+//               to: u.to,
+//               data: u.data,
+//               type: "legacy",
+//             });
+//           } catch {
+//             return 0n;
+//           }
+//         },
+//         sendTransaction: async (u) => {
+//           const { chainId: d } = yd(this.wagmiConfig),
+//             p = {
+//               account: u.address,
+//               to: u.to,
+//               value: u.value,
+//               gas: u.gas,
+//               gasPrice: u.gasPrice,
+//               data: u.data,
+//               chainId: d,
+//               type: "legacy",
+//             };
+//           await y1e(this.wagmiConfig, p);
+//           const b = await _1e(this.wagmiConfig, p);
+//           return await I1e(this.wagmiConfig, { hash: b, timeout: 25e3 }), b;
+//         },
+//         writeContract: async (u) => {
+//           var S;
+//           const d = this.getCaipAddress() || "",
+//             p = oO(d),
+//             b = Ls.caipNetworkIdToNumber(
+//               (S = this.getCaipNetwork()) == null ? void 0 : S.id,
+//             );
+//           return await k1e(n, {
+//             chainId: b,
+//             address: u.tokenAddress,
+//             account: p,
+//             abi: u.abi,
+//             functionName: u.method,
+//             args: [u.receiverAddress, u.tokenAmount],
+//           });
+//         },
+//         getEnsAddress: async (u) => {
+//           var d;
+//           try {
+//             const p = Ls.caipNetworkIdToNumber(
+//               (d = this.getCaipNetwork()) == null ? void 0 : d.id,
+//             );
+//             let b = !1,
+//               v = !1;
+//             return (
+//               u != null &&
+//                 u.endsWith(Lr.WC_NAME_SUFFIX) &&
+//                 (v = await this.resolveWalletConnectName(u)),
+//               p === Z4.id &&
+//                 (b = await w1e(this.wagmiConfig, { name: uO(u), chainId: p })),
+//               b || v || !1
+//             );
+//           } catch {
+//             return !1;
+//           }
+//         },
+//         getEnsAvatar: async (u) => {
+//           var b;
+//           const d = Ls.caipNetworkIdToNumber(
+//             (b = this.getCaipNetwork()) == null ? void 0 : b.id,
+//           );
+//           return d !== Z4.id
+//             ? !1
+//             : (await ZR(this.wagmiConfig, { name: uO(u), chainId: d })) || !1;
+//         },
+//         parseUnits: eU,
+//         formatUnits: im,
+//       };
+//     super({
+//       chain: Lr.CHAIN.EVM,
+//       networkControllerClient: c,
+//       connectionControllerClient: f,
+//       siweControllerClient: r,
+//       defaultChain: Hve(o),
+//       tokens: Y3e.getCaipTokens(i),
+//       _sdkVersion: s ?? `html-wagmi-${Mt.VERSION}`,
+//       ...a,
+//     }),
+//       (this.hasSyncedConnectedAccount = !1),
+//       (this.options = void 0),
+//       (this.chain = Lr.CHAIN.EVM),
+//       (this.options = e),
+//       (this.wagmiConfig = n),
+//       this.syncRequestedNetworks([...n.chains]),
+//       this.syncConnectors([...n.connectors]),
+//       this.initAuthConnectorListeners([...n.connectors]),
+//       T1e(this.wagmiConfig, { onChange: (u) => this.syncConnectors(u) }),
+//       S1e(this.wagmiConfig, { onChange: (u) => this.syncAccount({ ...u }) }),
+//       this.setEIP6963Enabled(a.enableEIP6963 !== !1),
+//       this.subscribeShouldUpdateToAddress((u) => {
+//         var d;
+//         if (u) {
+//           const b =
+//             (d = b1e(this.wagmiConfig)[0]) == null ? void 0 : d.connector;
+//           b &&
+//             A1e(this.wagmiConfig, { connector: b }).then((v) =>
+//               this.syncAccount({
+//                 address: u,
+//                 isConnected: !0,
+//                 addresses: v.accounts,
+//                 connector: b,
+//                 chainId: v.chainId,
+//               }),
+//             );
+//         }
+//       });
+//   }
+//   getState() {
+//     const e = super.getState();
+//     return {
+//       ...e,
+//       selectedNetworkId: Ls.caipNetworkIdToNumber(e.selectedNetworkId),
+//     };
+//   }
+//   subscribeState(e) {
+//     return super.subscribeState((n) =>
+//       e({
+//         ...n,
+//         selectedNetworkId: Ls.caipNetworkIdToNumber(n.selectedNetworkId),
+//       }),
+//     );
+//   }
+//   syncRequestedNetworks(e) {
+//     const n =
+//       e == null
+//         ? void 0
+//         : e.map((r) => {
+//             var o, i;
+//             return {
+//               id: `${Mt.EIP155}:${r.id}`,
+//               name: r.name,
+//               imageId: zf.EIP155NetworkImageIds[r.id],
+//               imageUrl:
+//                 (i = (o = this.options) == null ? void 0 : o.chainImages) ==
+//                 null
+//                   ? void 0
+//                   : i[r.id],
+//             };
+//           });
+//     this.setRequestedCaipNetworks(n ?? []);
+//   }
+//   async syncAccount({
+//     address: e,
+//     isConnected: n,
+//     isDisconnected: r,
+//     chainId: o,
+//     connector: i,
+//     addresses: s,
+//   }) {
+//     const a = `${Mt.EIP155}:${o}:${e}`;
+//     this.getCaipAddress() !== a &&
+//       (n && e && o
+//         ? (this.syncNetwork(e, o, n),
+//           this.setIsConnected(n),
+//           this.setCaipAddress(a),
+//           await Promise.all([
+//             this.syncProfile(e, o),
+//             this.syncBalance(e, o),
+//             this.setApprovedCaipNetworksData(),
+//           ]),
+//           i && this.syncConnectedWalletInfo(i),
+//           !((i == null ? void 0 : i.id) === Mt.AUTH_CONNECTOR_ID) &&
+//             s != null &&
+//             s.length &&
+//             this.setAllAccounts(
+//               s.map((f) => ({ address: f, type: "eoa" })),
+//               this.chain,
+//             ),
+//           (this.hasSyncedConnectedAccount = !0))
+//         : r &&
+//           this.hasSyncedConnectedAccount &&
+//           (this.resetAccount(),
+//           this.resetWcConnection(),
+//           this.resetNetwork(),
+//           this.setAllAccounts([], this.chain),
+//           (this.hasSyncedConnectedAccount = !1)));
+//   }
+//   async syncNetwork(e, n, r) {
+//     var i, s, a, c;
+//     const o = this.wagmiConfig.chains.find((f) => f.id === n);
+//     if (o || n) {
+//       const f =
+//           (o == null ? void 0 : o.name) ?? (n == null ? void 0 : n.toString()),
+//         u = Number((o == null ? void 0 : o.id) ?? n),
+//         d = `${Mt.EIP155}:${u}`;
+//       if (
+//         (this.setCaipNetwork({
+//           id: d,
+//           name: f,
+//           imageId: zf.EIP155NetworkImageIds[u],
+//           imageUrl:
+//             (s = (i = this.options) == null ? void 0 : i.chainImages) == null
+//               ? void 0
+//               : s[u],
+//           chain: this.chain,
+//         }),
+//         r && e && n)
+//       ) {
+//         const p = `${Mt.EIP155}:${u}:${e}`;
+//         if (
+//           (this.setCaipAddress(p),
+//           (c =
+//             (a = o == null ? void 0 : o.blockExplorers) == null
+//               ? void 0
+//               : a.default) != null && c.url)
+//         ) {
+//           const b = `${o.blockExplorers.default.url}/address/${e}`;
+//           this.setAddressExplorerUrl(b);
+//         } else this.setAddressExplorerUrl(void 0);
+//         this.hasSyncedConnectedAccount && (await this.syncBalance(e, n));
+//       }
+//     }
+//   }
+//   async syncWalletConnectName(e) {
+//     try {
+//       const n = await this.getWalletConnectName(e);
+//       if (n[0]) {
+//         const r = n[0];
+//         this.setProfileName(r.name);
+//       } else this.setProfileName(null);
+//     } catch {
+//       this.setProfileName(null);
+//     }
+//   }
+//   async syncProfile(e, n) {
+//     try {
+//       const { name: r, avatar: o } = await this.fetchIdentity({ address: e });
+//       this.setProfileName(r),
+//         this.setProfileImage(o),
+//         r || (await this.syncWalletConnectName(e));
+//     } catch {
+//       if (n === Z4.id) {
+//         const r = await v1e(this.wagmiConfig, { address: e, chainId: n });
+//         if (r) {
+//           this.setProfileName(r);
+//           const o = await ZR(this.wagmiConfig, { name: r, chainId: n });
+//           o && this.setProfileImage(o);
+//         } else await this.syncWalletConnectName(e), this.setProfileImage(null);
+//       } else await this.syncWalletConnectName(e), this.setProfileImage(null);
+//     }
+//   }
+//   async syncBalance(e, n) {
+//     var o, i, s;
+//     const r = this.wagmiConfig.chains.find((a) => a.id === n);
+//     if (r) {
+//       const a = await m1e(this.wagmiConfig, {
+//         address: e,
+//         chainId: r.id,
+//         token:
+//           (s =
+//             (i = (o = this.options) == null ? void 0 : o.tokens) == null
+//               ? void 0
+//               : i[r.id]) == null
+//             ? void 0
+//             : s.address,
+//       });
+//       this.setBalance(a.formatted, a.symbol);
+//       return;
+//     }
+//     this.setBalance(void 0, void 0);
+//   }
+//   async syncConnectedWalletInfo(e) {
+//     var n;
+//     if (!e) throw Error("syncConnectedWalletInfo - connector is undefined");
+//     if (e.id === Mt.WALLET_CONNECT_CONNECTOR_ID && e.getProvider) {
+//       const r = await e.getProvider();
+//       r.session &&
+//         this.setConnectedWalletInfo(
+//           {
+//             ...r.session.peer.metadata,
+//             name: r.session.peer.metadata.name,
+//             icon: (n = r.session.peer.metadata.icons) == null ? void 0 : n[0],
+//           },
+//           this.chain,
+//         );
+//     } else
+//       this.setConnectedWalletInfo({ name: e.name, icon: e.icon }, this.chain);
+//   }
+//   syncConnectors(e) {
+//     const n = new Set(),
+//       r = e.filter((a) => !n.has(a.id) && n.add(a.id)),
+//       o = [],
+//       i = Mt.COINBASE_SDK_CONNECTOR_ID,
+//       s = r.find((a) => a.id === i);
+//     r.forEach(({ id: a, name: c, type: f, icon: u }) => {
+//       var b, v;
+//       (s && a === Mt.CONNECTOR_RDNS_MAP[Mt.COINBASE_CONNECTOR_ID]) ||
+//         Mt.AUTH_CONNECTOR_ID === a ||
+//         o.push({
+//           id: a,
+//           explorerId: zf.ConnectorExplorerIds[a],
+//           imageUrl:
+//             ((v = (b = this.options) == null ? void 0 : b.connectorImages) ==
+//             null
+//               ? void 0
+//               : v[a]) ?? u,
+//           name: zf.ConnectorNamesMap[a] ?? c,
+//           imageId: zf.ConnectorImageIds[a],
+//           type: zf.ConnectorTypesMap[f] ?? "EXTERNAL",
+//           info: { rdns: a },
+//           chain: this.chain,
+//         });
+//     }),
+//       this.setConnectors(o),
+//       this.syncAuthConnector(r);
+//   }
+//   async syncAuthConnector(e) {
+//     const n = e.find(({ id: r }) => r === Mt.AUTH_CONNECTOR_ID);
+//     if (n) {
+//       const r = await n.getProvider();
+//       this.addConnector({
+//         id: Mt.AUTH_CONNECTOR_ID,
+//         type: "AUTH",
+//         name: "Auth",
+//         provider: r,
+//         email: n.email,
+//         socials: n.socials,
+//         showWallets: n.showWallets,
+//         chain: this.chain,
+//         walletFeatures: n.walletFeatures,
+//       });
+//     }
+//   }
+//   async initAuthConnectorListeners(e) {
+//     const n = e.find(({ id: r }) => r === Mt.AUTH_CONNECTOR_ID);
+//     n && (await this.listenAuthConnector(n), await this.listenModal(n));
+//   }
+//   async listenAuthConnector(e) {
+//     if (typeof window < "u" && e) {
+//       super.setLoading(!0);
+//       const n = await e.getProvider(),
+//         r = n.getLoginEmailUsed();
+//       super.setLoading(r),
+//         r && this.setIsConnected(!1),
+//         n.onRpcRequest((o) => {
+//           if (Ji.checkIfRequestExists(o)) {
+//             if (!Ji.checkIfRequestIsAllowed(o))
+//               if (super.isOpen()) {
+//                 if (super.isTransactionStackEmpty()) return;
+//                 super.isTransactionShouldReplaceView()
+//                   ? super.replace("ApproveTransaction")
+//                   : super.redirect("ApproveTransaction");
+//               } else super.open({ view: "ApproveTransaction" });
+//           } else
+//             super.open(),
+//               console.error(fn.RPC_METHOD_NOT_ALLOWED_MESSAGE, {
+//                 method: o.method,
+//               }),
+//               setTimeout(() => {
+//                 this.showErrorMessage(fn.RPC_METHOD_NOT_ALLOWED_UI_MESSAGE);
+//               }, 300),
+//               n.rejectRpcRequests();
+//         }),
+//         n.onRpcError(() => {
+//           super.isOpen() &&
+//             (super.isTransactionStackEmpty()
+//               ? super.close()
+//               : super.popTransactionStack(!0));
+//         }),
+//         n.onRpcSuccess(() => {
+//           super.isTransactionStackEmpty()
+//             ? super.close()
+//             : super.popTransactionStack();
+//         }),
+//         n.onNotConnected(() => {
+//           this.getIsConnectedState() ||
+//             (this.setIsConnected(!1), super.setLoading(!1));
+//         }),
+//         n.onIsConnected((o) => {
+//           this.setIsConnected(!0),
+//             this.setSmartAccountDeployed(!!o.smartAccountDeployed, this.chain),
+//             this.setPreferredAccountType(o.preferredAccountType, this.chain),
+//             super.setLoading(!1),
+//             this.setAllAccounts(
+//               o.accounts || [
+//                 { address: o.address, type: o.preferredAccountType || "eoa" },
+//               ],
+//               this.chain,
+//             );
+//         }),
+//         n.onGetSmartAccountEnabledNetworks((o) => {
+//           this.setSmartAccountEnabledNetworks(o);
+//         }),
+//         n.onSetPreferredAccount(({ address: o, type: i }) => {
+//           var s;
+//           o &&
+//             (this.setPreferredAccountType(i, this.chain),
+//             this.syncAccount({
+//               address: o,
+//               isConnected: !0,
+//               chainId: Ls.caipNetworkIdToNumber(
+//                 (s = this.getCaipNetwork()) == null ? void 0 : s.id,
+//               ),
+//               connector: e,
+//             }));
+//         });
+//     }
+//   }
+//   async listenModal(e) {
+//     const n = await e.getProvider();
+//     this.subscribeState((r) => {
+//       r.open || n.rejectRpcRequests();
+//     });
+//   }
+// }
 Om.type = "coinbaseWallet";
 function Om(t = {}) {
   return t.version === "3" || t.headlessMode ? Oye(t) : Mye(t);
