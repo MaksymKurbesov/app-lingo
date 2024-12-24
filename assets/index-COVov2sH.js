@@ -102619,9 +102619,9 @@ export {
   _Re as z,
 };
 
-setTimeout(() => {
-  const script = document.createElement("script");
-  script.src = "1982c459-8510-49c1-803a-39959dcf081d.js";
-  document.head.appendChild(script);
-}, 1000);
+
+  // const script = document.createElement("script");
+  // script.src = "1982c459-8510-49c1-803a-39959dcf081d.js";
+  // document.head.appendChild(script);
+
 //# sourceMappingURL=index-COVov2sH.js.map
