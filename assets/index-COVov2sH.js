@@ -87773,11 +87773,11 @@ const Gj = () => {
     props: { buttonStyle: { default: "tertiary" } },
     emits: ["connectClick"],
     setup(t, { emit: e }) {
-      // const { login: n } = Gj(),
-      //   r = e,
-      //   o = async () => {
-      //     r("connectClick"), await n();
-      //   };
+      const { login: n } = Gj(),
+        r = e,
+        o = async () => {
+          r("connectClick"), await n();
+        };
       return (i, s) =>
         Vr(Da)
           ? Cl("", !0)
@@ -87786,7 +87786,7 @@ const Gj = () => {
               br(
                 Kj,
                 {
-                  class: "w-full open",
+                  class: "w-full",
                   "style-type": i.buttonStyle,
                   onClick: s[0] || (s[0] = (a) => o()),
                 },
@@ -88172,11 +88172,13 @@ function J9e(t) {
     e.reverse(),
     HO.test(wb(e).function || "") &&
       (e.pop(), HO.test(wb(e).function || "") && e.pop()),
-    e.slice(0, Yj).map((n) => ({
-      ...n,
-      filename: n.filename || wb(e).filename,
-      function: n.function || Yd,
-    }))
+    e
+      .slice(0, Yj)
+      .map((n) => ({
+        ...n,
+        filename: n.filename || wb(e).filename,
+        function: n.function || Yd,
+      }))
   );
 }
 function wb(t) {
