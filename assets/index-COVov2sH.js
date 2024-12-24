@@ -87766,7 +87766,7 @@ const Gj = () => {
     for (const [r, o] of e) n[r] = o;
     return n;
   },
-  Kj = $9e(P9e, [["__scopeId", " data-v-8a74d53f"]]),
+  Kj = $9e(P9e, [["__scopeId", "data-v-8a74d53f"]]),
   B9e = { key: 0, class: "w-full open" },
   L9e = E0({
     __name: "ConnectWalletButton",
