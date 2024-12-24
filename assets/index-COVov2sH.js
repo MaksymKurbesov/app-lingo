@@ -37,7 +37,6 @@ const __vite__mapDeps = (
       "assets/BuyWizardView-D5mL_CFG.css",
       "assets/StartEarningView-C_Aml6pn.js",
       "assets/StartEarningView-Dgu7fiHd.css",
-      "assets/ConnectWalletView-joaHNKDI.js",
       "assets/discord-icon-D3eB18iY.js",
       "assets/PageNotFound-Dybh4BMa.js",
     ]),
