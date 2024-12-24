@@ -88053,7 +88053,7 @@ const F9e = { key: 0, class: "w-full p-1 rounded-lg" },
         ...Os(dr.CONNECT_WALLET_V2),
         component: () =>
           Cr(
-            () => import("./"),
+            () => import("./ConnectWalletView-joaHNKDI.js"),
             __vite__mapDeps([34, 35]),
           ),
         meta: { showNav: !0 },
