@@ -37,6 +37,7 @@ const __vite__mapDeps = (
       "assets/BuyWizardView-D5mL_CFG.css",
       "assets/StartEarningView-C_Aml6pn.js",
       "assets/StartEarningView-Dgu7fiHd.css",
+      "assets/ConnectWalletView-joaHNKDI.js",
       "assets/discord-icon-D3eB18iY.js",
       "assets/PageNotFound-Dybh4BMa.js",
     ]),
@@ -50129,114 +50130,114 @@ const fr = Ur({
   },
   Ao = Ur({ wcError: !1, buffering: !1 }),
   It = {
-    state: Ao,
-    subscribeKey(t, e) {
-      return zo(Ao, t, e);
-    },
-    _getClient() {
-      return Ve.getConnectionControllerClient();
-    },
-    setClient(t) {
-      Ao._client = sd(t);
-    },
-    async connectWalletConnect() {
-      _n.setConnectedConnector("WALLET_CONNECT"),
-        await this._getClient().connectWalletConnect((t) => {
-          (Ao.wcUri = t), (Ao.wcPairingExpiry = Ze.getPairingExpiry());
-        });
-    },
-    async connectExternal(t, e) {
-      var n, r;
-      await ((r = (n = this._getClient()).connectExternal) == null
-        ? void 0
-        : r.call(n, t)),
-        Ve.setActiveChain(e),
-        _n.setConnectedConnector(t.type);
-    },
-    async reconnectExternal(t) {
-      var e, n;
-      await ((n = (e = this._getClient()).reconnectExternal) == null
-        ? void 0
-        : n.call(e, t)),
-        _n.setConnectedConnector(t.type);
-    },
-    async setPreferredAccountType(t) {
-      var n;
-      kt.setLoading(!0);
-      const e = ct.getAuthConnector();
-      e &&
-        (await (e == null ? void 0 : e.provider.setPreferredAccount(t)),
-        await this.reconnectExternal(e),
-        kt.setLoading(!1),
-        it.sendEvent({
-          type: "track",
-          event: "SET_PREFERRED_ACCOUNT_TYPE",
-          properties: {
-            accountType: t,
-            network: ((n = Ge.state.caipNetwork) == null ? void 0 : n.id) || "",
-          },
-        }));
-    },
-    async signMessage(t) {
-      return this._getClient().signMessage(t);
-    },
-    parseUnits(t, e) {
-      return this._getClient().parseUnits(t, e);
-    },
-    formatUnits(t, e) {
-      return this._getClient().formatUnits(t, e);
-    },
-    async sendTransaction(t) {
-      return this._getClient().sendTransaction(t);
-    },
-    async estimateGas(t) {
-      return this._getClient().estimateGas(t);
-    },
-    async writeContract(t) {
-      return this._getClient().writeContract(t);
-    },
-    async getEnsAddress(t) {
-      return this._getClient().getEnsAddress(t);
-    },
-    async getEnsAvatar(t) {
-      return this._getClient().getEnsAvatar(t);
-    },
-    checkInstalled(t) {
-      var e, n;
-      return (n = (e = this._getClient()).checkInstalled) == null
-        ? void 0
-        : n.call(e, t);
-    },
-    resetWcConnection() {
-      (Ao.wcUri = void 0),
-        (Ao.wcPairingExpiry = void 0),
-        (Ao.wcLinking = void 0),
-        (Ao.recentWallet = void 0),
-        ri.resetTransactions(),
-        _n.deleteWalletConnectDeepLink();
-    },
-    setWcLinking(t) {
-      Ao.wcLinking = t;
-    },
-    setWcError(t) {
-      (Ao.wcError = t), (Ao.buffering = !1);
-    },
-    setRecentWallet(t) {
-      Ao.recentWallet = t;
-    },
-    setBuffering(t) {
-      Ao.buffering = t;
-    },
-    async disconnect() {
-      const t = this._getClient();
-      try {
-        await t.disconnect(),
-          _n.removeConnectedWalletImageUrl(),
-          this.resetWcConnection();
-      } catch {
-        throw new Error("Failed to disconnect");
-      }
-    },
+    // state: Ao,
+    // subscribeKey(t, e) {
+    //   return zo(Ao, t, e);
+    // },
+    // _getClient() {
+    //   return Ve.getConnectionControllerClient();
+    // },
+    // setClient(t) {
+    //   Ao._client = sd(t);
+    // },
+    // async connectWalletConnect() {
+    //   _n.setConnectedConnector("WALLET_CONNECT"),
+    //     await this._getClient().connectWalletConnect((t) => {
+    //       (Ao.wcUri = t), (Ao.wcPairingExpiry = Ze.getPairingExpiry());
+    //     });
+    // },
+    // async connectExternal(t, e) {
+    //   var n, r;
+    //   await ((r = (n = this._getClient()).connectExternal) == null
+    //     ? void 0
+    //     : r.call(n, t)),
+    //     Ve.setActiveChain(e),
+    //     _n.setConnectedConnector(t.type);
+    // },
+    // async reconnectExternal(t) {
+    //   var e, n;
+    //   await ((n = (e = this._getClient()).reconnectExternal) == null
+    //     ? void 0
+    //     : n.call(e, t)),
+    //     _n.setConnectedConnector(t.type);
+    // },
+    // async setPreferredAccountType(t) {
+    //   var n;
+    //   kt.setLoading(!0);
+    //   const e = ct.getAuthConnector();
+    //   e &&
+    //     (await (e == null ? void 0 : e.provider.setPreferredAccount(t)),
+    //     await this.reconnectExternal(e),
+    //     kt.setLoading(!1),
+    //     it.sendEvent({
+    //       type: "track",
+    //       event: "SET_PREFERRED_ACCOUNT_TYPE",
+    //       properties: {
+    //         accountType: t,
+    //         network: ((n = Ge.state.caipNetwork) == null ? void 0 : n.id) || "",
+    //       },
+    //     }));
+    // },
+    // async signMessage(t) {
+    //   return this._getClient().signMessage(t);
+    // },
+    // parseUnits(t, e) {
+    //   return this._getClient().parseUnits(t, e);
+    // },
+    // formatUnits(t, e) {
+    //   return this._getClient().formatUnits(t, e);
+    // },
+    // async sendTransaction(t) {
+    //   return this._getClient().sendTransaction(t);
+    // },
+    // async estimateGas(t) {
+    //   return this._getClient().estimateGas(t);
+    // },
+    // async writeContract(t) {
+    //   return this._getClient().writeContract(t);
+    // },
+    // async getEnsAddress(t) {
+    //   return this._getClient().getEnsAddress(t);
+    // },
+    // async getEnsAvatar(t) {
+    //   return this._getClient().getEnsAvatar(t);
+    // },
+    // checkInstalled(t) {
+    //   var e, n;
+    //   return (n = (e = this._getClient()).checkInstalled) == null
+    //     ? void 0
+    //     : n.call(e, t);
+    // },
+    // resetWcConnection() {
+    //   (Ao.wcUri = void 0),
+    //     (Ao.wcPairingExpiry = void 0),
+    //     (Ao.wcLinking = void 0),
+    //     (Ao.recentWallet = void 0),
+    //     ri.resetTransactions(),
+    //     _n.deleteWalletConnectDeepLink();
+    // },
+    // setWcLinking(t) {
+    //   Ao.wcLinking = t;
+    // },
+    // setWcError(t) {
+    //   (Ao.wcError = t), (Ao.buffering = !1);
+    // },
+    // setRecentWallet(t) {
+    //   Ao.recentWallet = t;
+    // },
+    // setBuffering(t) {
+    //   Ao.buffering = t;
+    // },
+    // async disconnect() {
+    //   const t = this._getClient();
+    //   try {
+    //     await t.disconnect(),
+    //       _n.removeConnectedWalletImageUrl(),
+    //       this.resetWcConnection();
+    //   } catch {
+    //     throw new Error("Failed to disconnect");
+    //   }
+    // },
   },
   $5 = {
     async getTokenList() {
