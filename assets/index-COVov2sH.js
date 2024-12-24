@@ -87767,7 +87767,7 @@ const Gj = () => {
     return n;
   },
   Kj = $9e(P9e, [["__scopeId", " data-v-8a74d53f"]]),
-  B9e = { key: 0, class: "w-full" },
+  B9e = { key: 0, class: "w-full open" },
   L9e = E0({
     __name: "ConnectWalletButton",
     props: { buttonStyle: { default: "tertiary" } },
@@ -88172,13 +88172,11 @@ function J9e(t) {
     e.reverse(),
     HO.test(wb(e).function || "") &&
       (e.pop(), HO.test(wb(e).function || "") && e.pop()),
-    e
-      .slice(0, Yj)
-      .map((n) => ({
-        ...n,
-        filename: n.filename || wb(e).filename,
-        function: n.function || Yd,
-      }))
+    e.slice(0, Yj).map((n) => ({
+      ...n,
+      filename: n.filename || wb(e).filename,
+      function: n.function || Yd,
+    }))
   );
 }
 function wb(t) {
