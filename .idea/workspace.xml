@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ada42344-2106-4187-91b6-121b9c151112" name="Changes" comment="" />
+    <list default="true" id="ada42344-2106-4187-91b6-121b9c151112" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-COVov2sH.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/index-COVov2sH.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2qenw5HLjAN0ROyvfAhaa7pvvzR" />
   <component name="ProjectViewState">
@@ -16,8 +22,10 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
     "nodejs_package_manager_path": "npm",
     "prettierjs.PrettierConfiguration.Package": "C:\\Users\\Pachka\\AppData\\Roaming\\npm\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "settings.javascript.prettier",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -30,6 +38,7 @@
       <option name="presentableId" value="Default" />
       <updated>1735032144510</updated>
       <workItem from="1735032145842" duration="47000" />
+      <workItem from="1735045333643" duration="107000" />
     </task>
     <servers />
   </component>
