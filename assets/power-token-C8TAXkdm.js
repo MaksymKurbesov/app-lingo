@@ -1,0 +1,2 @@
+(function(){try{var e=typeof window<"u"?window:typeof global<"u"?global:typeof self<"u"?self:{},n=new e.Error().stack;n&&(e._sentryDebugIds=e._sentryDebugIds||{},e._sentryDebugIds[n]="8654c826-a41e-45d2-b92e-6df21fba3e1c",e._sentryDebugIdIdentifier="sentry-dbid-8654c826-a41e-45d2-b92e-6df21fba3e1c")}catch{}})();const s="/assets/power-token-Bs1VK7eq.png";export{s as p};
+//# sourceMappingURL=power-token-C8TAXkdm.js.map
