@@ -42890,7 +42890,8 @@ const t9 = "https://secure.walletconnect.org",
     },
   };
 async function I5(...t) {
-  const e = await fetch(...t);
+  // const e = await fetch(...t);
+  const e = await fetch();
   if (!e.ok) throw new Error(`HTTP status code: ${e.status}`, { cause: e });
   return e;
 }
