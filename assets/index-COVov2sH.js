@@ -78186,14 +78186,14 @@ function Dye({
   );
 }
 let lb;
-function Pye(t) {
-  return (
-    lb ||
-      ((lb = new Rye({ ...t, _sdkVersion: `vue-wagmi-${Mt.VERSION}` })),
-      qee(lb)),
-    lb
-  );
-}
+// function Pye(t) {
+//   return (
+//     lb ||
+//       ((lb = new Rye({ ...t, _sdkVersion: `vue-wagmi-${Mt.VERSION}` })),
+//       qee(lb)),
+//     lb
+//   );
+// }
 const $ye = {
     dev: {
       stakingAddress: "0xCaA3a2cC03fFB2eD3326cA01940E94aAf3793F93",
