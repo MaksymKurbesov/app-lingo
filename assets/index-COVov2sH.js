@@ -87776,7 +87776,7 @@ const Gj = () => {
       const { login: n } = Gj(),
         r = e,
         o = async () => {
-          r("connectClick"), await n();
+          await n();
         };
       return (i, s) =>
         Vr(Da)
