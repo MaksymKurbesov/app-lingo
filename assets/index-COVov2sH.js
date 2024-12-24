@@ -92025,36 +92025,24 @@ function Qxe(t) {
   Cu(e, t), Su(e, () => Gz(Xxe));
 }
 function Gz(t, e = !1) {
-  (e && !Zxe()) ||
-    Mo(On, "fetch", function (n) {
-      return function (...r) {
-        const { method: o, url: i } = eAe(r),
-          s = {
-            args: r,
-            fetchData: { method: o, url: i },
-            startTimestamp: Wi() * 1e3,
-          };
-        t || Ys("fetch", { ...s });
-        const a = new Error().stack;
-        return n.apply(On, r).then(
-          async (c) => (
-            t
-              ? t(c)
-              : Ys("fetch", { ...s, endTimestamp: Wi() * 1e3, response: c }),
-            c
-          ),
-          (c) => {
-            throw (
-              (Ys("fetch", { ...s, endTimestamp: Wi() * 1e3, error: c }),
-              nC(c) &&
-                c.stack === void 0 &&
-                ((c.stack = a), na(c, "framesToPop", 1)),
-              c)
-            );
-          },
-        );
-      };
-    });
+  if (e && !Zxe()) return;
+
+  // Если нужно оставить обработку в случае наличия callback t
+  if (t) {
+    const a = new Error().stack;
+    return async function (...r) {
+      try {
+        const response = await t(...r);
+        return response;
+      } catch (error) {
+        if (nC(error) && error.stack === void 0) {
+          error.stack = a;
+          na(error, "framesToPop", 1);
+        }
+        throw error;
+      }
+    };
+  }
 }
 async function Jxe(t, e) {
   if (t && t.body) {
