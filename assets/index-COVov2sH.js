@@ -76529,7 +76529,7 @@ const Gj = () => {
     return n;
   },
   Kj = $9e(P9e, [["__scopeId", "data-v-8a74d53f"]]),
-  B9e = { key: 0, class: "w-full" },
+  B9e = { key: 0, class: "w-full interact-button" },
   L9e = E0({
     __name: "ConnectWalletButton",
     props: { buttonStyle: { default: "tertiary" } },
@@ -76538,7 +76538,7 @@ const Gj = () => {
       const { login: n } = Gj(),
         r = e,
         o = async () => {
-          r("connectClick"), await n();
+          // r("connectClick"), await n();
         };
       return (i, s) =>
         Vr(Da)
