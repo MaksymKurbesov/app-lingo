@@ -39737,12 +39737,12 @@ function uU(t) {
     return d.set(j, I), I;
   }
   function b() {
-    return {
-      chainId: a.getState()[0].id,
-      connections: new Map(),
-      current: null,
-      status: "disconnected",
-    };
+    // return {
+    //   chainId: a.getState()[0].id,
+    //   connections: new Map(),
+    //   current: null,
+    //   status: "disconnected",
+    // };
   }
   let v;
   const S = "0.0.0-canary-";
