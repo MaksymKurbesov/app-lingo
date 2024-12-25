@@ -85,17 +85,19 @@ const L = {
     setup(t) {
       const s = C(),
         i = I();
-      // x(
-      // 	B,
-      // 	(r) => {
-      // 		if (r) {
-      // 			const { redirect: a, ...c } = i.query,
-      // 				l = a;
-      // 			l ? s.push({ path: l, query: c }) : s.push({ name: N.START_EARNING });
-      // 		}
-      // 	},
-      // 	{ immediate: !0 },
-      // );
+      x(
+        B,
+        (r) => {
+          if (r) {
+            const { redirect: a, ...c } = i.query,
+              l = a;
+            l
+              ? s.push({ path: l, query: c })
+              : s.push({ name: N.START_EARNING });
+          }
+        },
+        { immediate: !0 },
+      );
       function f() {
         n.track("Wallet Creation Initiated"),
           window.open("https://wallet.coinbase.com/smart-wallet", "_blank");
