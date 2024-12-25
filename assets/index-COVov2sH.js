@@ -31017,7 +31017,7 @@ const L0e = [
     "wallet_getCapabilities",
     "wallet_getCallsStatus",
     "wallet_showCallsStatus",
-  ],
+  ]
 //
 //   Ke = class D_ extends Error {
 //     constructor(e, n = {}) {
