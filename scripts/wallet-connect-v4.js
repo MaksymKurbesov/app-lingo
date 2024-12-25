@@ -21742,22 +21742,22 @@
         });
       },
       initialize(t) {
-        // const e = t?.[0];
-        // t?.length === 0 && (Qt.noAdapters = !0),
-        //   Qt.noAdapters ||
-        //     ((Qt.activeChain = e?.chainNamespace),
-        //     Kd.set({ activeChain: e?.chainNamespace }),
-        //     t.forEach((r) => {
-        //       Qt.chains.set(r.chainNamespace, {
-        //         chainNamespace: r.chainNamespace,
-        //         connectionControllerClient: r.connectionControllerClient,
-        //         networkControllerClient: r.networkControllerClient,
-        //         adapterType: r.adapterType,
-        //         accountState: FM,
-        //         networkState: WM,
-        //         caipNetworks: r.caipNetworks,
-        //       });
-        //     }));
+        const e = t?.[0];
+        t?.length === 0 && (Qt.noAdapters = !0),
+          Qt.noAdapters ||
+            ((Qt.activeChain = e?.chainNamespace),
+            Kd.set({ activeChain: e?.chainNamespace }),
+            t.forEach((r) => {
+              Qt.chains.set(r.chainNamespace, {
+                chainNamespace: r.chainNamespace,
+                connectionControllerClient: r.connectionControllerClient,
+                networkControllerClient: r.networkControllerClient,
+                adapterType: r.adapterType,
+                accountState: FM,
+                networkState: WM,
+                caipNetworks: r.caipNetworks,
+              });
+            }));
       },
       initializeUniversalAdapter(t, e) {
         if (((Qt.universalAdapter = t), e.length === 0)) {
