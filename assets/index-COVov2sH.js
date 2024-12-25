@@ -78176,13 +78176,13 @@ function Dye({
         //   walletFeatures: b.walletFeatures,
         // }),
       ),
-    uU({
-      chains: e,
-      multiInjectedProviderDiscovery: a !== !1,
-      transports: d,
-      ...c,
-      connectors: f,
-    })
+    // uU({
+    //   chains: e,
+    //   multiInjectedProviderDiscovery: a !== !1,
+    //   transports: d,
+    //   ...c,
+    //   connectors: f,
+    // })
   );
 }
 let lb;
