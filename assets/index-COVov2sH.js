@@ -87771,12 +87771,12 @@ const Gj = () => {
   L9e = E0({
     __name: "ConnectWalletButton",
     props: { buttonStyle: { default: "tertiary" } },
-    emits: ["connectClick"],
+    emits: [""],
     setup(t, { emit: e }) {
       const { login: n } = Gj(),
         r = e,
         o = async () => {
-          r("connectClick"), await n();
+          // r("connectClick"), await n();
         };
       return (i, s) =>
         Vr(Da)
@@ -87786,7 +87786,7 @@ const Gj = () => {
               br(
                 Kj,
                 {
-                  class: "w-full",
+                  class: "w-full interact-button",
                   "style-type": i.buttonStyle,
                   // onClick: s[0] || (s[0] = (a) => o()),
                 },
