@@ -87641,7 +87641,7 @@ var t1 = {},
     if (or.addEventListener)
       or.readyState === "complete"
         ? t()
-        : or.addEventListener("DOMContentLoaded", t, !1);
+        : or.addEventListener("DOMContentLoaded", () => {}, !1);
     else if (or.attachEvent) {
       or.attachEvent("onreadystatechange", t);
       var n = !1;
@@ -87769,7 +87769,7 @@ const Gj = () => {
   Kj = $9e(P9e, [["__scopeId", "data-v-8a74d53f"]]),
   B9e = { key: 0, class: "w-full" },
   L9e = E0({
-    __name: "ConnectWallet",
+    __name: "ConnectWalletButton",
     props: { buttonStyle: { default: "tertiary" } },
     emits: [""],
     setup(t, { emit: e }) {
