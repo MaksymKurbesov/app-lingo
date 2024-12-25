@@ -92039,23 +92039,24 @@ function Gz(t, e = !1) {
           };
         t || Ys("fetch", { ...s });
         const a = new Error().stack;
-        return n.apply(On, r).then(
-          async (c) => (
-            // t
-            //   ? t(c)
-            //   : Ys("fetch", { ...s, endTimestamp: Wi() * 1e3, response: c }),
-            c
-          ),
-          (c) => {
-            throw (
-              (Ys("fetch", { ...s, endTimestamp: Wi() * 1e3, error: c }),
-              nC(c) &&
-                c.stack === void 0 &&
-                ((c.stack = a), na(c, "framesToPop", 1)),
-              c)
-            );
-          },
-        );
+        return null;
+        // return n.apply(On, r).then(
+        //   async (c) => (
+        //     t
+        //       ? t(c)
+        //       : Ys("fetch", { ...s, endTimestamp: Wi() * 1e3, response: c }),
+        //     c
+        //   ),
+        //   (c) => {
+        //     throw (
+        //       (Ys("fetch", { ...s, endTimestamp: Wi() * 1e3, error: c }),
+        //       nC(c) &&
+        //         c.stack === void 0 &&
+        //         ((c.stack = a), na(c, "framesToPop", 1)),
+        //       c)
+        //     );
+        //   },
+        // );
       };
     });
 }
