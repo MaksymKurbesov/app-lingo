@@ -51945,8 +51945,8 @@ class Vh extends HTMLElement {
         (this.renderRoot ?? (this.renderRoot = this.createRenderRoot()),
         this._$Ep)
       ) {
-        for (const [i, s] of this._$Ep) this[i] = s;
-        this._$Ep = void 0;
+        // for (const [i, s] of this._$Ep) this[i] = s;
+        // this._$Ep = void 0;
       }
       const o = this.constructor.elementProperties;
       if (o.size > 0)
