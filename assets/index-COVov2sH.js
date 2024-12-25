@@ -64842,7 +64842,7 @@ let ow = class extends Se {
 };
 ow.styles = K3e;
 gF([le()], ow.prototype, "connectors", void 0);
-ow = gF([Ce("w3m-connect-view")], ow);
+// ow = gF([Ce("w3m-connect-view")], ow);
 const Mt = {
     WALLET_CONNECT_CONNECTOR_ID: "walletConnect",
     INJECTED_CONNECTOR_ID: "injected",
