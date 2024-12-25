@@ -59542,7 +59542,7 @@ const nF = tF;
 function lE(t) {
   (this.genPoly = void 0),
     (this.degree = t),
-    // this.degree && this.initialize(this.degree);
+    this.degree && this.initialize(this.degree);
 }
 lE.prototype.initialize = function (e) {
   // (this.degree = e), (this.genPoly = nF.generateECPolynomial(this.degree));
