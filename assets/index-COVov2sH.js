@@ -43171,27 +43171,27 @@ const n9 = "WALLETCONNECT_DEEPLINK_CHOICE",
       );
     },
     addConnector(t) {
-      // var e, n;
-      // if ((ks.connectors.push(sd(t)), t.id === "w3mAuth")) {
-      //   const r = t,
-      //     o = dU(et.state),
-      //     i = $r.getSnapshot().themeMode,
-      //     s = $r.getSnapshot().themeVariables;
-      //   (n =
-      //     (e = r == null ? void 0 : r.provider) == null
-      //       ? void 0
-      //       : e.syncDappData) == null ||
-      //     n.call(e, {
-      //       metadata: o.metadata,
-      //       sdkVersion: o.sdkVersion,
-      //       projectId: o.projectId,
-      //     }),
-      //     r.provider.syncTheme({
-      //       themeMode: i,
-      //       themeVariables: s,
-      //       w3mThemeVariables: bl(s, i),
-      //     });
-      // }
+      var e, n;
+      if ((ks.connectors.push(sd(t)), t.id === "w3mAuth")) {
+        const r = t,
+          o = dU(et.state),
+          i = $r.getSnapshot().themeMode,
+          s = $r.getSnapshot().themeVariables;
+        (n =
+          (e = r == null ? void 0 : r.provider) == null
+            ? void 0
+            : e.syncDappData) == null ||
+          n.call(e, {
+            metadata: o.metadata,
+            sdkVersion: o.sdkVersion,
+            projectId: o.projectId,
+          }),
+          r.provider.syncTheme({
+            themeMode: i,
+            themeVariables: s,
+            w3mThemeVariables: bl(s, i),
+          });
+      }
     },
     getAuthConnector() {
       return ks.connectors.find((t) => t.type === "AUTH");

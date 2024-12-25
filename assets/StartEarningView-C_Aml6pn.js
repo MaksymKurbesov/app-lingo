@@ -48,7 +48,7 @@ const z = "/assets/start-earning-header-CWJyO1jX.png",
   W = r(() =>
     e(
       "h1",
-      { class: "text-3xl lg:text-[64px] leading-[160%] font-semibold text-center uppercase interact-button" },
+      { class: "text-3xl lg:text-[64px] leading-[160%] font-semibold text-center uppercase" },
       " Start Earning ",
       -1,
     ),
