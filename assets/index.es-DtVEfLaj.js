@@ -17810,130 +17810,130 @@ var AP = Object.defineProperty,
     return e;
   };
 let EP = class extends SI {
-  // constructor(t, r, i = !0) {
-  //   super(t, r, i),
-  //     (this.core = t),
-  //     (this.logger = r),
-  //     (this.context = dB),
-  //     (this.storagePrefix = Vs),
-  //     (this.storageVersion = lB),
-  //     (this.events = new Map()),
-  //     (this.shouldPersist = !1),
-  //     (this.init = async () => {
-  //       if (!W6())
-  //         try {
-  //           const n = {
-  //             eventId: T2(),
-  //             timestamp: Date.now(),
-  //             domain: this.getAppDomain(),
-  //             props: {
-  //               event: "INIT",
-  //               type: "",
-  //               properties: {
-  //                 client_id: await this.core.crypto.getClientId(),
-  //                 user_agent: G6(this.core.relayer.protocol, this.core.relayer.version, K1),
-  //               },
-  //             },
-  //           };
-  //           await this.sendEvent([n]);
-  //         } catch (n) {
-  //           this.logger.warn(n);
-  //         }
-  //     }),
-  //     (this.createEvent = (n) => {
-  //       const {
-  //           event: o = "ERROR",
-  //           type: c = "",
-  //           properties: { topic: v, trace: w },
-  //         } = n,
-  //         p = T2(),
-  //         _ = this.core.projectId || "",
-  //         I = Date.now(),
-  //         B = Eu(
-  //           {
-  //             eventId: p,
-  //             timestamp: I,
-  //             props: { event: o, type: c, properties: { topic: v, trace: w } },
-  //             bundleId: _,
-  //             domain: this.getAppDomain(),
-  //           },
-  //           this.setMethods(p),
-  //         );
-  //       return this.telemetryEnabled && (this.events.set(p, B), (this.shouldPersist = !0)), B;
-  //     }),
-  //     (this.getEvent = (n) => {
-  //       const { eventId: o, topic: c } = n;
-  //       if (o) return this.events.get(o);
-  //       const v = Array.from(this.events.values()).find((w) => w.props.properties.topic === c);
-  //       if (v) return Eu(Eu({}, v), this.setMethods(v.eventId));
-  //     }),
-  //     (this.deleteEvent = (n) => {
-  //       const { eventId: o } = n;
-  //       this.events.delete(o), (this.shouldPersist = !0);
-  //     }),
-  //     (this.setEventListeners = () => {
-  //       this.core.heartbeat.on(Th.pulse, async () => {
-  //         this.shouldPersist && (await this.persist()),
-  //           this.events.forEach((n) => {
-  //             Gt.fromMiliseconds(Date.now()) - Gt.fromMiliseconds(n.timestamp) > pB &&
-  //               (this.events.delete(n.eventId), (this.shouldPersist = !0));
-  //           });
-  //       });
-  //     }),
-  //     (this.setMethods = (n) => ({ addTrace: (o) => this.addTrace(n, o), setError: (o) => this.setError(n, o) })),
-  //     (this.addTrace = (n, o) => {
-  //       const c = this.events.get(n);
-  //       c && (c.props.properties.trace.push(o), this.events.set(n, c), (this.shouldPersist = !0));
-  //     }),
-  //     (this.setError = (n, o) => {
-  //       const c = this.events.get(n);
-  //       c && ((c.props.type = o), (c.timestamp = Date.now()), this.events.set(n, c), (this.shouldPersist = !0));
-  //     }),
-  //     (this.persist = async () => {
-  //       await this.core.storage.setItem(this.storageKey, Array.from(this.events.values())), (this.shouldPersist = !1);
-  //     }),
-  //     (this.restore = async () => {
-  //       try {
-  //         const n = (await this.core.storage.getItem(this.storageKey)) || [];
-  //         if (!n.length) return;
-  //         n.forEach((o) => {
-  //           this.events.set(o.eventId, Eu(Eu({}, o), this.setMethods(o.eventId)));
-  //         });
-  //       } catch (n) {
-  //         this.logger.warn(n);
-  //       }
-  //     }),
-  //     (this.submit = async () => {
-  //       if (!this.telemetryEnabled || this.events.size === 0) return;
-  //       const n = [];
-  //       for (const [o, c] of this.events) c.props.type && n.push(c);
-  //       if (n.length !== 0)
-  //         try {
-  //           if ((await this.sendEvent(n)).ok)
-  //             for (const o of n) this.events.delete(o.eventId), (this.shouldPersist = !0);
-  //         } catch (o) {
-  //           this.logger.warn(o);
-  //         }
-  //     }),
-  //     (this.sendEvent = async (n) => {
-        // const o = this.getAppDomain() ? "" : "&sp=desktop";
-        // return await fetch(`${gB}?projectId=${this.core.projectId}&st=events_sdk&sv=js-${K1}${o}`, {
-        //   method: "POST",
-        //   body: JSON.stringify(n),
-        // }); 
-  //     }),
-  //     (this.getAppDomain = () => FI().url),
-  //     (this.logger = Ii(r, this.context)),
-  //     (this.telemetryEnabled = i),
-  //     i
-  //       ? this.restore().then(async () => {
-  //           await this.submit(), this.setEventListeners();
-  //         })
-  //       : this.persist();
-  // }
-  // get storageKey() {
-  //   return this.storagePrefix + this.storageVersion + this.core.customStoragePrefix + "//" + this.context;
-  // }
+  constructor(t, r, i = !0) {
+    super(t, r, i),
+      (this.core = t),
+      (this.logger = r),
+      (this.context = dB),
+      (this.storagePrefix = Vs),
+      (this.storageVersion = lB),
+      (this.events = new Map()),
+      (this.shouldPersist = !1),
+      (this.init = async () => {
+        if (!W6())
+          try {
+            const n = {
+              eventId: T2(),
+              timestamp: Date.now(),
+              domain: this.getAppDomain(),
+              props: {
+                event: "INIT",
+                type: "",
+                properties: {
+                  client_id: await this.core.crypto.getClientId(),
+                  user_agent: G6(this.core.relayer.protocol, this.core.relayer.version, K1),
+                },
+              },
+            };
+            await this.sendEvent([n]);
+          } catch (n) {
+            this.logger.warn(n);
+          }
+      }),
+      (this.createEvent = (n) => {
+        const {
+            event: o = "ERROR",
+            type: c = "",
+            properties: { topic: v, trace: w },
+          } = n,
+          p = T2(),
+          _ = this.core.projectId || "",
+          I = Date.now(),
+          B = Eu(
+            {
+              eventId: p,
+              timestamp: I,
+              props: { event: o, type: c, properties: { topic: v, trace: w } },
+              bundleId: _,
+              domain: this.getAppDomain(),
+            },
+            this.setMethods(p),
+          );
+        return this.telemetryEnabled && (this.events.set(p, B), (this.shouldPersist = !0)), B;
+      }),
+      (this.getEvent = (n) => {
+        const { eventId: o, topic: c } = n;
+        if (o) return this.events.get(o);
+        const v = Array.from(this.events.values()).find((w) => w.props.properties.topic === c);
+        if (v) return Eu(Eu({}, v), this.setMethods(v.eventId));
+      }),
+      (this.deleteEvent = (n) => {
+        const { eventId: o } = n;
+        this.events.delete(o), (this.shouldPersist = !0);
+      }),
+      (this.setEventListeners = () => {
+        this.core.heartbeat.on(Th.pulse, async () => {
+          this.shouldPersist && (await this.persist()),
+            this.events.forEach((n) => {
+              Gt.fromMiliseconds(Date.now()) - Gt.fromMiliseconds(n.timestamp) > pB &&
+                (this.events.delete(n.eventId), (this.shouldPersist = !0));
+            });
+        });
+      }),
+      (this.setMethods = (n) => ({ addTrace: (o) => this.addTrace(n, o), setError: (o) => this.setError(n, o) })),
+      (this.addTrace = (n, o) => {
+        const c = this.events.get(n);
+        c && (c.props.properties.trace.push(o), this.events.set(n, c), (this.shouldPersist = !0));
+      }),
+      (this.setError = (n, o) => {
+        const c = this.events.get(n);
+        c && ((c.props.type = o), (c.timestamp = Date.now()), this.events.set(n, c), (this.shouldPersist = !0));
+      }),
+      (this.persist = async () => {
+        await this.core.storage.setItem(this.storageKey, Array.from(this.events.values())), (this.shouldPersist = !1);
+      }),
+      (this.restore = async () => {
+        try {
+          const n = (await this.core.storage.getItem(this.storageKey)) || [];
+          if (!n.length) return;
+          n.forEach((o) => {
+            this.events.set(o.eventId, Eu(Eu({}, o), this.setMethods(o.eventId)));
+          });
+        } catch (n) {
+          this.logger.warn(n);
+        }
+      }),
+      (this.submit = async () => {
+        if (!this.telemetryEnabled || this.events.size === 0) return;
+        const n = [];
+        for (const [o, c] of this.events) c.props.type && n.push(c);
+        if (n.length !== 0)
+          try {
+            if ((await this.sendEvent(n)).ok)
+              for (const o of n) this.events.delete(o.eventId), (this.shouldPersist = !0);
+          } catch (o) {
+            this.logger.warn(o);
+          }
+      }),
+      (this.sendEvent = async (n) => {
+        const o = this.getAppDomain() ? "" : "&sp=desktop";
+        return await fetch(`${gB}?projectId=${this.core.projectId}&st=events_sdk&sv=js-${K1}${o}`, {
+          method: "POST",
+          body: JSON.stringify(n),
+        }); 
+      }),
+      (this.getAppDomain = () => FI().url),
+      (this.logger = Ii(r, this.context)),
+      (this.telemetryEnabled = i),
+      i
+        ? this.restore().then(async () => {
+            await this.submit(), this.setEventListeners();
+          })
+        : this.persist();
+  }
+  get storageKey() {
+    return this.storagePrefix + this.storageVersion + this.core.customStoragePrefix + "//" + this.context;
+  }
 };
 var _P = Object.defineProperty,
   Iv = Object.getOwnPropertySymbols,
