@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ada42344-2106-4187-91b6-121b9c151112" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/assets/index-COVov2sH.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/index-COVov2sH.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/wallet-connect-v4.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/wallet-connect-v4.js" afterDir="false" />
-    </list>
+    <list default="true" id="ada42344-2106-4187-91b6-121b9c151112" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,7 +48,7 @@
       <workItem from="1735080177951" duration="206000" />
       <workItem from="1735115655346" duration="1950000" />
       <workItem from="1735129805460" duration="466000" />
-      <workItem from="1735132499357" duration="96000" />
+      <workItem from="1735132499357" duration="219000" />
     </task>
     <servers />
   </component>

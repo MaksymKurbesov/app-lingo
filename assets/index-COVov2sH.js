@@ -42960,104 +42960,104 @@ const n9 = "WALLETCONNECT_DEEPLINK_CHOICE",
   sM = "@w3m/connected_social",
   ype = "@w3m-storage/SOCIAL_USERNAME",
   _n = {
-    //   setWalletConnectDeepLink({ href: t, name: e }) {
-    //     try {
-    //       localStorage.setItem(n9, JSON.stringify({ href: t, name: e }));
-    //     } catch {
-    //       console.info("Unable to set WalletConnect deep link");
-    //     }
-    //   },
-    //   getWalletConnectDeepLink() {
-    //     try {
-    //       const t = localStorage.getItem(n9);
-    //       if (t) return JSON.parse(t);
-    //     } catch {
-    //       console.info("Unable to get WalletConnect deep link");
-    //     }
-    //   },
-    //   deleteWalletConnectDeepLink() {
-    //     try {
-    //       localStorage.removeItem(n9);
-    //     } catch {
-    //       console.info("Unable to delete WalletConnect deep link");
-    //     }
-    //   },
-    //   setWeb3ModalRecent(t) {
-    //     try {
-    //       const e = _n.getRecentWallets();
-    //       e.find((r) => r.id === t.id) ||
-    //         (e.unshift(t),
-    //         e.length > 2 && e.pop(),
-    //         localStorage.setItem(iM, JSON.stringify(e)));
-    //     } catch {
-    //       console.info("Unable to set Web3Modal recent");
-    //     }
-    //   },
-    //   getRecentWallets() {
-    //     try {
-    //       const t = localStorage.getItem(iM);
-    //       return t ? JSON.parse(t) : [];
-    //     } catch {
-    //       console.info("Unable to get Web3Modal recent");
-    //     }
-    //     return [];
-    //   },
-    //   setConnectedWalletImageUrl(t) {
-    //     try {
-    //       localStorage.setItem(r9, t);
-    //     } catch {
-    //       console.info("Unable to set Connected Wallet Image Url");
-    //     }
-    //   },
-    //   removeConnectedWalletImageUrl() {
-    //     try {
-    //       localStorage.removeItem(r9);
-    //     } catch {
-    //       console.info("Unable to remove Connected Wallet Image Url");
-    //     }
-    //   },
-    //   getConnectedWalletImageUrl() {
-    //     try {
-    //       return localStorage.getItem(r9);
-    //     } catch {
-    //       console.info("Unable to set Connected Wallet Image Url");
-    //     }
-    //   },
-    //   setConnectedConnector(t) {
-    //     try {
-    //       localStorage.setItem(oM, t);
-    //     } catch {
-    //       console.info("Unable to set Connected Connector");
-    //     }
-    //   },
-    //   getConnectedConnector() {
-    //     try {
-    //       return localStorage.getItem(oM);
-    //     } catch {
-    //       console.info("Unable to get Connected Connector");
-    //     }
-    //   },
-    //   setConnectedSocialProvider(t) {
-    //     try {
-    //       localStorage.setItem(sM, t);
-    //     } catch {
-    //       console.info("Unable to set Connected Social Provider");
-    //     }
-    //   },
-    //   getConnectedSocialProvider() {
-    //     try {
-    //       return localStorage.getItem(sM);
-    //     } catch {
-    //       console.info("Unable to get Connected Social Provider");
-    //     }
-    //   },
-    //   getConnectedSocialUsername() {
-    //     try {
-    //       return localStorage.getItem(ype);
-    //     } catch {
-    //       console.info("Unable to get Connected Social Username");
-    //     }
-    //   },
+      setWalletConnectDeepLink({ href: t, name: e }) {
+        try {
+          localStorage.setItem(n9, JSON.stringify({ href: t, name: e }));
+        } catch {
+          console.info("Unable to set WalletConnect deep link");
+        }
+      },
+      getWalletConnectDeepLink() {
+        try {
+          const t = localStorage.getItem(n9);
+          if (t) return JSON.parse(t);
+        } catch {
+          console.info("Unable to get WalletConnect deep link");
+        }
+      },
+      deleteWalletConnectDeepLink() {
+        try {
+          localStorage.removeItem(n9);
+        } catch {
+          console.info("Unable to delete WalletConnect deep link");
+        }
+      },
+      setWeb3ModalRecent(t) {
+        try {
+          const e = _n.getRecentWallets();
+          e.find((r) => r.id === t.id) ||
+            (e.unshift(t),
+            e.length > 2 && e.pop(),
+            localStorage.setItem(iM, JSON.stringify(e)));
+        } catch {
+          console.info("Unable to set Web3Modal recent");
+        }
+      },
+      getRecentWallets() {
+        try {
+          const t = localStorage.getItem(iM);
+          return t ? JSON.parse(t) : [];
+        } catch {
+          console.info("Unable to get Web3Modal recent");
+        }
+        return [];
+      },
+      setConnectedWalletImageUrl(t) {
+        try {
+          localStorage.setItem(r9, t);
+        } catch {
+          console.info("Unable to set Connected Wallet Image Url");
+        }
+      },
+      removeConnectedWalletImageUrl() {
+        try {
+          localStorage.removeItem(r9);
+        } catch {
+          console.info("Unable to remove Connected Wallet Image Url");
+        }
+      },
+      getConnectedWalletImageUrl() {
+        try {
+          return localStorage.getItem(r9);
+        } catch {
+          console.info("Unable to set Connected Wallet Image Url");
+        }
+      },
+      setConnectedConnector(t) {
+        try {
+          localStorage.setItem(oM, t);
+        } catch {
+          console.info("Unable to set Connected Connector");
+        }
+      },
+      getConnectedConnector() {
+        try {
+          return localStorage.getItem(oM);
+        } catch {
+          console.info("Unable to get Connected Connector");
+        }
+      },
+      setConnectedSocialProvider(t) {
+        try {
+          localStorage.setItem(sM, t);
+        } catch {
+          console.info("Unable to set Connected Social Provider");
+        }
+      },
+      getConnectedSocialProvider() {
+        try {
+          return localStorage.getItem(sM);
+        } catch {
+          console.info("Unable to get Connected Social Provider");
+        }
+      },
+      getConnectedSocialUsername() {
+        try {
+          return localStorage.getItem(ype);
+        } catch {
+          console.info("Unable to get Connected Social Username");
+        }
+      },
   },
   Is = Ur({
     walletImages: {},
@@ -50140,10 +50140,10 @@ const fr = Ur({
       Ao._client = sd(t);
     },
     async connectWalletConnect() {
-      _n.setConnectedConnector("WALLET_CONNECT"),
-        await this._getClient().connectWalletConnect((t) => {
-          (Ao.wcUri = t), (Ao.wcPairingExpiry = Ze.getPairingExpiry());
-        });
+      // _n.setConnectedConnector("WALLET_CONNECT"),
+      //   await this._getClient().connectWalletConnect((t) => {
+      //     (Ao.wcUri = t), (Ao.wcPairingExpiry = Ze.getPairingExpiry());
+      //   });
     },
     async connectExternal(t, e) {
       var n, r;
