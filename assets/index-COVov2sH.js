@@ -63879,157 +63879,157 @@ var _E = function (t, e, n, r) {
   return o > 3 && i && Object.defineProperty(e, n, i), i;
 };
 let _6 = class extends Se {
-  constructor() {
-    super(),
-      (this.resizeObserver = void 0),
-      (this.prevHeight = "0px"),
-      (this.prevHistoryLength = 1),
-      (this.unsubscribe = []),
-      (this.view = Ie.state.view),
-      (this.viewDirection = ""),
-      this.unsubscribe.push(
-        Ie.subscribeKey("view", (e) => this.onViewChange(e)),
-      );
-  }
-  firstUpdated() {
-    (this.resizeObserver = new ResizeObserver(([e]) => {
-      const n = `${e == null ? void 0 : e.contentRect.height}px`;
-      this.prevHeight !== "0px" &&
-        (this.style.setProperty("--prev-height", this.prevHeight),
-        this.style.setProperty("--new-height", n),
-        (this.style.animation = "w3m-view-height 150ms forwards ease"),
-        (this.style.height = "auto")),
-        setTimeout(() => {
-          (this.prevHeight = n), (this.style.animation = "unset");
-        }, Gf.ANIMATION_DURATIONS.ModalHeight);
-    })),
-      this.resizeObserver.observe(this.getWrapper());
-  }
-  disconnectedCallback() {
-    var e;
-    (e = this.resizeObserver) == null || e.unobserve(this.getWrapper()),
-      this.unsubscribe.forEach((n) => n());
-  }
-  render() {
-    return q`<div class="w3m-router-container" view-direction="${this.viewDirection}">
-      ${this.viewTemplate()}
-    </div>`;
-  }
-  viewTemplate() {
-    switch (this.view) {
-      case "AccountSettings":
-        return q`<w3m-account-settings-view></w3m-account-settings-view>`;
-      case "Account":
-        return q`<w3m-account-view></w3m-account-view>`;
-      case "AllWallets":
-        return q`<w3m-all-wallets-view></w3m-all-wallets-view>`;
-      case "ApproveTransaction":
-        return q`<w3m-approve-transaction-view></w3m-approve-transaction-view>`;
-      case "BuyInProgress":
-        return q`<w3m-buy-in-progress-view></w3m-buy-in-progress-view>`;
-      case "ChooseAccountName":
-        return q`<w3m-choose-account-name-view></w3m-choose-account-name-view>`;
-      case "Connect":
-        return q`<w3m-connect-view></w3m-connect-view>`;
-      case "ConnectingWalletConnect":
-        return q`<w3m-connecting-wc-view></w3m-connecting-wc-view>`;
-      case "ConnectingExternal":
-        return q`<w3m-connecting-external-view></w3m-connecting-external-view>`;
-      case "ConnectingSiwe":
-        return q`<w3m-connecting-siwe-view></w3m-connecting-siwe-view>`;
-      case "ConnectWallets":
-        return q`<w3m-connect-wallets-view></w3m-connect-wallets-view>`;
-      case "ConnectSocials":
-        return q`<w3m-connect-socials-view></w3m-connect-socials-view>`;
-      case "ConnectingSocial":
-        return q`<w3m-connecting-social-view></w3m-connecting-social-view>`;
-      case "Downloads":
-        return q`<w3m-downloads-view></w3m-downloads-view>`;
-      case "EmailVerifyOtp":
-        return q`<w3m-email-verify-otp-view></w3m-email-verify-otp-view>`;
-      case "EmailVerifyDevice":
-        return q`<w3m-email-verify-device-view></w3m-email-verify-device-view>`;
-      case "GetWallet":
-        return q`<w3m-get-wallet-view></w3m-get-wallet-view>`;
-      case "Networks":
-        return q`<w3m-networks-view></w3m-networks-view>`;
-      case "SwitchNetwork":
-        return q`<w3m-network-switch-view></w3m-network-switch-view>`;
-      case "Profile":
-        return q`<w3m-profile-view></w3m-profile-view>`;
-      case "SelectAddresses":
-        return q`<w3m-select-addresses-view></w3m-select-addresses-view>`;
-      case "SwitchAddress":
-        return q`<w3m-switch-address-view></w3m-switch-address-view>`;
-      case "Transactions":
-        return q`<w3m-transactions-view></w3m-transactions-view>`;
-      case "OnRampProviders":
-        return q`<w3m-onramp-providers-view></w3m-onramp-providers-view>`;
-      case "OnRampActivity":
-        return q`<w3m-onramp-activity-view></w3m-onramp-activity-view>`;
-      case "OnRampTokenSelect":
-        return q`<w3m-onramp-token-select-view></w3m-onramp-token-select-view>`;
-      case "OnRampFiatSelect":
-        return q`<w3m-onramp-fiat-select-view></w3m-onramp-fiat-select-view>`;
-      case "UpgradeEmailWallet":
-        return q`<w3m-upgrade-wallet-view></w3m-upgrade-wallet-view>`;
-      case "UpgradeToSmartAccount":
-        return q`<w3m-upgrade-to-smart-account-view></w3m-upgrade-to-smart-account-view>`;
-      case "UpdateEmailWallet":
-        return q`<w3m-update-email-wallet-view></w3m-update-email-wallet-view>`;
-      case "UpdateEmailPrimaryOtp":
-        return q`<w3m-update-email-primary-otp-view></w3m-update-email-primary-otp-view>`;
-      case "UpdateEmailSecondaryOtp":
-        return q`<w3m-update-email-secondary-otp-view></w3m-update-email-secondary-otp-view>`;
-      case "UnsupportedChain":
-        return q`<w3m-unsupported-chain-view></w3m-unsupported-chain-view>`;
-      case "Swap":
-        return q`<w3m-swap-view></w3m-swap-view>`;
-      case "SwapSelectToken":
-        return q`<w3m-swap-select-token-view></w3m-swap-select-token-view>`;
-      case "SwapPreview":
-        return q`<w3m-swap-preview-view></w3m-swap-preview-view>`;
-      case "WalletSend":
-        return q`<w3m-wallet-send-view></w3m-wallet-send-view>`;
-      case "WalletSendSelectToken":
-        return q`<w3m-wallet-send-select-token-view></w3m-wallet-send-select-token-view>`;
-      case "WalletSendPreview":
-        return q`<w3m-wallet-send-preview-view></w3m-wallet-send-preview-view>`;
-      case "WhatIsABuy":
-        return q`<w3m-what-is-a-buy-view></w3m-what-is-a-buy-view>`;
-      case "WalletReceive":
-        return q`<w3m-wallet-receive-view></w3m-wallet-receive-view>`;
-      case "WalletCompatibleNetworks":
-        return q`<w3m-wallet-compatible-networks-view></w3m-wallet-compatible-networks-view>`;
-      case "WhatIsAWallet":
-        return q`<w3m-what-is-a-wallet-view></w3m-what-is-a-wallet-view>`;
-      case "WhatIsANetwork":
-        return q`<w3m-what-is-a-network-view></w3m-what-is-a-network-view>`;
-      case "ConnectingFarcaster":
-        return q`<w3m-connecting-farcaster-view></w3m-connecting-farcaster-view>`;
-      case "RegisterAccountName":
-        return q`<w3m-register-account-name-view></w3m-register-account-name-view>`;
-      case "RegisterAccountNameSuccess":
-        return q`<w3m-register-account-name-success-view></w3m-register-account-name-success-view>`;
-      default:
-        return q`<w3m-connect-view></w3m-connect-view>`;
-    }
-  }
-  onViewChange(e) {
-    Jo.hide();
-    let n = Gf.VIEW_DIRECTION.Next;
-    const { history: r } = Ie.state;
-    r.length < this.prevHistoryLength && (n = Gf.VIEW_DIRECTION.Prev),
-      (this.prevHistoryLength = r.length),
-      (this.viewDirection = n),
-      setTimeout(() => {
-        this.view = e;
-      }, Gf.ANIMATION_DURATIONS.ViewTransition);
-  }
-  getWrapper() {
-    var e;
-    return (e = this.shadowRoot) == null ? void 0 : e.querySelector("div");
-  }
+  // constructor() {
+  //   super(),
+  //     (this.resizeObserver = void 0),
+  //     (this.prevHeight = "0px"),
+  //     (this.prevHistoryLength = 1),
+  //     (this.unsubscribe = []),
+  //     (this.view = Ie.state.view),
+  //     (this.viewDirection = ""),
+  //     this.unsubscribe.push(
+  //       Ie.subscribeKey("view", (e) => this.onViewChange(e)),
+  //     );
+  // }
+  // firstUpdated() {
+  //   (this.resizeObserver = new ResizeObserver(([e]) => {
+  //     const n = `${e == null ? void 0 : e.contentRect.height}px`;
+  //     this.prevHeight !== "0px" &&
+  //       (this.style.setProperty("--prev-height", this.prevHeight),
+  //       this.style.setProperty("--new-height", n),
+  //       (this.style.animation = "w3m-view-height 150ms forwards ease"),
+  //       (this.style.height = "auto")),
+  //       setTimeout(() => {
+  //         (this.prevHeight = n), (this.style.animation = "unset");
+  //       }, Gf.ANIMATION_DURATIONS.ModalHeight);
+  //   })),
+  //     this.resizeObserver.observe(this.getWrapper());
+  // }
+  // disconnectedCallback() {
+  //   var e;
+  //   (e = this.resizeObserver) == null || e.unobserve(this.getWrapper()),
+  //     this.unsubscribe.forEach((n) => n());
+  // }
+  // render() {
+  //   return q`<div class="w3m-router-container" view-direction="${this.viewDirection}">
+  //     ${this.viewTemplate()}
+  //   </div>`;
+  // }
+  // viewTemplate() {
+  //   switch (this.view) {
+  //     case "AccountSettings":
+  //       return q`<w3m-account-settings-view></w3m-account-settings-view>`;
+  //     case "Account":
+  //       return q`<w3m-account-view></w3m-account-view>`;
+  //     case "AllWallets":
+  //       return q`<w3m-all-wallets-view></w3m-all-wallets-view>`;
+  //     case "ApproveTransaction":
+  //       return q`<w3m-approve-transaction-view></w3m-approve-transaction-view>`;
+  //     case "BuyInProgress":
+  //       return q`<w3m-buy-in-progress-view></w3m-buy-in-progress-view>`;
+  //     case "ChooseAccountName":
+  //       return q`<w3m-choose-account-name-view></w3m-choose-account-name-view>`;
+  //     case "Connect":
+  //       return q`<w3m-connect-view></w3m-connect-view>`;
+  //     case "ConnectingWalletConnect":
+  //       return q`<w3m-connecting-wc-view></w3m-connecting-wc-view>`;
+  //     case "ConnectingExternal":
+  //       return q`<w3m-connecting-external-view></w3m-connecting-external-view>`;
+  //     case "ConnectingSiwe":
+  //       return q`<w3m-connecting-siwe-view></w3m-connecting-siwe-view>`;
+  //     case "ConnectWallets":
+  //       return q`<w3m-connect-wallets-view></w3m-connect-wallets-view>`;
+  //     case "ConnectSocials":
+  //       return q`<w3m-connect-socials-view></w3m-connect-socials-view>`;
+  //     case "ConnectingSocial":
+  //       return q`<w3m-connecting-social-view></w3m-connecting-social-view>`;
+  //     case "Downloads":
+  //       return q`<w3m-downloads-view></w3m-downloads-view>`;
+  //     case "EmailVerifyOtp":
+  //       return q`<w3m-email-verify-otp-view></w3m-email-verify-otp-view>`;
+  //     case "EmailVerifyDevice":
+  //       return q`<w3m-email-verify-device-view></w3m-email-verify-device-view>`;
+  //     case "GetWallet":
+  //       return q`<w3m-get-wallet-view></w3m-get-wallet-view>`;
+  //     case "Networks":
+  //       return q`<w3m-networks-view></w3m-networks-view>`;
+  //     case "SwitchNetwork":
+  //       return q`<w3m-network-switch-view></w3m-network-switch-view>`;
+  //     case "Profile":
+  //       return q`<w3m-profile-view></w3m-profile-view>`;
+  //     case "SelectAddresses":
+  //       return q`<w3m-select-addresses-view></w3m-select-addresses-view>`;
+  //     case "SwitchAddress":
+  //       return q`<w3m-switch-address-view></w3m-switch-address-view>`;
+  //     case "Transactions":
+  //       return q`<w3m-transactions-view></w3m-transactions-view>`;
+  //     case "OnRampProviders":
+  //       return q`<w3m-onramp-providers-view></w3m-onramp-providers-view>`;
+  //     case "OnRampActivity":
+  //       return q`<w3m-onramp-activity-view></w3m-onramp-activity-view>`;
+  //     case "OnRampTokenSelect":
+  //       return q`<w3m-onramp-token-select-view></w3m-onramp-token-select-view>`;
+  //     case "OnRampFiatSelect":
+  //       return q`<w3m-onramp-fiat-select-view></w3m-onramp-fiat-select-view>`;
+  //     case "UpgradeEmailWallet":
+  //       return q`<w3m-upgrade-wallet-view></w3m-upgrade-wallet-view>`;
+  //     case "UpgradeToSmartAccount":
+  //       return q`<w3m-upgrade-to-smart-account-view></w3m-upgrade-to-smart-account-view>`;
+  //     case "UpdateEmailWallet":
+  //       return q`<w3m-update-email-wallet-view></w3m-update-email-wallet-view>`;
+  //     case "UpdateEmailPrimaryOtp":
+  //       return q`<w3m-update-email-primary-otp-view></w3m-update-email-primary-otp-view>`;
+  //     case "UpdateEmailSecondaryOtp":
+  //       return q`<w3m-update-email-secondary-otp-view></w3m-update-email-secondary-otp-view>`;
+  //     case "UnsupportedChain":
+  //       return q`<w3m-unsupported-chain-view></w3m-unsupported-chain-view>`;
+  //     case "Swap":
+  //       return q`<w3m-swap-view></w3m-swap-view>`;
+  //     case "SwapSelectToken":
+  //       return q`<w3m-swap-select-token-view></w3m-swap-select-token-view>`;
+  //     case "SwapPreview":
+  //       return q`<w3m-swap-preview-view></w3m-swap-preview-view>`;
+  //     case "WalletSend":
+  //       return q`<w3m-wallet-send-view></w3m-wallet-send-view>`;
+  //     case "WalletSendSelectToken":
+  //       return q`<w3m-wallet-send-select-token-view></w3m-wallet-send-select-token-view>`;
+  //     case "WalletSendPreview":
+  //       return q`<w3m-wallet-send-preview-view></w3m-wallet-send-preview-view>`;
+  //     case "WhatIsABuy":
+  //       return q`<w3m-what-is-a-buy-view></w3m-what-is-a-buy-view>`;
+  //     case "WalletReceive":
+  //       return q`<w3m-wallet-receive-view></w3m-wallet-receive-view>`;
+  //     case "WalletCompatibleNetworks":
+  //       return q`<w3m-wallet-compatible-networks-view></w3m-wallet-compatible-networks-view>`;
+  //     case "WhatIsAWallet":
+  //       return q`<w3m-what-is-a-wallet-view></w3m-what-is-a-wallet-view>`;
+  //     case "WhatIsANetwork":
+  //       return q`<w3m-what-is-a-network-view></w3m-what-is-a-network-view>`;
+  //     case "ConnectingFarcaster":
+  //       return q`<w3m-connecting-farcaster-view></w3m-connecting-farcaster-view>`;
+  //     case "RegisterAccountName":
+  //       return q`<w3m-register-account-name-view></w3m-register-account-name-view>`;
+  //     case "RegisterAccountNameSuccess":
+  //       return q`<w3m-register-account-name-success-view></w3m-register-account-name-success-view>`;
+  //     default:
+  //       return q`<w3m-connect-view></w3m-connect-view>`;
+  //   }
+  // }
+  // onViewChange(e) {
+  //   Jo.hide();
+  //   let n = Gf.VIEW_DIRECTION.Next;
+  //   const { history: r } = Ie.state;
+  //   r.length < this.prevHistoryLength && (n = Gf.VIEW_DIRECTION.Prev),
+  //     (this.prevHistoryLength = r.length),
+  //     (this.viewDirection = n),
+  //     setTimeout(() => {
+  //       this.view = e;
+  //     }, Gf.ANIMATION_DURATIONS.ViewTransition);
+  // }
+  // getWrapper() {
+  //   var e;
+  //   return (e = this.shadowRoot) == null ? void 0 : e.querySelector("div");
+  // }
 };
 _6.styles = j3e;
 _E([le()], _6.prototype, "view", void 0);
