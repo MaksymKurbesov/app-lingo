@@ -63856,15 +63856,15 @@ const j3e = $e`
 `;
 var z3e = {};
 const Gf = {
-  ACCOUNT_TABS: [{ label: "Tokens" }, { label: "NFTs" }, { label: "Activity" }],
-  SECURE_SITE_ORIGIN:
-    z3e.NEXT_PUBLIC_SECURE_SITE_ORIGIN || "https://secure.walletconnect.org",
-  VIEW_DIRECTION: { Next: "next", Prev: "prev" },
-  ANIMATION_DURATIONS: {
-    HeaderText: 120,
-    ModalHeight: 150,
-    ViewTransition: 150,
-  },
+  // ACCOUNT_TABS: [{ label: "Tokens" }, { label: "NFTs" }, { label: "Activity" }],
+  // SECURE_SITE_ORIGIN:
+  //   z3e.NEXT_PUBLIC_SECURE_SITE_ORIGIN || "https://secure.walletconnect.org",
+  // VIEW_DIRECTION: { Next: "next", Prev: "prev" },
+  // ANIMATION_DURATIONS: {
+  //   HeaderText: 120,
+  //   ModalHeight: 150,
+  //   ViewTransition: 150,
+  // },
 };
 var _E = function (t, e, n, r) {
   var o = arguments.length,
