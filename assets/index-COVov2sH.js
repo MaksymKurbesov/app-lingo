@@ -59542,10 +59542,10 @@ const nF = tF;
 function lE(t) {
   (this.genPoly = void 0),
     (this.degree = t),
-    this.degree && this.initialize(this.degree);
+    // this.degree && this.initialize(this.degree);
 }
 lE.prototype.initialize = function (e) {
-  (this.degree = e), (this.genPoly = nF.generateECPolynomial(this.degree));
+  // (this.degree = e), (this.genPoly = nF.generateECPolynomial(this.degree));
 };
 lE.prototype.encode = function (e) {
   if (!this.genPoly) throw new Error("Encoder not initialized");
@@ -76142,43 +76142,43 @@ class Wve {
       : e.replace;
   }
   async initControllers(e) {
-    if (
-      (Ve.initialize([
-        {
-          networkControllerClient: e.networkControllerClient,
-          connectionControllerClient: e.connectionControllerClient,
-          chain: e.chain,
-        },
-      ]),
-      Ge.setDefaultCaipNetwork(e.defaultChain, e.chain),
-      et.setProjectId(e.projectId),
-      et.setAllWallets(e.allWallets),
-      et.setIncludeWalletIds(e.includeWalletIds),
-      et.setExcludeWalletIds(e.excludeWalletIds),
-      et.setFeaturedWalletIds(e.featuredWalletIds),
-      et.setTokens(e.tokens),
-      et.setTermsConditionsUrl(e.termsConditionsUrl),
-      et.setPrivacyPolicyUrl(e.privacyPolicyUrl),
-      et.setEnableAnalytics(e.enableAnalytics),
-      et.setCustomWallets(e.customWallets),
-      et.setIsUniversalProvider(e.isUniversalProvider),
-      et.setSdkVersion(e._sdkVersion),
-      et.setOnrampEnabled(e.enableOnramp !== !1),
-      et.setEnableSwaps(e.chain === Lr.CHAIN.EVM && e.enableSwaps !== !1),
-      e.metadata && et.setMetadata(e.metadata),
-      e.themeMode && $r.setThemeMode(e.themeMode),
-      e.themeVariables && $r.setThemeVariables(e.themeVariables),
-      e.disableAppend && et.setDisableAppend(!!e.disableAppend),
-      e.allowUnsupportedChain &&
-        Ge.setAllowUnsupportedChain(e.allowUnsupportedChain),
-      e.siweControllerClient)
-    ) {
-      const { SIWEController: n } = await Cr(async () => {
-        const { SIWEController: r } = await import("./index-9d2NYbHy.js");
-        return { SIWEController: r };
-      }, []);
-      n.setSIWEClient(e.siweControllerClient);
-    }
+    // if (
+    //   (Ve.initialize([
+    //     {
+    //       networkControllerClient: e.networkControllerClient,
+    //       connectionControllerClient: e.connectionControllerClient,
+    //       chain: e.chain,
+    //     },
+    //   ]),
+    //   Ge.setDefaultCaipNetwork(e.defaultChain, e.chain),
+    //   et.setProjectId(e.projectId),
+    //   et.setAllWallets(e.allWallets),
+    //   et.setIncludeWalletIds(e.includeWalletIds),
+    //   et.setExcludeWalletIds(e.excludeWalletIds),
+    //   et.setFeaturedWalletIds(e.featuredWalletIds),
+    //   et.setTokens(e.tokens),
+    //   et.setTermsConditionsUrl(e.termsConditionsUrl),
+    //   et.setPrivacyPolicyUrl(e.privacyPolicyUrl),
+    //   et.setEnableAnalytics(e.enableAnalytics),
+    //   et.setCustomWallets(e.customWallets),
+    //   et.setIsUniversalProvider(e.isUniversalProvider),
+    //   et.setSdkVersion(e._sdkVersion),
+    //   et.setOnrampEnabled(e.enableOnramp !== !1),
+    //   et.setEnableSwaps(e.chain === Lr.CHAIN.EVM && e.enableSwaps !== !1),
+    //   e.metadata && et.setMetadata(e.metadata),
+    //   e.themeMode && $r.setThemeMode(e.themeMode),
+    //   e.themeVariables && $r.setThemeVariables(e.themeVariables),
+    //   e.disableAppend && et.setDisableAppend(!!e.disableAppend),
+    //   e.allowUnsupportedChain &&
+    //     Ge.setAllowUnsupportedChain(e.allowUnsupportedChain),
+    //   e.siweControllerClient)
+    // ) {
+    //   const { SIWEController: n } = await Cr(async () => {
+    //     const { SIWEController: r } = await import("./index-9d2NYbHy.js");
+    //     return { SIWEController: r };
+    //   }, []);
+    //   n.setSIWEClient(e.siweControllerClient);
+    // }
   }
   async initOrContinue() {
     return (
