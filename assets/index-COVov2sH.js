@@ -43315,20 +43315,20 @@ const n9 = "WALLETCONNECT_DEEPLINK_CHOICE",
         : () => {};
     },
     initialize(t) {
-      var n;
-      const e = (n = t == null ? void 0 : t[0]) == null ? void 0 : n.chain;
-      if (!e)
-        throw new Error("Chain is required to initialize ChainController");
-      (Cn.activeChain = e),
-        t.forEach((r) => {
-          Cn.chains.set(r.chain, {
-            chain: r.chain,
-            connectionControllerClient: r.connectionControllerClient,
-            networkControllerClient: r.networkControllerClient,
-            accountState: Epe,
-            networkState: Cpe,
-          });
-        });
+      // var n;
+      // const e = (n = t == null ? void 0 : t[0]) == null ? void 0 : n.chain;
+      // if (!e)
+      //   throw new Error("Chain is required to initialize ChainController");
+      // (Cn.activeChain = e),
+      //   t.forEach((r) => {
+      //     Cn.chains.set(r.chain, {
+      //       chain: r.chain,
+      //       connectionControllerClient: r.connectionControllerClient,
+      //       networkControllerClient: r.networkControllerClient,
+      //       accountState: Epe,
+      //       networkState: Cpe,
+      //     });
+      //   });
     },
     setMultiChainEnabled(t) {
       Cn.multiChainEnabled = t;
