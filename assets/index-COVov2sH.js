@@ -30999,84 +30999,85 @@ const L0e = [
     "wallet_showCallsStatus",
   ],
   PB = "2.19.8";
-let G2 = {
-    getDocsUrl: ({ docsBaseUrl: t, docsPath: e = "", docsSlug: n }) =>
-      e ? `${t ?? "https://viem.sh"}${e}${n ? `#${n}` : ""}` : void 0,
-    version: PB,
-  },
-  Ke = class D_ extends Error {
-    constructor(e, n = {}) {
-      var a;
-      const r = (() => {
-          var c;
-          return n.cause instanceof D_
-            ? n.cause.details
-            : (c = n.cause) != null && c.message
-              ? n.cause.message
-              : n.details;
-        })(),
-        o = (n.cause instanceof D_ && n.cause.docsPath) || n.docsPath,
-        i =
-          (a = G2.getDocsUrl) == null
-            ? void 0
-            : a.call(G2, { ...n, docsPath: o }),
-        s = [
-          e || "An error occurred.",
-          "",
-          ...(n.metaMessages ? [...n.metaMessages, ""] : []),
-          ...(i ? [`Docs: ${i}`] : []),
-          ...(r ? [`Details: ${r}`] : []),
-          `Version: ${G2.version}`,
-        ].join(`
-`);
-      super(s, n.cause ? { cause: n.cause } : void 0),
-        Object.defineProperty(this, "details", {
-          enumerable: !0,
-          configurable: !0,
-          writable: !0,
-          value: void 0,
-        }),
-        Object.defineProperty(this, "docsPath", {
-          enumerable: !0,
-          configurable: !0,
-          writable: !0,
-          value: void 0,
-        }),
-        Object.defineProperty(this, "metaMessages", {
-          enumerable: !0,
-          configurable: !0,
-          writable: !0,
-          value: void 0,
-        }),
-        Object.defineProperty(this, "shortMessage", {
-          enumerable: !0,
-          configurable: !0,
-          writable: !0,
-          value: void 0,
-        }),
-        Object.defineProperty(this, "version", {
-          enumerable: !0,
-          configurable: !0,
-          writable: !0,
-          value: void 0,
-        }),
-        Object.defineProperty(this, "name", {
-          enumerable: !0,
-          configurable: !0,
-          writable: !0,
-          value: "BaseError",
-        }),
-        (this.details = r),
-        (this.docsPath = o),
-        (this.metaMessages = n.metaMessages),
-        (this.name = n.name ?? this.name),
-        (this.shortMessage = e),
-        (this.version = PB);
-    }
-    walk(e) {
-      return $B(this, e);
-    }
-  };
+  const Ke = class D_ extends Error {}
+// let G2 = {
+//     getDocsUrl: ({ docsBaseUrl: t, docsPath: e = "", docsSlug: n }) =>
+//       e ? `${t ?? "https://viem.sh"}${e}${n ? `#${n}` : ""}` : void 0,
+//     version: PB,
+//   },
+//   Ke = class D_ extends Error {
+//     constructor(e, n = {}) {
+//       var a;
+//       const r = (() => {
+//           var c;
+//           return n.cause instanceof D_
+//             ? n.cause.details
+//             : (c = n.cause) != null && c.message
+//               ? n.cause.message
+//               : n.details;
+//         })(),
+//         o = (n.cause instanceof D_ && n.cause.docsPath) || n.docsPath,
+//         i =
+//           (a = G2.getDocsUrl) == null
+//             ? void 0
+//             : a.call(G2, { ...n, docsPath: o }),
+//         s = [
+//           e || "An error occurred.",
+//           "",
+//           ...(n.metaMessages ? [...n.metaMessages, ""] : []),
+//           ...(i ? [`Docs: ${i}`] : []),
+//           ...(r ? [`Details: ${r}`] : []),
+//           `Version: ${G2.version}`,
+//         ].join(`
+// `);
+//       super(s, n.cause ? { cause: n.cause } : void 0),
+//         Object.defineProperty(this, "details", {
+//           enumerable: !0,
+//           configurable: !0,
+//           writable: !0,
+//           value: void 0,
+//         }),
+//         Object.defineProperty(this, "docsPath", {
+//           enumerable: !0,
+//           configurable: !0,
+//           writable: !0,
+//           value: void 0,
+//         }),
+//         Object.defineProperty(this, "metaMessages", {
+//           enumerable: !0,
+//           configurable: !0,
+//           writable: !0,
+//           value: void 0,
+//         }),
+//         Object.defineProperty(this, "shortMessage", {
+//           enumerable: !0,
+//           configurable: !0,
+//           writable: !0,
+//           value: void 0,
+//         }),
+//         Object.defineProperty(this, "version", {
+//           enumerable: !0,
+//           configurable: !0,
+//           writable: !0,
+//           value: void 0,
+//         }),
+//         Object.defineProperty(this, "name", {
+//           enumerable: !0,
+//           configurable: !0,
+//           writable: !0,
+//           value: "BaseError",
+//         }),
+//         (this.details = r),
+//         (this.docsPath = o),
+//         (this.metaMessages = n.metaMessages),
+//         (this.name = n.name ?? this.name),
+//         (this.shortMessage = e),
+//         (this.version = PB);
+//     }
+//     walk(e) {
+//       return $B(this, e);
+//     }
+//   };
 function $B(t, e) {
   return e != null && e(t)
     ? t
