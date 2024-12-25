@@ -64181,231 +64181,231 @@ var cf = function (t, e, n, r) {
   return o > 3 && i && Object.defineProperty(e, n, i), i;
 };
 let za = class extends Se {
-  constructor() {
-    super(),
-      (this.usubscribe = []),
-      (this.networkImages = oi.state.networkImages),
-      (this.address = Me.state.address),
-      (this.profileImage = Me.state.profileImage),
-      (this.profileName = Me.state.profileName),
-      (this.network = Ge.state.caipNetwork),
-      (this.preferredAccountType = Me.state.preferredAccountType),
-      (this.disconnecting = !1),
-      (this.loading = !1),
-      (this.switched = !1),
-      (this.text = ""),
-      this.usubscribe.push(
-        Me.subscribe((e) => {
-          e.address
-            ? ((this.address = e.address),
-              (this.profileImage = e.profileImage),
-              (this.profileName = e.profileName),
-              (this.preferredAccountType = e.preferredAccountType))
-            : kt.close();
-        }),
-        Me.subscribeKey(
-          "preferredAccountType",
-          (e) => (this.preferredAccountType = e),
-        ),
-        Ge.subscribeKey("caipNetwork", (e) => {
-          e != null && e.id && (this.network = e);
-        }),
-      );
-  }
-  disconnectedCallback() {
-    this.usubscribe.forEach((e) => e());
-  }
-  render() {
-    var r, o, i;
-    if (!this.address)
-      throw new Error("w3m-account-settings-view: No account provided");
-    const e =
-        this.networkImages[
-          ((r = this.network) == null ? void 0 : r.imageId) ?? ""
-        ],
-      n = (o = this.profileName) == null ? void 0 : o.split(".")[0];
-    return q`
-      <wui-flex
-        flexDirection="column"
-        alignItems="center"
-        gap="l"
-        .padding=${["0", "xl", "m", "xl"]}
-      >
-        <wui-avatar
-          alt=${this.address}
-          address=${this.address}
-          imageSrc=${rt(this.profileImage)}
-          size="2lg"
-        ></wui-avatar>
-        <wui-flex flexDirection="column" alignItems="center">
-          <wui-flex gap="3xs" alignItems="center" justifyContent="center">
-            <wui-text variant="title-6-600" color="fg-100" data-testid="account-settings-address">
-              ${n ? At.getTruncateString({ string: n, charsStart: 20, charsEnd: 0, truncate: "end" }) : At.getTruncateString({ string: this.address, charsStart: 4, charsEnd: 6, truncate: "middle" })}
-            </wui-text>
-            <wui-icon-link
-              size="md"
-              icon="copy"
-              iconColor="fg-200"
-              @click=${this.onCopyAddress}
-            ></wui-icon-link>
-          </wui-flex>
-        </wui-flex>
-      </wui-flex>
-      <wui-flex flexDirection="column" gap="m">
-        <wui-flex flexDirection="column" gap="xs" .padding=${["0", "l", "m", "l"]}>
-          ${this.authCardTemplate()}
-          <w3m-account-auth-button></w3m-account-auth-button>
-          <wui-list-item
-            .variant=${e ? "image" : "icon"}
-            iconVariant="overlay"
-            icon="networkPlaceholder"
-            imageSrc=${rt(e)}
-            ?chevron=${this.isAllowedNetworkSwitch()}
-            @click=${this.onNetworks.bind(this)}
-            data-testid="account-switch-network-button"
-          >
-            <wui-text variant="paragraph-500" color="fg-100">
-              ${((i = this.network) == null ? void 0 : i.name) ?? "Unknown"}
-            </wui-text>
-          </wui-list-item>
-          ${this.togglePreferredAccountBtnTemplate()} ${this.chooseNameButtonTemplate()}
-          <wui-list-item
-            variant="icon"
-            iconVariant="overlay"
-            icon="disconnect"
-            ?chevron=${!1}
-            .loading=${this.disconnecting}
-            @click=${this.onDisconnect.bind(this)}
-            data-testid="disconnect-button"
-          >
-            <wui-text variant="paragraph-500" color="fg-200">Disconnect</wui-text>
-          </wui-list-item>
-        </wui-flex>
-      </wui-flex>
-    `;
-  }
-  chooseNameButtonTemplate() {
-    const e = _n.getConnectedConnector();
-    return !ct.getAuthConnector() || e !== "AUTH" || this.profileName
-      ? null
-      : q`
-      <wui-list-item
-        variant="icon"
-        iconVariant="overlay"
-        icon="id"
-        iconSize="sm"
-        ?chevron=${!0}
-        @click=${this.onChooseName.bind(this)}
-        data-testid="account-choose-name-button"
-      >
-        <wui-text variant="paragraph-500" color="fg-100">Choose account name </wui-text>
-      </wui-list-item>
-    `;
-  }
-  authCardTemplate() {
-    const e = _n.getConnectedConnector(),
-      n = ct.getAuthConnector(),
-      { origin: r } = location;
-    return !n || e !== "AUTH" || r.includes(Xr.SECURE_SITE)
-      ? null
-      : q`
-      <wui-notice-card
-        @click=${this.onGoToUpgradeView.bind(this)}
-        label="Upgrade your wallet"
-        description="Transition to a self-custodial wallet"
-        icon="wallet"
-        data-testid="w3m-wallet-upgrade-card"
-      ></wui-notice-card>
-    `;
-  }
-  isAllowedNetworkSwitch() {
-    const e = Ge.getRequestedCaipNetworks(),
-      n = e ? e.length > 1 : !1,
-      r =
-        e == null
-          ? void 0
-          : e.find(({ id: o }) => {
-              var i;
-              return o === ((i = this.network) == null ? void 0 : i.id);
-            });
-    return n || !r;
-  }
-  onCopyAddress() {
-    try {
-      this.profileName
-        ? (Ze.copyToClopboard(this.profileName), yt.showSuccess("Name copied"))
-        : this.address &&
-          (Ze.copyToClopboard(this.address), yt.showSuccess("Address copied"));
-    } catch {
-      yt.showError("Failed to copy");
-    }
-  }
-  togglePreferredAccountBtnTemplate() {
-    const e = Ge.checkIfSmartAccountEnabled(),
-      n = _n.getConnectedConnector();
-    return !ct.getAuthConnector() || n !== "AUTH" || !e
-      ? null
-      : (this.switched ||
-          (this.text =
-            this.preferredAccountType === fn.ACCOUNT_TYPES.SMART_ACCOUNT
-              ? "Switch to your EOA"
-              : "Switch to your smart account"),
-        q`
-      <wui-list-item
-        variant="icon"
-        iconVariant="overlay"
-        icon="swapHorizontalBold"
-        iconSize="sm"
-        ?chevron=${!0}
-        ?loading=${this.loading}
-        @click=${this.changePreferredAccountType.bind(this)}
-        data-testid="account-toggle-preferred-account-type"
-      >
-        <wui-text variant="paragraph-500" color="fg-100">${this.text}</wui-text>
-      </wui-list-item>
-    `);
-  }
-  onChooseName() {
-    Ie.push("ChooseAccountName");
-  }
-  async changePreferredAccountType() {
-    const e = Ge.checkIfSmartAccountEnabled(),
-      n =
-        this.preferredAccountType === fn.ACCOUNT_TYPES.SMART_ACCOUNT || !e
-          ? fn.ACCOUNT_TYPES.EOA
-          : fn.ACCOUNT_TYPES.SMART_ACCOUNT;
-    ct.getAuthConnector() &&
-      ((this.loading = !0),
-      await It.setPreferredAccountType(n),
-      (this.text =
-        n === fn.ACCOUNT_TYPES.SMART_ACCOUNT
-          ? "Switch to your EOA"
-          : "Switch to your smart account"),
-      (this.switched = !0),
-      qn.resetSend(),
-      (this.loading = !1),
-      this.requestUpdate());
-  }
-  onNetworks() {
-    this.isAllowedNetworkSwitch() && Ie.push("Networks");
-  }
-  async onDisconnect() {
-    try {
-      (this.disconnecting = !0),
-        await It.disconnect(),
-        it.sendEvent({ type: "track", event: "DISCONNECT_SUCCESS" }),
-        kt.close();
-    } catch {
-      it.sendEvent({ type: "track", event: "DISCONNECT_ERROR" }),
-        yt.showError("Failed to disconnect");
-    } finally {
-      this.disconnecting = !1;
-    }
-  }
-  onGoToUpgradeView() {
-    it.sendEvent({ type: "track", event: "EMAIL_UPGRADE_FROM_MODAL" }),
-      Ie.push("UpgradeEmailWallet");
-  }
+  // constructor() {
+  //   super(),
+  //     (this.usubscribe = []),
+  //     (this.networkImages = oi.state.networkImages),
+  //     (this.address = Me.state.address),
+  //     (this.profileImage = Me.state.profileImage),
+  //     (this.profileName = Me.state.profileName),
+  //     (this.network = Ge.state.caipNetwork),
+  //     (this.preferredAccountType = Me.state.preferredAccountType),
+  //     (this.disconnecting = !1),
+  //     (this.loading = !1),
+  //     (this.switched = !1),
+  //     (this.text = ""),
+  //     this.usubscribe.push(
+  //       Me.subscribe((e) => {
+  //         e.address
+  //           ? ((this.address = e.address),
+  //             (this.profileImage = e.profileImage),
+  //             (this.profileName = e.profileName),
+  //             (this.preferredAccountType = e.preferredAccountType))
+  //           : kt.close();
+  //       }),
+  //       Me.subscribeKey(
+  //         "preferredAccountType",
+  //         (e) => (this.preferredAccountType = e),
+  //       ),
+  //       Ge.subscribeKey("caipNetwork", (e) => {
+  //         e != null && e.id && (this.network = e);
+  //       }),
+  //     );
+  // }
+  // disconnectedCallback() {
+  //   this.usubscribe.forEach((e) => e());
+  // }
+  // render() {
+  //   var r, o, i;
+  //   if (!this.address)
+  //     throw new Error("w3m-account-settings-view: No account provided");
+  //   const e =
+  //       this.networkImages[
+  //         ((r = this.network) == null ? void 0 : r.imageId) ?? ""
+  //       ],
+  //     n = (o = this.profileName) == null ? void 0 : o.split(".")[0];
+  //   return q`
+  //     <wui-flex
+  //       flexDirection="column"
+  //       alignItems="center"
+  //       gap="l"
+  //       .padding=${["0", "xl", "m", "xl"]}
+  //     >
+  //       <wui-avatar
+  //         alt=${this.address}
+  //         address=${this.address}
+  //         imageSrc=${rt(this.profileImage)}
+  //         size="2lg"
+  //       ></wui-avatar>
+  //       <wui-flex flexDirection="column" alignItems="center">
+  //         <wui-flex gap="3xs" alignItems="center" justifyContent="center">
+  //           <wui-text variant="title-6-600" color="fg-100" data-testid="account-settings-address">
+  //             ${n ? At.getTruncateString({ string: n, charsStart: 20, charsEnd: 0, truncate: "end" }) : At.getTruncateString({ string: this.address, charsStart: 4, charsEnd: 6, truncate: "middle" })}
+  //           </wui-text>
+  //           <wui-icon-link
+  //             size="md"
+  //             icon="copy"
+  //             iconColor="fg-200"
+  //             @click=${this.onCopyAddress}
+  //           ></wui-icon-link>
+  //         </wui-flex>
+  //       </wui-flex>
+  //     </wui-flex>
+  //     <wui-flex flexDirection="column" gap="m">
+  //       <wui-flex flexDirection="column" gap="xs" .padding=${["0", "l", "m", "l"]}>
+  //         ${this.authCardTemplate()}
+  //         <w3m-account-auth-button></w3m-account-auth-button>
+  //         <wui-list-item
+  //           .variant=${e ? "image" : "icon"}
+  //           iconVariant="overlay"
+  //           icon="networkPlaceholder"
+  //           imageSrc=${rt(e)}
+  //           ?chevron=${this.isAllowedNetworkSwitch()}
+  //           @click=${this.onNetworks.bind(this)}
+  //           data-testid="account-switch-network-button"
+  //         >
+  //           <wui-text variant="paragraph-500" color="fg-100">
+  //             ${((i = this.network) == null ? void 0 : i.name) ?? "Unknown"}
+  //           </wui-text>
+  //         </wui-list-item>
+  //         ${this.togglePreferredAccountBtnTemplate()} ${this.chooseNameButtonTemplate()}
+  //         <wui-list-item
+  //           variant="icon"
+  //           iconVariant="overlay"
+  //           icon="disconnect"
+  //           ?chevron=${!1}
+  //           .loading=${this.disconnecting}
+  //           @click=${this.onDisconnect.bind(this)}
+  //           data-testid="disconnect-button"
+  //         >
+  //           <wui-text variant="paragraph-500" color="fg-200">Disconnect</wui-text>
+  //         </wui-list-item>
+  //       </wui-flex>
+  //     </wui-flex>
+  //   `;
+  // }
+  // chooseNameButtonTemplate() {
+  //   const e = _n.getConnectedConnector();
+  //   return !ct.getAuthConnector() || e !== "AUTH" || this.profileName
+  //     ? null
+  //     : q`
+  //     <wui-list-item
+  //       variant="icon"
+  //       iconVariant="overlay"
+  //       icon="id"
+  //       iconSize="sm"
+  //       ?chevron=${!0}
+  //       @click=${this.onChooseName.bind(this)}
+  //       data-testid="account-choose-name-button"
+  //     >
+  //       <wui-text variant="paragraph-500" color="fg-100">Choose account name </wui-text>
+  //     </wui-list-item>
+  //   `;
+  // }
+  // authCardTemplate() {
+  //   const e = _n.getConnectedConnector(),
+  //     n = ct.getAuthConnector(),
+  //     { origin: r } = location;
+  //   return !n || e !== "AUTH" || r.includes(Xr.SECURE_SITE)
+  //     ? null
+  //     : q`
+  //     <wui-notice-card
+  //       @click=${this.onGoToUpgradeView.bind(this)}
+  //       label="Upgrade your wallet"
+  //       description="Transition to a self-custodial wallet"
+  //       icon="wallet"
+  //       data-testid="w3m-wallet-upgrade-card"
+  //     ></wui-notice-card>
+  //   `;
+  // }
+  // isAllowedNetworkSwitch() {
+  //   const e = Ge.getRequestedCaipNetworks(),
+  //     n = e ? e.length > 1 : !1,
+  //     r =
+  //       e == null
+  //         ? void 0
+  //         : e.find(({ id: o }) => {
+  //             var i;
+  //             return o === ((i = this.network) == null ? void 0 : i.id);
+  //           });
+  //   return n || !r;
+  // }
+  // onCopyAddress() {
+  //   try {
+  //     this.profileName
+  //       ? (Ze.copyToClopboard(this.profileName), yt.showSuccess("Name copied"))
+  //       : this.address &&
+  //         (Ze.copyToClopboard(this.address), yt.showSuccess("Address copied"));
+  //   } catch {
+  //     yt.showError("Failed to copy");
+  //   }
+  // }
+  // togglePreferredAccountBtnTemplate() {
+  //   const e = Ge.checkIfSmartAccountEnabled(),
+  //     n = _n.getConnectedConnector();
+  //   return !ct.getAuthConnector() || n !== "AUTH" || !e
+  //     ? null
+  //     : (this.switched ||
+  //         (this.text =
+  //           this.preferredAccountType === fn.ACCOUNT_TYPES.SMART_ACCOUNT
+  //             ? "Switch to your EOA"
+  //             : "Switch to your smart account"),
+  //       q`
+  //     <wui-list-item
+  //       variant="icon"
+  //       iconVariant="overlay"
+  //       icon="swapHorizontalBold"
+  //       iconSize="sm"
+  //       ?chevron=${!0}
+  //       ?loading=${this.loading}
+  //       @click=${this.changePreferredAccountType.bind(this)}
+  //       data-testid="account-toggle-preferred-account-type"
+  //     >
+  //       <wui-text variant="paragraph-500" color="fg-100">${this.text}</wui-text>
+  //     </wui-list-item>
+  //   `);
+  // }
+  // onChooseName() {
+  //   Ie.push("ChooseAccountName");
+  // }
+  // async changePreferredAccountType() {
+  //   const e = Ge.checkIfSmartAccountEnabled(),
+  //     n =
+  //       this.preferredAccountType === fn.ACCOUNT_TYPES.SMART_ACCOUNT || !e
+  //         ? fn.ACCOUNT_TYPES.EOA
+  //         : fn.ACCOUNT_TYPES.SMART_ACCOUNT;
+  //   ct.getAuthConnector() &&
+  //     ((this.loading = !0),
+  //     await It.setPreferredAccountType(n),
+  //     (this.text =
+  //       n === fn.ACCOUNT_TYPES.SMART_ACCOUNT
+  //         ? "Switch to your EOA"
+  //         : "Switch to your smart account"),
+  //     (this.switched = !0),
+  //     qn.resetSend(),
+  //     (this.loading = !1),
+  //     this.requestUpdate());
+  // }
+  // onNetworks() {
+  //   this.isAllowedNetworkSwitch() && Ie.push("Networks");
+  // }
+  // async onDisconnect() {
+  //   try {
+  //     (this.disconnecting = !0),
+  //       await It.disconnect(),
+  //       it.sendEvent({ type: "track", event: "DISCONNECT_SUCCESS" }),
+  //       kt.close();
+  //   } catch {
+  //     it.sendEvent({ type: "track", event: "DISCONNECT_ERROR" }),
+  //       yt.showError("Failed to disconnect");
+  //   } finally {
+  //     this.disconnecting = !1;
+  //   }
+  // }
+  // onGoToUpgradeView() {
+  //   it.sendEvent({ type: "track", event: "EMAIL_UPGRADE_FROM_MODAL" }),
+  //     Ie.push("UpgradeEmailWallet");
+  // }
 };
 cf([le()], za.prototype, "address", void 0);
 cf([le()], za.prototype, "profileImage", void 0);
