@@ -76039,234 +76039,234 @@ let rO = class extends Se {
 };
 rO = zve([Ce("w3m-account-auth-button")], rO);
 let iO = !1;
-class Wve {
-  constructor(e) {
-    (this.initPromise = void 0),
-      (this.setIsConnected = (n, r) => {
-        Me.setIsConnected(n, r);
-      }),
-      (this.getIsConnectedState = () => Me.state.isConnected),
-      (this.setAllAccounts = (n, r) => {
-        Me.setAllAccounts(n || [], r),
-          et.setHasMultipleAddresses((n == null ? void 0 : n.length) > 1);
-      }),
-      (this.addAddressLabel = (n, r) => {
-        Me.addAddressLabel(n, r);
-      }),
-      (this.removeAddressLabel = (n) => {
-        Me.removeAddressLabel(n);
-      }),
-      (this.getCaipAddress = () => Me.state.caipAddress),
-      (this.setCaipAddress = (n, r) => {
-        Me.setCaipAddress(n, r);
-      }),
-      (this.setBalance = (n, r, o) => {
-        Me.setBalance(n, r, o);
-      }),
-      (this.setProfileName = (n, r) => {
-        Me.setProfileName(n, r);
-      }),
-      (this.setProfileImage = (n, r) => {
-        Me.setProfileImage(n, r);
-      }),
-      (this.resetAccount = (n) => {
-        Me.resetAccount(n);
-      }),
-      (this.setCaipNetwork = (n) => {
-        Ge.setCaipNetwork(n);
-      }),
-      (this.getCaipNetwork = () => Ge.state.caipNetwork),
-      (this.setRequestedCaipNetworks = (n, r) => {
-        Ge.setRequestedCaipNetworks(n, r);
-      }),
-      (this.getApprovedCaipNetworkIds = () => Ge.getApprovedCaipNetworkIds()),
-      (this.setApprovedCaipNetworksData = () =>
-        Ge.setApprovedCaipNetworksData()),
-      (this.resetNetwork = () => {
-        Ge.resetNetwork();
-      }),
-      (this.setConnectors = (n) => {
-        ct.setConnectors(n);
-      }),
-      (this.addConnector = (n) => {
-        ct.addConnector(n);
-      }),
-      (this.getConnectors = () => ct.getConnectors()),
-      (this.resetWcConnection = () => {
-        It.resetWcConnection();
-      }),
-      (this.fetchIdentity = (n) => Tr.fetchIdentity(n)),
-      (this.setAddressExplorerUrl = (n, r) => {
-        Me.setAddressExplorerUrl(n, r);
-      }),
-      (this.setSmartAccountDeployed = (n, r) => {
-        Me.setSmartAccountDeployed(n, r);
-      }),
-      (this.setConnectedWalletInfo = (n, r) => {
-        Me.setConnectedWalletInfo(n, r);
-      }),
-      (this.setSmartAccountEnabledNetworks = (n, r) => {
-        Ge.setSmartAccountEnabledNetworks(n, r);
-      }),
-      (this.setPreferredAccountType = (n, r) => {
-        Me.setPreferredAccountType(n, r);
-      }),
-      (this.getWalletConnectName = (n) => gc.getNamesForAddress(n)),
-      (this.resolveWalletConnectName = async (n) => {
-        var s;
-        const r = n.replace(Lr.WC_NAME_SUFFIX, ""),
-          o = await gc.resolveName(r);
-        return (
-          ((s = (Object.values(o == null ? void 0 : o.addresses) || [])[0]) ==
-          null
-            ? void 0
-            : s.address) || !1
-        );
-      }),
-      (this.setEIP6963Enabled = (n) => {
-        et.setEIP6963Enabled(n);
-      }),
-      (this.setClientId = (n) => {
-        Tr.setClientId(n);
-      }),
-      this.initControllers(e),
-      this.initOrContinue();
-  }
-  async open(e) {
-    await this.initOrContinue(), kt.open(e);
-  }
-  async close() {
-    await this.initOrContinue(), kt.close();
-  }
-  setLoading(e) {
-    kt.setLoading(e);
-  }
-  getThemeMode() {
-    return $r.state.themeMode;
-  }
-  getThemeVariables() {
-    return $r.state.themeVariables;
-  }
-  setThemeMode(e) {
-    $r.setThemeMode(e), BU($r.state.themeMode);
-  }
-  setThemeVariables(e) {
-    $r.setThemeVariables(e), w6e($r.state.themeVariables);
-  }
-  subscribeTheme(e) {
-    return $r.subscribe(e);
-  }
-  getWalletInfo() {
-    return Me.state.connectedWalletInfo;
-  }
-  subscribeWalletInfo(e) {
-    return Me.subscribeKey("connectedWalletInfo", e);
-  }
-  subscribeShouldUpdateToAddress(e) {
-    Me.subscribeKey("shouldUpdateToAddress", e);
-  }
-  subscribeCaipNetworkChange(e) {
-    Ge.subscribeKey("caipNetwork", e);
-  }
-  getState() {
-    return Qf.state;
-  }
-  subscribeState(e) {
-    return Qf.subscribe(e);
-  }
-  showErrorMessage(e) {
-    yt.showError(e);
-  }
-  showSuccessMessage(e) {
-    yt.showSuccess(e);
-  }
-  getEvent() {
-    return { ...it.state };
-  }
-  subscribeEvents(e) {
-    return it.subscribe(e);
-  }
-  replace(e) {
-    Ie.replace(e);
-  }
-  redirect(e) {
-    Ie.push(e);
-  }
-  popTransactionStack(e) {
-    Ie.popTransactionStack(e);
-  }
-  isOpen() {
-    return kt.state.open;
-  }
-  isTransactionStackEmpty() {
-    return Ie.state.transactionStack.length === 0;
-  }
-  isTransactionShouldReplaceView() {
-    var e;
-    return (e =
-      Ie.state.transactionStack[Ie.state.transactionStack.length - 1]) == null
-      ? void 0
-      : e.replace;
-  }
-  async initControllers(e) {
-    if (
-      (Ve.initialize([
-        {
-          networkControllerClient: e.networkControllerClient,
-          connectionControllerClient: e.connectionControllerClient,
-          chain: e.chain,
-        },
-      ]),
-      Ge.setDefaultCaipNetwork(e.defaultChain, e.chain),
-      et.setProjectId(e.projectId),
-      et.setAllWallets(e.allWallets),
-      et.setIncludeWalletIds(e.includeWalletIds),
-      et.setExcludeWalletIds(e.excludeWalletIds),
-      et.setFeaturedWalletIds(e.featuredWalletIds),
-      et.setTokens(e.tokens),
-      et.setTermsConditionsUrl(e.termsConditionsUrl),
-      et.setPrivacyPolicyUrl(e.privacyPolicyUrl),
-      et.setEnableAnalytics(e.enableAnalytics),
-      et.setCustomWallets(e.customWallets),
-      et.setIsUniversalProvider(e.isUniversalProvider),
-      et.setSdkVersion(e._sdkVersion),
-      et.setOnrampEnabled(e.enableOnramp !== !1),
-      et.setEnableSwaps(e.chain === Lr.CHAIN.EVM && e.enableSwaps !== !1),
-      e.metadata && et.setMetadata(e.metadata),
-      e.themeMode && $r.setThemeMode(e.themeMode),
-      e.themeVariables && $r.setThemeVariables(e.themeVariables),
-      e.disableAppend && et.setDisableAppend(!!e.disableAppend),
-      e.allowUnsupportedChain &&
-        Ge.setAllowUnsupportedChain(e.allowUnsupportedChain),
-      e.siweControllerClient)
-    ) {
-      const { SIWEController: n } = await Cr(async () => {
-        const { SIWEController: r } = await import("./index-9d2NYbHy.js");
-        return { SIWEController: r };
-      }, []);
-      n.setSIWEClient(e.siweControllerClient);
-    }
-  }
-  async initOrContinue() {
-    return (
-      !this.initPromise &&
-        !iO &&
-        Ze.isClient() &&
-        ((iO = !0),
-        (this.initPromise = new Promise(async (e) => {
-          await Promise.all([
-            Cr(() => import("./index-BiA8sgP6.js"), []),
-            Cr(() => import("./w3m-modal-DpG-Lxfn.js"), []),
-          ]);
-          const n = document.createElement("w3m-modal");
-          et.state.disableAppend ||
-            document.body.insertAdjacentElement("beforeend", n),
-            e();
-        }))),
-      this.initPromise
-    );
-  }
-}
+// class Wve {
+//   constructor(e) {
+//     (this.initPromise = void 0),
+//       (this.setIsConnected = (n, r) => {
+//         Me.setIsConnected(n, r);
+//       }),
+//       (this.getIsConnectedState = () => Me.state.isConnected),
+//       (this.setAllAccounts = (n, r) => {
+//         Me.setAllAccounts(n || [], r),
+//           et.setHasMultipleAddresses((n == null ? void 0 : n.length) > 1);
+//       }),
+//       (this.addAddressLabel = (n, r) => {
+//         Me.addAddressLabel(n, r);
+//       }),
+//       (this.removeAddressLabel = (n) => {
+//         Me.removeAddressLabel(n);
+//       }),
+//       (this.getCaipAddress = () => Me.state.caipAddress),
+//       (this.setCaipAddress = (n, r) => {
+//         Me.setCaipAddress(n, r);
+//       }),
+//       (this.setBalance = (n, r, o) => {
+//         Me.setBalance(n, r, o);
+//       }),
+//       (this.setProfileName = (n, r) => {
+//         Me.setProfileName(n, r);
+//       }),
+//       (this.setProfileImage = (n, r) => {
+//         Me.setProfileImage(n, r);
+//       }),
+//       (this.resetAccount = (n) => {
+//         Me.resetAccount(n);
+//       }),
+//       (this.setCaipNetwork = (n) => {
+//         Ge.setCaipNetwork(n);
+//       }),
+//       (this.getCaipNetwork = () => Ge.state.caipNetwork),
+//       (this.setRequestedCaipNetworks = (n, r) => {
+//         Ge.setRequestedCaipNetworks(n, r);
+//       }),
+//       (this.getApprovedCaipNetworkIds = () => Ge.getApprovedCaipNetworkIds()),
+//       (this.setApprovedCaipNetworksData = () =>
+//         Ge.setApprovedCaipNetworksData()),
+//       (this.resetNetwork = () => {
+//         Ge.resetNetwork();
+//       }),
+//       (this.setConnectors = (n) => {
+//         ct.setConnectors(n);
+//       }),
+//       (this.addConnector = (n) => {
+//         ct.addConnector(n);
+//       }),
+//       (this.getConnectors = () => ct.getConnectors()),
+//       (this.resetWcConnection = () => {
+//         It.resetWcConnection();
+//       }),
+//       (this.fetchIdentity = (n) => Tr.fetchIdentity(n)),
+//       (this.setAddressExplorerUrl = (n, r) => {
+//         Me.setAddressExplorerUrl(n, r);
+//       }),
+//       (this.setSmartAccountDeployed = (n, r) => {
+//         Me.setSmartAccountDeployed(n, r);
+//       }),
+//       (this.setConnectedWalletInfo = (n, r) => {
+//         Me.setConnectedWalletInfo(n, r);
+//       }),
+//       (this.setSmartAccountEnabledNetworks = (n, r) => {
+//         Ge.setSmartAccountEnabledNetworks(n, r);
+//       }),
+//       (this.setPreferredAccountType = (n, r) => {
+//         Me.setPreferredAccountType(n, r);
+//       }),
+//       (this.getWalletConnectName = (n) => gc.getNamesForAddress(n)),
+//       (this.resolveWalletConnectName = async (n) => {
+//         var s;
+//         const r = n.replace(Lr.WC_NAME_SUFFIX, ""),
+//           o = await gc.resolveName(r);
+//         return (
+//           ((s = (Object.values(o == null ? void 0 : o.addresses) || [])[0]) ==
+//           null
+//             ? void 0
+//             : s.address) || !1
+//         );
+//       }),
+//       (this.setEIP6963Enabled = (n) => {
+//         et.setEIP6963Enabled(n);
+//       }),
+//       (this.setClientId = (n) => {
+//         Tr.setClientId(n);
+//       }),
+//       this.initControllers(e),
+//       this.initOrContinue();
+//   }
+//   async open(e) {
+//     await this.initOrContinue(), kt.open(e);
+//   }
+//   async close() {
+//     await this.initOrContinue(), kt.close();
+//   }
+//   setLoading(e) {
+//     kt.setLoading(e);
+//   }
+//   getThemeMode() {
+//     return $r.state.themeMode;
+//   }
+//   getThemeVariables() {
+//     return $r.state.themeVariables;
+//   }
+//   setThemeMode(e) {
+//     $r.setThemeMode(e), BU($r.state.themeMode);
+//   }
+//   setThemeVariables(e) {
+//     $r.setThemeVariables(e), w6e($r.state.themeVariables);
+//   }
+//   subscribeTheme(e) {
+//     return $r.subscribe(e);
+//   }
+//   getWalletInfo() {
+//     return Me.state.connectedWalletInfo;
+//   }
+//   subscribeWalletInfo(e) {
+//     return Me.subscribeKey("connectedWalletInfo", e);
+//   }
+//   subscribeShouldUpdateToAddress(e) {
+//     Me.subscribeKey("shouldUpdateToAddress", e);
+//   }
+//   subscribeCaipNetworkChange(e) {
+//     Ge.subscribeKey("caipNetwork", e);
+//   }
+//   getState() {
+//     return Qf.state;
+//   }
+//   subscribeState(e) {
+//     return Qf.subscribe(e);
+//   }
+//   showErrorMessage(e) {
+//     yt.showError(e);
+//   }
+//   showSuccessMessage(e) {
+//     yt.showSuccess(e);
+//   }
+//   getEvent() {
+//     return { ...it.state };
+//   }
+//   subscribeEvents(e) {
+//     return it.subscribe(e);
+//   }
+//   replace(e) {
+//     Ie.replace(e);
+//   }
+//   redirect(e) {
+//     Ie.push(e);
+//   }
+//   popTransactionStack(e) {
+//     Ie.popTransactionStack(e);
+//   }
+//   isOpen() {
+//     return kt.state.open;
+//   }
+//   isTransactionStackEmpty() {
+//     return Ie.state.transactionStack.length === 0;
+//   }
+//   isTransactionShouldReplaceView() {
+//     var e;
+//     return (e =
+//       Ie.state.transactionStack[Ie.state.transactionStack.length - 1]) == null
+//       ? void 0
+//       : e.replace;
+//   }
+//   async initControllers(e) {
+//     if (
+//       (Ve.initialize([
+//         {
+//           networkControllerClient: e.networkControllerClient,
+//           connectionControllerClient: e.connectionControllerClient,
+//           chain: e.chain,
+//         },
+//       ]),
+//       Ge.setDefaultCaipNetwork(e.defaultChain, e.chain),
+//       et.setProjectId(e.projectId),
+//       et.setAllWallets(e.allWallets),
+//       et.setIncludeWalletIds(e.includeWalletIds),
+//       et.setExcludeWalletIds(e.excludeWalletIds),
+//       et.setFeaturedWalletIds(e.featuredWalletIds),
+//       et.setTokens(e.tokens),
+//       et.setTermsConditionsUrl(e.termsConditionsUrl),
+//       et.setPrivacyPolicyUrl(e.privacyPolicyUrl),
+//       et.setEnableAnalytics(e.enableAnalytics),
+//       et.setCustomWallets(e.customWallets),
+//       et.setIsUniversalProvider(e.isUniversalProvider),
+//       et.setSdkVersion(e._sdkVersion),
+//       et.setOnrampEnabled(e.enableOnramp !== !1),
+//       et.setEnableSwaps(e.chain === Lr.CHAIN.EVM && e.enableSwaps !== !1),
+//       e.metadata && et.setMetadata(e.metadata),
+//       e.themeMode && $r.setThemeMode(e.themeMode),
+//       e.themeVariables && $r.setThemeVariables(e.themeVariables),
+//       e.disableAppend && et.setDisableAppend(!!e.disableAppend),
+//       e.allowUnsupportedChain &&
+//         Ge.setAllowUnsupportedChain(e.allowUnsupportedChain),
+//       e.siweControllerClient)
+//     ) {
+//       const { SIWEController: n } = await Cr(async () => {
+//         const { SIWEController: r } = await import("./index-9d2NYbHy.js");
+//         return { SIWEController: r };
+//       }, []);
+//       n.setSIWEClient(e.siweControllerClient);
+//     }
+//   }
+//   async initOrContinue() {
+//     return (
+//       !this.initPromise &&
+//         !iO &&
+//         Ze.isClient() &&
+//         ((iO = !0),
+//         (this.initPromise = new Promise(async (e) => {
+//           await Promise.all([
+//             Cr(() => import("./index-BiA8sgP6.js"), []),
+//             Cr(() => import("./w3m-modal-DpG-Lxfn.js"), []),
+//           ]);
+//           const n = document.createElement("w3m-modal");
+//           et.state.disableAppend ||
+//             document.body.insertAdjacentElement("beforeend", n),
+//             e();
+//         }))),
+//       this.initPromise
+//     );
+//   }
+// }
 function Hve(t) {
   if (t)
     return {
@@ -88241,13 +88241,11 @@ function J9e(t) {
     e.reverse(),
     HO.test(wb(e).function || "") &&
       (e.pop(), HO.test(wb(e).function || "") && e.pop()),
-    e
-      .slice(0, Yj)
-      .map((n) => ({
-        ...n,
-        filename: n.filename || wb(e).filename,
-        function: n.function || Yd,
-      }))
+    e.slice(0, Yj).map((n) => ({
+      ...n,
+      filename: n.filename || wb(e).filename,
+      function: n.function || Yd,
+    }))
   );
 }
 function wb(t) {

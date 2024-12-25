@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ada42344-2106-4187-91b6-121b9c151112" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/ConnectWalletView-joaHNKDI.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/ConnectWalletView-joaHNKDI.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/index-COVov2sH.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/index-COVov2sH.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,7 +48,7 @@
       <workItem from="1735076570024" duration="533000" />
       <workItem from="1735077147602" duration="12000" />
       <workItem from="1735080177951" duration="206000" />
-      <workItem from="1735115655346" duration="1130000" />
+      <workItem from="1735115655346" duration="1876000" />
     </task>
     <servers />
   </component>
