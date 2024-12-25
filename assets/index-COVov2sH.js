@@ -39764,13 +39764,14 @@ function uU(t) {
               return {
                 connections: {
                   __type: "Map",
-                  value: Array.from(L.connections.entries()).map(([j, C]) => {
-                    const { id: I, name: B, type: H, uid: P } = C.connector;
-                    return [
-                      j,
-                      { ...C, connector: { id: I, name: B, type: H, uid: P } },
-                    ];
-                  }),
+                  value: []
+                  // value: Array.from(L.connections.entries()).map(([j, C]) => {
+                  //   const { id: I, name: B, type: H, uid: P } = C.connector;
+                  //   return [
+                  //     j,
+                  //     { ...C, connector: { id: I, name: B, type: H, uid: P } },
+                  //   ];
+                  // }),
                 },
                 chainId: L.chainId,
                 current: L.current,
