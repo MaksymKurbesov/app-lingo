@@ -78256,7 +78256,8 @@ const $ye = {
     Lye,
   ],
   Fye = [npe],
-  jye = Dye({ chains: Fye, projectId: PE, metadata: J0 }),
+  // jye = Dye({ chains: Fye, projectId: PE, metadata: J0 }),
+  jye = '',
   Kf = uU({
     ...jye,
     client({ chain: t }) {
