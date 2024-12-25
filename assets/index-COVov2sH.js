@@ -78167,14 +78167,14 @@ function Dye({
   return (
     (b.email || b.socials) &&
       f.push(
-        Nye({
-          chains: [...e],
-          options: { projectId: t },
-          socials: b.socials,
-          email: b.email,
-          showWallets: b.showWallets,
-          walletFeatures: b.walletFeatures,
-        }),
+        // Nye({
+        //   chains: [...e],
+        //   options: { projectId: t },
+        //   socials: b.socials,
+        //   email: b.email,
+        //   showWallets: b.showWallets,
+        //   walletFeatures: b.walletFeatures,
+        // }),
       ),
     uU({
       chains: e,
