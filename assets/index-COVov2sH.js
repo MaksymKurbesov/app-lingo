@@ -43059,20 +43059,14 @@ const n9 = "WALLETCONNECT_DEEPLINK_CHOICE",
   //     }
   //   },
   },
-  Is={
+  Is = Ur({
     walletImages: {},
     networkImages: {},
     chainImages: {},
     connectorImages: {},
-  }
-  // Is = Ur({
-    // walletImages: {},
-    // networkImages: {},
-    // chainImages: {},
-    // connectorImages: {},
-    // tokenImages: {},
-    // currencyImages: {},
-  // }),
+    tokenImages: {},
+    currencyImages: {},
+  }),
   oi = {
     state: Is,
     subscribeNetworkImages(t) {
