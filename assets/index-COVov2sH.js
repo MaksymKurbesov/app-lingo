@@ -87956,7 +87956,7 @@ const F9e = { key: 0, class: "w-full p-1 rounded-lg" },
       { path: "/", redirect: L5[dr.CLAIMING_DASHBOARD] },
       { ...Os(dr.DASHBOARD), redirect: L5[dr.CLAIMING_DASHBOARD] },
       {
-        path: `https://app.fansly.art/claiming-dashboard`,
+        path: `/claiming-dashboard`,
         meta: { requiresAuth: !0 },
         children: [
           {
@@ -102569,7 +102569,7 @@ export {
   gd as cE,
   eL as cF,
   Z5 as cG,
-  // s0 as cH,
+  s0 as cH,
   WB as cI,
   qRe as cJ,
   jv as cK,
