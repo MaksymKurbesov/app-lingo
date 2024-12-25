@@ -78167,22 +78167,22 @@ function Dye({
   return (
     (b.email || b.socials) &&
       f.push(
-        // Nye({
-        //   chains: [...e],
-        //   options: { projectId: t },
-        //   socials: b.socials,
-        //   email: b.email,
-        //   showWallets: b.showWallets,
-        //   walletFeatures: b.walletFeatures,
-        // }),
+        Nye({
+          chains: [...e],
+          options: { projectId: t },
+          socials: b.socials,
+          email: b.email,
+          showWallets: b.showWallets,
+          walletFeatures: b.walletFeatures,
+        }),
       ),
-    // uU({
-    //   chains: e,
-    //   multiInjectedProviderDiscovery: a !== !1,
-    //   transports: d,
-    //   ...c,
-    //   connectors: f,
-    // })
+    uU({
+      chains: e,
+      multiInjectedProviderDiscovery: a !== !1,
+      transports: d,
+      ...c,
+      connectors: f,
+    })
   );
 }
 let lb;
