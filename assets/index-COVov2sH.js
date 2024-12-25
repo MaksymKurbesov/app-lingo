@@ -43231,7 +43231,8 @@ const n9 = "WALLETCONNECT_DEEPLINK_CHOICE",
       Object.assign(k5, { ...k5, ...t });
     },
   },
-  _pe = Ze.getAnalyticsUrl(),
+  // _pe = Ze.getAnalyticsUrl(),
+  _pe = "",
   xpe = new Kv({ baseUrl: _pe, clientId: null }),
   Ape = ["MODAL_CREATED"],
   $h = Ur({
