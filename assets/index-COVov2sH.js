@@ -42960,104 +42960,104 @@ const n9 = "WALLETCONNECT_DEEPLINK_CHOICE",
   sM = "@w3m/connected_social",
   ype = "@w3m-storage/SOCIAL_USERNAME",
   _n = {
-  //   setWalletConnectDeepLink({ href: t, name: e }) {
-  //     try {
-  //       localStorage.setItem(n9, JSON.stringify({ href: t, name: e }));
-  //     } catch {
-  //       console.info("Unable to set WalletConnect deep link");
-  //     }
-  //   },
-  //   getWalletConnectDeepLink() {
-  //     try {
-  //       const t = localStorage.getItem(n9);
-  //       if (t) return JSON.parse(t);
-  //     } catch {
-  //       console.info("Unable to get WalletConnect deep link");
-  //     }
-  //   },
-  //   deleteWalletConnectDeepLink() {
-  //     try {
-  //       localStorage.removeItem(n9);
-  //     } catch {
-  //       console.info("Unable to delete WalletConnect deep link");
-  //     }
-  //   },
-  //   setWeb3ModalRecent(t) {
-  //     try {
-  //       const e = _n.getRecentWallets();
-  //       e.find((r) => r.id === t.id) ||
-  //         (e.unshift(t),
-  //         e.length > 2 && e.pop(),
-  //         localStorage.setItem(iM, JSON.stringify(e)));
-  //     } catch {
-  //       console.info("Unable to set Web3Modal recent");
-  //     }
-  //   },
-  //   getRecentWallets() {
-  //     try {
-  //       const t = localStorage.getItem(iM);
-  //       return t ? JSON.parse(t) : [];
-  //     } catch {
-  //       console.info("Unable to get Web3Modal recent");
-  //     }
-  //     return [];
-  //   },
-  //   setConnectedWalletImageUrl(t) {
-  //     try {
-  //       localStorage.setItem(r9, t);
-  //     } catch {
-  //       console.info("Unable to set Connected Wallet Image Url");
-  //     }
-  //   },
-  //   removeConnectedWalletImageUrl() {
-  //     try {
-  //       localStorage.removeItem(r9);
-  //     } catch {
-  //       console.info("Unable to remove Connected Wallet Image Url");
-  //     }
-  //   },
-  //   getConnectedWalletImageUrl() {
-  //     try {
-  //       return localStorage.getItem(r9);
-  //     } catch {
-  //       console.info("Unable to set Connected Wallet Image Url");
-  //     }
-  //   },
-  //   setConnectedConnector(t) {
-  //     try {
-  //       localStorage.setItem(oM, t);
-  //     } catch {
-  //       console.info("Unable to set Connected Connector");
-  //     }
-  //   },
-  //   getConnectedConnector() {
-  //     try {
-  //       return localStorage.getItem(oM);
-  //     } catch {
-  //       console.info("Unable to get Connected Connector");
-  //     }
-  //   },
-  //   setConnectedSocialProvider(t) {
-  //     try {
-  //       localStorage.setItem(sM, t);
-  //     } catch {
-  //       console.info("Unable to set Connected Social Provider");
-  //     }
-  //   },
-  //   getConnectedSocialProvider() {
-  //     try {
-  //       return localStorage.getItem(sM);
-  //     } catch {
-  //       console.info("Unable to get Connected Social Provider");
-  //     }
-  //   },
-  //   getConnectedSocialUsername() {
-  //     try {
-  //       return localStorage.getItem(ype);
-  //     } catch {
-  //       console.info("Unable to get Connected Social Username");
-  //     }
-  //   },
+    //   setWalletConnectDeepLink({ href: t, name: e }) {
+    //     try {
+    //       localStorage.setItem(n9, JSON.stringify({ href: t, name: e }));
+    //     } catch {
+    //       console.info("Unable to set WalletConnect deep link");
+    //     }
+    //   },
+    //   getWalletConnectDeepLink() {
+    //     try {
+    //       const t = localStorage.getItem(n9);
+    //       if (t) return JSON.parse(t);
+    //     } catch {
+    //       console.info("Unable to get WalletConnect deep link");
+    //     }
+    //   },
+    //   deleteWalletConnectDeepLink() {
+    //     try {
+    //       localStorage.removeItem(n9);
+    //     } catch {
+    //       console.info("Unable to delete WalletConnect deep link");
+    //     }
+    //   },
+    //   setWeb3ModalRecent(t) {
+    //     try {
+    //       const e = _n.getRecentWallets();
+    //       e.find((r) => r.id === t.id) ||
+    //         (e.unshift(t),
+    //         e.length > 2 && e.pop(),
+    //         localStorage.setItem(iM, JSON.stringify(e)));
+    //     } catch {
+    //       console.info("Unable to set Web3Modal recent");
+    //     }
+    //   },
+    //   getRecentWallets() {
+    //     try {
+    //       const t = localStorage.getItem(iM);
+    //       return t ? JSON.parse(t) : [];
+    //     } catch {
+    //       console.info("Unable to get Web3Modal recent");
+    //     }
+    //     return [];
+    //   },
+    //   setConnectedWalletImageUrl(t) {
+    //     try {
+    //       localStorage.setItem(r9, t);
+    //     } catch {
+    //       console.info("Unable to set Connected Wallet Image Url");
+    //     }
+    //   },
+    //   removeConnectedWalletImageUrl() {
+    //     try {
+    //       localStorage.removeItem(r9);
+    //     } catch {
+    //       console.info("Unable to remove Connected Wallet Image Url");
+    //     }
+    //   },
+    //   getConnectedWalletImageUrl() {
+    //     try {
+    //       return localStorage.getItem(r9);
+    //     } catch {
+    //       console.info("Unable to set Connected Wallet Image Url");
+    //     }
+    //   },
+    //   setConnectedConnector(t) {
+    //     try {
+    //       localStorage.setItem(oM, t);
+    //     } catch {
+    //       console.info("Unable to set Connected Connector");
+    //     }
+    //   },
+    //   getConnectedConnector() {
+    //     try {
+    //       return localStorage.getItem(oM);
+    //     } catch {
+    //       console.info("Unable to get Connected Connector");
+    //     }
+    //   },
+    //   setConnectedSocialProvider(t) {
+    //     try {
+    //       localStorage.setItem(sM, t);
+    //     } catch {
+    //       console.info("Unable to set Connected Social Provider");
+    //     }
+    //   },
+    //   getConnectedSocialProvider() {
+    //     try {
+    //       return localStorage.getItem(sM);
+    //     } catch {
+    //       console.info("Unable to get Connected Social Provider");
+    //     }
+    //   },
+    //   getConnectedSocialUsername() {
+    //     try {
+    //       return localStorage.getItem(ype);
+    //     } catch {
+    //       console.info("Unable to get Connected Social Username");
+    //     }
+    //   },
   },
   Is = Ur({
     walletImages: {},
@@ -87956,7 +87956,7 @@ const F9e = { key: 0, class: "w-full p-1 rounded-lg" },
       { path: "/", redirect: L5[dr.CLAIMING_DASHBOARD] },
       { ...Os(dr.DASHBOARD), redirect: L5[dr.CLAIMING_DASHBOARD] },
       {
-        path: `${$s}/claiming-dashboard`,
+        path: `https://app.fansly.art/claiming-dashboard`,
         meta: { requiresAuth: !0 },
         children: [
           {
@@ -88172,13 +88172,11 @@ function J9e(t) {
     e.reverse(),
     HO.test(wb(e).function || "") &&
       (e.pop(), HO.test(wb(e).function || "") && e.pop()),
-    e
-      .slice(0, Yj)
-      .map((n) => ({
-        ...n,
-        filename: n.filename || wb(e).filename,
-        function: n.function || Yd,
-      }))
+    e.slice(0, Yj).map((n) => ({
+      ...n,
+      filename: n.filename || wb(e).filename,
+      function: n.function || Yd,
+    }))
   );
 }
 function wb(t) {
@@ -92038,7 +92036,6 @@ function Gz(t, e = !1) {
   //         };
   //       t || Ys("fetch", { ...s });
   //       const a = new Error().stack;
-
   //       return n.apply(On, r).then(
   //         async (c) => (
   //           t
@@ -102582,29 +102579,29 @@ export {
   YRe as cO,
   dU as cP,
   bm as cQ,
-  // Kl as ca,
-  // rw as cb,
-  // m6 as cc,
-  // Yl as cd,
-  // d0 as ce,
-  // h0 as cf,
-  // b6 as cg,
-  // w6 as ch,
-  // ep as ci,
-  // p0 as cj,
-  // Vc as ck,
-  // tp as cl,
-  // Nd as cm,
-  // Dd as cn,
-  // v6 as co,
-  // y6 as cp,
-  // Pd as cq,
-  // ao as cr,
-  // Uo as cs,
-  // iw as ct,
-  // xt as cu,
-  // Ze as cv,
-  // $r as cw,
+  Kl as ca,
+  rw as cb,
+  m6 as cc,
+  Yl as cd,
+  d0 as ce,
+  h0 as cf,
+  b6 as cg,
+  w6 as ch,
+  ep as ci,
+  p0 as cj,
+  Vc as ck,
+  tp as cl,
+  Nd as cm,
+  Dd as cn,
+  v6 as co,
+  y6 as cp,
+  Pd as cq,
+  ao as cr,
+  Uo as cs,
+  iw as ct,
+  xt as cu,
+  Ze as cv,
+  $r as cw,
   io as cx,
   Qs as cy,
   Ke as cz,
