@@ -44023,10 +44023,10 @@ const n9 = "WALLETCONNECT_DEEPLINK_CHOICE",
   Tr = {
     state: Kr,
     fetchIdentity({ address: t }) {
-      return Kr.api.get({
-        path: `/v1/identity/${t}`,
-        params: { projectId: et.state.projectId, sender: Me.state.address },
-      });
+      // return Kr.api.get({
+      //   path: `/v1/identity/${t}`,
+      //   params: { projectId: et.state.projectId, sender: Me.state.address },
+      // });
     },
     fetchTransactions({
       account: t,
