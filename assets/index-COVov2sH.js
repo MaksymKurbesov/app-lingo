@@ -78255,9 +78255,9 @@ const $ye = {
     Lye,
   ],
   Fye = [npe],
-  jye = Dye({ chains: Fye, projectId: PE, metadata: J0 }),
+  // jye = Dye({ chains: Fye, projectId: PE, metadata: J0 }),
   Kf = uU({
-    ...jye,
+    // ...jye,
     client({ chain: t }) {
       return VA({ chain: t, transport: Gb(Ol.contracts.rpcEndpoint) });
     },
