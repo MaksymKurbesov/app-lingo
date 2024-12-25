@@ -43438,241 +43438,241 @@ const n9 = "WALLETCONNECT_DEEPLINK_CHOICE",
     smartAccountEnabledNetworks: [],
   }),
   Ge = {
-    state: aM,
-    replaceState(t) {
-      Object.assign(aM, t);
-    },
-    subscribeKey(t, e) {
-      let n;
-      return Ve.subscribeChainProp("networkState", (r) => {
-        if (r) {
-          const o = r[t];
-          n !== o && ((n = o), e(o));
-        }
-      });
-    },
-    _getClient() {
-      return Ve.getNetworkControllerClient();
-    },
-    initializeDefaultNetwork() {
-      const t = this.getRequestedCaipNetworks();
-      t.length > 0 && this.setCaipNetwork(t[0]);
-    },
-    setCaipNetwork(t) {
-      var n, r;
-      const e = Ve.state.multiChainEnabled
-        ? t == null
-          ? void 0
-          : t.chain
-        : Ve.state.activeChain;
-      if (!e) throw new Error("chain is required to set active network");
-      if (!t) throw new Error("caipNetwork is required to set active network");
-      (Ve.state.activeCaipNetwork = t),
-        (Ve.state.activeChain = e),
-        Ve.setChainNetworkData(e, { caipNetwork: t }),
-        Qf.set({
-          activeChain: e,
-          selectedNetworkId: t == null ? void 0 : t.id,
-        }),
-        ((r = (n = Ve.state.chains.get(e)) == null ? void 0 : n.networkState) !=
-          null &&
-          r.allowUnsupportedChain) ||
-          this.checkIfSupportedNetwork() ||
-          this.showUnsupportedChainUI();
-    },
-    setDefaultCaipNetwork(t, e) {
-      const n = Ve.state.multiChainEnabled ? e : Ve.state.activeChain;
-      if (!n) throw new Error("chain is required to set default network");
-      (Ve.state.activeCaipNetwork = t),
-        (Ve.state.activeChain = n),
-        Ve.setChainNetworkData(n, { caipNetwork: t, isDefaultCaipNetwork: !0 }),
-        Qf.set({
-          selectedNetworkId: t == null ? void 0 : t.id,
-          activeChain: e,
-        });
-    },
-    setRequestedCaipNetworks(t, e) {
-      Ve.setChainNetworkData(
-        Ve.state.multiChainEnabled ? e : Ve.state.activeChain,
-        { requestedCaipNetworks: t },
-      );
-    },
-    setAllowUnsupportedChain(t, e) {
-      Ve.setChainNetworkData(e || Ve.state.activeChain, {
-        allowUnsupportedChain: t,
-      });
-    },
-    setSmartAccountEnabledNetworks(t, e) {
-      Ve.setChainNetworkData(
-        Ve.state.multiChainEnabled ? e : Ve.state.activeChain,
-        { smartAccountEnabledNetworks: t },
-      );
-    },
-    getRequestedCaipNetworks(t) {
-      let e;
-      if (!Ve.state.activeChain)
-        throw new Error("activeChain is required to get requested networks");
-      if (t) {
-        const i = Ve.state.multiChainEnabled ? t : Ve.state.activeChain;
-        if (!i) throw new Error("chain is required to get requested networks");
-        e = [i];
-      } else
-        e = Ve.state.multiChainEnabled
-          ? [...Ve.state.chains.keys()]
-          : [Ve.state.activeChain];
-      const n = [],
-        r = [];
-      return (
-        e.forEach((i) => {
-          var s, a, c, f, u, d, p, b;
-          (a =
-            (s = Ve.state.chains.get(i)) == null ? void 0 : s.networkState) !=
-            null &&
-            a.approvedCaipNetworkIds &&
-            n.push(
-              ...(((f =
-                (c = Ve.state.chains.get(i)) == null
-                  ? void 0
-                  : c.networkState) == null
-                ? void 0
-                : f.approvedCaipNetworkIds) || []),
-            ),
-            (d =
-              (u = Ve.state.chains.get(i)) == null ? void 0 : u.networkState) !=
-              null &&
-              d.requestedCaipNetworks &&
-              r.push(
-                ...(((b =
-                  (p = Ve.state.chains.get(i)) == null
-                    ? void 0
-                    : p.networkState) == null
-                  ? void 0
-                  : b.requestedCaipNetworks) || []),
-              );
-        }),
-        Ze.sortRequestedNetworks(n, r)
-      );
-    },
-    async switchActiveNetwork(t) {
-      await Ve.getNetworkControllerClient().switchCaipNetwork(t);
-      const n = Ve.state.multiChainEnabled
-        ? t == null
-          ? void 0
-          : t.chain
-        : Ve.state.activeChain;
-      if (!n) throw new Error("chain is required to switch active network");
-      if (!t) throw new Error("network is required to switch active network");
-      (Ve.state.activeCaipNetwork = t),
-        (Ve.state.activeChain = n),
-        Ve.setChainNetworkData(n, { caipNetwork: t }),
-        Qf.set({ activeChain: n, selectedNetworkId: t.id }),
-        t &&
-          it.sendEvent({
-            type: "track",
-            event: "SWITCH_NETWORK",
-            properties: { network: t.id },
-          });
-    },
-    getApprovedCaipNetworkIds(t) {
-      var n, r;
-      if (t) {
-        const o = Ve.state.multiChainEnabled ? t : Ve.state.activeChain;
-        if (!o)
-          throw new Error("chain is required to get approved network IDs");
-        return (r =
-          (n = Ve.state.chains.get(o)) == null ? void 0 : n.networkState) ==
-          null
-          ? void 0
-          : r.approvedCaipNetworkIds;
-      }
-      const e = [];
-      return (
-        Object.values(Ve.state.chains).forEach((o) => {
-          var i;
-          o.networkState.approvedCaipNetworkIds &&
-            e.push(
-              ...(((i = o.networkState) == null
-                ? void 0
-                : i.approvedCaipNetworkIds) || []),
-            );
-        }),
-        e
-      );
-    },
-    async setApprovedCaipNetworksData(t) {
-      const n =
-          await Ve.getNetworkControllerClient().getApprovedCaipNetworksData(),
-        r = Ve.state.multiChainEnabled ? t : Ve.state.activeChain;
-      if (!r) throw new Error("chain is required to set approved network data");
-      Ve.setChainNetworkData(r, {
-        approvedCaipNetworkIds: n == null ? void 0 : n.approvedCaipNetworkIds,
-        supportsAllNetworks: (n == null ? void 0 : n.supportsAllNetworks) || !1,
-      });
-    },
-    checkIfSupportedNetwork() {
-      var r, o;
-      const t = Ve.state.activeChain;
-      if (!t) return !1;
-      const e =
-          (o =
-            (r = Ve.state.chains.get(t)) == null ? void 0 : r.networkState) ==
-          null
-            ? void 0
-            : o.caipNetwork,
-        n = this.getRequestedCaipNetworks();
-      return n == null
-        ? void 0
-        : n.some((i) => i.id === (e == null ? void 0 : e.id));
-    },
-    checkIfSmartAccountEnabled() {
-      var r, o, i;
-      const t = Ls.caipNetworkIdToNumber(
-          (r = Ve.state.activeCaipNetwork) == null ? void 0 : r.id,
-        ),
-        e = Ve.state.activeChain;
-      if (!e)
-        throw new Error(
-          "activeChain is required to check if smart account is enabled",
-        );
-      if (!t) return !1;
-      const n =
-        ((i = (o = Ve.state.chains.get(e)) == null ? void 0 : o.networkState) ==
-        null
-          ? void 0
-          : i.smartAccountEnabledNetworks) || [];
-      return !!(n != null && n.includes(t));
-    },
-    resetNetwork() {
-      var e, n;
-      const t = Ve.state.activeChain;
-      if (!t) throw new Error("chain is required to reset network");
-      ((n = (e = Ve.state.chains.get(t)) == null ? void 0 : e.networkState) !=
-        null &&
-        n.isDefaultCaipNetwork) ||
-        Ve.setChainNetworkData(t, { caipNetwork: void 0 }),
-        Ve.setChainNetworkData(t, {
-          approvedCaipNetworkIds: void 0,
-          supportsAllNetworks: !0,
-          smartAccountEnabledNetworks: [],
-        });
-    },
-    getSupportsAllNetworks() {
-      var e, n;
-      const t = (Ve.state.multiChainEnabled, Ve.state.activeChain);
-      if (!t)
-        throw new Error(
-          "chain is required to check if network supports all networks",
-        );
-      return (n =
-        (e = Ve.state.chains.get(t)) == null ? void 0 : e.networkState) == null
-        ? void 0
-        : n.supportsAllNetworks;
-    },
-    showUnsupportedChainUI() {
-      setTimeout(() => {
-        kt.open({ view: "UnsupportedChain" });
-      }, 300);
-    },
+    // state: aM,
+    // replaceState(t) {
+    //   Object.assign(aM, t);
+    // },
+    // subscribeKey(t, e) {
+    //   let n;
+    //   return Ve.subscribeChainProp("networkState", (r) => {
+    //     if (r) {
+    //       const o = r[t];
+    //       n !== o && ((n = o), e(o));
+    //     }
+    //   });
+    // },
+    // _getClient() {
+    //   return Ve.getNetworkControllerClient();
+    // },
+    // initializeDefaultNetwork() {
+    //   const t = this.getRequestedCaipNetworks();
+    //   t.length > 0 && this.setCaipNetwork(t[0]);
+    // },
+    // setCaipNetwork(t) {
+    //   var n, r;
+    //   const e = Ve.state.multiChainEnabled
+    //     ? t == null
+    //       ? void 0
+    //       : t.chain
+    //     : Ve.state.activeChain;
+    //   if (!e) throw new Error("chain is required to set active network");
+    //   if (!t) throw new Error("caipNetwork is required to set active network");
+    //   (Ve.state.activeCaipNetwork = t),
+    //     (Ve.state.activeChain = e),
+    //     Ve.setChainNetworkData(e, { caipNetwork: t }),
+    //     Qf.set({
+    //       activeChain: e,
+    //       selectedNetworkId: t == null ? void 0 : t.id,
+    //     }),
+    //     ((r = (n = Ve.state.chains.get(e)) == null ? void 0 : n.networkState) !=
+    //       null &&
+    //       r.allowUnsupportedChain) ||
+    //       this.checkIfSupportedNetwork() ||
+    //       this.showUnsupportedChainUI();
+    // },
+    // setDefaultCaipNetwork(t, e) {
+    //   const n = Ve.state.multiChainEnabled ? e : Ve.state.activeChain;
+    //   if (!n) throw new Error("chain is required to set default network");
+    //   (Ve.state.activeCaipNetwork = t),
+    //     (Ve.state.activeChain = n),
+    //     Ve.setChainNetworkData(n, { caipNetwork: t, isDefaultCaipNetwork: !0 }),
+    //     Qf.set({
+    //       selectedNetworkId: t == null ? void 0 : t.id,
+    //       activeChain: e,
+    //     });
+    // },
+    // setRequestedCaipNetworks(t, e) {
+    //   Ve.setChainNetworkData(
+    //     Ve.state.multiChainEnabled ? e : Ve.state.activeChain,
+    //     { requestedCaipNetworks: t },
+    //   );
+    // },
+    // setAllowUnsupportedChain(t, e) {
+    //   Ve.setChainNetworkData(e || Ve.state.activeChain, {
+    //     allowUnsupportedChain: t,
+    //   });
+    // },
+    // setSmartAccountEnabledNetworks(t, e) {
+    //   Ve.setChainNetworkData(
+    //     Ve.state.multiChainEnabled ? e : Ve.state.activeChain,
+    //     { smartAccountEnabledNetworks: t },
+    //   );
+    // },
+    // getRequestedCaipNetworks(t) {
+    //   let e;
+    //   if (!Ve.state.activeChain)
+    //     throw new Error("activeChain is required to get requested networks");
+    //   if (t) {
+    //     const i = Ve.state.multiChainEnabled ? t : Ve.state.activeChain;
+    //     if (!i) throw new Error("chain is required to get requested networks");
+    //     e = [i];
+    //   } else
+    //     e = Ve.state.multiChainEnabled
+    //       ? [...Ve.state.chains.keys()]
+    //       : [Ve.state.activeChain];
+    //   const n = [],
+    //     r = [];
+    //   return (
+    //     e.forEach((i) => {
+    //       var s, a, c, f, u, d, p, b;
+    //       (a =
+    //         (s = Ve.state.chains.get(i)) == null ? void 0 : s.networkState) !=
+    //         null &&
+    //         a.approvedCaipNetworkIds &&
+    //         n.push(
+    //           ...(((f =
+    //             (c = Ve.state.chains.get(i)) == null
+    //               ? void 0
+    //               : c.networkState) == null
+    //             ? void 0
+    //             : f.approvedCaipNetworkIds) || []),
+    //         ),
+    //         (d =
+    //           (u = Ve.state.chains.get(i)) == null ? void 0 : u.networkState) !=
+    //           null &&
+    //           d.requestedCaipNetworks &&
+    //           r.push(
+    //             ...(((b =
+    //               (p = Ve.state.chains.get(i)) == null
+    //                 ? void 0
+    //                 : p.networkState) == null
+    //               ? void 0
+    //               : b.requestedCaipNetworks) || []),
+    //           );
+    //     }),
+    //     Ze.sortRequestedNetworks(n, r)
+    //   );
+    // },
+    // async switchActiveNetwork(t) {
+    //   await Ve.getNetworkControllerClient().switchCaipNetwork(t);
+    //   const n = Ve.state.multiChainEnabled
+    //     ? t == null
+    //       ? void 0
+    //       : t.chain
+    //     : Ve.state.activeChain;
+    //   if (!n) throw new Error("chain is required to switch active network");
+    //   if (!t) throw new Error("network is required to switch active network");
+    //   (Ve.state.activeCaipNetwork = t),
+    //     (Ve.state.activeChain = n),
+    //     Ve.setChainNetworkData(n, { caipNetwork: t }),
+    //     Qf.set({ activeChain: n, selectedNetworkId: t.id }),
+    //     t &&
+    //       it.sendEvent({
+    //         type: "track",
+    //         event: "SWITCH_NETWORK",
+    //         properties: { network: t.id },
+    //       });
+    // },
+    // getApprovedCaipNetworkIds(t) {
+    //   var n, r;
+    //   if (t) {
+    //     const o = Ve.state.multiChainEnabled ? t : Ve.state.activeChain;
+    //     if (!o)
+    //       throw new Error("chain is required to get approved network IDs");
+    //     return (r =
+    //       (n = Ve.state.chains.get(o)) == null ? void 0 : n.networkState) ==
+    //       null
+    //       ? void 0
+    //       : r.approvedCaipNetworkIds;
+    //   }
+    //   const e = [];
+    //   return (
+    //     Object.values(Ve.state.chains).forEach((o) => {
+    //       var i;
+    //       o.networkState.approvedCaipNetworkIds &&
+    //         e.push(
+    //           ...(((i = o.networkState) == null
+    //             ? void 0
+    //             : i.approvedCaipNetworkIds) || []),
+    //         );
+    //     }),
+    //     e
+    //   );
+    // },
+    // async setApprovedCaipNetworksData(t) {
+    //   const n =
+    //       await Ve.getNetworkControllerClient().getApprovedCaipNetworksData(),
+    //     r = Ve.state.multiChainEnabled ? t : Ve.state.activeChain;
+    //   if (!r) throw new Error("chain is required to set approved network data");
+    //   Ve.setChainNetworkData(r, {
+    //     approvedCaipNetworkIds: n == null ? void 0 : n.approvedCaipNetworkIds,
+    //     supportsAllNetworks: (n == null ? void 0 : n.supportsAllNetworks) || !1,
+    //   });
+    // },
+    // checkIfSupportedNetwork() {
+    //   var r, o;
+    //   const t = Ve.state.activeChain;
+    //   if (!t) return !1;
+    //   const e =
+    //       (o =
+    //         (r = Ve.state.chains.get(t)) == null ? void 0 : r.networkState) ==
+    //       null
+    //         ? void 0
+    //         : o.caipNetwork,
+    //     n = this.getRequestedCaipNetworks();
+    //   return n == null
+    //     ? void 0
+    //     : n.some((i) => i.id === (e == null ? void 0 : e.id));
+    // },
+    // checkIfSmartAccountEnabled() {
+    //   var r, o, i;
+    //   const t = Ls.caipNetworkIdToNumber(
+    //       (r = Ve.state.activeCaipNetwork) == null ? void 0 : r.id,
+    //     ),
+    //     e = Ve.state.activeChain;
+    //   if (!e)
+    //     throw new Error(
+    //       "activeChain is required to check if smart account is enabled",
+    //     );
+    //   if (!t) return !1;
+    //   const n =
+    //     ((i = (o = Ve.state.chains.get(e)) == null ? void 0 : o.networkState) ==
+    //     null
+    //       ? void 0
+    //       : i.smartAccountEnabledNetworks) || [];
+    //   return !!(n != null && n.includes(t));
+    // },
+    // resetNetwork() {
+    //   var e, n;
+    //   const t = Ve.state.activeChain;
+    //   if (!t) throw new Error("chain is required to reset network");
+    //   ((n = (e = Ve.state.chains.get(t)) == null ? void 0 : e.networkState) !=
+    //     null &&
+    //     n.isDefaultCaipNetwork) ||
+    //     Ve.setChainNetworkData(t, { caipNetwork: void 0 }),
+    //     Ve.setChainNetworkData(t, {
+    //       approvedCaipNetworkIds: void 0,
+    //       supportsAllNetworks: !0,
+    //       smartAccountEnabledNetworks: [],
+    //     });
+    // },
+    // getSupportsAllNetworks() {
+    //   var e, n;
+    //   const t = (Ve.state.multiChainEnabled, Ve.state.activeChain);
+    //   if (!t)
+    //     throw new Error(
+    //       "chain is required to check if network supports all networks",
+    //     );
+    //   return (n =
+    //     (e = Ve.state.chains.get(t)) == null ? void 0 : e.networkState) == null
+    //     ? void 0
+    //     : n.supportsAllNetworks;
+    // },
+    // showUnsupportedChainUI() {
+    //   setTimeout(() => {
+    //     kt.open({ view: "UnsupportedChain" });
+    //   }, 300);
+    // },
   },
   Spe = Ze.getApiUrl(),
   $i = new Kv({ baseUrl: Spe, clientId: null }),
