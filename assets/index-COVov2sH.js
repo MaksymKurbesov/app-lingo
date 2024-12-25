@@ -87790,7 +87790,7 @@ const Gj = () => {
                   "style-type": i.buttonStyle,
                   // onClick: s[0] || (s[0] = (a) => o()),
                 },
-                // { default: qs(() => [El(" Connect wallet ")]), _: 1 },
+                { default: qs(() => [El(" Connect wallet ")]), _: 1 },
                 8,
                 ["style-type"],
               ),
