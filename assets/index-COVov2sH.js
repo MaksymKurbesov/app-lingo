@@ -42524,7 +42524,7 @@ const Dn = {
   KA = { URLS: { FAQ: "https://walletconnect.com/faq" } },
   Lr = {
     WC_NAME_SUFFIX: ".wcn.id",
-    BLOCKCHAIN_API_RPC_URL: "",
+    BLOCKCHAIN_API_RPC_URL: "https://rpc.walletconnect.org",
     PULSE_API_URL: "",
     W3M_API_URL: "https://api.web3modal.org",
     CHAIN: { EVM: "evm", SOLANA: "solana" },
@@ -42690,204 +42690,204 @@ const t9 = "https://secure.walletconnect.org",
     CONVERT_SLIPPAGE_TOLERANCE: 1,
   },
   Ze = {
-    isMobile() {
-      return typeof window < "u"
-        ? !!(
-            window.matchMedia("(pointer:coarse)").matches ||
-            /Android|webOS|iPhone|iPad|iPod|BlackBerry|Opera Mini/u.test(
-              navigator.userAgent,
-            )
-          )
-        : !1;
-    },
-    checkCaipNetwork(t, e = "") {
-      return t == null
-        ? void 0
-        : t.id.toLocaleLowerCase().includes(e.toLowerCase());
-    },
-    isAndroid() {
-      const t = window.navigator.userAgent.toLowerCase();
-      return Ze.isMobile() && t.includes("android");
-    },
-    isIos() {
-      const t = window.navigator.userAgent.toLowerCase();
-      return Ze.isMobile() && (t.includes("iphone") || t.includes("ipad"));
-    },
-    isClient() {
-      return typeof window < "u";
-    },
-    isPairingExpired(t) {
-      return t ? t - Date.now() <= Xr.TEN_SEC_MS : !0;
-    },
-    isAllowedRetry(t) {
-      return Date.now() - t >= Xr.ONE_SEC_MS;
-    },
-    copyToClopboard(t) {
-      navigator.clipboard.writeText(t);
-    },
-    getPairingExpiry() {
-      return Date.now() + Xr.FOUR_MINUTES_MS;
-    },
-    getNetworkId(t) {
-      return t == null ? void 0 : t.split(":")[1];
-    },
-    getPlainAddress(t) {
-      return t == null ? void 0 : t.split(":")[2];
-    },
-    async wait(t) {
-      return new Promise((e) => {
-        setTimeout(e, t);
-      });
-    },
-    debounce(t, e = 500) {
-      let n;
-      return (...r) => {
-        function o() {
-          t(...r);
-        }
-        n && clearTimeout(n), (n = setTimeout(o, e));
-      };
-    },
-    isHttpUrl(t) {
-      return t.startsWith("http://") || t.startsWith("https://");
-    },
-    formatNativeUrl(t, e) {
-      if (Ze.isHttpUrl(t)) return this.formatUniversalUrl(t, e);
-      let n = t;
-      n.includes("://") ||
-        ((n = t.replaceAll("/", "").replaceAll(":", "")), (n = `${n}://`)),
-        n.endsWith("/") || (n = `${n}/`);
-      const r = encodeURIComponent(e);
-      return { redirect: `${n}wc?uri=${r}`, href: n };
-    },
-    formatUniversalUrl(t, e) {
-      if (!Ze.isHttpUrl(t)) return this.formatNativeUrl(t, e);
-      let n = t;
-      n.endsWith("/") || (n = `${n}/`);
-      const r = encodeURIComponent(e);
-      return { redirect: `${n}wc?uri=${r}`, href: n };
-    },
-    openHref(t, e, n) {
-      window.open(t, e, n || "noreferrer noopener");
-    },
-    returnOpenHref(t, e, n) {
-      return window.open(t, e, n || "noreferrer noopener");
-    },
-    async preloadImage(t) {
-      const e = new Promise((n, r) => {
-        const o = new Image();
-        (o.onload = n),
-          (o.onerror = r),
-          (o.crossOrigin = "anonymous"),
-          (o.src = t);
-      });
-      return Promise.race([e, Ze.wait(2e3)]);
-    },
-    formatBalance(t, e) {
-      let n = "0.000";
-      if (typeof t == "string") {
-        const r = Number(t);
-        if (r) {
-          const o = Math.floor(r * 1e3) / 1e3;
-          o && (n = o.toString());
-        }
-      }
-      return `${n}${e ? ` ${e}` : ""}`;
-    },
-    formatBalance2(t, e) {
-      var r;
-      let n;
-      if (t === "0") n = "0";
-      else if (typeof t == "string") {
-        const o = Number(t);
-        o &&
-          (n =
-            (r = o.toString().match(/^-?\d+(?:\.\d{0,3})?/u)) == null
-              ? void 0
-              : r[0]);
-      }
-      return { value: n ?? "0", rest: n === "0" ? "000" : "", symbol: e };
-    },
-    getApiUrl() {
-      return Lr.W3M_API_URL;
-    },
-    getBlockchainApiUrl() {
-      return Lr.BLOCKCHAIN_API_RPC_URL;
-    },
-    getAnalyticsUrl() {
-      return Lr.PULSE_API_URL;
-    },
-    getUUID() {
-      return crypto != null && crypto.randomUUID
-        ? crypto.randomUUID()
-        : "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/gu, (t) => {
-            const e = (Math.random() * 16) | 0;
-            return (t === "x" ? e : (e & 3) | 8).toString(16);
-          });
-    },
-    parseError(t) {
-      var e, n;
-      return typeof t == "string"
-        ? t
-        : typeof ((n =
-              (e = t == null ? void 0 : t.issues) == null ? void 0 : e[0]) ==
-            null
-              ? void 0
-              : n.message) == "string"
-          ? t.issues[0].message
-          : t instanceof Error
-            ? t.message
-            : "Unknown error";
-    },
-    sortRequestedNetworks(t, e = []) {
-      const n = {};
-      return (
-        e &&
-          t &&
-          (t.forEach((r, o) => {
-            n[r] = o;
-          }),
-          e.sort((r, o) => {
-            const i = n[r.id],
-              s = n[o.id];
-            return i !== void 0 && s !== void 0
-              ? i - s
-              : i !== void 0
-                ? -1
-                : s !== void 0
-                  ? 1
-                  : 0;
-          })),
-        e
-      );
-    },
-    calculateBalance(t) {
-      let e = 0;
-      for (const n of t) e += n.value ?? 0;
-      return e;
-    },
-    formatTokenBalance(t) {
-      const e = t.toFixed(2),
-        [n, r] = e.split(".");
-      return { dollars: n, pennies: r };
-    },
-    isAddress(t) {
-      if (/^(?:0x)?[0-9a-f]{40}$/iu.test(t)) {
-        if (
-          /^(?:0x)?[0-9a-f]{40}$/iu.test(t) ||
-          /^(?:0x)?[0-9A-F]{40}$/iu.test(t)
-        )
-          return !0;
-      } else return !1;
-      return !1;
-    },
-    uniqueBy(t, e) {
-      const n = new Set();
-      return t.filter((r) => {
-        const o = r[e];
-        return n.has(o) ? !1 : (n.add(o), !0);
-      });
-    },
+  //   isMobile() {
+  //     return typeof window < "u"
+  //       ? !!(
+  //           window.matchMedia("(pointer:coarse)").matches ||
+  //           /Android|webOS|iPhone|iPad|iPod|BlackBerry|Opera Mini/u.test(
+  //             navigator.userAgent,
+  //           )
+  //         )
+  //       : !1;
+  //   },
+  //   checkCaipNetwork(t, e = "") {
+  //     return t == null
+  //       ? void 0
+  //       : t.id.toLocaleLowerCase().includes(e.toLowerCase());
+  //   },
+  //   isAndroid() {
+  //     const t = window.navigator.userAgent.toLowerCase();
+  //     return Ze.isMobile() && t.includes("android");
+  //   },
+  //   isIos() {
+  //     const t = window.navigator.userAgent.toLowerCase();
+  //     return Ze.isMobile() && (t.includes("iphone") || t.includes("ipad"));
+  //   },
+  //   isClient() {
+  //     return typeof window < "u";
+  //   },
+  //   isPairingExpired(t) {
+  //     return t ? t - Date.now() <= Xr.TEN_SEC_MS : !0;
+  //   },
+  //   isAllowedRetry(t) {
+  //     return Date.now() - t >= Xr.ONE_SEC_MS;
+  //   },
+  //   copyToClopboard(t) {
+  //     navigator.clipboard.writeText(t);
+  //   },
+  //   getPairingExpiry() {
+  //     return Date.now() + Xr.FOUR_MINUTES_MS;
+  //   },
+  //   getNetworkId(t) {
+  //     return t == null ? void 0 : t.split(":")[1];
+  //   },
+  //   getPlainAddress(t) {
+  //     return t == null ? void 0 : t.split(":")[2];
+  //   },
+  //   async wait(t) {
+  //     return new Promise((e) => {
+  //       setTimeout(e, t);
+  //     });
+  //   },
+  //   debounce(t, e = 500) {
+  //     let n;
+  //     return (...r) => {
+  //       function o() {
+  //         t(...r);
+  //       }
+  //       n && clearTimeout(n), (n = setTimeout(o, e));
+  //     };
+  //   },
+  //   isHttpUrl(t) {
+  //     return t.startsWith("http://") || t.startsWith("https://");
+  //   },
+  //   formatNativeUrl(t, e) {
+  //     if (Ze.isHttpUrl(t)) return this.formatUniversalUrl(t, e);
+  //     let n = t;
+  //     n.includes("://") ||
+  //       ((n = t.replaceAll("/", "").replaceAll(":", "")), (n = `${n}://`)),
+  //       n.endsWith("/") || (n = `${n}/`);
+  //     const r = encodeURIComponent(e);
+  //     return { redirect: `${n}wc?uri=${r}`, href: n };
+  //   },
+  //   formatUniversalUrl(t, e) {
+  //     if (!Ze.isHttpUrl(t)) return this.formatNativeUrl(t, e);
+  //     let n = t;
+  //     n.endsWith("/") || (n = `${n}/`);
+  //     const r = encodeURIComponent(e);
+  //     return { redirect: `${n}wc?uri=${r}`, href: n };
+  //   },
+  //   openHref(t, e, n) {
+  //     window.open(t, e, n || "noreferrer noopener");
+  //   },
+  //   returnOpenHref(t, e, n) {
+  //     return window.open(t, e, n || "noreferrer noopener");
+  //   },
+  //   async preloadImage(t) {
+  //     const e = new Promise((n, r) => {
+  //       const o = new Image();
+  //       (o.onload = n),
+  //         (o.onerror = r),
+  //         (o.crossOrigin = "anonymous"),
+  //         (o.src = t);
+  //     });
+  //     return Promise.race([e, Ze.wait(2e3)]);
+  //   },
+  //   formatBalance(t, e) {
+  //     let n = "0.000";
+  //     if (typeof t == "string") {
+  //       const r = Number(t);
+  //       if (r) {
+  //         const o = Math.floor(r * 1e3) / 1e3;
+  //         o && (n = o.toString());
+  //       }
+  //     }
+  //     return `${n}${e ? ` ${e}` : ""}`;
+  //   },
+  //   formatBalance2(t, e) {
+  //     var r;
+  //     let n;
+  //     if (t === "0") n = "0";
+  //     else if (typeof t == "string") {
+  //       const o = Number(t);
+  //       o &&
+  //         (n =
+  //           (r = o.toString().match(/^-?\d+(?:\.\d{0,3})?/u)) == null
+  //             ? void 0
+  //             : r[0]);
+  //     }
+  //     return { value: n ?? "0", rest: n === "0" ? "000" : "", symbol: e };
+  //   },
+  //   getApiUrl() {
+  //     return Lr.W3M_API_URL;
+  //   },
+  //   getBlockchainApiUrl() {
+  //     return Lr.BLOCKCHAIN_API_RPC_URL;
+  //   },
+  //   getAnalyticsUrl() {
+  //     return Lr.PULSE_API_URL;
+  //   },
+  //   getUUID() {
+  //     return crypto != null && crypto.randomUUID
+  //       ? crypto.randomUUID()
+  //       : "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/gu, (t) => {
+  //           const e = (Math.random() * 16) | 0;
+  //           return (t === "x" ? e : (e & 3) | 8).toString(16);
+  //         });
+  //   },
+  //   parseError(t) {
+  //     var e, n;
+  //     return typeof t == "string"
+  //       ? t
+  //       : typeof ((n =
+  //             (e = t == null ? void 0 : t.issues) == null ? void 0 : e[0]) ==
+  //           null
+  //             ? void 0
+  //             : n.message) == "string"
+  //         ? t.issues[0].message
+  //         : t instanceof Error
+  //           ? t.message
+  //           : "Unknown error";
+  //   },
+  //   sortRequestedNetworks(t, e = []) {
+  //     const n = {};
+  //     return (
+  //       e &&
+  //         t &&
+  //         (t.forEach((r, o) => {
+  //           n[r] = o;
+  //         }),
+  //         e.sort((r, o) => {
+  //           const i = n[r.id],
+  //             s = n[o.id];
+  //           return i !== void 0 && s !== void 0
+  //             ? i - s
+  //             : i !== void 0
+  //               ? -1
+  //               : s !== void 0
+  //                 ? 1
+  //                 : 0;
+  //         })),
+  //       e
+  //     );
+  //   },
+  //   calculateBalance(t) {
+  //     let e = 0;
+  //     for (const n of t) e += n.value ?? 0;
+  //     return e;
+  //   },
+  //   formatTokenBalance(t) {
+  //     const e = t.toFixed(2),
+  //       [n, r] = e.split(".");
+  //     return { dollars: n, pennies: r };
+  //   },
+  //   isAddress(t) {
+  //     if (/^(?:0x)?[0-9a-f]{40}$/iu.test(t)) {
+  //       if (
+  //         /^(?:0x)?[0-9a-f]{40}$/iu.test(t) ||
+  //         /^(?:0x)?[0-9A-F]{40}$/iu.test(t)
+  //       )
+  //         return !0;
+  //     } else return !1;
+  //     return !1;
+  //   },
+  //   uniqueBy(t, e) {
+  //     const n = new Set();
+  //     return t.filter((r) => {
+  //       const o = r[e];
+  //       return n.has(o) ? !1 : (n.add(o), !0);
+  //     });
+  //   },
   };
 async function I5(...t) {
   // const e = await fetch(...t);
@@ -43059,14 +43059,14 @@ const n9 = "WALLETCONNECT_DEEPLINK_CHOICE",
   //     }
   //   },
   },
-  Is = Ur({
-    walletImages: {},
-    networkImages: {},
-    chainImages: {},
-    connectorImages: {},
-    tokenImages: {},
-    currencyImages: {},
-  }),
+  // Is = Ur({
+    // walletImages: {},
+    // networkImages: {},
+    // chainImages: {},
+    // connectorImages: {},
+    // tokenImages: {},
+    // currencyImages: {},
+  // }),
   oi = {
     state: Is,
     subscribeNetworkImages(t) {
