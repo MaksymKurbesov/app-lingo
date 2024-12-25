@@ -76039,7 +76039,7 @@ let rO = class extends Se {
 };
 rO = zve([Ce("w3m-account-auth-button")], rO);
 let iO = !1;
-// class Wve {
+class Wve {}
 //   constructor(e) {
 //     (this.initPromise = void 0),
 //       (this.setIsConnected = (n, r) => {
