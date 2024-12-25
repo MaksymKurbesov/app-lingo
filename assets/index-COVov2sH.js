@@ -78187,12 +78187,12 @@ function Dye({
 }
 let lb;
 function Pye(t) {
-  return (
-    lb ||
-      ((lb = new Rye({ ...t, _sdkVersion: `vue-wagmi-${Mt.VERSION}` })),
-      qee(lb)),
-    lb
-  );
+  // return (
+  //   lb ||
+  //     ((lb = new Rye({ ...t, _sdkVersion: `vue-wagmi-${Mt.VERSION}` })),
+  //     qee(lb)),
+  //   lb
+  // );
 }
 const $ye = {
     dev: {
