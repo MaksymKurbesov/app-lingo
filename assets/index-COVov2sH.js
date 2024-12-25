@@ -31020,9 +31020,9 @@ const L0e = [
   ],
   PB = "2.19.8";
 let G2 = {
-    getDocsUrl: ({ docsBaseUrl: t, docsPath: e = "", docsSlug: n }) =>
-      e ? `${t ?? "https://viem.sh"}${e}${n ? `#${n}` : ""}` : void 0,
-    version: PB,
+    // getDocsUrl: ({ docsBaseUrl: t, docsPath: e = "", docsSlug: n }) =>
+    //   e ? `${t ?? "https://viem.sh"}${e}${n ? `#${n}` : ""}` : void 0,
+    // version: PB,
   },
   Ke = class D_ extends Error {
     constructor(e, n = {}) {
