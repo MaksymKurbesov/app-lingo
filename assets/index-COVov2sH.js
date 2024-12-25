@@ -43068,109 +43068,109 @@ const n9 = "WALLETCONNECT_DEEPLINK_CHOICE",
     currencyImages: {},
   }),
   oi = {
-    state: Is,
-    subscribeNetworkImages(t) {
-      return oo(Is.networkImages, () => t(Is.networkImages));
-    },
-    subscribeKey(t, e) {
-      return zo(Is, t, e);
-    },
-    subscribe(t) {
-      return oo(Is, () => t(Is));
-    },
-    setWalletImage(t, e) {
-      Is.walletImages[t] = e;
-    },
-    setNetworkImage(t, e) {
-      Is.networkImages[t] = e;
-    },
-    setChainImage(t, e) {
-      Is.chainImages[t] = e;
-    },
-    setConnectorImage(t, e) {
-      Is.connectorImages[t] = e;
-    },
-    setTokenImage(t, e) {
-      Is.tokenImages[t] = e;
-    },
-    setCurrencyImage(t, e) {
-      Is.currencyImages[t] = e;
-    },
+    // state: Is,
+    // subscribeNetworkImages(t) {
+    //   return oo(Is.networkImages, () => t(Is.networkImages));
+    // },
+    // subscribeKey(t, e) {
+    //   return zo(Is, t, e);
+    // },
+    // subscribe(t) {
+    //   return oo(Is, () => t(Is));
+    // },
+    // setWalletImage(t, e) {
+    //   Is.walletImages[t] = e;
+    // },
+    // setNetworkImage(t, e) {
+    //   Is.networkImages[t] = e;
+    // },
+    // setChainImage(t, e) {
+    //   Is.chainImages[t] = e;
+    // },
+    // setConnectorImage(t, e) {
+    //   Is.connectorImages[t] = e;
+    // },
+    // setTokenImage(t, e) {
+    //   Is.tokenImages[t] = e;
+    // },
+    // setCurrencyImage(t, e) {
+    //   Is.currencyImages[t] = e;
+    // },
   },
   Nf = Ur({ themeMode: "dark", themeVariables: {}, w3mThemeVariables: void 0 }),
   $r = {
-    state: Nf,
-    subscribe(t) {
-      return oo(Nf, () => t(Nf));
-    },
-    setThemeMode(t) {
-      Nf.themeMode = t;
-      try {
-        const e = ct.getAuthConnector();
-        if (e) {
-          const n = $r.getSnapshot().themeVariables;
-          e.provider.syncTheme({
-            themeMode: t,
-            themeVariables: n,
-            w3mThemeVariables: bl(n, t),
-          });
-        }
-      } catch {
-        console.info("Unable to sync theme to auth connector");
-      }
-    },
-    setThemeVariables(t) {
-      Nf.themeVariables = { ...Nf.themeVariables, ...t };
-      try {
-        const e = ct.getAuthConnector();
-        if (e) {
-          const n = $r.getSnapshot().themeVariables;
-          e.provider.syncTheme({
-            themeVariables: n,
-            w3mThemeVariables: bl(Nf.themeVariables, Nf.themeMode),
-          });
-        }
-      } catch {
-        console.info("Unable to sync theme to auth connector");
-      }
-    },
-    getSnapshot() {
-      return dU(Nf);
-    },
+    // state: Nf,
+    // subscribe(t) {
+    //   return oo(Nf, () => t(Nf));
+    // },
+    // setThemeMode(t) {
+    //   Nf.themeMode = t;
+    //   try {
+    //     const e = ct.getAuthConnector();
+    //     if (e) {
+    //       const n = $r.getSnapshot().themeVariables;
+    //       e.provider.syncTheme({
+    //         themeMode: t,
+    //         themeVariables: n,
+    //         w3mThemeVariables: bl(n, t),
+    //       });
+    //     }
+    //   } catch {
+    //     console.info("Unable to sync theme to auth connector");
+    //   }
+    // },
+    // setThemeVariables(t) {
+    //   Nf.themeVariables = { ...Nf.themeVariables, ...t };
+    //   try {
+    //     const e = ct.getAuthConnector();
+    //     if (e) {
+    //       const n = $r.getSnapshot().themeVariables;
+    //       e.provider.syncTheme({
+    //         themeVariables: n,
+    //         w3mThemeVariables: bl(Nf.themeVariables, Nf.themeMode),
+    //       });
+    //     }
+    //   } catch {
+    //     console.info("Unable to sync theme to auth connector");
+    //   }
+    // },
+    // getSnapshot() {
+    //   return dU(Nf);
+    // },
   },
   ks = Ur({ connectors: [] }),
   ct = {
-    state: ks,
-    subscribeKey(t, e) {
-      return zo(ks, t, e);
-    },
-    setConnectors(t, e) {
-      e
-        ? ((ks.connectors = [...ks.connectors, ...t.map((n) => sd(n))]),
-          (ks.connectors = this.mergeMultiChainConnectors(ks.connectors)))
-        : (ks.connectors = t.map((n) => sd(n)));
-    },
-    mergeMultiChainConnectors(t) {
-      const e = [];
-      return (
-        t.forEach((n) => {
-          const { name: r, chain: o, type: i } = n,
-            s = e.findIndex((a) => a.name === r);
-          if (s === -1) e.push({ ...n });
-          else {
-            const a = e[s];
-            a &&
-              ((a == null ? void 0 : a.chain) === o || a.type === i
-                ? e.push({ ...n })
-                : a.type === "MULTI_CHAIN"
-                  ? e.push({ ...n })
-                  : (e[s] = { ...a, type: "MULTI_CHAIN", providers: [a, n] }));
-          }
-        }),
-        e
-      );
-    },
-    addConnector(t) {
+    // state: ks,
+    // subscribeKey(t, e) {
+    //   return zo(ks, t, e);
+    // },
+    // setConnectors(t, e) {
+    //   e
+    //     ? ((ks.connectors = [...ks.connectors, ...t.map((n) => sd(n))]),
+    //       (ks.connectors = this.mergeMultiChainConnectors(ks.connectors)))
+    //     : (ks.connectors = t.map((n) => sd(n)));
+    // },
+    // mergeMultiChainConnectors(t) {
+    //   const e = [];
+    //   return (
+    //     t.forEach((n) => {
+    //       const { name: r, chain: o, type: i } = n,
+    //         s = e.findIndex((a) => a.name === r);
+    //       if (s === -1) e.push({ ...n });
+    //       else {
+    //         const a = e[s];
+    //         a &&
+    //           ((a == null ? void 0 : a.chain) === o || a.type === i
+    //             ? e.push({ ...n })
+    //             : a.type === "MULTI_CHAIN"
+    //               ? e.push({ ...n })
+    //               : (e[s] = { ...a, type: "MULTI_CHAIN", providers: [a, n] }));
+    //       }
+    //     }),
+    //     e
+    //   );
+    // },
+    // addConnector(t) {
       // var e, n;
       // if ((ks.connectors.push(sd(t)), t.id === "w3mAuth")) {
       //   const r = t,
@@ -43192,29 +43192,29 @@ const n9 = "WALLETCONNECT_DEEPLINK_CHOICE",
       //       w3mThemeVariables: bl(s, i),
       //     });
       // }
-    },
-    getAuthConnector() {
-      return ks.connectors.find((t) => t.type === "AUTH");
-    },
-    getAnnouncedConnectorRdns() {
-      return ks.connectors
-        .filter((t) => t.type === "ANNOUNCED")
-        .map((t) => {
-          var e;
-          return (e = t.info) == null ? void 0 : e.rdns;
-        });
-    },
-    getConnectors() {
-      return ks.connectors;
-    },
-    getConnector(t, e) {
-      return ks.connectors.find((n) => {
-        var r;
-        return (
-          n.explorerId === t || ((r = n.info) == null ? void 0 : r.rdns) === e
-        );
-      });
-    },
+    // },
+    // getAuthConnector() {
+    //   return ks.connectors.find((t) => t.type === "AUTH");
+    // },
+    // getAnnouncedConnectorRdns() {
+    //   return ks.connectors
+    //     .filter((t) => t.type === "ANNOUNCED")
+    //     .map((t) => {
+    //       var e;
+    //       return (e = t.info) == null ? void 0 : e.rdns;
+    //     });
+    // },
+    // getConnectors() {
+    //   return ks.connectors;
+    // },
+    // getConnector(t, e) {
+    //   return ks.connectors.find((n) => {
+    //     var r;
+    //     return (
+    //       n.explorerId === t || ((r = n.info) == null ? void 0 : r.rdns) === e
+    //     );
+    //   });
+    // },
   },
   k5 = Ur({
     loading: !1,
