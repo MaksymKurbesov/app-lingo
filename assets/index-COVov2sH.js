@@ -76178,7 +76178,7 @@ class Wve {
         const { SIWEController: r } = await import("./index-9d2NYbHy.js");
         return { SIWEController: r };
       }, []);
-      // n.setSIWEClient(e.siweControllerClient);
+      n.setSIWEClient(e.siweControllerClient);
     }
   }
   async initOrContinue() {
@@ -92041,9 +92041,9 @@ function Gz(t, e = !1) {
         const a = new Error().stack;
         return n.apply(On, r).then(
           async (c) => (
-            t
-              ? t(c)
-              : Ys("fetch", { ...s, endTimestamp: Wi() * 1e3, response: c }),
+            // t
+            //   ? t(c)
+            //   : Ys("fetch", { ...s, endTimestamp: Wi() * 1e3, response: c }),
             c
           ),
           (c) => {
