@@ -42689,7 +42689,7 @@ const t9 = "https://secure.walletconnect.org",
     NATIVE_TOKEN_ADDRESS: "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
     CONVERT_SLIPPAGE_TOLERANCE: 1,
   },
-  Ze = {
+  // Ze = {
   //   isMobile() {
   //     return typeof window < "u"
   //       ? !!(
@@ -43059,14 +43059,14 @@ const n9 = "WALLETCONNECT_DEEPLINK_CHOICE",
   //     }
   //   },
   },
-  Is = Ur({
-    walletImages: {},
-    networkImages: {},
-    chainImages: {},
-    connectorImages: {},
-    tokenImages: {},
-    currencyImages: {},
-  }),
+  // Is = Ur({
+    // walletImages: {},
+    // networkImages: {},
+    // chainImages: {},
+    // connectorImages: {},
+    // tokenImages: {},
+    // currencyImages: {},
+  // }),
   oi = {
     state: Is,
     subscribeNetworkImages(t) {
@@ -43231,8 +43231,7 @@ const n9 = "WALLETCONNECT_DEEPLINK_CHOICE",
       Object.assign(k5, { ...k5, ...t });
     },
   },
-  // _pe = Ze.getAnalyticsUrl(),
-  _pe = "",
+  _pe = Ze.getAnalyticsUrl(),
   xpe = new Kv({ baseUrl: _pe, clientId: null }),
   Ape = ["MODAL_CREATED"],
   $h = Ur({
@@ -43675,8 +43674,7 @@ const n9 = "WALLETCONNECT_DEEPLINK_CHOICE",
       }, 300);
     },
   },
-  // Spe = Ze.getApiUrl(),
-  Spe = "",
+  Spe = Ze.getApiUrl(),
   $i = new Kv({ baseUrl: Spe, clientId: null }),
   Tpe = "40",
   cM = "4",
@@ -44020,8 +44018,7 @@ const n9 = "WALLETCONNECT_DEEPLINK_CHOICE",
       },
     ],
   },
-  // vU = Ze.getBlockchainApiUrl(),
-  vU = "",
+  vU = Ze.getBlockchainApiUrl(),
   Kr = Ur({ clientId: null, api: new Kv({ baseUrl: vU, clientId: null }) }),
   Tr = {
     state: Kr,
