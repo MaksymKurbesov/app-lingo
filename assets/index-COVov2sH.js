@@ -87769,7 +87769,7 @@ const Gj = () => {
   Kj = $9e(P9e, [["__scopeId", "data-v-8a74d53f"]]),
   B9e = { key: 0, class: "w-full" },
   L9e = E0({
-    __name: "ConnectWalletButton",
+    __name: "ConnectWallet",
     props: { buttonStyle: { default: "tertiary" } },
     emits: [""],
     setup(t, { emit: e }) {
