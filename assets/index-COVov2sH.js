@@ -76178,7 +76178,7 @@ class Wve {
         const { SIWEController: r } = await import("./index-9d2NYbHy.js");
         return { SIWEController: r };
       }, []);
-      n.setSIWEClient(e.siweControllerClient);
+      // n.setSIWEClient(e.siweControllerClient);
     }
   }
   async initOrContinue() {
