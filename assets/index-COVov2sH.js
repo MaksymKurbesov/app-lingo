@@ -43289,32 +43289,32 @@ const n9 = "WALLETCONNECT_DEEPLINK_CHOICE",
     // activeCaipNetwork: void 0,
   }),
   Ve = {
-    state: Cn,
-    subscribeKey(t, e) {
-      return zo(Cn, t, e);
-    },
-    subscribeChain(t) {
-      let e;
-      const n = Cn.activeChain;
-      return n
-        ? oo(Cn.chains, () => {
-            const r = Cn.chains.get(n);
-            (!e || e !== r) && ((e = r), t(r));
-          })
-        : () => {};
-    },
-    subscribeChainProp(t, e) {
-      let n;
-      const r = Cn.activeChain;
-      return r
-        ? oo(Cn.chains, () => {
-            var i;
-            const o = (i = Cn.chains.get(r)) == null ? void 0 : i[t];
-            n !== o && ((n = o), e(o));
-          })
-        : () => {};
-    },
-    initialize(t) {
+    // state: Cn,
+    // subscribeKey(t, e) {
+    //   return zo(Cn, t, e);
+    // },
+    // subscribeChain(t) {
+    //   let e;
+    //   const n = Cn.activeChain;
+    //   return n
+    //     ? oo(Cn.chains, () => {
+    //         const r = Cn.chains.get(n);
+    //         (!e || e !== r) && ((e = r), t(r));
+    //       })
+    //     : () => {};
+    // },
+    // subscribeChainProp(t, e) {
+    //   let n;
+    //   const r = Cn.activeChain;
+    //   return r
+    //     ? oo(Cn.chains, () => {
+    //         var i;
+    //         const o = (i = Cn.chains.get(r)) == null ? void 0 : i[t];
+    //         n !== o && ((n = o), e(o));
+    //       })
+    //     : () => {};
+    // },
+    // initialize(t) {
       // var n;
       // const e = (n = t == null ? void 0 : t[0]) == null ? void 0 : n.chain;
       // if (!e)
@@ -43329,108 +43329,108 @@ const n9 = "WALLETCONNECT_DEEPLINK_CHOICE",
       //       networkState: Cpe,
       //     });
       //   });
-    },
-    setMultiChainEnabled(t) {
-      Cn.multiChainEnabled = t;
-    },
-    setChainNetworkData(t, e) {
-      if (!t) throw new Error("Chain is required to update chain network data");
-      const n = Cn.chains.get(t);
-      n &&
-        ((n.networkState = { ...n.networkState, ...e }),
-        Cn.chains.set(t, n),
-        Ge.replaceState(n.networkState));
-    },
-    setChainAccountData(t, e) {
-      if (!t) throw new Error("Chain is required to update chain account data");
-      const n = Cn.chains.get(t);
-      n &&
-        ((n.accountState = { ...n.accountState, ...e }),
-        Cn.chains.set(t, n),
-        Me.replaceState(n.accountState));
-    },
-    setAccountProp(t, e, n) {
-      this.setChainAccountData(Cn.multiChainEnabled ? n : Cn.activeChain, {
-        [t]: e,
-      });
-    },
-    setActiveChain(t) {
-      var n, r, o;
-      const e = t ? Cn.chains.get(t) : void 0;
-      e &&
-        ((Cn.activeChain = e.chain),
-        (Cn.activeCaipNetwork =
-          (o =
-            (r =
-              (n = Cn.chains.get(e.chain)) == null ? void 0 : n.networkState) ==
-            null
-              ? void 0
-              : r.requestedCaipNetworks) == null
-            ? void 0
-            : o[0]),
-        Qf.set({ activeChain: t }));
-    },
-    setActiveConnector(t) {
-      t && (Cn.activeConnector = sd(t));
-    },
-    getNetworkControllerClient() {
-      const t = Cn.activeChain;
-      if (!t)
-        throw new Error("Chain is required to get network controller client");
-      const e = Cn.chains.get(t);
-      if (!e) throw new Error("Chain adapter not found");
-      if (!e.networkControllerClient)
-        throw new Error("NetworkController client not set");
-      return e.networkControllerClient;
-    },
-    getConnectionControllerClient() {
-      const t = Cn.activeChain;
-      if (!t)
-        throw new Error(
-          "Chain is required to get connection controller client",
-        );
-      const e = Cn.chains.get(t);
-      if (!e) throw new Error("Chain adapter not found");
-      if (!e.connectionControllerClient)
-        throw new Error("ConnectionController client not set");
-      return e.connectionControllerClient;
-    },
-    getAccountProp(t) {
-      var r;
-      const e = (Cn.multiChainEnabled, Cn.activeChain);
-      if (!e) return;
-      const n = (r = Cn.chains.get(e)) == null ? void 0 : r.accountState;
-      if (n) return n[t];
-    },
-    getNetworkProp(t) {
-      var r;
-      const e = (Cn.multiChainEnabled, Cn.activeChain);
-      if (!e) return;
-      const n = (r = Cn.chains.get(e)) == null ? void 0 : r.networkState;
-      if (n) return n[t];
-    },
-    resetAccount(t) {
-      const e = Cn.multiChainEnabled ? t : Cn.activeChain;
-      if (!e) throw new Error("Chain is required to set account prop");
-      this.setChainAccountData(e, {
-        isConnected: !1,
-        smartAccountDeployed: !1,
-        currentTab: 0,
-        caipAddress: void 0,
-        address: void 0,
-        balance: void 0,
-        balanceSymbol: void 0,
-        profileName: void 0,
-        profileImage: void 0,
-        addressExplorerUrl: void 0,
-        tokenBalance: [],
-        connectedWalletInfo: void 0,
-        preferredAccountType: void 0,
-        socialProvider: void 0,
-        socialWindow: void 0,
-        farcasterUrl: void 0,
-      });
-    },
+    // },
+    // setMultiChainEnabled(t) {
+    //   Cn.multiChainEnabled = t;
+    // },
+    // setChainNetworkData(t, e) {
+    //   if (!t) throw new Error("Chain is required to update chain network data");
+    //   const n = Cn.chains.get(t);
+    //   n &&
+    //     ((n.networkState = { ...n.networkState, ...e }),
+    //     Cn.chains.set(t, n),
+    //     Ge.replaceState(n.networkState));
+    // },
+    // setChainAccountData(t, e) {
+    //   if (!t) throw new Error("Chain is required to update chain account data");
+    //   const n = Cn.chains.get(t);
+    //   n &&
+    //     ((n.accountState = { ...n.accountState, ...e }),
+    //     Cn.chains.set(t, n),
+    //     Me.replaceState(n.accountState));
+    // },
+    // setAccountProp(t, e, n) {
+    //   this.setChainAccountData(Cn.multiChainEnabled ? n : Cn.activeChain, {
+    //     [t]: e,
+    //   });
+    // },
+    // setActiveChain(t) {
+    //   var n, r, o;
+    //   const e = t ? Cn.chains.get(t) : void 0;
+    //   e &&
+    //     ((Cn.activeChain = e.chain),
+    //     (Cn.activeCaipNetwork =
+    //       (o =
+    //         (r =
+    //           (n = Cn.chains.get(e.chain)) == null ? void 0 : n.networkState) ==
+    //         null
+    //           ? void 0
+    //           : r.requestedCaipNetworks) == null
+    //         ? void 0
+    //         : o[0]),
+    //     Qf.set({ activeChain: t }));
+    // },
+    // setActiveConnector(t) {
+    //   t && (Cn.activeConnector = sd(t));
+    // },
+    // getNetworkControllerClient() {
+    //   const t = Cn.activeChain;
+    //   if (!t)
+    //     throw new Error("Chain is required to get network controller client");
+    //   const e = Cn.chains.get(t);
+    //   if (!e) throw new Error("Chain adapter not found");
+    //   if (!e.networkControllerClient)
+    //     throw new Error("NetworkController client not set");
+    //   return e.networkControllerClient;
+    // },
+    // getConnectionControllerClient() {
+    //   const t = Cn.activeChain;
+    //   if (!t)
+    //     throw new Error(
+    //       "Chain is required to get connection controller client",
+    //     );
+    //   const e = Cn.chains.get(t);
+    //   if (!e) throw new Error("Chain adapter not found");
+    //   if (!e.connectionControllerClient)
+    //     throw new Error("ConnectionController client not set");
+    //   return e.connectionControllerClient;
+    // },
+    // getAccountProp(t) {
+    //   var r;
+    //   const e = (Cn.multiChainEnabled, Cn.activeChain);
+    //   if (!e) return;
+    //   const n = (r = Cn.chains.get(e)) == null ? void 0 : r.accountState;
+    //   if (n) return n[t];
+    // },
+    // getNetworkProp(t) {
+    //   var r;
+    //   const e = (Cn.multiChainEnabled, Cn.activeChain);
+    //   if (!e) return;
+    //   const n = (r = Cn.chains.get(e)) == null ? void 0 : r.networkState;
+    //   if (n) return n[t];
+    // },
+    // resetAccount(t) {
+    //   const e = Cn.multiChainEnabled ? t : Cn.activeChain;
+    //   if (!e) throw new Error("Chain is required to set account prop");
+    //   this.setChainAccountData(e, {
+    //     isConnected: !1,
+    //     smartAccountDeployed: !1,
+    //     currentTab: 0,
+    //     caipAddress: void 0,
+    //     address: void 0,
+    //     balance: void 0,
+    //     balanceSymbol: void 0,
+    //     profileName: void 0,
+    //     profileImage: void 0,
+    //     addressExplorerUrl: void 0,
+    //     tokenBalance: [],
+    //     connectedWalletInfo: void 0,
+    //     preferredAccountType: void 0,
+    //     socialProvider: void 0,
+    //     socialWindow: void 0,
+    //     farcasterUrl: void 0,
+    //   });
+    // },
   },
   aM = Ur({
     supportsAllNetworks: !0,
