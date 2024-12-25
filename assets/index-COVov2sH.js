@@ -87786,7 +87786,7 @@ const Gj = () => {
               br(
                 Kj,
                 {
-                  class: "w-full interact-button",
+                  class: "w-full",
                   "style-type": i.buttonStyle,
                   // onClick: s[0] || (s[0] = (a) => o()),
                 },
