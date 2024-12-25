@@ -87893,60 +87893,60 @@ const F9e = { key: 0, class: "w-full p-1 rounded-lg" },
   K9e = E0({
     __name: "App",
     setup(t) {
-      // const e = tA(),
-      //   n = jP(),
-      //   r = xr(() => e.name === "home");
-      // zye();
-      // const { getSnapshot: o } = aj();
-      // return (
-      //   Al(
-      //     Da,
-      //     () => {
-      //       e.meta.requiresAuth &&
-      //         !Da.value &&
-      //         n.push({
-      //           name: dr.CONNECT_WALLET_V2,
-      //           query: { redirect: e.fullPath },
-      //         }),
-      //         Da.value && o();
-      //     },
-      //     { immediate: !0 },
-      //   ),
-      //   (i, s) => (
-      //     Xn(),
-      //     Qr("div", G9e, [
-      //       br(Vr(FP), null, {
-      //         default: qs(({ Component: a }) => [
-      //           r.value
-      //             ? (Xn(), Ec(z5(a), { key: Vr(e).path }))
-      //             : (Xn(),
-      //               Ec(
-      //                 q9e,
-      //                 { key: 1 },
-      //                 {
-      //                   default: qs(() => [
-      //                     br(
-      //                       gv,
-      //                       { name: "fade", mode: "out-in" },
-      //                       {
-      //                         default: qs(() => [
-      //                           (Xn(), Ec(z5(a), { key: Vr(e).path })),
-      //                         ]),
-      //                         _: 2,
-      //                       },
-      //                       1024,
-      //                     ),
-      //                   ]),
-      //                   _: 2,
-      //                 },
-      //                 1024,
-      //               )),
-      //         ]),
-      //         _: 1,
-      //       }),
-      //     ])
-      //   )
-      // );
+      const e = tA(),
+        n = jP(),
+        r = xr(() => e.name === "home");
+      zye();
+      const { getSnapshot: o } = aj();
+      return (
+        Al(
+          Da,
+          () => {
+            e.meta.requiresAuth &&
+              !Da.value &&
+              n.push({
+                name: dr.CONNECT_WALLET_V2,
+                query: { redirect: e.fullPath },
+              }),
+              Da.value && o();
+          },
+          { immediate: !0 },
+        ),
+        (i, s) => (
+          Xn(),
+          Qr("div", G9e, [
+            br(Vr(FP), null, {
+              default: qs(({ Component: a }) => [
+                r.value
+                  ? (Xn(), Ec(z5(a), { key: Vr(e).path }))
+                  : (Xn(),
+                    Ec(
+                      q9e,
+                      { key: 1 },
+                      {
+                        default: qs(() => [
+                          br(
+                            gv,
+                            { name: "fade", mode: "out-in" },
+                            {
+                              default: qs(() => [
+                                (Xn(), Ec(z5(a), { key: Vr(e).path })),
+                              ]),
+                              _: 2,
+                            },
+                            1024,
+                          ),
+                        ]),
+                        _: 2,
+                      },
+                      1024,
+                    )),
+              ]),
+              _: 1,
+            }),
+          ])
+        )
+      );
     },
   }),
   Os = (t) => ({ path: L5[t], name: t }),
