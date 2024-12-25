@@ -42524,7 +42524,7 @@ const Dn = {
   KA = { URLS: { FAQ: "https://walletconnect.com/faq" } },
   Lr = {
     WC_NAME_SUFFIX: ".wcn.id",
-    BLOCKCHAIN_API_RPC_URL: "https://rpc.walletconnect.org",
+    BLOCKCHAIN_API_RPC_URL: "",
     PULSE_API_URL: "",
     W3M_API_URL: "https://api.web3modal.org",
     CHAIN: { EVM: "evm", SOLANA: "solana" },
