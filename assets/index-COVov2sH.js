@@ -87768,7 +87768,7 @@ const Gj = () => {
     return n;
   },
   Kj = $9e(P9e, [["__scopeId", "data-v-8a74d53f"]]),
-  B9e = { key: 0, class: "w-full interact-button" },
+  B9e = { key: 0, class: "w-full" },
   L9e = E0({
     __name: "ConnectWalletButton",
     props: { buttonStyle: { default: "tertiary" } },
@@ -87787,9 +87787,9 @@ const Gj = () => {
               br(
                 Kj,
                 {
-                  class: "w-full",
+                  class: "w-full interact-button",
                   "style-type": i.buttonStyle,
-                  onClick: s[0] || (s[0] = (a) => o()),
+                  // onClick: s[0] || (s[0] = (a) => o()),
                 },
                 { default: qs(() => [El(" Connect wallet ")]), _: 1 },
                 8,
