@@ -64065,99 +64065,99 @@ var pu = function (t, e, n, r) {
 const H3e = { USD: "$", EUR: "€", GBP: "£" },
   V3e = [100, 250, 500, 1e3];
 let qc = class extends Se {
-  constructor() {
-    super(),
-      (this.unsubscribe = []),
-      (this.disabled = !1),
-      (this.connected = Me.state.isConnected),
-      (this.loading = kt.state.loading),
-      (this.paymentCurrency = Vn.state.paymentCurrency),
-      (this.paymentAmount = Vn.state.paymentAmount),
-      (this.purchaseAmount = Vn.state.purchaseAmount),
-      (this.quoteLoading = Vn.state.quotesLoading),
-      this.unsubscribe.push(
-        Me.subscribeKey("isConnected", (e) => {
-          this.connected = e;
-        }),
-        kt.subscribeKey("loading", (e) => {
-          this.loading = e;
-        }),
-        Vn.subscribe((e) => {
-          (this.paymentCurrency = e.paymentCurrency),
-            (this.paymentAmount = e.paymentAmount),
-            (this.purchaseAmount = e.purchaseAmount),
-            (this.quoteLoading = e.quotesLoading);
-        }),
-      );
-  }
-  disconnectedCallback() {
-    this.unsubscribe.forEach((e) => e());
-  }
-  render() {
-    return q`
-      <wui-flex flexDirection="column" justifyContent="center" alignItems="center">
-        <wui-flex flexDirection="column" alignItems="center" gap="xs">
-          <w3m-onramp-input
-            type="Fiat"
-            @inputChange=${this.onPaymentAmountChange.bind(this)}
-            .value=${this.paymentAmount || 0}
-          ></w3m-onramp-input>
-          <w3m-onramp-input
-            type="Token"
-            .value=${this.purchaseAmount || 0}
-            .loading=${this.quoteLoading}
-          ></w3m-onramp-input>
-          <wui-flex justifyContent="space-evenly" class="amounts-container" gap="xs">
-            ${V3e.map((e) => {
-              var n;
-              return q`<wui-button
-                  variant=${this.paymentAmount === e ? "accent" : "neutral"}
-                  size="md"
-                  textVariant="paragraph-600"
-                  fullWidth
-                  @click=${() => this.selectPresetAmount(e)}
-                  >${`${H3e[((n = this.paymentCurrency) == null ? void 0 : n.id) || "USD"]} ${e}`}</wui-button
-                >`;
-            })}
-          </wui-flex>
-          ${this.templateButton()}
-        </wui-flex>
-      </wui-flex>
-    `;
-  }
-  templateButton() {
-    return this.connected
-      ? q`<wui-button
-          @click=${this.getQuotes.bind(this)}
-          variant="main"
-          fullWidth
-          size="lg"
-          borderRadius="xs"
-        >
-          Get quotes
-        </wui-button>`
-      : q`<wui-button
-          @click=${this.openModal.bind(this)}
-          variant="accent"
-          fullWidth
-          size="lg"
-          borderRadius="xs"
-        >
-          Connect wallet
-        </wui-button>`;
-  }
-  getQuotes() {
-    this.loading || kt.open({ view: "OnRampProviders" });
-  }
-  openModal() {
-    kt.open({ view: "Connect" });
-  }
-  async onPaymentAmountChange(e) {
-    Vn.setPaymentAmount(Number(e.detail)), await Vn.getQuote();
-  }
-  async selectPresetAmount(e) {
-    Vn.setPaymentAmount(e), await Vn.getQuote();
-  }
+  // constructor() {
+  //   super(),
+  //     (this.unsubscribe = []),
+  //     (this.disabled = !1),
+  //     (this.connected = Me.state.isConnected),
+  //     (this.loading = kt.state.loading),
+  //     (this.paymentCurrency = Vn.state.paymentCurrency),
+  //     (this.paymentAmount = Vn.state.paymentAmount),
+  //     (this.purchaseAmount = Vn.state.purchaseAmount),
+  //     (this.quoteLoading = Vn.state.quotesLoading),
+  //     this.unsubscribe.push(
+  //       Me.subscribeKey("isConnected", (e) => {
+  //         this.connected = e;
+  //       }),
+  //       kt.subscribeKey("loading", (e) => {
+  //         this.loading = e;
+  //       }),
+  //       Vn.subscribe((e) => {
+  //         (this.paymentCurrency = e.paymentCurrency),
+  //           (this.paymentAmount = e.paymentAmount),
+  //           (this.purchaseAmount = e.purchaseAmount),
+  //           (this.quoteLoading = e.quotesLoading);
+  //       }),
+  //     );
+  // }
+  // disconnectedCallback() {
+  //   this.unsubscribe.forEach((e) => e());
+  // }
+  // render() {
+  //   return q`
+  //     <wui-flex flexDirection="column" justifyContent="center" alignItems="center">
+  //       <wui-flex flexDirection="column" alignItems="center" gap="xs">
+  //         <w3m-onramp-input
+  //           type="Fiat"
+  //           @inputChange=${this.onPaymentAmountChange.bind(this)}
+  //           .value=${this.paymentAmount || 0}
+  //         ></w3m-onramp-input>
+  //         <w3m-onramp-input
+  //           type="Token"
+  //           .value=${this.purchaseAmount || 0}
+  //           .loading=${this.quoteLoading}
+  //         ></w3m-onramp-input>
+  //         <wui-flex justifyContent="space-evenly" class="amounts-container" gap="xs">
+  //           ${V3e.map((e) => {
+  //             var n;
+  //             return q`<wui-button
+  //                 variant=${this.paymentAmount === e ? "accent" : "neutral"}
+  //                 size="md"
+  //                 textVariant="paragraph-600"
+  //                 fullWidth
+  //                 @click=${() => this.selectPresetAmount(e)}
+  //                 >${`${H3e[((n = this.paymentCurrency) == null ? void 0 : n.id) || "USD"]} ${e}`}</wui-button
+  //               >`;
+  //           })}
+  //         </wui-flex>
+  //         ${this.templateButton()}
+  //       </wui-flex>
+  //     </wui-flex>
+  //   `;
+  // }
+  // templateButton() {
+  //   return this.connected
+  //     ? q`<wui-button
+  //         @click=${this.getQuotes.bind(this)}
+  //         variant="main"
+  //         fullWidth
+  //         size="lg"
+  //         borderRadius="xs"
+  //       >
+  //         Get quotes
+  //       </wui-button>`
+  //     : q`<wui-button
+  //         @click=${this.openModal.bind(this)}
+  //         variant="accent"
+  //         fullWidth
+  //         size="lg"
+  //         borderRadius="xs"
+  //       >
+  //         Connect wallet
+  //       </wui-button>`;
+  // }
+  // getQuotes() {
+  //   this.loading || kt.open({ view: "OnRampProviders" });
+  // }
+  // openModal() {
+  //   kt.open({ view: "Connect" });
+  // }
+  // async onPaymentAmountChange(e) {
+  //   Vn.setPaymentAmount(Number(e.detail)), await Vn.getQuote();
+  // }
+  // async selectPresetAmount(e) {
+  //   Vn.setPaymentAmount(e), await Vn.getQuote();
+  // }
 };
 qc.styles = W3e;
 pu([ie({ type: Boolean })], qc.prototype, "disabled", void 0);
