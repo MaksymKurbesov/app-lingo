@@ -90919,342 +90919,342 @@ class xc extends Error {
 }
 const wN = "Not capturing exception because it's already been captured.";
 class exe {
-  constructor(e) {
-    if (
-      ((this._options = e),
-      (this._integrations = {}),
-      (this._numProcessing = 0),
-      (this._outcomes = {}),
-      (this._hooks = {}),
-      (this._eventProcessors = []),
-      e.dsn
-        ? (this._dsn = Q_e(e.dsn))
-        : cn && nt.warn("No DSN provided, client will not send events."),
-      this._dsn)
-    ) {
-      const o = Y7e(
-        this._dsn,
-        e.tunnel,
-        e._metadata ? e._metadata.sdk : void 0,
-      );
-      this._transport = e.transport({
-        tunnel: this._options.tunnel,
-        recordDroppedEvent: this.recordDroppedEvent.bind(this),
-        ...e.transportOptions,
-        url: o,
-      });
-    }
-    const r = ["enableTracing", "tracesSampleRate", "tracesSampler"].find(
-      (o) => o in e && e[o] == null,
-    );
-    r &&
-      ec(() => {
-        console.warn(
-          `[Sentry] Deprecation warning: \`${r}\` is set to undefined, which leads to tracing being enabled. In v9, a value of \`undefined\` will result in tracing being disabled.`,
-        );
-      });
-  }
-  captureException(e, n, r) {
-    const o = ns();
-    if (QO(e)) return cn && nt.log(wN), o;
-    const i = { event_id: o, ...n };
-    return (
-      this._process(
-        this.eventFromException(e, i).then((s) => this._captureEvent(s, i, r)),
-      ),
-      i.event_id
-    );
-  }
-  captureMessage(e, n, r, o) {
-    const i = { event_id: ns(), ...r },
-      s = rC(e) ? e : String(e),
-      a = iC(e)
-        ? this.eventFromMessage(s, n, i)
-        : this.eventFromException(e, i);
-    return (
-      this._process(a.then((c) => this._captureEvent(c, i, o))), i.event_id
-    );
-  }
-  captureEvent(e, n, r) {
-    const o = ns();
-    if (n && n.originalException && QO(n.originalException))
-      return cn && nt.log(wN), o;
-    const i = { event_id: o, ...n },
-      a = (e.sdkProcessingMetadata || {}).capturedSpanScope;
-    return this._process(this._captureEvent(e, i, a || r)), i.event_id;
-  }
-  captureSession(e) {
-    typeof e.release != "string"
-      ? cn &&
-        nt.warn("Discarded session because of missing or non-string release")
-      : (this.sendSession(e), hp(e, { init: !1 }));
-  }
-  getDsn() {
-    return this._dsn;
-  }
-  getOptions() {
-    return this._options;
-  }
-  getSdkMetadata() {
-    return this._options._metadata;
-  }
-  getTransport() {
-    return this._transport;
-  }
-  flush(e) {
-    const n = this._transport;
-    return n
-      ? (this.emit("flush"),
-        this._isClientDoneProcessing(e).then((r) =>
-          n.flush(e).then((o) => r && o),
-        ))
-      : _0(!0);
-  }
-  close(e) {
-    return this.flush(e).then(
-      (n) => ((this.getOptions().enabled = !1), this.emit("close"), n),
-    );
-  }
-  getEventProcessors() {
-    return this._eventProcessors;
-  }
-  addEventProcessor(e) {
-    this._eventProcessors.push(e);
-  }
-  init() {
-    (this._isEnabled() ||
-      this._options.integrations.some(({ name: e }) =>
-        e.startsWith("Spotlight"),
-      )) &&
-      this._setupIntegrations();
-  }
-  getIntegrationByName(e) {
-    return this._integrations[e];
-  }
-  addIntegration(e) {
-    const n = this._integrations[e.name];
-    Pz(this, e, this._integrations), n || bN(this, [e]);
-  }
-  sendEvent(e, n = {}) {
-    this.emit("beforeSendEvent", e, n);
-    let r = u7e(e, this._dsn, this._options._metadata, this._options.tunnel);
-    for (const i of n.attachments || []) r = r7e(r, a7e(i));
-    const o = this.sendEnvelope(r);
-    o && o.then((i) => this.emit("afterSendEvent", e, i), null);
-  }
-  sendSession(e) {
-    const n = l7e(e, this._dsn, this._options._metadata, this._options.tunnel);
-    this.sendEnvelope(n);
-  }
-  recordDroppedEvent(e, n, r) {
-    if (this._options.sendClientReports) {
-      const o = typeof r == "number" ? r : 1,
-        i = `${e}:${n}`;
-      cn && nt.log(`Recording outcome: "${i}"${o > 1 ? ` (${o} times)` : ""}`),
-        (this._outcomes[i] = (this._outcomes[i] || 0) + o);
-    }
-  }
-  on(e, n) {
-    const r = (this._hooks[e] = this._hooks[e] || []);
-    return (
-      r.push(n),
-      () => {
-        const o = r.indexOf(n);
-        o > -1 && r.splice(o, 1);
-      }
-    );
-  }
-  emit(e, ...n) {
-    const r = this._hooks[e];
-    r && r.forEach((o) => o(...n));
-  }
-  sendEnvelope(e) {
-    return (
-      this.emit("beforeEnvelope", e),
-      this._isEnabled() && this._transport
-        ? this._transport
-            .send(e)
-            .then(
-              null,
-              (n) => (cn && nt.error("Error while sending envelope:", n), n),
-            )
-        : (cn && nt.error("Transport disabled"), _0({}))
-    );
-  }
-  _setupIntegrations() {
-    const { integrations: e } = this._options;
-    (this._integrations = J7e(this, e)), bN(this, e);
-  }
-  _updateSessionFromEvent(e, n) {
-    let r = !1,
-      o = !1;
-    const i = n.exception && n.exception.values;
-    if (i) {
-      o = !0;
-      for (const c of i) {
-        const f = c.mechanism;
-        if (f && f.handled === !1) {
-          r = !0;
-          break;
-        }
-      }
-    }
-    const s = e.status === "ok";
-    ((s && e.errors === 0) || (s && r)) &&
-      (hp(e, {
-        ...(r && { status: "crashed" }),
-        errors: e.errors || Number(o || r),
-      }),
-      this.captureSession(e));
-  }
-  _isClientDoneProcessing(e) {
-    return new zs((n) => {
-      let r = 0;
-      const o = 1,
-        i = setInterval(() => {
-          this._numProcessing == 0
-            ? (clearInterval(i), n(!0))
-            : ((r += o), e && r >= e && (clearInterval(i), n(!1)));
-        }, o);
-    });
-  }
-  _isEnabled() {
-    return this.getOptions().enabled !== !1 && this._transport !== void 0;
-  }
-  _prepareEvent(e, n, r = ar(), o = lf()) {
-    const i = this.getOptions(),
-      s = Object.keys(this._integrations);
-    return (
-      !n.integrations && s.length > 0 && (n.integrations = s),
-      this.emit("preprocessEvent", e, n),
-      e.type || o.setLastEventId(e.event_id || n.event_id),
-      Mz(i, e, n, r, this, o).then((a) => {
-        if (a === null) return a;
-        a.contexts = { trace: E_e(r), ...a.contexts };
-        const c = Az(this, r);
-        return (
-          (a.sdkProcessingMetadata = {
-            dynamicSamplingContext: c,
-            ...a.sdkProcessingMetadata,
-          }),
-          a
-        );
-      })
-    );
-  }
-  _captureEvent(e, n = {}, r) {
-    return this._processEvent(e, n, r).then(
-      (o) => o.event_id,
-      (o) => {
-        if (cn) {
-          const i = o;
-          i.logLevel === "log" ? nt.log(i.message) : nt.warn(i);
-        }
-      },
-    );
-  }
-  _processEvent(e, n, r) {
-    const o = this.getOptions(),
-      { sampleRate: i } = o,
-      s = Bz(e),
-      a = $z(e),
-      c = e.type || "error",
-      f = `before send for type \`${c}\``,
-      u = typeof i > "u" ? void 0 : Ww(i);
-    if (a && typeof u == "number" && Math.random() > u)
-      return (
-        this.recordDroppedEvent("sample_rate", "error", e),
-        jw(
-          new xc(
-            `Discarding event because it's not included in the random sample (sampling rate = ${i})`,
-            "log",
-          ),
-        )
-      );
-    const d = c === "replay_event" ? "replay" : c,
-      b = (e.sdkProcessingMetadata || {}).capturedSpanIsolationScope;
-    return this._prepareEvent(e, n, r, b)
-      .then((v) => {
-        if (v === null)
-          throw (
-            (this.recordDroppedEvent("event_processor", d, e),
-            new xc(
-              "An event processor returned `null`, will not send event.",
-              "log",
-            ))
-          );
-        if (n.data && n.data.__sentry__ === !0) return v;
-        const R = nxe(this, o, v, n);
-        return txe(R, f);
-      })
-      .then((v) => {
-        if (v === null) {
-          if ((this.recordDroppedEvent("before_send", d, e), s)) {
-            const O = 1 + (e.spans || []).length;
-            this.recordDroppedEvent("before_send", "span", O);
-          }
-          throw new xc(`${f} returned \`null\`, will not send event.`, "log");
-        }
-        const S = r && r.getSession();
-        if ((!s && S && this._updateSessionFromEvent(S, v), s)) {
-          const z =
-              (v.sdkProcessingMetadata &&
-                v.sdkProcessingMetadata.spanCountBeforeProcessing) ||
-              0,
-            O = v.spans ? v.spans.length : 0,
-            $ = z - O;
-          $ > 0 && this.recordDroppedEvent("before_send", "span", $);
-        }
-        const R = v.transaction_info;
-        if (s && R && v.transaction !== e.transaction) {
-          const z = "custom";
-          v.transaction_info = { ...R, source: z };
-        }
-        return this.sendEvent(v, n), v;
-      })
-      .then(null, (v) => {
-        throw v instanceof xc
-          ? v
-          : (this.captureException(v, {
-              data: { __sentry__: !0 },
-              originalException: v,
-            }),
-            new xc(`Event processing pipeline threw an error, original event will not be sent. Details have been sent as a new event.
-Reason: ${v}`));
-      });
-  }
-  _process(e) {
-    this._numProcessing++,
-      e.then(
-        (n) => (this._numProcessing--, n),
-        (n) => (this._numProcessing--, n),
-      );
-  }
-  _clearOutcomes() {
-    const e = this._outcomes;
-    return (
-      (this._outcomes = {}),
-      Object.entries(e).map(([n, r]) => {
-        const [o, i] = n.split(":");
-        return { reason: o, category: i, quantity: r };
-      })
-    );
-  }
-  _flushOutcomes() {
-    cn && nt.log("Flushing outcomes...");
-    const e = this._clearOutcomes();
-    if (e.length === 0) {
-      cn && nt.log("No outcomes to send");
-      return;
-    }
-    if (!this._dsn) {
-      cn && nt.log("No dsn provided, will not send outcomes");
-      return;
-    }
-    cn && nt.log("Sending outcomes:", e);
-    const n = X7e(e, this._options.tunnel && Lm(this._dsn));
-    this.sendEnvelope(n);
-  }
+//   constructor(e) {
+//     if (
+//       ((this._options = e),
+//       (this._integrations = {}),
+//       (this._numProcessing = 0),
+//       (this._outcomes = {}),
+//       (this._hooks = {}),
+//       (this._eventProcessors = []),
+//       e.dsn
+//         ? (this._dsn = Q_e(e.dsn))
+//         : cn && nt.warn("No DSN provided, client will not send events."),
+//       this._dsn)
+//     ) {
+//       const o = Y7e(
+//         this._dsn,
+//         e.tunnel,
+//         e._metadata ? e._metadata.sdk : void 0,
+//       );
+//       this._transport = e.transport({
+//         tunnel: this._options.tunnel,
+//         recordDroppedEvent: this.recordDroppedEvent.bind(this),
+//         ...e.transportOptions,
+//         url: o,
+//       });
+//     }
+//     const r = ["enableTracing", "tracesSampleRate", "tracesSampler"].find(
+//       (o) => o in e && e[o] == null,
+//     );
+//     r &&
+//       ec(() => {
+//         console.warn(
+//           `[Sentry] Deprecation warning: \`${r}\` is set to undefined, which leads to tracing being enabled. In v9, a value of \`undefined\` will result in tracing being disabled.`,
+//         );
+//       });
+//   }
+//   captureException(e, n, r) {
+//     const o = ns();
+//     if (QO(e)) return cn && nt.log(wN), o;
+//     const i = { event_id: o, ...n };
+//     return (
+//       this._process(
+//         this.eventFromException(e, i).then((s) => this._captureEvent(s, i, r)),
+//       ),
+//       i.event_id
+//     );
+//   }
+//   captureMessage(e, n, r, o) {
+//     const i = { event_id: ns(), ...r },
+//       s = rC(e) ? e : String(e),
+//       a = iC(e)
+//         ? this.eventFromMessage(s, n, i)
+//         : this.eventFromException(e, i);
+//     return (
+//       this._process(a.then((c) => this._captureEvent(c, i, o))), i.event_id
+//     );
+//   }
+//   captureEvent(e, n, r) {
+//     const o = ns();
+//     if (n && n.originalException && QO(n.originalException))
+//       return cn && nt.log(wN), o;
+//     const i = { event_id: o, ...n },
+//       a = (e.sdkProcessingMetadata || {}).capturedSpanScope;
+//     return this._process(this._captureEvent(e, i, a || r)), i.event_id;
+//   }
+//   captureSession(e) {
+//     typeof e.release != "string"
+//       ? cn &&
+//         nt.warn("Discarded session because of missing or non-string release")
+//       : (this.sendSession(e), hp(e, { init: !1 }));
+//   }
+//   getDsn() {
+//     return this._dsn;
+//   }
+//   getOptions() {
+//     return this._options;
+//   }
+//   getSdkMetadata() {
+//     return this._options._metadata;
+//   }
+//   getTransport() {
+//     return this._transport;
+//   }
+//   flush(e) {
+//     const n = this._transport;
+//     return n
+//       ? (this.emit("flush"),
+//         this._isClientDoneProcessing(e).then((r) =>
+//           n.flush(e).then((o) => r && o),
+//         ))
+//       : _0(!0);
+//   }
+//   close(e) {
+//     return this.flush(e).then(
+//       (n) => ((this.getOptions().enabled = !1), this.emit("close"), n),
+//     );
+//   }
+//   getEventProcessors() {
+//     return this._eventProcessors;
+//   }
+//   addEventProcessor(e) {
+//     this._eventProcessors.push(e);
+//   }
+//   init() {
+//     (this._isEnabled() ||
+//       this._options.integrations.some(({ name: e }) =>
+//         e.startsWith("Spotlight"),
+//       )) &&
+//       this._setupIntegrations();
+//   }
+//   getIntegrationByName(e) {
+//     return this._integrations[e];
+//   }
+//   addIntegration(e) {
+//     const n = this._integrations[e.name];
+//     Pz(this, e, this._integrations), n || bN(this, [e]);
+//   }
+//   sendEvent(e, n = {}) {
+//     this.emit("beforeSendEvent", e, n);
+//     let r = u7e(e, this._dsn, this._options._metadata, this._options.tunnel);
+//     for (const i of n.attachments || []) r = r7e(r, a7e(i));
+//     const o = this.sendEnvelope(r);
+//     o && o.then((i) => this.emit("afterSendEvent", e, i), null);
+//   }
+//   sendSession(e) {
+//     const n = l7e(e, this._dsn, this._options._metadata, this._options.tunnel);
+//     this.sendEnvelope(n);
+//   }
+//   recordDroppedEvent(e, n, r) {
+//     if (this._options.sendClientReports) {
+//       const o = typeof r == "number" ? r : 1,
+//         i = `${e}:${n}`;
+//       cn && nt.log(`Recording outcome: "${i}"${o > 1 ? ` (${o} times)` : ""}`),
+//         (this._outcomes[i] = (this._outcomes[i] || 0) + o);
+//     }
+//   }
+//   on(e, n) {
+//     const r = (this._hooks[e] = this._hooks[e] || []);
+//     return (
+//       r.push(n),
+//       () => {
+//         const o = r.indexOf(n);
+//         o > -1 && r.splice(o, 1);
+//       }
+//     );
+//   }
+//   emit(e, ...n) {
+//     const r = this._hooks[e];
+//     r && r.forEach((o) => o(...n));
+//   }
+//   sendEnvelope(e) {
+//     return (
+//       this.emit("beforeEnvelope", e),
+//       this._isEnabled() && this._transport
+//         ? this._transport
+//             .send(e)
+//             .then(
+//               null,
+//               (n) => (cn && nt.error("Error while sending envelope:", n), n),
+//             )
+//         : (cn && nt.error("Transport disabled"), _0({}))
+//     );
+//   }
+//   _setupIntegrations() {
+//     const { integrations: e } = this._options;
+//     (this._integrations = J7e(this, e)), bN(this, e);
+//   }
+//   _updateSessionFromEvent(e, n) {
+//     let r = !1,
+//       o = !1;
+//     const i = n.exception && n.exception.values;
+//     if (i) {
+//       o = !0;
+//       for (const c of i) {
+//         const f = c.mechanism;
+//         if (f && f.handled === !1) {
+//           r = !0;
+//           break;
+//         }
+//       }
+//     }
+//     const s = e.status === "ok";
+//     ((s && e.errors === 0) || (s && r)) &&
+//       (hp(e, {
+//         ...(r && { status: "crashed" }),
+//         errors: e.errors || Number(o || r),
+//       }),
+//       this.captureSession(e));
+//   }
+//   _isClientDoneProcessing(e) {
+//     return new zs((n) => {
+//       let r = 0;
+//       const o = 1,
+//         i = setInterval(() => {
+//           this._numProcessing == 0
+//             ? (clearInterval(i), n(!0))
+//             : ((r += o), e && r >= e && (clearInterval(i), n(!1)));
+//         }, o);
+//     });
+//   }
+//   _isEnabled() {
+//     return this.getOptions().enabled !== !1 && this._transport !== void 0;
+//   }
+//   _prepareEvent(e, n, r = ar(), o = lf()) {
+//     const i = this.getOptions(),
+//       s = Object.keys(this._integrations);
+//     return (
+//       !n.integrations && s.length > 0 && (n.integrations = s),
+//       this.emit("preprocessEvent", e, n),
+//       e.type || o.setLastEventId(e.event_id || n.event_id),
+//       Mz(i, e, n, r, this, o).then((a) => {
+//         if (a === null) return a;
+//         a.contexts = { trace: E_e(r), ...a.contexts };
+//         const c = Az(this, r);
+//         return (
+//           (a.sdkProcessingMetadata = {
+//             dynamicSamplingContext: c,
+//             ...a.sdkProcessingMetadata,
+//           }),
+//           a
+//         );
+//       })
+//     );
+//   }
+//   _captureEvent(e, n = {}, r) {
+//     return this._processEvent(e, n, r).then(
+//       (o) => o.event_id,
+//       (o) => {
+//         if (cn) {
+//           const i = o;
+//           i.logLevel === "log" ? nt.log(i.message) : nt.warn(i);
+//         }
+//       },
+//     );
+//   }
+//   _processEvent(e, n, r) {
+//     const o = this.getOptions(),
+//       { sampleRate: i } = o,
+//       s = Bz(e),
+//       a = $z(e),
+//       c = e.type || "error",
+//       f = `before send for type \`${c}\``,
+//       u = typeof i > "u" ? void 0 : Ww(i);
+//     if (a && typeof u == "number" && Math.random() > u)
+//       return (
+//         this.recordDroppedEvent("sample_rate", "error", e),
+//         jw(
+//           new xc(
+//             `Discarding event because it's not included in the random sample (sampling rate = ${i})`,
+//             "log",
+//           ),
+//         )
+//       );
+//     const d = c === "replay_event" ? "replay" : c,
+//       b = (e.sdkProcessingMetadata || {}).capturedSpanIsolationScope;
+//     return this._prepareEvent(e, n, r, b)
+//       .then((v) => {
+//         if (v === null)
+//           throw (
+//             (this.recordDroppedEvent("event_processor", d, e),
+//             new xc(
+//               "An event processor returned `null`, will not send event.",
+//               "log",
+//             ))
+//           );
+//         if (n.data && n.data.__sentry__ === !0) return v;
+//         const R = nxe(this, o, v, n);
+//         return txe(R, f);
+//       })
+//       .then((v) => {
+//         if (v === null) {
+//           if ((this.recordDroppedEvent("before_send", d, e), s)) {
+//             const O = 1 + (e.spans || []).length;
+//             this.recordDroppedEvent("before_send", "span", O);
+//           }
+//           throw new xc(`${f} returned \`null\`, will not send event.`, "log");
+//         }
+//         const S = r && r.getSession();
+//         if ((!s && S && this._updateSessionFromEvent(S, v), s)) {
+//           const z =
+//               (v.sdkProcessingMetadata &&
+//                 v.sdkProcessingMetadata.spanCountBeforeProcessing) ||
+//               0,
+//             O = v.spans ? v.spans.length : 0,
+//             $ = z - O;
+//           $ > 0 && this.recordDroppedEvent("before_send", "span", $);
+//         }
+//         const R = v.transaction_info;
+//         if (s && R && v.transaction !== e.transaction) {
+//           const z = "custom";
+//           v.transaction_info = { ...R, source: z };
+//         }
+//         return this.sendEvent(v, n), v;
+//       })
+//       .then(null, (v) => {
+//         throw v instanceof xc
+//           ? v
+//           : (this.captureException(v, {
+//               data: { __sentry__: !0 },
+//               originalException: v,
+//             }),
+//             new xc(`Event processing pipeline threw an error, original event will not be sent. Details have been sent as a new event.
+// Reason: ${v}`));
+//       });
+//   }
+//   _process(e) {
+//     this._numProcessing++,
+//       e.then(
+//         (n) => (this._numProcessing--, n),
+//         (n) => (this._numProcessing--, n),
+//       );
+//   }
+//   _clearOutcomes() {
+//     const e = this._outcomes;
+//     return (
+//       (this._outcomes = {}),
+//       Object.entries(e).map(([n, r]) => {
+//         const [o, i] = n.split(":");
+//         return { reason: o, category: i, quantity: r };
+//       })
+//     );
+//   }
+//   _flushOutcomes() {
+//     cn && nt.log("Flushing outcomes...");
+//     const e = this._clearOutcomes();
+//     if (e.length === 0) {
+//       cn && nt.log("No outcomes to send");
+//       return;
+//     }
+//     if (!this._dsn) {
+//       cn && nt.log("No dsn provided, will not send outcomes");
+//       return;
+//     }
+//     cn && nt.log("Sending outcomes:", e);
+//     const n = X7e(e, this._options.tunnel && Lm(this._dsn));
+//     this.sendEnvelope(n);
+//   }
 }
 function txe(t, e) {
   const n = `${e} must return \`null\` or a valid event.`;
