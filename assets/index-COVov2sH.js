@@ -65283,46 +65283,46 @@ let aw = class extends Se {
       : q`<w3m-connecting-wc-qrcode></w3m-connecting-wc-qrcode>`;
   }
   async initializeConnection(e = !1) {
-    try {
-      const { wcPairingExpiry: n } = It.state;
-      if (e || Ze.isPairingExpired(n)) {
-        if (this.wallet) {
-          const r = Kn.getWalletImage(this.wallet);
-          r && _n.setConnectedWalletImageUrl(r);
-        } else {
-          const o = ct.state.connectors.find(
-              (s) => s.type === "WALLET_CONNECT",
-            ),
-            i = Kn.getConnectorImage(o);
-          i && _n.setConnectedWalletImageUrl(i);
-        }
-        if (
-          (await It.connectWalletConnect(),
-          this.finalizeConnection(),
-          _n.getConnectedConnector() === "AUTH" &&
-            et.state.hasMultipleAddresses)
-        )
-          Ie.push("SelectAddresses");
-        else if (et.state.isSiweEnabled) {
-          const { SIWEController: r } = await Cr(async () => {
-            const { SIWEController: o } = await import("./index-9d2NYbHy.js");
-            return { SIWEController: o };
-          }, []);
-          r.state.status === "success" ? kt.close() : Ie.push("ConnectingSiwe");
-        } else kt.close();
-      }
-    } catch (n) {
-      it.sendEvent({
-        type: "track",
-        event: "CONNECT_ERROR",
-        properties: { message: (n == null ? void 0 : n.message) ?? "Unknown" },
-      }),
-        It.setWcError(!0),
-        Ze.isAllowedRetry(this.lastRetry) &&
-          (yt.showError("Declined"),
-          (this.lastRetry = Date.now()),
-          this.initializeConnection(!0));
-    }
+    // try {
+    //   const { wcPairingExpiry: n } = It.state;
+    //   if (e || Ze.isPairingExpired(n)) {
+    //     if (this.wallet) {
+    //       const r = Kn.getWalletImage(this.wallet);
+    //       r && _n.setConnectedWalletImageUrl(r);
+    //     } else {
+    //       const o = ct.state.connectors.find(
+    //           (s) => s.type === "WALLET_CONNECT",
+    //         ),
+    //         i = Kn.getConnectorImage(o);
+    //       i && _n.setConnectedWalletImageUrl(i);
+    //     }
+    //     if (
+    //       (await It.connectWalletConnect(),
+    //       this.finalizeConnection(),
+    //       _n.getConnectedConnector() === "AUTH" &&
+    //         et.state.hasMultipleAddresses)
+    //     )
+    //       Ie.push("SelectAddresses");
+    //     else if (et.state.isSiweEnabled) {
+    //       const { SIWEController: r } = await Cr(async () => {
+    //         const { SIWEController: o } = await import("./index-9d2NYbHy.js");
+    //         return { SIWEController: o };
+    //       }, []);
+    //       r.state.status === "success" ? kt.close() : Ie.push("ConnectingSiwe");
+    //     } else kt.close();
+    //   }
+    // } catch (n) {
+    //   it.sendEvent({
+    //     type: "track",
+    //     event: "CONNECT_ERROR",
+    //     properties: { message: (n == null ? void 0 : n.message) ?? "Unknown" },
+    //   }),
+    //     It.setWcError(!0),
+    //     Ze.isAllowedRetry(this.lastRetry) &&
+    //       (yt.showError("Declined"),
+    //       (this.lastRetry = Date.now()),
+    //       this.initializeConnection(!0));
+    // }
   }
   finalizeConnection() {
     var r;
