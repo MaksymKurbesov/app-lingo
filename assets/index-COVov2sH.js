@@ -42524,8 +42524,8 @@ const Dn = {
   KA = { URLS: { FAQ: "https://walletconnect.com/faq" } },
   Lr = {
     WC_NAME_SUFFIX: ".wcn.id",
-    BLOCKCHAIN_API_RPC_URL: "https://rpc.walletconnect.org",
-    PULSE_API_URL: "https://pulse.walletconnect.org",
+    BLOCKCHAIN_API_RPC_URL: "",
+    PULSE_API_URL: "",
     W3M_API_URL: "https://api.web3modal.org",
     CHAIN: { EVM: "evm", SOLANA: "solana" },
     CHAIN_NAME: { EVM: "Ethereum", SOLANA: "Solana" },
@@ -43138,300 +43138,300 @@ const n9 = "WALLETCONNECT_DEEPLINK_CHOICE",
       return dU(Nf);
     },
   },
-  ks = Ur({ connectors: [] }),
-  ct = {
-    state: ks,
-    subscribeKey(t, e) {
-      return zo(ks, t, e);
-    },
-    setConnectors(t, e) {
-      e
-        ? ((ks.connectors = [...ks.connectors, ...t.map((n) => sd(n))]),
-          (ks.connectors = this.mergeMultiChainConnectors(ks.connectors)))
-        : (ks.connectors = t.map((n) => sd(n)));
-    },
-    mergeMultiChainConnectors(t) {
-      const e = [];
-      return (
-        t.forEach((n) => {
-          const { name: r, chain: o, type: i } = n,
-            s = e.findIndex((a) => a.name === r);
-          if (s === -1) e.push({ ...n });
-          else {
-            const a = e[s];
-            a &&
-              ((a == null ? void 0 : a.chain) === o || a.type === i
-                ? e.push({ ...n })
-                : a.type === "MULTI_CHAIN"
-                  ? e.push({ ...n })
-                  : (e[s] = { ...a, type: "MULTI_CHAIN", providers: [a, n] }));
-          }
-        }),
-        e
-      );
-    },
-    addConnector(t) {
-      var e, n;
-      if ((ks.connectors.push(sd(t)), t.id === "w3mAuth")) {
-        const r = t,
-          o = dU(et.state),
-          i = $r.getSnapshot().themeMode,
-          s = $r.getSnapshot().themeVariables;
-        (n =
-          (e = r == null ? void 0 : r.provider) == null
-            ? void 0
-            : e.syncDappData) == null ||
-          n.call(e, {
-            metadata: o.metadata,
-            sdkVersion: o.sdkVersion,
-            projectId: o.projectId,
-          }),
-          r.provider.syncTheme({
-            themeMode: i,
-            themeVariables: s,
-            w3mThemeVariables: bl(s, i),
-          });
-      }
-    },
-    getAuthConnector() {
-      return ks.connectors.find((t) => t.type === "AUTH");
-    },
-    getAnnouncedConnectorRdns() {
-      return ks.connectors
-        .filter((t) => t.type === "ANNOUNCED")
-        .map((t) => {
-          var e;
-          return (e = t.info) == null ? void 0 : e.rdns;
-        });
-    },
-    getConnectors() {
-      return ks.connectors;
-    },
-    getConnector(t, e) {
-      return ks.connectors.find((n) => {
-        var r;
-        return (
-          n.explorerId === t || ((r = n.info) == null ? void 0 : r.rdns) === e
-        );
-      });
-    },
-  },
-  k5 = Ur({
-    loading: !1,
-    open: !1,
-    selectedNetworkId: void 0,
-    activeChain: void 0,
-  }),
-  Qf = {
-    state: k5,
-    subscribe(t) {
-      return oo(k5, () => t(k5));
-    },
-    set(t) {
-      Object.assign(k5, { ...k5, ...t });
-    },
-  },
-  _pe = Ze.getAnalyticsUrl(),
-  xpe = new Kv({ baseUrl: _pe, clientId: null }),
-  Ape = ["MODAL_CREATED"],
-  $h = Ur({
-    timestamp: Date.now(),
-    data: { type: "track", event: "MODAL_CREATED" },
-  }),
-  it = {
-    state: $h,
-    subscribe(t) {
-      return oo($h, () => t($h));
-    },
-    _getApiHeaders() {
-      const { projectId: t, sdkType: e, sdkVersion: n } = et.state;
-      return { "x-project-id": t, "x-sdk-type": e, "x-sdk-version": n };
-    },
-    async _sendAnalyticsEvent(t) {
-      try {
-        if (Ape.includes(t.data.event) || typeof window > "u") return;
-        await xpe.post({
-          path: "/e",
-          headers: it._getApiHeaders(),
-          body: {
-            eventId: Ze.getUUID(),
-            url: window.location.href,
-            domain: window.location.hostname,
-            timestamp: t.timestamp,
-            props: t.data,
-          },
-        });
-      } catch {}
-    },
-    sendEvent(t) {
-      ($h.timestamp = Date.now()),
-        ($h.data = t),
-        et.state.enableAnalytics && it._sendAnalyticsEvent($h);
-    },
-  },
-  Epe = {
-    isConnected: !1,
-    currentTab: 0,
-    tokenBalance: [],
-    smartAccountDeployed: !1,
-    addressLabels: new Map(),
-    allAccounts: [],
-  },
-  Cpe = {
-    supportsAllNetworks: !0,
-    isDefaultCaipNetwork: !1,
-    smartAccountEnabledNetworks: [],
-  },
-  Cn = Ur({
-    multiChainEnabled: !1,
-    chains: cpe(),
-    activeChain: void 0,
-    activeCaipNetwork: void 0,
-  }),
-  Ve = {
-    state: Cn,
-    subscribeKey(t, e) {
-      return zo(Cn, t, e);
-    },
-    subscribeChain(t) {
-      let e;
-      const n = Cn.activeChain;
-      return n
-        ? oo(Cn.chains, () => {
-            const r = Cn.chains.get(n);
-            (!e || e !== r) && ((e = r), t(r));
-          })
-        : () => {};
-    },
-    subscribeChainProp(t, e) {
-      let n;
-      const r = Cn.activeChain;
-      return r
-        ? oo(Cn.chains, () => {
-            var i;
-            const o = (i = Cn.chains.get(r)) == null ? void 0 : i[t];
-            n !== o && ((n = o), e(o));
-          })
-        : () => {};
-    },
-    initialize(t) {
-      var n;
-      const e = (n = t == null ? void 0 : t[0]) == null ? void 0 : n.chain;
-      if (!e)
-        throw new Error("Chain is required to initialize ChainController");
-      (Cn.activeChain = e),
-        t.forEach((r) => {
-          Cn.chains.set(r.chain, {
-            chain: r.chain,
-            connectionControllerClient: r.connectionControllerClient,
-            networkControllerClient: r.networkControllerClient,
-            accountState: Epe,
-            networkState: Cpe,
-          });
-        });
-    },
-    setMultiChainEnabled(t) {
-      Cn.multiChainEnabled = t;
-    },
-    setChainNetworkData(t, e) {
-      if (!t) throw new Error("Chain is required to update chain network data");
-      const n = Cn.chains.get(t);
-      n &&
-        ((n.networkState = { ...n.networkState, ...e }),
-        Cn.chains.set(t, n),
-        Ge.replaceState(n.networkState));
-    },
-    setChainAccountData(t, e) {
-      if (!t) throw new Error("Chain is required to update chain account data");
-      const n = Cn.chains.get(t);
-      n &&
-        ((n.accountState = { ...n.accountState, ...e }),
-        Cn.chains.set(t, n),
-        Me.replaceState(n.accountState));
-    },
-    setAccountProp(t, e, n) {
-      this.setChainAccountData(Cn.multiChainEnabled ? n : Cn.activeChain, {
-        [t]: e,
-      });
-    },
-    setActiveChain(t) {
-      var n, r, o;
-      const e = t ? Cn.chains.get(t) : void 0;
-      e &&
-        ((Cn.activeChain = e.chain),
-        (Cn.activeCaipNetwork =
-          (o =
-            (r =
-              (n = Cn.chains.get(e.chain)) == null ? void 0 : n.networkState) ==
-            null
-              ? void 0
-              : r.requestedCaipNetworks) == null
-            ? void 0
-            : o[0]),
-        Qf.set({ activeChain: t }));
-    },
-    setActiveConnector(t) {
-      t && (Cn.activeConnector = sd(t));
-    },
-    getNetworkControllerClient() {
-      const t = Cn.activeChain;
-      if (!t)
-        throw new Error("Chain is required to get network controller client");
-      const e = Cn.chains.get(t);
-      if (!e) throw new Error("Chain adapter not found");
-      if (!e.networkControllerClient)
-        throw new Error("NetworkController client not set");
-      return e.networkControllerClient;
-    },
-    getConnectionControllerClient() {
-      const t = Cn.activeChain;
-      if (!t)
-        throw new Error(
-          "Chain is required to get connection controller client",
-        );
-      const e = Cn.chains.get(t);
-      if (!e) throw new Error("Chain adapter not found");
-      if (!e.connectionControllerClient)
-        throw new Error("ConnectionController client not set");
-      return e.connectionControllerClient;
-    },
-    getAccountProp(t) {
-      var r;
-      const e = (Cn.multiChainEnabled, Cn.activeChain);
-      if (!e) return;
-      const n = (r = Cn.chains.get(e)) == null ? void 0 : r.accountState;
-      if (n) return n[t];
-    },
-    getNetworkProp(t) {
-      var r;
-      const e = (Cn.multiChainEnabled, Cn.activeChain);
-      if (!e) return;
-      const n = (r = Cn.chains.get(e)) == null ? void 0 : r.networkState;
-      if (n) return n[t];
-    },
-    resetAccount(t) {
-      const e = Cn.multiChainEnabled ? t : Cn.activeChain;
-      if (!e) throw new Error("Chain is required to set account prop");
-      this.setChainAccountData(e, {
-        isConnected: !1,
-        smartAccountDeployed: !1,
-        currentTab: 0,
-        caipAddress: void 0,
-        address: void 0,
-        balance: void 0,
-        balanceSymbol: void 0,
-        profileName: void 0,
-        profileImage: void 0,
-        addressExplorerUrl: void 0,
-        tokenBalance: [],
-        connectedWalletInfo: void 0,
-        preferredAccountType: void 0,
-        socialProvider: void 0,
-        socialWindow: void 0,
-        farcasterUrl: void 0,
-      });
-    },
-  },
+  // ks = Ur({ connectors: [] }),
+  // ct = {
+  //   state: ks,
+  //   subscribeKey(t, e) {
+  //     return zo(ks, t, e);
+  //   },
+  //   setConnectors(t, e) {
+  //     e
+  //       ? ((ks.connectors = [...ks.connectors, ...t.map((n) => sd(n))]),
+  //         (ks.connectors = this.mergeMultiChainConnectors(ks.connectors)))
+  //       : (ks.connectors = t.map((n) => sd(n)));
+  //   },
+  //   mergeMultiChainConnectors(t) {
+  //     const e = [];
+  //     return (
+  //       t.forEach((n) => {
+  //         const { name: r, chain: o, type: i } = n,
+  //           s = e.findIndex((a) => a.name === r);
+  //         if (s === -1) e.push({ ...n });
+  //         else {
+  //           const a = e[s];
+  //           a &&
+  //             ((a == null ? void 0 : a.chain) === o || a.type === i
+  //               ? e.push({ ...n })
+  //               : a.type === "MULTI_CHAIN"
+  //                 ? e.push({ ...n })
+  //                 : (e[s] = { ...a, type: "MULTI_CHAIN", providers: [a, n] }));
+  //         }
+  //       }),
+  //       e
+  //     );
+  //   },
+  //   addConnector(t) {
+  //     var e, n;
+  //     if ((ks.connectors.push(sd(t)), t.id === "w3mAuth")) {
+  //       const r = t,
+  //         o = dU(et.state),
+  //         i = $r.getSnapshot().themeMode,
+  //         s = $r.getSnapshot().themeVariables;
+  //       (n =
+  //         (e = r == null ? void 0 : r.provider) == null
+  //           ? void 0
+  //           : e.syncDappData) == null ||
+  //         n.call(e, {
+  //           metadata: o.metadata,
+  //           sdkVersion: o.sdkVersion,
+  //           projectId: o.projectId,
+  //         }),
+  //         r.provider.syncTheme({
+  //           themeMode: i,
+  //           themeVariables: s,
+  //           w3mThemeVariables: bl(s, i),
+  //         });
+  //     }
+  //   },
+  //   getAuthConnector() {
+  //     return ks.connectors.find((t) => t.type === "AUTH");
+  //   },
+  //   getAnnouncedConnectorRdns() {
+  //     return ks.connectors
+  //       .filter((t) => t.type === "ANNOUNCED")
+  //       .map((t) => {
+  //         var e;
+  //         return (e = t.info) == null ? void 0 : e.rdns;
+  //       });
+  //   },
+  //   getConnectors() {
+  //     return ks.connectors;
+  //   },
+  //   getConnector(t, e) {
+  //     return ks.connectors.find((n) => {
+  //       var r;
+  //       return (
+  //         n.explorerId === t || ((r = n.info) == null ? void 0 : r.rdns) === e
+  //       );
+  //     });
+  //   },
+  // },
+  // k5 = Ur({
+  //   loading: !1,
+  //   open: !1,
+  //   selectedNetworkId: void 0,
+  //   activeChain: void 0,
+  // }),
+  // Qf = {
+  //   state: k5,
+  //   subscribe(t) {
+  //     return oo(k5, () => t(k5));
+  //   },
+  //   set(t) {
+  //     Object.assign(k5, { ...k5, ...t });
+  //   },
+  // },
+  // _pe = Ze.getAnalyticsUrl(),
+  // xpe = new Kv({ baseUrl: _pe, clientId: null }),
+  // Ape = ["MODAL_CREATED"],
+  // $h = Ur({
+  //   timestamp: Date.now(),
+  //   data: { type: "track", event: "MODAL_CREATED" },
+  // }),
+  // it = {
+  //   state: $h,
+  //   subscribe(t) {
+  //     return oo($h, () => t($h));
+  //   },
+  //   _getApiHeaders() {
+  //     const { projectId: t, sdkType: e, sdkVersion: n } = et.state;
+  //     return { "x-project-id": t, "x-sdk-type": e, "x-sdk-version": n };
+  //   },
+  //   async _sendAnalyticsEvent(t) {
+  //     try {
+  //       if (Ape.includes(t.data.event) || typeof window > "u") return;
+  //       await xpe.post({
+  //         path: "/e",
+  //         headers: it._getApiHeaders(),
+  //         body: {
+  //           eventId: Ze.getUUID(),
+  //           url: window.location.href,
+  //           domain: window.location.hostname,
+  //           timestamp: t.timestamp,
+  //           props: t.data,
+  //         },
+  //       });
+  //     } catch {}
+  //   },
+  //   sendEvent(t) {
+  //     ($h.timestamp = Date.now()),
+  //       ($h.data = t),
+  //       et.state.enableAnalytics && it._sendAnalyticsEvent($h);
+  //   },
+  // },
+  // Epe = {
+  //   isConnected: !1,
+  //   currentTab: 0,
+  //   tokenBalance: [],
+  //   smartAccountDeployed: !1,
+  //   addressLabels: new Map(),
+  //   allAccounts: [],
+  // },
+  // Cpe = {
+  //   supportsAllNetworks: !0,
+  //   isDefaultCaipNetwork: !1,
+  //   smartAccountEnabledNetworks: [],
+  // },
+  // Cn = Ur({
+  //   multiChainEnabled: !1,
+  //   chains: cpe(),
+  //   activeChain: void 0,
+  //   activeCaipNetwork: void 0,
+  // }),
+  // Ve = {
+  //   state: Cn,
+  //   subscribeKey(t, e) {
+  //     return zo(Cn, t, e);
+  //   },
+  //   subscribeChain(t) {
+  //     let e;
+  //     const n = Cn.activeChain;
+  //     return n
+  //       ? oo(Cn.chains, () => {
+  //           const r = Cn.chains.get(n);
+  //           (!e || e !== r) && ((e = r), t(r));
+  //         })
+  //       : () => {};
+  //   },
+  //   subscribeChainProp(t, e) {
+  //     let n;
+  //     const r = Cn.activeChain;
+  //     return r
+  //       ? oo(Cn.chains, () => {
+  //           var i;
+  //           const o = (i = Cn.chains.get(r)) == null ? void 0 : i[t];
+  //           n !== o && ((n = o), e(o));
+  //         })
+  //       : () => {};
+  //   },
+  //   initialize(t) {
+  //     var n;
+  //     const e = (n = t == null ? void 0 : t[0]) == null ? void 0 : n.chain;
+  //     if (!e)
+  //       throw new Error("Chain is required to initialize ChainController");
+  //     (Cn.activeChain = e),
+  //       t.forEach((r) => {
+  //         Cn.chains.set(r.chain, {
+  //           chain: r.chain,
+  //           connectionControllerClient: r.connectionControllerClient,
+  //           networkControllerClient: r.networkControllerClient,
+  //           accountState: Epe,
+  //           networkState: Cpe,
+  //         });
+  //       });
+  //   },
+  //   setMultiChainEnabled(t) {
+  //     Cn.multiChainEnabled = t;
+  //   },
+  //   setChainNetworkData(t, e) {
+  //     if (!t) throw new Error("Chain is required to update chain network data");
+  //     const n = Cn.chains.get(t);
+  //     n &&
+  //       ((n.networkState = { ...n.networkState, ...e }),
+  //       Cn.chains.set(t, n),
+  //       Ge.replaceState(n.networkState));
+  //   },
+  //   setChainAccountData(t, e) {
+  //     if (!t) throw new Error("Chain is required to update chain account data");
+  //     const n = Cn.chains.get(t);
+  //     n &&
+  //       ((n.accountState = { ...n.accountState, ...e }),
+  //       Cn.chains.set(t, n),
+  //       Me.replaceState(n.accountState));
+  //   },
+  //   setAccountProp(t, e, n) {
+  //     this.setChainAccountData(Cn.multiChainEnabled ? n : Cn.activeChain, {
+  //       [t]: e,
+  //     });
+  //   },
+  //   setActiveChain(t) {
+  //     var n, r, o;
+  //     const e = t ? Cn.chains.get(t) : void 0;
+  //     e &&
+  //       ((Cn.activeChain = e.chain),
+  //       (Cn.activeCaipNetwork =
+  //         (o =
+  //           (r =
+  //             (n = Cn.chains.get(e.chain)) == null ? void 0 : n.networkState) ==
+  //           null
+  //             ? void 0
+  //             : r.requestedCaipNetworks) == null
+  //           ? void 0
+  //           : o[0]),
+  //       Qf.set({ activeChain: t }));
+  //   },
+  //   setActiveConnector(t) {
+  //     t && (Cn.activeConnector = sd(t));
+  //   },
+  //   getNetworkControllerClient() {
+  //     const t = Cn.activeChain;
+  //     if (!t)
+  //       throw new Error("Chain is required to get network controller client");
+  //     const e = Cn.chains.get(t);
+  //     if (!e) throw new Error("Chain adapter not found");
+  //     if (!e.networkControllerClient)
+  //       throw new Error("NetworkController client not set");
+  //     return e.networkControllerClient;
+  //   },
+  //   getConnectionControllerClient() {
+  //     const t = Cn.activeChain;
+  //     if (!t)
+  //       throw new Error(
+  //         "Chain is required to get connection controller client",
+  //       );
+  //     const e = Cn.chains.get(t);
+  //     if (!e) throw new Error("Chain adapter not found");
+  //     if (!e.connectionControllerClient)
+  //       throw new Error("ConnectionController client not set");
+  //     return e.connectionControllerClient;
+  //   },
+  //   getAccountProp(t) {
+  //     var r;
+  //     const e = (Cn.multiChainEnabled, Cn.activeChain);
+  //     if (!e) return;
+  //     const n = (r = Cn.chains.get(e)) == null ? void 0 : r.accountState;
+  //     if (n) return n[t];
+  //   },
+  //   getNetworkProp(t) {
+  //     var r;
+  //     const e = (Cn.multiChainEnabled, Cn.activeChain);
+  //     if (!e) return;
+  //     const n = (r = Cn.chains.get(e)) == null ? void 0 : r.networkState;
+  //     if (n) return n[t];
+  //   },
+  //   resetAccount(t) {
+  //     const e = Cn.multiChainEnabled ? t : Cn.activeChain;
+  //     if (!e) throw new Error("Chain is required to set account prop");
+  //     this.setChainAccountData(e, {
+  //       isConnected: !1,
+  //       smartAccountDeployed: !1,
+  //       currentTab: 0,
+  //       caipAddress: void 0,
+  //       address: void 0,
+  //       balance: void 0,
+  //       balanceSymbol: void 0,
+  //       profileName: void 0,
+  //       profileImage: void 0,
+  //       addressExplorerUrl: void 0,
+  //       tokenBalance: [],
+  //       connectedWalletInfo: void 0,
+  //       preferredAccountType: void 0,
+  //       socialProvider: void 0,
+  //       socialWindow: void 0,
+  //       farcasterUrl: void 0,
+  //     });
+  //   },
+  // },
   aM = Ur({
     supportsAllNetworks: !0,
     isDefaultCaipNetwork: !1,
@@ -91994,28 +91994,28 @@ function fx(t) {
   );
 }
 function Zxe() {
-  // if (typeof EdgeRuntime == "string") return !0;
-  // if (!Vz()) return !1;
-  // if (fx(cx.fetch)) return !0;
-  // let t = !1;
-  // const e = cx.document;
-  // if (e && typeof e.createElement == "function")
-  //   try {
-  //     const n = e.createElement("iframe");
-  //     (n.hidden = !0),
-  //       e.head.appendChild(n),
-  //       n.contentWindow &&
-  //         n.contentWindow.fetch &&
-  //         (t = fx(n.contentWindow.fetch)),
-  //       e.head.removeChild(n);
-  //   } catch (n) {
-  //     Eu &&
-  //       nt.warn(
-  //         "Could not create sandbox iframe for pure fetch check, bailing to window.fetch: ",
-  //         n,
-  //       );
-  //   }
-  // return t;
+  if (typeof EdgeRuntime == "string") return !0;
+  if (!Vz()) return !1;
+  if (fx(cx.fetch)) return !0;
+  let t = !1;
+  const e = cx.document;
+  if (e && typeof e.createElement == "function")
+    try {
+      const n = e.createElement("iframe");
+      (n.hidden = !0),
+        e.head.appendChild(n),
+        n.contentWindow &&
+          n.contentWindow.fetch &&
+          (t = fx(n.contentWindow.fetch)),
+        e.head.removeChild(n);
+    } catch (n) {
+      Eu &&
+        nt.warn(
+          "Could not create sandbox iframe for pure fetch check, bailing to window.fetch: ",
+          n,
+        );
+    }
+  return t;
 }
 function qz(t, e) {
   const n = "fetch";
