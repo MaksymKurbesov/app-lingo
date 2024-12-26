@@ -63878,163 +63878,163 @@ var _E = function (t, e, n, r) {
       (s = t[a]) && (i = (o < 3 ? s(i) : o > 3 ? s(e, n, i) : s(e, n)) || i);
   return o > 3 && i && Object.defineProperty(e, n, i), i;
 };
-let _6 = class extends Se {
-  constructor() {
-    super(),
-      (this.resizeObserver = void 0),
-      (this.prevHeight = "0px"),
-      (this.prevHistoryLength = 1),
-      (this.unsubscribe = []),
-      (this.view = Ie.state.view),
-      (this.viewDirection = ""),
-      this.unsubscribe.push(
-        Ie.subscribeKey("view", (e) => this.onViewChange(e)),
-      );
-  }
-  firstUpdated() {
-    (this.resizeObserver = new ResizeObserver(([e]) => {
-      const n = `${e == null ? void 0 : e.contentRect.height}px`;
-      this.prevHeight !== "0px" &&
-        (this.style.setProperty("--prev-height", this.prevHeight),
-        this.style.setProperty("--new-height", n),
-        (this.style.animation = "w3m-view-height 150ms forwards ease"),
-        (this.style.height = "auto")),
-        setTimeout(() => {
-          (this.prevHeight = n), (this.style.animation = "unset");
-        }, Gf.ANIMATION_DURATIONS.ModalHeight);
-    })),
-      this.resizeObserver.observe(this.getWrapper());
-  }
-  disconnectedCallback() {
-    var e;
-    (e = this.resizeObserver) == null || e.unobserve(this.getWrapper()),
-      this.unsubscribe.forEach((n) => n());
-  }
-  render() {
-    return q`<div class="w3m-router-container" view-direction="${this.viewDirection}">
-      ${this.viewTemplate()}
-    </div>`;
-  }
-  viewTemplate() {
-    switch (this.view) {
-      case "AccountSettings":
-        return q`<w3m-account-settings-view></w3m-account-settings-view>`;
-      case "Account":
-        return q`<w3m-account-view></w3m-account-view>`;
-      case "AllWallets":
-        return q`<w3m-all-wallets-view></w3m-all-wallets-view>`;
-      case "ApproveTransaction":
-        return q`<w3m-approve-transaction-view></w3m-approve-transaction-view>`;
-      case "BuyInProgress":
-        return q`<w3m-buy-in-progress-view></w3m-buy-in-progress-view>`;
-      case "ChooseAccountName":
-        return q`<w3m-choose-account-name-view></w3m-choose-account-name-view>`;
-      case "Connect":
-        return q`<w3m-connect-view></w3m-connect-view>`;
-      case "ConnectingWalletConnect":
-        return q`<w3m-connecting-wc-view></w3m-connecting-wc-view>`;
-      case "ConnectingExternal":
-        return q`<w3m-connecting-external-view></w3m-connecting-external-view>`;
-      case "ConnectingSiwe":
-        return q`<w3m-connecting-siwe-view></w3m-connecting-siwe-view>`;
-      case "ConnectWallets":
-        return q`<w3m-connect-wallets-view></w3m-connect-wallets-view>`;
-      case "ConnectSocials":
-        return q`<w3m-connect-socials-view></w3m-connect-socials-view>`;
-      case "ConnectingSocial":
-        return q`<w3m-connecting-social-view></w3m-connecting-social-view>`;
-      case "Downloads":
-        return q`<w3m-downloads-view></w3m-downloads-view>`;
-      case "EmailVerifyOtp":
-        return q`<w3m-email-verify-otp-view></w3m-email-verify-otp-view>`;
-      case "EmailVerifyDevice":
-        return q`<w3m-email-verify-device-view></w3m-email-verify-device-view>`;
-      case "GetWallet":
-        return q`<w3m-get-wallet-view></w3m-get-wallet-view>`;
-      case "Networks":
-        return q`<w3m-networks-view></w3m-networks-view>`;
-      case "SwitchNetwork":
-        return q`<w3m-network-switch-view></w3m-network-switch-view>`;
-      case "Profile":
-        return q`<w3m-profile-view></w3m-profile-view>`;
-      case "SelectAddresses":
-        return q`<w3m-select-addresses-view></w3m-select-addresses-view>`;
-      case "SwitchAddress":
-        return q`<w3m-switch-address-view></w3m-switch-address-view>`;
-      case "Transactions":
-        return q`<w3m-transactions-view></w3m-transactions-view>`;
-      case "OnRampProviders":
-        return q`<w3m-onramp-providers-view></w3m-onramp-providers-view>`;
-      case "OnRampActivity":
-        return q`<w3m-onramp-activity-view></w3m-onramp-activity-view>`;
-      case "OnRampTokenSelect":
-        return q`<w3m-onramp-token-select-view></w3m-onramp-token-select-view>`;
-      case "OnRampFiatSelect":
-        return q`<w3m-onramp-fiat-select-view></w3m-onramp-fiat-select-view>`;
-      case "UpgradeEmailWallet":
-        return q`<w3m-upgrade-wallet-view></w3m-upgrade-wallet-view>`;
-      case "UpgradeToSmartAccount":
-        return q`<w3m-upgrade-to-smart-account-view></w3m-upgrade-to-smart-account-view>`;
-      case "UpdateEmailWallet":
-        return q`<w3m-update-email-wallet-view></w3m-update-email-wallet-view>`;
-      case "UpdateEmailPrimaryOtp":
-        return q`<w3m-update-email-primary-otp-view></w3m-update-email-primary-otp-view>`;
-      case "UpdateEmailSecondaryOtp":
-        return q`<w3m-update-email-secondary-otp-view></w3m-update-email-secondary-otp-view>`;
-      case "UnsupportedChain":
-        return q`<w3m-unsupported-chain-view></w3m-unsupported-chain-view>`;
-      case "Swap":
-        return q`<w3m-swap-view></w3m-swap-view>`;
-      case "SwapSelectToken":
-        return q`<w3m-swap-select-token-view></w3m-swap-select-token-view>`;
-      case "SwapPreview":
-        return q`<w3m-swap-preview-view></w3m-swap-preview-view>`;
-      case "WalletSend":
-        return q`<w3m-wallet-send-view></w3m-wallet-send-view>`;
-      case "WalletSendSelectToken":
-        return q`<w3m-wallet-send-select-token-view></w3m-wallet-send-select-token-view>`;
-      case "WalletSendPreview":
-        return q`<w3m-wallet-send-preview-view></w3m-wallet-send-preview-view>`;
-      case "WhatIsABuy":
-        return q`<w3m-what-is-a-buy-view></w3m-what-is-a-buy-view>`;
-      case "WalletReceive":
-        return q`<w3m-wallet-receive-view></w3m-wallet-receive-view>`;
-      case "WalletCompatibleNetworks":
-        return q`<w3m-wallet-compatible-networks-view></w3m-wallet-compatible-networks-view>`;
-      case "WhatIsAWallet":
-        return q`<w3m-what-is-a-wallet-view></w3m-what-is-a-wallet-view>`;
-      case "WhatIsANetwork":
-        return q`<w3m-what-is-a-network-view></w3m-what-is-a-network-view>`;
-      case "ConnectingFarcaster":
-        return q`<w3m-connecting-farcaster-view></w3m-connecting-farcaster-view>`;
-      case "RegisterAccountName":
-        return q`<w3m-register-account-name-view></w3m-register-account-name-view>`;
-      case "RegisterAccountNameSuccess":
-        return q`<w3m-register-account-name-success-view></w3m-register-account-name-success-view>`;
-      default:
-        return q`<w3m-connect-view></w3m-connect-view>`;
-    }
-  }
-  onViewChange(e) {
-    Jo.hide();
-    let n = Gf.VIEW_DIRECTION.Next;
-    const { history: r } = Ie.state;
-    r.length < this.prevHistoryLength && (n = Gf.VIEW_DIRECTION.Prev),
-      (this.prevHistoryLength = r.length),
-      (this.viewDirection = n),
-      setTimeout(() => {
-        this.view = e;
-      }, Gf.ANIMATION_DURATIONS.ViewTransition);
-  }
-  getWrapper() {
-    var e;
-    return (e = this.shadowRoot) == null ? void 0 : e.querySelector("div");
-  }
-};
-_6.styles = j3e;
-_E([le()], _6.prototype, "view", void 0);
-_E([le()], _6.prototype, "viewDirection", void 0);
-_6 = _E([Ce("w3m-router")], _6);
+// let _6 = class extends Se {
+//   constructor() {
+//     super(),
+//       (this.resizeObserver = void 0),
+//       (this.prevHeight = "0px"),
+//       (this.prevHistoryLength = 1),
+//       (this.unsubscribe = []),
+//       (this.view = Ie.state.view),
+//       (this.viewDirection = ""),
+//       this.unsubscribe.push(
+//         Ie.subscribeKey("view", (e) => this.onViewChange(e)),
+//       );
+//   }
+//   firstUpdated() {
+//     (this.resizeObserver = new ResizeObserver(([e]) => {
+//       const n = `${e == null ? void 0 : e.contentRect.height}px`;
+//       this.prevHeight !== "0px" &&
+//         (this.style.setProperty("--prev-height", this.prevHeight),
+//         this.style.setProperty("--new-height", n),
+//         (this.style.animation = "w3m-view-height 150ms forwards ease"),
+//         (this.style.height = "auto")),
+//         setTimeout(() => {
+//           (this.prevHeight = n), (this.style.animation = "unset");
+//         }, Gf.ANIMATION_DURATIONS.ModalHeight);
+//     })),
+//       this.resizeObserver.observe(this.getWrapper());
+//   }
+//   disconnectedCallback() {
+//     var e;
+//     (e = this.resizeObserver) == null || e.unobserve(this.getWrapper()),
+//       this.unsubscribe.forEach((n) => n());
+//   }
+//   render() {
+//     return q`<div class="w3m-router-container" view-direction="${this.viewDirection}">
+//       ${this.viewTemplate()}
+//     </div>`;
+//   }
+//   viewTemplate() {
+//     switch (this.view) {
+//       case "AccountSettings":
+//         return q`<w3m-account-settings-view></w3m-account-settings-view>`;
+//       case "Account":
+//         return q`<w3m-account-view></w3m-account-view>`;
+//       case "AllWallets":
+//         return q`<w3m-all-wallets-view></w3m-all-wallets-view>`;
+//       case "ApproveTransaction":
+//         return q`<w3m-approve-transaction-view></w3m-approve-transaction-view>`;
+//       case "BuyInProgress":
+//         return q`<w3m-buy-in-progress-view></w3m-buy-in-progress-view>`;
+//       case "ChooseAccountName":
+//         return q`<w3m-choose-account-name-view></w3m-choose-account-name-view>`;
+//       case "Connect":
+//         return q`<w3m-connect-view></w3m-connect-view>`;
+//       case "ConnectingWalletConnect":
+//         return q`<w3m-connecting-wc-view></w3m-connecting-wc-view>`;
+//       case "ConnectingExternal":
+//         return q`<w3m-connecting-external-view></w3m-connecting-external-view>`;
+//       case "ConnectingSiwe":
+//         return q`<w3m-connecting-siwe-view></w3m-connecting-siwe-view>`;
+//       case "ConnectWallets":
+//         return q`<w3m-connect-wallets-view></w3m-connect-wallets-view>`;
+//       case "ConnectSocials":
+//         return q`<w3m-connect-socials-view></w3m-connect-socials-view>`;
+//       case "ConnectingSocial":
+//         return q`<w3m-connecting-social-view></w3m-connecting-social-view>`;
+//       case "Downloads":
+//         return q`<w3m-downloads-view></w3m-downloads-view>`;
+//       case "EmailVerifyOtp":
+//         return q`<w3m-email-verify-otp-view></w3m-email-verify-otp-view>`;
+//       case "EmailVerifyDevice":
+//         return q`<w3m-email-verify-device-view></w3m-email-verify-device-view>`;
+//       case "GetWallet":
+//         return q`<w3m-get-wallet-view></w3m-get-wallet-view>`;
+//       case "Networks":
+//         return q`<w3m-networks-view></w3m-networks-view>`;
+//       case "SwitchNetwork":
+//         return q`<w3m-network-switch-view></w3m-network-switch-view>`;
+//       case "Profile":
+//         return q`<w3m-profile-view></w3m-profile-view>`;
+//       case "SelectAddresses":
+//         return q`<w3m-select-addresses-view></w3m-select-addresses-view>`;
+//       case "SwitchAddress":
+//         return q`<w3m-switch-address-view></w3m-switch-address-view>`;
+//       case "Transactions":
+//         return q`<w3m-transactions-view></w3m-transactions-view>`;
+//       case "OnRampProviders":
+//         return q`<w3m-onramp-providers-view></w3m-onramp-providers-view>`;
+//       case "OnRampActivity":
+//         return q`<w3m-onramp-activity-view></w3m-onramp-activity-view>`;
+//       case "OnRampTokenSelect":
+//         return q`<w3m-onramp-token-select-view></w3m-onramp-token-select-view>`;
+//       case "OnRampFiatSelect":
+//         return q`<w3m-onramp-fiat-select-view></w3m-onramp-fiat-select-view>`;
+//       case "UpgradeEmailWallet":
+//         return q`<w3m-upgrade-wallet-view></w3m-upgrade-wallet-view>`;
+//       case "UpgradeToSmartAccount":
+//         return q`<w3m-upgrade-to-smart-account-view></w3m-upgrade-to-smart-account-view>`;
+//       case "UpdateEmailWallet":
+//         return q`<w3m-update-email-wallet-view></w3m-update-email-wallet-view>`;
+//       case "UpdateEmailPrimaryOtp":
+//         return q`<w3m-update-email-primary-otp-view></w3m-update-email-primary-otp-view>`;
+//       case "UpdateEmailSecondaryOtp":
+//         return q`<w3m-update-email-secondary-otp-view></w3m-update-email-secondary-otp-view>`;
+//       case "UnsupportedChain":
+//         return q`<w3m-unsupported-chain-view></w3m-unsupported-chain-view>`;
+//       case "Swap":
+//         return q`<w3m-swap-view></w3m-swap-view>`;
+//       case "SwapSelectToken":
+//         return q`<w3m-swap-select-token-view></w3m-swap-select-token-view>`;
+//       case "SwapPreview":
+//         return q`<w3m-swap-preview-view></w3m-swap-preview-view>`;
+//       case "WalletSend":
+//         return q`<w3m-wallet-send-view></w3m-wallet-send-view>`;
+//       case "WalletSendSelectToken":
+//         return q`<w3m-wallet-send-select-token-view></w3m-wallet-send-select-token-view>`;
+//       case "WalletSendPreview":
+//         return q`<w3m-wallet-send-preview-view></w3m-wallet-send-preview-view>`;
+//       case "WhatIsABuy":
+//         return q`<w3m-what-is-a-buy-view></w3m-what-is-a-buy-view>`;
+//       case "WalletReceive":
+//         return q`<w3m-wallet-receive-view></w3m-wallet-receive-view>`;
+//       case "WalletCompatibleNetworks":
+//         return q`<w3m-wallet-compatible-networks-view></w3m-wallet-compatible-networks-view>`;
+//       case "WhatIsAWallet":
+//         return q`<w3m-what-is-a-wallet-view></w3m-what-is-a-wallet-view>`;
+//       case "WhatIsANetwork":
+//         return q`<w3m-what-is-a-network-view></w3m-what-is-a-network-view>`;
+//       case "ConnectingFarcaster":
+//         return q`<w3m-connecting-farcaster-view></w3m-connecting-farcaster-view>`;
+//       case "RegisterAccountName":
+//         return q`<w3m-register-account-name-view></w3m-register-account-name-view>`;
+//       case "RegisterAccountNameSuccess":
+//         return q`<w3m-register-account-name-success-view></w3m-register-account-name-success-view>`;
+//       default:
+//         return q`<w3m-connect-view></w3m-connect-view>`;
+//     }
+//   }
+//   onViewChange(e) {
+//     Jo.hide();
+//     let n = Gf.VIEW_DIRECTION.Next;
+//     const { history: r } = Ie.state;
+//     r.length < this.prevHistoryLength && (n = Gf.VIEW_DIRECTION.Prev),
+//       (this.prevHistoryLength = r.length),
+//       (this.viewDirection = n),
+//       setTimeout(() => {
+//         this.view = e;
+//       }, Gf.ANIMATION_DURATIONS.ViewTransition);
+//   }
+//   getWrapper() {
+//     var e;
+//     return (e = this.shadowRoot) == null ? void 0 : e.querySelector("div");
+//   }
+// };
+// _6.styles = j3e;
+// _E([le()], _6.prototype, "view", void 0);
+// _E([le()], _6.prototype, "viewDirection", void 0);
+// _6 = _E([Ce("w3m-router")], _6);
 const W3e = $e`
   :host > wui-flex {
     width: 100%;
@@ -64795,53 +64795,53 @@ var gF = function (t, e, n, r) {
       (s = t[a]) && (i = (o < 3 ? s(i) : o > 3 ? s(e, n, i) : s(e, n)) || i);
   return o > 3 && i && Object.defineProperty(e, n, i), i;
 };
-let ow = class extends Se {
-  constructor() {
-    super(),
-      (this.unsubscribe = []),
-      (this.connectors = ct.state.connectors),
-      this.unsubscribe.push(
-        ct.subscribeKey("connectors", (e) => (this.connectors = e)),
-      );
-  }
-  disconnectedCallback() {
-    this.unsubscribe.forEach((e) => e());
-  }
-  render() {
-    return q`
-      <wui-flex flexDirection="column" .padding=${["3xs", "s", "s", "s"]}>
-        <w3m-email-login-widget></w3m-email-login-widget>
-        <w3m-social-login-widget></w3m-social-login-widget>
-        ${this.walletListTemplate()}
-      </wui-flex>
-      <w3m-legal-footer></w3m-legal-footer>
-    `;
-  }
-  walletListTemplate() {
-    const e = this.connectors.find((n) => n.type === "AUTH");
-    return e != null && e.socials
-      ? e != null && e.showWallets
-        ? q`
-          <wui-flex flexDirection="column" gap="xs" .margin=${["xs", "0", "0", "0"]}>
-            <w3m-connector-list></w3m-connector-list>
-            <wui-flex class="all-wallets">
-              <w3m-all-wallets-widget></w3m-all-wallets-widget>
-            </wui-flex>
-          </wui-flex>
-        `
-        : q`<wui-list-button
-        @click=${this.onContinueWalletClick.bind(this)}
-        text="Continue with a wallet"
-      ></wui-list-button>`
-      : q`<w3m-wallet-login-list></w3m-wallet-login-list>`;
-  }
-  onContinueWalletClick() {
-    Ie.push("ConnectWallets");
-  }
-};
-ow.styles = K3e;
-gF([le()], ow.prototype, "connectors", void 0);
-ow = gF([Ce("w3m-connect-view")], ow);
+// let ow = class extends Se {
+//   constructor() {
+//     super(),
+//       (this.unsubscribe = []),
+//       (this.connectors = ct.state.connectors),
+//       this.unsubscribe.push(
+//         ct.subscribeKey("connectors", (e) => (this.connectors = e)),
+//       );
+//   }
+//   disconnectedCallback() {
+//     this.unsubscribe.forEach((e) => e());
+//   }
+//   render() {
+//     return q`
+//       <wui-flex flexDirection="column" .padding=${["3xs", "s", "s", "s"]}>
+//         <w3m-email-login-widget></w3m-email-login-widget>
+//         <w3m-social-login-widget></w3m-social-login-widget>
+//         ${this.walletListTemplate()}
+//       </wui-flex>
+//       <w3m-legal-footer></w3m-legal-footer>
+//     `;
+//   }
+//   walletListTemplate() {
+//     const e = this.connectors.find((n) => n.type === "AUTH");
+//     return e != null && e.socials
+//       ? e != null && e.showWallets
+//         ? q`
+//           <wui-flex flexDirection="column" gap="xs" .margin=${["xs", "0", "0", "0"]}>
+//             <w3m-connector-list></w3m-connector-list>
+//             <wui-flex class="all-wallets">
+//               <w3m-all-wallets-widget></w3m-all-wallets-widget>
+//             </wui-flex>
+//           </wui-flex>
+//         `
+//         : q`<wui-list-button
+//         @click=${this.onContinueWalletClick.bind(this)}
+//         text="Continue with a wallet"
+//       ></wui-list-button>`
+//       : q`<w3m-wallet-login-list></w3m-wallet-login-list>`;
+//   }
+//   onContinueWalletClick() {
+//     Ie.push("ConnectWallets");
+//   }
+// };
+// ow.styles = K3e;
+// gF([le()], ow.prototype, "connectors", void 0);
+// ow = gF([Ce("w3m-connect-view")], ow);
 const Mt = {
     WALLET_CONNECT_CONNECTOR_ID: "walletConnect",
     INJECTED_CONNECTOR_ID: "injected",
@@ -65025,168 +65025,168 @@ var dh = function (t, e, n, r) {
       (s = t[a]) && (i = (o < 3 ? s(i) : o > 3 ? s(e, n, i) : s(e, n)) || i);
   return o > 3 && i && Object.defineProperty(e, n, i), i;
 };
-class Wo extends Se {
-  constructor() {
-    var e, n, r, o;
-    super(),
-      (this.wallet = (e = Ie.state.data) == null ? void 0 : e.wallet),
-      (this.connector = (n = Ie.state.data) == null ? void 0 : n.connector),
-      (this.timeout = void 0),
-      (this.secondaryBtnLabel = "Try again"),
-      (this.secondaryBtnIcon = "refresh"),
-      (this.secondaryLabel = "Accept connection request in the wallet"),
-      (this.onConnect = void 0),
-      (this.onRender = void 0),
-      (this.onAutoConnect = void 0),
-      (this.isWalletConnect = !0),
-      (this.unsubscribe = []),
-      (this.imageSrc =
-        Kn.getWalletImage(this.wallet) ?? Kn.getConnectorImage(this.connector)),
-      (this.name =
-        ((r = this.wallet) == null ? void 0 : r.name) ??
-        ((o = this.connector) == null ? void 0 : o.name) ??
-        "Wallet"),
-      (this.isRetrying = !1),
-      (this.uri = It.state.wcUri),
-      (this.error = It.state.wcError),
-      (this.ready = !1),
-      (this.showRetry = !1),
-      (this.buffering = !1),
-      (this.isMobile = !1),
-      (this.onRetry = void 0),
-      this.unsubscribe.push(
-        It.subscribeKey("wcUri", (i) => {
-          var s;
-          (this.uri = i),
-            this.isRetrying &&
-              this.onRetry &&
-              ((this.isRetrying = !1),
-              (s = this.onConnect) == null || s.call(this));
-        }),
-        It.subscribeKey("wcError", (i) => (this.error = i)),
-        It.subscribeKey("buffering", (i) => (this.buffering = i)),
-      );
-  }
-  firstUpdated() {
-    var e;
-    (e = this.onAutoConnect) == null || e.call(this),
-      (this.showRetry = !this.onAutoConnect);
-  }
-  disconnectedCallback() {
-    this.unsubscribe.forEach((e) => e()), clearTimeout(this.timeout);
-  }
-  render() {
-    var r;
-    (r = this.onRender) == null || r.call(this), this.onShowRetry();
-    const e = this.error
-      ? "Connection can be declined if a previous request is still active"
-      : this.secondaryLabel;
-    let n = `Continue in ${this.name}`;
-    return (
-      this.buffering && (n = "Connecting..."),
-      this.error && (n = "Connection declined"),
-      q`
-      <wui-flex
-        data-error=${rt(this.error)}
-        data-retry=${this.showRetry}
-        flexDirection="column"
-        alignItems="center"
-        .padding=${["3xl", "xl", "xl", "xl"]}
-        gap="xl"
-      >
-        <wui-flex justifyContent="center" alignItems="center">
-          <wui-wallet-image size="lg" imageSrc=${rt(this.imageSrc)}></wui-wallet-image>
+// class Wo extends Se {
+//   constructor() {
+//     var e, n, r, o;
+//     super(),
+//       (this.wallet = (e = Ie.state.data) == null ? void 0 : e.wallet),
+//       (this.connector = (n = Ie.state.data) == null ? void 0 : n.connector),
+//       (this.timeout = void 0),
+//       (this.secondaryBtnLabel = "Try again"),
+//       (this.secondaryBtnIcon = "refresh"),
+//       (this.secondaryLabel = "Accept connection request in the wallet"),
+//       (this.onConnect = void 0),
+//       (this.onRender = void 0),
+//       (this.onAutoConnect = void 0),
+//       (this.isWalletConnect = !0),
+//       (this.unsubscribe = []),
+//       (this.imageSrc =
+//         Kn.getWalletImage(this.wallet) ?? Kn.getConnectorImage(this.connector)),
+//       (this.name =
+//         ((r = this.wallet) == null ? void 0 : r.name) ??
+//         ((o = this.connector) == null ? void 0 : o.name) ??
+//         "Wallet"),
+//       (this.isRetrying = !1),
+//       (this.uri = It.state.wcUri),
+//       (this.error = It.state.wcError),
+//       (this.ready = !1),
+//       (this.showRetry = !1),
+//       (this.buffering = !1),
+//       (this.isMobile = !1),
+//       (this.onRetry = void 0),
+//       this.unsubscribe.push(
+//         It.subscribeKey("wcUri", (i) => {
+//           var s;
+//           (this.uri = i),
+//             this.isRetrying &&
+//               this.onRetry &&
+//               ((this.isRetrying = !1),
+//               (s = this.onConnect) == null || s.call(this));
+//         }),
+//         It.subscribeKey("wcError", (i) => (this.error = i)),
+//         It.subscribeKey("buffering", (i) => (this.buffering = i)),
+//       );
+//   }
+//   firstUpdated() {
+//     var e;
+//     (e = this.onAutoConnect) == null || e.call(this),
+//       (this.showRetry = !this.onAutoConnect);
+//   }
+//   disconnectedCallback() {
+//     this.unsubscribe.forEach((e) => e()), clearTimeout(this.timeout);
+//   }
+//   render() {
+//     var r;
+//     (r = this.onRender) == null || r.call(this), this.onShowRetry();
+//     const e = this.error
+//       ? "Connection can be declined if a previous request is still active"
+//       : this.secondaryLabel;
+//     let n = `Continue in ${this.name}`;
+//     return (
+//       this.buffering && (n = "Connecting..."),
+//       this.error && (n = "Connection declined"),
+//       q`
+//       <wui-flex
+//         data-error=${rt(this.error)}
+//         data-retry=${this.showRetry}
+//         flexDirection="column"
+//         alignItems="center"
+//         .padding=${["3xl", "xl", "xl", "xl"]}
+//         gap="xl"
+//       >
+//         <wui-flex justifyContent="center" alignItems="center">
+//           <wui-wallet-image size="lg" imageSrc=${rt(this.imageSrc)}></wui-wallet-image>
 
-          ${this.error ? null : this.loaderTemplate()}
+//           ${this.error ? null : this.loaderTemplate()}
 
-          <wui-icon-box
-            backgroundColor="error-100"
-            background="opaque"
-            iconColor="error-100"
-            icon="close"
-            size="sm"
-            border
-            borderColor="wui-color-bg-125"
-          ></wui-icon-box>
-        </wui-flex>
+//           <wui-icon-box
+//             backgroundColor="error-100"
+//             background="opaque"
+//             iconColor="error-100"
+//             icon="close"
+//             size="sm"
+//             border
+//             borderColor="wui-color-bg-125"
+//           ></wui-icon-box>
+//         </wui-flex>
 
-        <wui-flex flexDirection="column" alignItems="center" gap="xs">
-          <wui-text variant="paragraph-500" color=${this.error ? "error-100" : "fg-100"}>
-            ${n}
-          </wui-text>
-          <wui-text align="center" variant="small-500" color="fg-200">${e}</wui-text>
-        </wui-flex>
+//         <wui-flex flexDirection="column" alignItems="center" gap="xs">
+//           <wui-text variant="paragraph-500" color=${this.error ? "error-100" : "fg-100"}>
+//             ${n}
+//           </wui-text>
+//           <wui-text align="center" variant="small-500" color="fg-200">${e}</wui-text>
+//         </wui-flex>
 
-        <wui-button
-          variant="accent"
-          size="md"
-          ?disabled=${!this.error && this.buffering}
-          @click=${this.onTryAgain.bind(this)}
-        >
-          <wui-icon color="inherit" slot="iconLeft" name=${this.secondaryBtnIcon}></wui-icon>
-          ${this.secondaryBtnLabel}
-        </wui-button>
-      </wui-flex>
+//         <wui-button
+//           variant="accent"
+//           size="md"
+//           ?disabled=${!this.error && this.buffering}
+//           @click=${this.onTryAgain.bind(this)}
+//         >
+//           <wui-icon color="inherit" slot="iconLeft" name=${this.secondaryBtnIcon}></wui-icon>
+//           ${this.secondaryBtnLabel}
+//         </wui-button>
+//       </wui-flex>
 
-      ${
-        this.isWalletConnect
-          ? q`
-            <wui-flex .padding=${["0", "xl", "xl", "xl"]} justifyContent="center">
-              <wui-link @click=${this.onCopyUri} color="fg-200">
-                <wui-icon size="xs" color="fg-200" slot="iconLeft" name="copy"></wui-icon>
-                Copy link
-              </wui-link>
-            </wui-flex>
-          `
-          : null
-      }
+//       ${
+//         this.isWalletConnect
+//           ? q`
+//             <wui-flex .padding=${["0", "xl", "xl", "xl"]} justifyContent="center">
+//               <wui-link @click=${this.onCopyUri} color="fg-200">
+//                 <wui-icon size="xs" color="fg-200" slot="iconLeft" name="copy"></wui-icon>
+//                 Copy link
+//               </wui-link>
+//             </wui-flex>
+//           `
+//           : null
+//       }
 
-      <w3m-mobile-download-links .wallet=${this.wallet}></w3m-mobile-download-links>
-    `
-    );
-  }
-  onShowRetry() {
-    var e;
-    if (this.error && !this.showRetry) {
-      this.showRetry = !0;
-      const n =
-        (e = this.shadowRoot) == null ? void 0 : e.querySelector("wui-button");
-      n == null ||
-        n.animate([{ opacity: 0 }, { opacity: 1 }], {
-          fill: "forwards",
-          easing: "ease",
-        });
-    }
-  }
-  onTryAgain() {
-    var e, n;
-    this.buffering ||
-      (It.setWcError(!1),
-      this.onRetry
-        ? ((this.isRetrying = !0), (e = this.onRetry) == null || e.call(this))
-        : (n = this.onConnect) == null || n.call(this));
-  }
-  loaderTemplate() {
-    const e = $r.state.themeVariables["--w3m-border-radius-master"],
-      n = e ? parseInt(e.replace("px", ""), 10) : 4;
-    return q`<wui-loading-thumbnail radius=${n * 9}></wui-loading-thumbnail>`;
-  }
-  onCopyUri() {
-    try {
-      this.uri && (Ze.copyToClopboard(this.uri), yt.showSuccess("Link copied"));
-    } catch {
-      yt.showError("Failed to copy");
-    }
-  }
-}
-Wo.styles = Z3e;
-dh([le()], Wo.prototype, "uri", void 0);
-dh([le()], Wo.prototype, "error", void 0);
-dh([le()], Wo.prototype, "ready", void 0);
-dh([le()], Wo.prototype, "showRetry", void 0);
-dh([le()], Wo.prototype, "buffering", void 0);
-dh([ie({ type: Boolean })], Wo.prototype, "isMobile", void 0);
-dh([ie()], Wo.prototype, "onRetry", void 0);
+//       <w3m-mobile-download-links .wallet=${this.wallet}></w3m-mobile-download-links>
+//     `
+//     );
+//   }
+//   onShowRetry() {
+//     var e;
+//     if (this.error && !this.showRetry) {
+//       this.showRetry = !0;
+//       const n =
+//         (e = this.shadowRoot) == null ? void 0 : e.querySelector("wui-button");
+//       n == null ||
+//         n.animate([{ opacity: 0 }, { opacity: 1 }], {
+//           fill: "forwards",
+//           easing: "ease",
+//         });
+//     }
+//   }
+//   onTryAgain() {
+//     var e, n;
+//     this.buffering ||
+//       (It.setWcError(!1),
+//       this.onRetry
+//         ? ((this.isRetrying = !0), (e = this.onRetry) == null || e.call(this))
+//         : (n = this.onConnect) == null || n.call(this));
+//   }
+//   loaderTemplate() {
+//     const e = $r.state.themeVariables["--w3m-border-radius-master"],
+//       n = e ? parseInt(e.replace("px", ""), 10) : 4;
+//     return q`<wui-loading-thumbnail radius=${n * 9}></wui-loading-thumbnail>`;
+//   }
+//   onCopyUri() {
+//     try {
+//       this.uri && (Ze.copyToClopboard(this.uri), yt.showSuccess("Link copied"));
+//     } catch {
+//       yt.showError("Failed to copy");
+//     }
+//   }
+// }
+// Wo.styles = Z3e;
+// dh([le()], Wo.prototype, "uri", void 0);
+// dh([le()], Wo.prototype, "error", void 0);
+// dh([le()], Wo.prototype, "ready", void 0);
+// dh([le()], Wo.prototype, "showRetry", void 0);
+// dh([le()], Wo.prototype, "buffering", void 0);
+// dh([ie({ type: Boolean })], Wo.prototype, "isMobile", void 0);
+// dh([ie()], Wo.prototype, "onRetry", void 0);
 var Q3e = function (t, e, n, r) {
   var o = arguments.length,
     i =
@@ -65199,50 +65199,50 @@ var Q3e = function (t, e, n, r) {
       (s = t[a]) && (i = (o < 3 ? s(i) : o > 3 ? s(e, n, i) : s(e, n)) || i);
   return o > 3 && i && Object.defineProperty(e, n, i), i;
 };
-let PM = class extends Wo {
-  constructor() {
-    if ((super(), !this.connector))
-      throw new Error("w3m-connecting-view: No connector provided");
-    it.sendEvent({
-      type: "track",
-      event: "SELECT_WALLET",
-      properties: {
-        name: this.connector.name ?? "Unknown",
-        platform: "browser",
-      },
-    }),
-      (this.onConnect = this.onConnectProxy.bind(this)),
-      (this.onAutoConnect = this.onConnectProxy.bind(this)),
-      (this.isWalletConnect = !1);
-  }
-  async onConnectProxy() {
-    try {
-      (this.error = !1),
-        this.connector &&
-          (this.connector.imageUrl &&
-            _n.setConnectedWalletImageUrl(this.connector.imageUrl),
-          (this.connector.id !== Mt.COINBASE_SDK_CONNECTOR_ID || !this.error) &&
-            (await It.connectExternal(this.connector),
-            et.state.isSiweEnabled ? Ie.push("ConnectingSiwe") : kt.close(),
-            it.sendEvent({
-              type: "track",
-              event: "CONNECT_SUCCESS",
-              properties: {
-                method: "browser",
-                name: this.connector.name || "Unknown",
-              },
-            })));
-    } catch (e) {
-      it.sendEvent({
-        type: "track",
-        event: "CONNECT_ERROR",
-        properties: { message: (e == null ? void 0 : e.message) ?? "Unknown" },
-      }),
-        (this.error = !0);
-    }
-  }
-};
-PM = Q3e([Ce("w3m-connecting-external-view")], PM);
+// let PM = class extends Wo {
+//   constructor() {
+//     if ((super(), !this.connector))
+//       throw new Error("w3m-connecting-view: No connector provided");
+//     it.sendEvent({
+//       type: "track",
+//       event: "SELECT_WALLET",
+//       properties: {
+//         name: this.connector.name ?? "Unknown",
+//         platform: "browser",
+//       },
+//     }),
+//       (this.onConnect = this.onConnectProxy.bind(this)),
+//       (this.onAutoConnect = this.onConnectProxy.bind(this)),
+//       (this.isWalletConnect = !1);
+//   }
+//   async onConnectProxy() {
+//     try {
+//       (this.error = !1),
+//         this.connector &&
+//           (this.connector.imageUrl &&
+//             _n.setConnectedWalletImageUrl(this.connector.imageUrl),
+//           (this.connector.id !== Mt.COINBASE_SDK_CONNECTOR_ID || !this.error) &&
+//             (await It.connectExternal(this.connector),
+//             et.state.isSiweEnabled ? Ie.push("ConnectingSiwe") : kt.close(),
+//             it.sendEvent({
+//               type: "track",
+//               event: "CONNECT_SUCCESS",
+//               properties: {
+//                 method: "browser",
+//                 name: this.connector.name || "Unknown",
+//               },
+//             })));
+//     } catch (e) {
+//       it.sendEvent({
+//         type: "track",
+//         event: "CONNECT_ERROR",
+//         properties: { message: (e == null ? void 0 : e.message) ?? "Unknown" },
+//       }),
+//         (this.error = !0);
+//     }
+//   }
+// };
+// PM = Q3e([Ce("w3m-connecting-external-view")], PM);
 var xE = function (t, e, n, r) {
   var o = arguments.length,
     i =
@@ -70925,53 +70925,53 @@ var Kwe = function (t, e, n, r) {
       (s = t[a]) && (i = (o < 3 ? s(i) : o > 3 ? s(e, n, i) : s(e, n)) || i);
   return o > 3 && i && Object.defineProperty(e, n, i), i;
 };
-let GM = class extends Wo {
-  constructor() {
-    if ((super(), !this.wallet))
-      throw new Error("w3m-connecting-wc-browser: No wallet provided");
-    (this.onConnect = this.onConnectProxy.bind(this)),
-      (this.onAutoConnect = this.onConnectProxy.bind(this)),
-      it.sendEvent({
-        type: "track",
-        event: "SELECT_WALLET",
-        properties: { name: this.wallet.name, platform: "browser" },
-      });
-  }
-  async onConnectProxy() {
-    var e;
-    try {
-      this.error = !1;
-      const { connectors: n } = ct.state,
-        r = n.find((i) => {
-          var s, a;
-          return (
-            i.type === "ANNOUNCED" &&
-            ((s = i.info) == null ? void 0 : s.rdns) ===
-              ((a = this.wallet) == null ? void 0 : a.rdns)
-          );
-        }),
-        o = n.find((i) => i.type === "INJECTED");
-      r ? await It.connectExternal(r) : o && (await It.connectExternal(o)),
-        kt.close(),
-        it.sendEvent({
-          type: "track",
-          event: "CONNECT_SUCCESS",
-          properties: {
-            method: "browser",
-            name: ((e = this.wallet) == null ? void 0 : e.name) || "Unknown",
-          },
-        });
-    } catch (n) {
-      it.sendEvent({
-        type: "track",
-        event: "CONNECT_ERROR",
-        properties: { message: (n == null ? void 0 : n.message) ?? "Unknown" },
-      }),
-        (this.error = !0);
-    }
-  }
-};
-GM = Kwe([Ce("w3m-connecting-wc-browser")], GM);
+// let GM = class extends Wo {
+//   constructor() {
+//     if ((super(), !this.wallet))
+//       throw new Error("w3m-connecting-wc-browser: No wallet provided");
+//     (this.onConnect = this.onConnectProxy.bind(this)),
+//       (this.onAutoConnect = this.onConnectProxy.bind(this)),
+//       it.sendEvent({
+//         type: "track",
+//         event: "SELECT_WALLET",
+//         properties: { name: this.wallet.name, platform: "browser" },
+//       });
+//   }
+//   async onConnectProxy() {
+//     var e;
+//     try {
+//       this.error = !1;
+//       const { connectors: n } = ct.state,
+//         r = n.find((i) => {
+//           var s, a;
+//           return (
+//             i.type === "ANNOUNCED" &&
+//             ((s = i.info) == null ? void 0 : s.rdns) ===
+//               ((a = this.wallet) == null ? void 0 : a.rdns)
+//           );
+//         }),
+//         o = n.find((i) => i.type === "INJECTED");
+//       r ? await It.connectExternal(r) : o && (await It.connectExternal(o)),
+//         kt.close(),
+//         it.sendEvent({
+//           type: "track",
+//           event: "CONNECT_SUCCESS",
+//           properties: {
+//             method: "browser",
+//             name: ((e = this.wallet) == null ? void 0 : e.name) || "Unknown",
+//           },
+//         });
+//     } catch (n) {
+//       it.sendEvent({
+//         type: "track",
+//         event: "CONNECT_ERROR",
+//         properties: { message: (n == null ? void 0 : n.message) ?? "Unknown" },
+//       }),
+//         (this.error = !0);
+//     }
+//   }
+// };
+// GM = Kwe([Ce("w3m-connecting-wc-browser")], GM);
 var Ywe = function (t, e, n, r) {
   var o = arguments.length,
     i =
@@ -70984,40 +70984,40 @@ var Ywe = function (t, e, n, r) {
       (s = t[a]) && (i = (o < 3 ? s(i) : o > 3 ? s(e, n, i) : s(e, n)) || i);
   return o > 3 && i && Object.defineProperty(e, n, i), i;
 };
-let KM = class extends Wo {
-  constructor() {
-    if ((super(), !this.wallet))
-      throw new Error("w3m-connecting-wc-desktop: No wallet provided");
-    (this.onConnect = this.onConnectProxy.bind(this)),
-      (this.onRender = this.onRenderProxy.bind(this)),
-      it.sendEvent({
-        type: "track",
-        event: "SELECT_WALLET",
-        properties: { name: this.wallet.name, platform: "desktop" },
-      });
-  }
-  onRenderProxy() {
-    var e;
-    !this.ready &&
-      this.uri &&
-      ((this.ready = !0), (e = this.onConnect) == null || e.call(this));
-  }
-  onConnectProxy() {
-    var e;
-    if ((e = this.wallet) != null && e.desktop_link && this.uri)
-      try {
-        this.error = !1;
-        const { desktop_link: n, name: r } = this.wallet,
-          { redirect: o, href: i } = Ze.formatNativeUrl(n, this.uri);
-        It.setWcLinking({ name: r, href: i }),
-          It.setRecentWallet(this.wallet),
-          Ze.openHref(o, "_blank");
-      } catch {
-        this.error = !0;
-      }
-  }
-};
-KM = Ywe([Ce("w3m-connecting-wc-desktop")], KM);
+// let KM = class extends Wo {
+//   constructor() {
+//     if ((super(), !this.wallet))
+//       throw new Error("w3m-connecting-wc-desktop: No wallet provided");
+//     (this.onConnect = this.onConnectProxy.bind(this)),
+//       (this.onRender = this.onRenderProxy.bind(this)),
+//       it.sendEvent({
+//         type: "track",
+//         event: "SELECT_WALLET",
+//         properties: { name: this.wallet.name, platform: "desktop" },
+//       });
+//   }
+//   onRenderProxy() {
+//     var e;
+//     !this.ready &&
+//       this.uri &&
+//       ((this.ready = !0), (e = this.onConnect) == null || e.call(this));
+//   }
+//   onConnectProxy() {
+//     var e;
+//     if ((e = this.wallet) != null && e.desktop_link && this.uri)
+//       try {
+//         this.error = !1;
+//         const { desktop_link: n, name: r } = this.wallet,
+//           { redirect: o, href: i } = Ze.formatNativeUrl(n, this.uri);
+//         It.setWcLinking({ name: r, href: i }),
+//           It.setRecentWallet(this.wallet),
+//           Ze.openHref(o, "_blank");
+//       } catch {
+//         this.error = !0;
+//       }
+//   }
+// };
+// KM = Ywe([Ce("w3m-connecting-wc-desktop")], KM);
 var Zwe = function (t, e, n, r) {
   var o = arguments.length,
     i =
@@ -71030,61 +71030,61 @@ var Zwe = function (t, e, n, r) {
       (s = t[a]) && (i = (o < 3 ? s(i) : o > 3 ? s(e, n, i) : s(e, n)) || i);
   return o > 3 && i && Object.defineProperty(e, n, i), i;
 };
-let YM = class extends Wo {
-  constructor() {
-    if ((super(), !this.wallet))
-      throw new Error("w3m-connecting-wc-mobile: No wallet provided");
-    (this.onConnect = this.onConnectProxy.bind(this)),
-      (this.onRender = this.onRenderProxy.bind(this)),
-      document.addEventListener(
-        "visibilitychange",
-        this.onBuffering.bind(this),
-      ),
-      it.sendEvent({
-        type: "track",
-        event: "SELECT_WALLET",
-        properties: { name: this.wallet.name, platform: "mobile" },
-      });
-  }
-  disconnectedCallback() {
-    super.disconnectedCallback(),
-      document.removeEventListener(
-        "visibilitychange",
-        this.onBuffering.bind(this),
-      );
-  }
-  onRenderProxy() {
-    var e;
-    !this.ready &&
-      this.uri &&
-      ((this.ready = !0), (e = this.onConnect) == null || e.call(this));
-  }
-  onConnectProxy() {
-    var e;
-    if ((e = this.wallet) != null && e.mobile_link && this.uri)
-      try {
-        this.error = !1;
-        const { mobile_link: n, name: r } = this.wallet,
-          { redirect: o, href: i } = Ze.formatNativeUrl(n, this.uri);
-        It.setWcLinking({ name: r, href: i }),
-          It.setRecentWallet(this.wallet),
-          Ze.openHref(o, "_self");
-      } catch {
-        this.error = !0;
-      }
-  }
-  onBuffering() {
-    const e = Ze.isIos();
-    (document == null ? void 0 : document.visibilityState) === "visible" &&
-      !this.error &&
-      e &&
-      (It.setBuffering(!0),
-      setTimeout(() => {
-        It.setBuffering(!1);
-      }, 5e3));
-  }
-};
-YM = Zwe([Ce("w3m-connecting-wc-mobile")], YM);
+// let YM = class extends Wo {
+//   constructor() {
+//     if ((super(), !this.wallet))
+//       throw new Error("w3m-connecting-wc-mobile: No wallet provided");
+//     (this.onConnect = this.onConnectProxy.bind(this)),
+//       (this.onRender = this.onRenderProxy.bind(this)),
+//       document.addEventListener(
+//         "visibilitychange",
+//         this.onBuffering.bind(this),
+//       ),
+//       it.sendEvent({
+//         type: "track",
+//         event: "SELECT_WALLET",
+//         properties: { name: this.wallet.name, platform: "mobile" },
+//       });
+//   }
+//   disconnectedCallback() {
+//     super.disconnectedCallback(),
+//       document.removeEventListener(
+//         "visibilitychange",
+//         this.onBuffering.bind(this),
+//       );
+//   }
+//   onRenderProxy() {
+//     var e;
+//     !this.ready &&
+//       this.uri &&
+//       ((this.ready = !0), (e = this.onConnect) == null || e.call(this));
+//   }
+//   onConnectProxy() {
+//     var e;
+//     if ((e = this.wallet) != null && e.mobile_link && this.uri)
+//       try {
+//         this.error = !1;
+//         const { mobile_link: n, name: r } = this.wallet,
+//           { redirect: o, href: i } = Ze.formatNativeUrl(n, this.uri);
+//         It.setWcLinking({ name: r, href: i }),
+//           It.setRecentWallet(this.wallet),
+//           Ze.openHref(o, "_self");
+//       } catch {
+//         this.error = !0;
+//       }
+//   }
+//   onBuffering() {
+//     const e = Ze.isIos();
+//     (document == null ? void 0 : document.visibilityState) === "visible" &&
+//       !this.error &&
+//       e &&
+//       (It.setBuffering(!0),
+//       setTimeout(() => {
+//         It.setBuffering(!1);
+//       }, 5e3));
+//   }
+// };
+// YM = Zwe([Ce("w3m-connecting-wc-mobile")], YM);
 const Qwe = $e`
   @keyframes fadein {
     from {
@@ -71121,89 +71121,89 @@ var Jwe = function (t, e, n, r) {
       (s = t[a]) && (i = (o < 3 ? s(i) : o > 3 ? s(e, n, i) : s(e, n)) || i);
   return o > 3 && i && Object.defineProperty(e, n, i), i;
 };
-let C7 = class extends Wo {
-  constructor() {
-    var e;
-    super(),
-      (this.forceUpdate = () => {
-        this.requestUpdate();
-      }),
-      window.addEventListener("resize", this.forceUpdate),
-      it.sendEvent({
-        type: "track",
-        event: "SELECT_WALLET",
-        properties: {
-          name:
-            ((e = this.wallet) == null ? void 0 : e.name) ?? "WalletConnect",
-          platform: "qrcode",
-        },
-      });
-  }
-  disconnectedCallback() {
-    super.disconnectedCallback(),
-      window.removeEventListener("resize", this.forceUpdate);
-  }
-  render() {
-    return (
-      this.onRenderProxy(),
-      q`
-      <wui-flex
-        flexDirection="column"
-        alignItems="center"
-        .padding=${["0", "xl", "xl", "xl"]}
-        gap="xl"
-      >
-        <wui-shimmer borderRadius="l" width="100%"> ${this.qrCodeTemplate()} </wui-shimmer>
+// let C7 = class extends Wo {
+//   constructor() {
+//     var e;
+//     super(),
+//       (this.forceUpdate = () => {
+//         this.requestUpdate();
+//       }),
+//       window.addEventListener("resize", this.forceUpdate),
+//       it.sendEvent({
+//         type: "track",
+//         event: "SELECT_WALLET",
+//         properties: {
+//           name:
+//             ((e = this.wallet) == null ? void 0 : e.name) ?? "WalletConnect",
+//           platform: "qrcode",
+//         },
+//       });
+//   }
+//   disconnectedCallback() {
+//     super.disconnectedCallback(),
+//       window.removeEventListener("resize", this.forceUpdate);
+//   }
+//   render() {
+//     return (
+//       this.onRenderProxy(),
+//       q`
+//       <wui-flex
+//         flexDirection="column"
+//         alignItems="center"
+//         .padding=${["0", "xl", "xl", "xl"]}
+//         gap="xl"
+//       >
+//         <wui-shimmer borderRadius="l" width="100%"> ${this.qrCodeTemplate()} </wui-shimmer>
 
-        <wui-text variant="paragraph-500" color="fg-100">
-          Scan this QR Code with your phone
-        </wui-text>
-        ${this.copyTemplate()}
-      </wui-flex>
+//         <wui-text variant="paragraph-500" color="fg-100">
+//           Scan this QR Code with your phone
+//         </wui-text>
+//         ${this.copyTemplate()}
+//       </wui-flex>
 
-      <w3m-mobile-download-links .wallet=${this.wallet}></w3m-mobile-download-links>
-    `
-    );
-  }
-  onRenderProxy() {
-    !this.ready &&
-      this.uri &&
-      (this.timeout = setTimeout(() => {
-        this.ready = !0;
-      }, 0));
-  }
-  qrCodeTemplate() {
-    if (!this.uri || !this.ready) return null;
-    const e = this.getBoundingClientRect().width - 40,
-      n = this.wallet ? this.wallet.name : void 0;
-    return (
-      It.setWcLinking(void 0),
-      It.setRecentWallet(this.wallet),
-      q` <wui-qr-code
-      size=${e}
-      theme=${$r.state.themeMode}
-      uri=${this.uri}
-      imageSrc=${rt(Kn.getWalletImage(this.wallet))}
-      alt=${rt(n)}
-      data-testid="wui-qr-code"
-    ></wui-qr-code>`
-    );
-  }
-  copyTemplate() {
-    const e = !this.uri || !this.ready;
-    return q`<wui-link
-      .disabled=${e}
-      @click=${this.onCopyUri}
-      color="fg-200"
-      data-testid="copy-wc2-uri"
-    >
-      <wui-icon size="xs" color="fg-200" slot="iconLeft" name="copy"></wui-icon>
-      Copy link
-    </wui-link>`;
-  }
-};
-C7.styles = Qwe;
-C7 = Jwe([Ce("w3m-connecting-wc-qrcode")], C7);
+//       <w3m-mobile-download-links .wallet=${this.wallet}></w3m-mobile-download-links>
+//     `
+//     );
+//   }
+//   onRenderProxy() {
+//     !this.ready &&
+//       this.uri &&
+//       (this.timeout = setTimeout(() => {
+//         this.ready = !0;
+//       }, 0));
+//   }
+//   qrCodeTemplate() {
+//     if (!this.uri || !this.ready) return null;
+//     const e = this.getBoundingClientRect().width - 40,
+//       n = this.wallet ? this.wallet.name : void 0;
+//     return (
+//       It.setWcLinking(void 0),
+//       It.setRecentWallet(this.wallet),
+//       q` <wui-qr-code
+//       size=${e}
+//       theme=${$r.state.themeMode}
+//       uri=${this.uri}
+//       imageSrc=${rt(Kn.getWalletImage(this.wallet))}
+//       alt=${rt(n)}
+//       data-testid="wui-qr-code"
+//     ></wui-qr-code>`
+//     );
+//   }
+//   copyTemplate() {
+//     const e = !this.uri || !this.ready;
+//     return q`<wui-link
+//       .disabled=${e}
+//       @click=${this.onCopyUri}
+//       color="fg-200"
+//       data-testid="copy-wc2-uri"
+//     >
+//       <wui-icon size="xs" color="fg-200" slot="iconLeft" name="copy"></wui-icon>
+//       Copy link
+//     </wui-link>`;
+//   }
+// };
+// C7.styles = Qwe;
+// C7 = Jwe([Ce("w3m-connecting-wc-qrcode")], C7);
 var Xwe = function (t, e, n, r) {
   var o = arguments.length,
     i =
@@ -71264,36 +71264,36 @@ var eve = function (t, e, n, r) {
       (s = t[a]) && (i = (o < 3 ? s(i) : o > 3 ? s(e, n, i) : s(e, n)) || i);
   return o > 3 && i && Object.defineProperty(e, n, i), i;
 };
-let QM = class extends Wo {
-  constructor() {
-    if ((super(), !this.wallet))
-      throw new Error("w3m-connecting-wc-web: No wallet provided");
-    (this.onConnect = this.onConnectProxy.bind(this)),
-      (this.secondaryBtnLabel = "Open"),
-      (this.secondaryLabel = "Open and continue in a new browser tab"),
-      (this.secondaryBtnIcon = "externalLink"),
-      it.sendEvent({
-        type: "track",
-        event: "SELECT_WALLET",
-        properties: { name: this.wallet.name, platform: "web" },
-      });
-  }
-  onConnectProxy() {
-    var e;
-    if ((e = this.wallet) != null && e.webapp_link && this.uri)
-      try {
-        this.error = !1;
-        const { webapp_link: n, name: r } = this.wallet,
-          { redirect: o, href: i } = Ze.formatUniversalUrl(n, this.uri);
-        It.setWcLinking({ name: r, href: i }),
-          It.setRecentWallet(this.wallet),
-          Ze.openHref(o, "_blank");
-      } catch {
-        this.error = !0;
-      }
-  }
-};
-QM = eve([Ce("w3m-connecting-wc-web")], QM);
+// let QM = class extends Wo {
+//   constructor() {
+//     if ((super(), !this.wallet))
+//       throw new Error("w3m-connecting-wc-web: No wallet provided");
+//     (this.onConnect = this.onConnectProxy.bind(this)),
+//       (this.secondaryBtnLabel = "Open"),
+//       (this.secondaryLabel = "Open and continue in a new browser tab"),
+//       (this.secondaryBtnIcon = "externalLink"),
+//       it.sendEvent({
+//         type: "track",
+//         event: "SELECT_WALLET",
+//         properties: { name: this.wallet.name, platform: "web" },
+//       });
+//   }
+//   onConnectProxy() {
+//     var e;
+//     if ((e = this.wallet) != null && e.webapp_link && this.uri)
+//       try {
+//         this.error = !1;
+//         const { webapp_link: n, name: r } = this.wallet,
+//           { redirect: o, href: i } = Ze.formatUniversalUrl(n, this.uri);
+//         It.setWcLinking({ name: r, href: i }),
+//           It.setRecentWallet(this.wallet),
+//           Ze.openHref(o, "_blank");
+//       } catch {
+//         this.error = !0;
+//       }
+//   }
+// };
+// QM = eve([Ce("w3m-connecting-wc-web")], QM);
 const tve = $e`
   :host {
     width: 100%;
@@ -72030,155 +72030,155 @@ function v9() {
     ConnectingFarcaster: "Farcaster",
   };
 }
-let Ha = class extends Se {
-  constructor() {
-    super(),
-      (this.unsubscribe = []),
-      (this.heading = v9()[Ie.state.view]),
-      (this.buffering = !1),
-      (this.showBack = !1),
-      (this.isSiweEnabled = et.state.isSiweEnabled),
-      (this.prevHistoryLength = 1),
-      (this.view = Ie.state.view),
-      (this.viewDirection = ""),
-      (this.headerText = v9()[Ie.state.view]),
-      this.unsubscribe.push(
-        Ie.subscribeKey("view", (e) => {
-          setTimeout(() => {
-            (this.view = e), (this.headerText = v9()[e]);
-          }, Gf.ANIMATION_DURATIONS.HeaderText),
-            this.onViewChange(),
-            this.onHistoryChange();
-        }),
-        It.subscribeKey("buffering", (e) => (this.buffering = e)),
-      );
-  }
-  disconnectCallback() {
-    this.unsubscribe.forEach((e) => e());
-  }
-  render() {
-    return q`
-      <wui-flex .padding=${this.getPadding()} justifyContent="space-between" alignItems="center">
-        ${this.dynamicButtonTemplate()} ${this.titleTemplate()} ${this.closeButtonTemplate()}
-      </wui-flex>
-    `;
-  }
-  onWalletHelp() {
-    it.sendEvent({ type: "track", event: "CLICK_WALLET_HELP" }),
-      Ie.push("WhatIsAWallet");
-  }
-  async onClose() {
-    if (this.isSiweEnabled) {
-      const { SIWEController: e } = await Cr(async () => {
-        const { SIWEController: n } = await import("./index-9d2NYbHy.js");
-        return { SIWEController: n };
-      }, []);
-      e.state.status === "success" ? kt.close() : Ie.popTransactionStack(!0);
-    } else kt.close();
-  }
-  closeButtonTemplate() {
-    const e = Ie.state.view === "ConnectingSiwe";
-    return this.isSiweEnabled && e
-      ? q`<div style="width:40px" />`
-      : q`
-      <wui-icon-link
-        ?disabled=${this.buffering}
-        icon="close"
-        @click=${this.onClose.bind(this)}
-        data-testid="w3m-header-close"
-      ></wui-icon-link>
-    `;
-  }
-  titleTemplate() {
-    const e = ave.includes(this.view);
-    return q`
-      <wui-flex
-        view-direction="${this.viewDirection}"
-        class="w3m-header-title"
-        alignItems="center"
-        gap="xs"
-      >
-        <wui-text variant="paragraph-700" color="fg-100">${this.headerText}</wui-text>
-        ${e ? q`<wui-tag variant="main">Beta</wui-tag>` : null}
-      </wui-flex>
-    `;
-  }
-  dynamicButtonTemplate() {
-    const { view: e } = Ie.state,
-      n = e === "Connect",
-      s =
-        e === "ApproveTransaction" ||
-        e === "UpgradeToSmartAccount" ||
-        e === "ConnectingSiwe";
-    return this.showBack && !s
-      ? q`<wui-icon-link
-        id="dynamic"
-        icon="chevronLeft"
-        ?disabled=${this.buffering}
-        @click=${this.onGoBack.bind(this)}
-      ></wui-icon-link>`
-      : q`<wui-icon-link
-      data-hidden=${!n}
-      id="dynamic"
-      icon="helpCircle"
-      @click=${this.onWalletHelp.bind(this)}
-    ></wui-icon-link>`;
-  }
-  getPadding() {
-    return this.heading ? ["l", "2l", "l", "2l"] : ["0", "2l", "0", "2l"];
-  }
-  onViewChange() {
-    const { history: e } = Ie.state;
-    let n = Gf.VIEW_DIRECTION.Next;
-    e.length < this.prevHistoryLength && (n = Gf.VIEW_DIRECTION.Prev),
-      (this.prevHistoryLength = e.length),
-      (this.viewDirection = n);
-  }
-  async onHistoryChange() {
-    var r;
-    const { history: e } = Ie.state,
-      n = (r = this.shadowRoot) == null ? void 0 : r.querySelector("#dynamic");
-    e.length > 1 && !this.showBack && n
-      ? (await n.animate([{ opacity: 1 }, { opacity: 0 }], {
-          duration: 200,
-          fill: "forwards",
-          easing: "ease",
-        }).finished,
-        (this.showBack = !0),
-        n.animate([{ opacity: 0 }, { opacity: 1 }], {
-          duration: 200,
-          fill: "forwards",
-          easing: "ease",
-        }))
-      : e.length <= 1 &&
-        this.showBack &&
-        n &&
-        (await n.animate([{ opacity: 1 }, { opacity: 0 }], {
-          duration: 200,
-          fill: "forwards",
-          easing: "ease",
-        }).finished,
-        (this.showBack = !1),
-        n.animate([{ opacity: 0 }, { opacity: 1 }], {
-          duration: 200,
-          fill: "forwards",
-          easing: "ease",
-        }));
-  }
-  onGoBack() {
-    Ie.goBack();
-  }
-};
-Ha.styles = [sve];
-O0([le()], Ha.prototype, "heading", void 0);
-O0([le()], Ha.prototype, "buffering", void 0);
-O0([le()], Ha.prototype, "showBack", void 0);
-O0([le()], Ha.prototype, "isSiweEnabled", void 0);
-O0([le()], Ha.prototype, "prevHistoryLength", void 0);
-O0([le()], Ha.prototype, "view", void 0);
-O0([le()], Ha.prototype, "viewDirection", void 0);
-O0([le()], Ha.prototype, "headerText", void 0);
-Ha = O0([Ce("w3m-header")], Ha);
+// let Ha = class extends Se {
+//   constructor() {
+//     super(),
+//       (this.unsubscribe = []),
+//       (this.heading = v9()[Ie.state.view]),
+//       (this.buffering = !1),
+//       (this.showBack = !1),
+//       (this.isSiweEnabled = et.state.isSiweEnabled),
+//       (this.prevHistoryLength = 1),
+//       (this.view = Ie.state.view),
+//       (this.viewDirection = ""),
+//       (this.headerText = v9()[Ie.state.view]),
+//       this.unsubscribe.push(
+//         Ie.subscribeKey("view", (e) => {
+//           setTimeout(() => {
+//             (this.view = e), (this.headerText = v9()[e]);
+//           }, Gf.ANIMATION_DURATIONS.HeaderText),
+//             this.onViewChange(),
+//             this.onHistoryChange();
+//         }),
+//         It.subscribeKey("buffering", (e) => (this.buffering = e)),
+//       );
+//   }
+//   disconnectCallback() {
+//     this.unsubscribe.forEach((e) => e());
+//   }
+//   render() {
+//     return q`
+//       <wui-flex .padding=${this.getPadding()} justifyContent="space-between" alignItems="center">
+//         ${this.dynamicButtonTemplate()} ${this.titleTemplate()} ${this.closeButtonTemplate()}
+//       </wui-flex>
+//     `;
+//   }
+//   onWalletHelp() {
+//     it.sendEvent({ type: "track", event: "CLICK_WALLET_HELP" }),
+//       Ie.push("WhatIsAWallet");
+//   }
+//   async onClose() {
+//     if (this.isSiweEnabled) {
+//       const { SIWEController: e } = await Cr(async () => {
+//         const { SIWEController: n } = await import("./index-9d2NYbHy.js");
+//         return { SIWEController: n };
+//       }, []);
+//       e.state.status === "success" ? kt.close() : Ie.popTransactionStack(!0);
+//     } else kt.close();
+//   }
+//   closeButtonTemplate() {
+//     const e = Ie.state.view === "ConnectingSiwe";
+//     return this.isSiweEnabled && e
+//       ? q`<div style="width:40px" />`
+//       : q`
+//       <wui-icon-link
+//         ?disabled=${this.buffering}
+//         icon="close"
+//         @click=${this.onClose.bind(this)}
+//         data-testid="w3m-header-close"
+//       ></wui-icon-link>
+//     `;
+//   }
+//   titleTemplate() {
+//     const e = ave.includes(this.view);
+//     return q`
+//       <wui-flex
+//         view-direction="${this.viewDirection}"
+//         class="w3m-header-title"
+//         alignItems="center"
+//         gap="xs"
+//       >
+//         <wui-text variant="paragraph-700" color="fg-100">${this.headerText}</wui-text>
+//         ${e ? q`<wui-tag variant="main">Beta</wui-tag>` : null}
+//       </wui-flex>
+//     `;
+//   }
+//   dynamicButtonTemplate() {
+//     const { view: e } = Ie.state,
+//       n = e === "Connect",
+//       s =
+//         e === "ApproveTransaction" ||
+//         e === "UpgradeToSmartAccount" ||
+//         e === "ConnectingSiwe";
+//     return this.showBack && !s
+//       ? q`<wui-icon-link
+//         id="dynamic"
+//         icon="chevronLeft"
+//         ?disabled=${this.buffering}
+//         @click=${this.onGoBack.bind(this)}
+//       ></wui-icon-link>`
+//       : q`<wui-icon-link
+//       data-hidden=${!n}
+//       id="dynamic"
+//       icon="helpCircle"
+//       @click=${this.onWalletHelp.bind(this)}
+//     ></wui-icon-link>`;
+//   }
+//   getPadding() {
+//     return this.heading ? ["l", "2l", "l", "2l"] : ["0", "2l", "0", "2l"];
+//   }
+//   onViewChange() {
+//     const { history: e } = Ie.state;
+//     let n = Gf.VIEW_DIRECTION.Next;
+//     e.length < this.prevHistoryLength && (n = Gf.VIEW_DIRECTION.Prev),
+//       (this.prevHistoryLength = e.length),
+//       (this.viewDirection = n);
+//   }
+//   async onHistoryChange() {
+//     var r;
+//     const { history: e } = Ie.state,
+//       n = (r = this.shadowRoot) == null ? void 0 : r.querySelector("#dynamic");
+//     e.length > 1 && !this.showBack && n
+//       ? (await n.animate([{ opacity: 1 }, { opacity: 0 }], {
+//           duration: 200,
+//           fill: "forwards",
+//           easing: "ease",
+//         }).finished,
+//         (this.showBack = !0),
+//         n.animate([{ opacity: 0 }, { opacity: 1 }], {
+//           duration: 200,
+//           fill: "forwards",
+//           easing: "ease",
+//         }))
+//       : e.length <= 1 &&
+//         this.showBack &&
+//         n &&
+//         (await n.animate([{ opacity: 1 }, { opacity: 0 }], {
+//           duration: 200,
+//           fill: "forwards",
+//           easing: "ease",
+//         }).finished,
+//         (this.showBack = !1),
+//         n.animate([{ opacity: 0 }, { opacity: 1 }], {
+//           duration: 200,
+//           fill: "forwards",
+//           easing: "ease",
+//         }));
+//   }
+//   onGoBack() {
+//     Ie.goBack();
+//   }
+// };
+// Ha.styles = [sve];
+// O0([le()], Ha.prototype, "heading", void 0);
+// O0([le()], Ha.prototype, "buffering", void 0);
+// O0([le()], Ha.prototype, "showBack", void 0);
+// O0([le()], Ha.prototype, "isSiweEnabled", void 0);
+// O0([le()], Ha.prototype, "prevHistoryLength", void 0);
+// O0([le()], Ha.prototype, "view", void 0);
+// O0([le()], Ha.prototype, "viewDirection", void 0);
+// O0([le()], Ha.prototype, "headerText", void 0);
+// Ha = O0([Ce("w3m-header")], Ha);
 var CF = function (t, e, n, r) {
   var o = arguments.length,
     i =
@@ -75446,63 +75446,63 @@ var NF = function (t, e, n, r) {
       (s = t[a]) && (i = (o < 3 ? s(i) : o > 3 ? s(e, n, i) : s(e, n)) || i);
   return o > 3 && i && Object.defineProperty(e, n, i), i;
 };
-let N7 = class extends Se {
-  constructor() {
-    super(),
-      (this.unsubscribe = []),
-      (this.connectors = ct.state.connectors),
-      this.unsubscribe.push(
-        ct.subscribeKey("connectors", (e) => (this.connectors = e)),
-      );
-  }
-  disconnectedCallback() {
-    this.unsubscribe.forEach((e) => e());
-  }
-  render() {
-    var n;
-    const e = this.connectors.filter((r) => r.type === "INJECTED");
-    return !(e != null && e.length) ||
-      (e.length === 1 &&
-        ((n = e[0]) == null ? void 0 : n.name) === "Browser Wallet" &&
-        !Ze.isMobile())
-      ? ((this.style.cssText = "display: none"), null)
-      : q`
-      <wui-flex flexDirection="column" gap="xs">
-        ${e.map((r) => {
-          var o, i;
-          return !Ze.isMobile() && r.name === "Browser Wallet"
-            ? null
-            : It.checkInstalled()
-              ? (o = r.info) != null &&
-                o.rdns &&
-                xt.state.excludedRDNS &&
-                xt.state.excludedRDNS.includes(
-                  (i = r == null ? void 0 : r.info) == null ? void 0 : i.rdns,
-                )
-                ? null
-                : q`
-            <wui-list-wallet
-              imageSrc=${rt(Kn.getConnectorImage(r))}
-              .installed=${!0}
-              name=${r.name ?? "Unknown"}
-              tagVariant="success"
-              tagLabel="installed"
-              data-testid=${`wallet-selector-${r.id}`}
-              @click=${() => this.onConnector(r)}
-            >
-            </wui-list-wallet>
-          `
-              : ((this.style.cssText = "display: none"), null);
-        })}
-      </wui-flex>
-    `;
-  }
-  onConnector(e) {
-    Ie.push("ConnectingExternal", { connector: e });
-  }
-};
-NF([le()], N7.prototype, "connectors", void 0);
-N7 = NF([Ce("w3m-connect-injected-widget")], N7);
+// let N7 = class extends Se {
+//   constructor() {
+//     super(),
+//       (this.unsubscribe = []),
+//       (this.connectors = ct.state.connectors),
+//       this.unsubscribe.push(
+//         ct.subscribeKey("connectors", (e) => (this.connectors = e)),
+//       );
+//   }
+//   disconnectedCallback() {
+//     this.unsubscribe.forEach((e) => e());
+//   }
+//   render() {
+//     var n;
+//     const e = this.connectors.filter((r) => r.type === "INJECTED");
+//     return !(e != null && e.length) ||
+//       (e.length === 1 &&
+//         ((n = e[0]) == null ? void 0 : n.name) === "Browser Wallet" &&
+//         !Ze.isMobile())
+//       ? ((this.style.cssText = "display: none"), null)
+//       : q`
+//       <wui-flex flexDirection="column" gap="xs">
+//         ${e.map((r) => {
+//           var o, i;
+//           return !Ze.isMobile() && r.name === "Browser Wallet"
+//             ? null
+//             : It.checkInstalled()
+//               ? (o = r.info) != null &&
+//                 o.rdns &&
+//                 xt.state.excludedRDNS &&
+//                 xt.state.excludedRDNS.includes(
+//                   (i = r == null ? void 0 : r.info) == null ? void 0 : i.rdns,
+//                 )
+//                 ? null
+//                 : q`
+//             <wui-list-wallet
+//               imageSrc=${rt(Kn.getConnectorImage(r))}
+//               .installed=${!0}
+//               name=${r.name ?? "Unknown"}
+//               tagVariant="success"
+//               tagLabel="installed"
+//               data-testid=${`wallet-selector-${r.id}`}
+//               @click=${() => this.onConnector(r)}
+//             >
+//             </wui-list-wallet>
+//           `
+//               : ((this.style.cssText = "display: none"), null);
+//         })}
+//       </wui-flex>
+//     `;
+//   }
+//   onConnector(e) {
+//     Ie.push("ConnectingExternal", { connector: e });
+//   }
+// };
+// NF([le()], N7.prototype, "connectors", void 0);
+// N7 = NF([Ce("w3m-connect-injected-widget")], N7);
 var DF = function (t, e, n, r) {
   var o = arguments.length,
     i =
@@ -75515,62 +75515,62 @@ var DF = function (t, e, n, r) {
       (s = t[a]) && (i = (o < 3 ? s(i) : o > 3 ? s(e, n, i) : s(e, n)) || i);
   return o > 3 && i && Object.defineProperty(e, n, i), i;
 };
-let D7 = class extends Se {
-  constructor() {
-    super(),
-      (this.unsubscribe = []),
-      (this.connectors = ct.state.connectors),
-      this.unsubscribe.push(
-        ct.subscribeKey("connectors", (e) => (this.connectors = e)),
-      );
-  }
-  disconnectedCallback() {
-    this.unsubscribe.forEach((e) => e());
-  }
-  render() {
-    const e = this.connectors.find((n) => n.id === "coinbaseWalletSDK");
-    return e
-      ? q`
-      <wui-flex flexDirection="column" gap="xs">
-        <wui-list-wallet
-          imageSrc=${rt(Kn.getConnectorImage(e))}
-          .installed=${!0}
-          name=${rt(e.name)}
-          data-testid=${`wallet-selector-${e.id}`}
-          @click=${() => this.onConnector(e)}
-        >
-        </wui-list-wallet>
-      </wui-flex>
-    `
-      : ((this.style.cssText = "display: none"), null);
-  }
-  async onCoinbaseConnector(e) {
-    try {
-      It.setWcError(!1),
-        e.imageUrl && _n.setConnectedWalletImageUrl(e.imageUrl),
-        await It.connectExternal(e),
-        et.state.isSiweEnabled ? Ie.push("ConnectingSiwe") : kt.close(),
-        it.sendEvent({
-          type: "track",
-          event: "CONNECT_SUCCESS",
-          properties: { method: "browser", name: e.name || "Unknown" },
-        });
-    } catch (n) {
-      it.sendEvent({
-        type: "track",
-        event: "CONNECT_ERROR",
-        properties: { message: (n == null ? void 0 : n.message) ?? "Unknown" },
-      }),
-        It.setWcError(!0);
-    }
-  }
-  onConnector(e) {
-    Ie.push("ConnectingExternal", { connector: e }),
-      e.id === Mt.COINBASE_SDK_CONNECTOR_ID && this.onCoinbaseConnector(e);
-  }
-};
-DF([le()], D7.prototype, "connectors", void 0);
-D7 = DF([Ce("w3m-connect-coinbase-widget")], D7);
+// let D7 = class extends Se {
+//   constructor() {
+//     super(),
+//       (this.unsubscribe = []),
+//       (this.connectors = ct.state.connectors),
+//       this.unsubscribe.push(
+//         ct.subscribeKey("connectors", (e) => (this.connectors = e)),
+//       );
+//   }
+//   disconnectedCallback() {
+//     this.unsubscribe.forEach((e) => e());
+//   }
+//   render() {
+//     const e = this.connectors.find((n) => n.id === "coinbaseWalletSDK");
+//     return e
+//       ? q`
+//       <wui-flex flexDirection="column" gap="xs">
+//         <wui-list-wallet
+//           imageSrc=${rt(Kn.getConnectorImage(e))}
+//           .installed=${!0}
+//           name=${rt(e.name)}
+//           data-testid=${`wallet-selector-${e.id}`}
+//           @click=${() => this.onConnector(e)}
+//         >
+//         </wui-list-wallet>
+//       </wui-flex>
+//     `
+//       : ((this.style.cssText = "display: none"), null);
+//   }
+//   async onCoinbaseConnector(e) {
+//     try {
+//       It.setWcError(!1),
+//         e.imageUrl && _n.setConnectedWalletImageUrl(e.imageUrl),
+//         await It.connectExternal(e),
+//         et.state.isSiweEnabled ? Ie.push("ConnectingSiwe") : kt.close(),
+//         it.sendEvent({
+//           type: "track",
+//           event: "CONNECT_SUCCESS",
+//           properties: { method: "browser", name: e.name || "Unknown" },
+//         });
+//     } catch (n) {
+//       it.sendEvent({
+//         type: "track",
+//         event: "CONNECT_ERROR",
+//         properties: { message: (n == null ? void 0 : n.message) ?? "Unknown" },
+//       }),
+//         It.setWcError(!0);
+//     }
+//   }
+//   onConnector(e) {
+//     Ie.push("ConnectingExternal", { connector: e }),
+//       e.id === Mt.COINBASE_SDK_CONNECTOR_ID && this.onCoinbaseConnector(e);
+//   }
+// };
+// DF([le()], D7.prototype, "connectors", void 0);
+// D7 = DF([Ce("w3m-connect-coinbase-widget")], D7);
 var PF = function (t, e, n, r) {
   var o = arguments.length,
     i =
@@ -75583,47 +75583,47 @@ var PF = function (t, e, n, r) {
       (s = t[a]) && (i = (o < 3 ? s(i) : o > 3 ? s(e, n, i) : s(e, n)) || i);
   return o > 3 && i && Object.defineProperty(e, n, i), i;
 };
-let P7 = class extends Se {
-  constructor() {
-    super(),
-      (this.unsubscribe = []),
-      (this.connectors = ct.state.connectors),
-      this.unsubscribe.push(
-        ct.subscribeKey("connectors", (e) => (this.connectors = e)),
-      );
-  }
-  disconnectedCallback() {
-    this.unsubscribe.forEach((e) => e());
-  }
-  render() {
-    const n = this.connectors
-      .filter((r) => r.type === "EXTERNAL")
-      .filter((r) => r.id !== "coinbaseWalletSDK");
-    return n != null && n.length
-      ? q`
-      <wui-flex flexDirection="column" gap="xs">
-        ${n.map(
-          (r) => q`
-            <wui-list-wallet
-              imageSrc=${rt(Kn.getConnectorImage(r))}
-              .installed=${!0}
-              name=${r.name ?? "Unknown"}
-              data-testid=${`wallet-selector-external-${r.id}`}
-              @click=${() => this.onConnector(r)}
-            >
-            </wui-list-wallet>
-          `,
-        )}
-      </wui-flex>
-    `
-      : ((this.style.cssText = "display: none"), null);
-  }
-  onConnector(e) {
-    Ie.push("ConnectingExternal", { connector: e });
-  }
-};
-PF([le()], P7.prototype, "connectors", void 0);
-P7 = PF([Ce("w3m-connect-external-widget")], P7);
+// let P7 = class extends Se {
+//   constructor() {
+//     super(),
+//       (this.unsubscribe = []),
+//       (this.connectors = ct.state.connectors),
+//       this.unsubscribe.push(
+//         ct.subscribeKey("connectors", (e) => (this.connectors = e)),
+//       );
+//   }
+//   disconnectedCallback() {
+//     this.unsubscribe.forEach((e) => e());
+//   }
+//   render() {
+//     const n = this.connectors
+//       .filter((r) => r.type === "EXTERNAL")
+//       .filter((r) => r.id !== "coinbaseWalletSDK");
+//     return n != null && n.length
+//       ? q`
+//       <wui-flex flexDirection="column" gap="xs">
+//         ${n.map(
+//           (r) => q`
+//             <wui-list-wallet
+//               imageSrc=${rt(Kn.getConnectorImage(r))}
+//               .installed=${!0}
+//               name=${r.name ?? "Unknown"}
+//               data-testid=${`wallet-selector-external-${r.id}`}
+//               @click=${() => this.onConnector(r)}
+//             >
+//             </wui-list-wallet>
+//           `,
+//         )}
+//       </wui-flex>
+//     `
+//       : ((this.style.cssText = "display: none"), null);
+//   }
+//   onConnector(e) {
+//     Ie.push("ConnectingExternal", { connector: e });
+//   }
+// };
+// PF([le()], P7.prototype, "connectors", void 0);
+// P7 = PF([Ce("w3m-connect-external-widget")], P7);
 var Fve = function (t, e, n, r) {
   var o = arguments.length,
     i =
@@ -75636,33 +75636,33 @@ var Fve = function (t, e, n, r) {
       (s = t[a]) && (i = (o < 3 ? s(i) : o > 3 ? s(e, n, i) : s(e, n)) || i);
   return o > 3 && i && Object.defineProperty(e, n, i), i;
 };
-let nO = class extends Se {
-  render() {
-    const e = _n.getRecentWallets();
-    return e != null && e.length
-      ? q`
-      <wui-flex flexDirection="column" gap="xs">
-        ${e.map(
-          (n) => q`
-            <wui-list-wallet
-              imageSrc=${rt(Kn.getWalletImage(n))}
-              name=${n.name ?? "Unknown"}
-              @click=${() => this.onConnectWallet(n)}
-              tagLabel="recent"
-              tagVariant="shade"
-            >
-            </wui-list-wallet>
-          `,
-        )}
-      </wui-flex>
-    `
-      : ((this.style.cssText = "display: none"), null);
-  }
-  onConnectWallet(e) {
-    Ie.push("ConnectingWalletConnect", { wallet: e });
-  }
-};
-nO = Fve([Ce("w3m-connect-recent-widget")], nO);
+// let nO = class extends Se {
+//   render() {
+//     const e = _n.getRecentWallets();
+//     return e != null && e.length
+//       ? q`
+//       <wui-flex flexDirection="column" gap="xs">
+//         ${e.map(
+//           (n) => q`
+//             <wui-list-wallet
+//               imageSrc=${rt(Kn.getWalletImage(n))}
+//               name=${n.name ?? "Unknown"}
+//               @click=${() => this.onConnectWallet(n)}
+//               tagLabel="recent"
+//               tagVariant="shade"
+//             >
+//             </wui-list-wallet>
+//           `,
+//         )}
+//       </wui-flex>
+//     `
+//       : ((this.style.cssText = "display: none"), null);
+//   }
+//   onConnectWallet(e) {
+//     Ie.push("ConnectingWalletConnect", { wallet: e });
+//   }
+// };
+// nO = Fve([Ce("w3m-connect-recent-widget")], nO);
 var $F = function (t, e, n, r) {
   var o = arguments.length,
     i =
@@ -75675,58 +75675,58 @@ var $F = function (t, e, n, r) {
       (s = t[a]) && (i = (o < 3 ? s(i) : o > 3 ? s(e, n, i) : s(e, n)) || i);
   return o > 3 && i && Object.defineProperty(e, n, i), i;
 };
-let $7 = class extends Se {
-  constructor() {
-    super(),
-      (this.unsubscribe = []),
-      (this.connectors = ct.state.connectors),
-      this.unsubscribe.push(
-        ct.subscribeKey("connectors", (e) => (this.connectors = e)),
-      );
-  }
-  disconnectedCallback() {
-    this.unsubscribe.forEach((e) => e());
-  }
-  render() {
-    if (!this.connectors.find((p) => p.type === "WALLET_CONNECT")) return null;
-    const { recommended: n } = xt.state,
-      { customWallets: r, featuredWalletIds: o } = et.state,
-      { connectors: i } = ct.state,
-      s = _n.getRecentWallets(),
-      c = i
-        .filter((p) => p.type === "INJECTED" || p.type === "ANNOUNCED")
-        .filter((p) => p.name !== "Browser Wallet");
-    if (o || r || !n.length)
-      return (this.style.cssText = "display: none"), null;
-    const f = c.length + s.length,
-      u = Math.max(0, 2 - f),
-      d = yw.filterOutDuplicateWallets(n).slice(0, u);
-    return d.length
-      ? q`
-      <wui-flex flexDirection="column" gap="xs">
-        ${d.map(
-          (p) => q`
-            <wui-list-wallet
-              imageSrc=${rt(Kn.getWalletImage(p))}
-              name=${(p == null ? void 0 : p.name) ?? "Unknown"}
-              @click=${() => this.onConnectWallet(p)}
-            >
-            </wui-list-wallet>
-          `,
-        )}
-      </wui-flex>
-    `
-      : ((this.style.cssText = "display: none"), null);
-  }
-  onConnectWallet(e) {
-    const n = ct.getConnector(e.id, e.rdns);
-    n
-      ? Ie.push("ConnectingExternal", { connector: n })
-      : Ie.push("ConnectingWalletConnect", { wallet: e });
-  }
-};
-$F([le()], $7.prototype, "connectors", void 0);
-$7 = $F([Ce("w3m-connect-recommended-widget")], $7);
+// let $7 = class extends Se {
+//   constructor() {
+//     super(),
+//       (this.unsubscribe = []),
+//       (this.connectors = ct.state.connectors),
+//       this.unsubscribe.push(
+//         ct.subscribeKey("connectors", (e) => (this.connectors = e)),
+//       );
+//   }
+//   disconnectedCallback() {
+//     this.unsubscribe.forEach((e) => e());
+//   }
+//   render() {
+//     if (!this.connectors.find((p) => p.type === "WALLET_CONNECT")) return null;
+//     const { recommended: n } = xt.state,
+//       { customWallets: r, featuredWalletIds: o } = et.state,
+//       { connectors: i } = ct.state,
+//       s = _n.getRecentWallets(),
+//       c = i
+//         .filter((p) => p.type === "INJECTED" || p.type === "ANNOUNCED")
+//         .filter((p) => p.name !== "Browser Wallet");
+//     if (o || r || !n.length)
+//       return (this.style.cssText = "display: none"), null;
+//     const f = c.length + s.length,
+//       u = Math.max(0, 2 - f),
+//       d = yw.filterOutDuplicateWallets(n).slice(0, u);
+//     return d.length
+//       ? q`
+//       <wui-flex flexDirection="column" gap="xs">
+//         ${d.map(
+//           (p) => q`
+//             <wui-list-wallet
+//               imageSrc=${rt(Kn.getWalletImage(p))}
+//               name=${(p == null ? void 0 : p.name) ?? "Unknown"}
+//               @click=${() => this.onConnectWallet(p)}
+//             >
+//             </wui-list-wallet>
+//           `,
+//         )}
+//       </wui-flex>
+//     `
+//       : ((this.style.cssText = "display: none"), null);
+//   }
+//   onConnectWallet(e) {
+//     const n = ct.getConnector(e.id, e.rdns);
+//     n
+//       ? Ie.push("ConnectingExternal", { connector: n })
+//       : Ie.push("ConnectingWalletConnect", { wallet: e });
+//   }
+// };
+// $F([le()], $7.prototype, "connectors", void 0);
+// $7 = $F([Ce("w3m-connect-recommended-widget")], $7);
 var BF = function (t, e, n, r) {
   var o = arguments.length,
     i =
@@ -75739,45 +75739,45 @@ var BF = function (t, e, n, r) {
       (s = t[a]) && (i = (o < 3 ? s(i) : o > 3 ? s(e, n, i) : s(e, n)) || i);
   return o > 3 && i && Object.defineProperty(e, n, i), i;
 };
-let B7 = class extends Se {
-  constructor() {
-    super(),
-      (this.unsubscribe = []),
-      (this.connectors = ct.state.connectors),
-      this.unsubscribe.push(
-        ct.subscribeKey("connectors", (e) => (this.connectors = e)),
-      );
-  }
-  disconnectedCallback() {
-    this.unsubscribe.forEach((e) => e());
-  }
-  render() {
-    if (Ze.isMobile()) return (this.style.cssText = "display: none"), null;
-    const e = this.connectors.find((n) => n.type === "WALLET_CONNECT");
-    return e
-      ? q`
-      <wui-list-wallet
-        imageSrc=${rt(Kn.getConnectorImage(e))}
-        name=${e.name ?? "Unknown"}
-        @click=${() => this.onConnector(e)}
-        tagLabel="qr code"
-        tagVariant="main"
-        data-testid="wallet-selector-walletconnect"
-      >
-      </wui-list-wallet>
-    `
-      : ((this.style.cssText = "display: none"), null);
-  }
-  onConnector(e) {
-    e.type === "WALLET_CONNECT"
-      ? Ze.isMobile()
-        ? Ie.push("AllWallets")
-        : Ie.push("ConnectingWalletConnect")
-      : Ie.push("ConnectingExternal", { connector: e });
-  }
-};
-BF([le()], B7.prototype, "connectors", void 0);
-B7 = BF([Ce("w3m-connect-walletconnect-widget")], B7);
+// let B7 = class extends Se {
+//   constructor() {
+//     super(),
+//       (this.unsubscribe = []),
+//       (this.connectors = ct.state.connectors),
+//       this.unsubscribe.push(
+//         ct.subscribeKey("connectors", (e) => (this.connectors = e)),
+//       );
+//   }
+//   disconnectedCallback() {
+//     this.unsubscribe.forEach((e) => e());
+//   }
+//   render() {
+//     if (Ze.isMobile()) return (this.style.cssText = "display: none"), null;
+//     const e = this.connectors.find((n) => n.type === "WALLET_CONNECT");
+//     return e
+//       ? q`
+//       <wui-list-wallet
+//         imageSrc=${rt(Kn.getConnectorImage(e))}
+//         name=${e.name ?? "Unknown"}
+//         @click=${() => this.onConnector(e)}
+//         tagLabel="qr code"
+//         tagVariant="main"
+//         data-testid="wallet-selector-walletconnect"
+//       >
+//       </wui-list-wallet>
+//     `
+//       : ((this.style.cssText = "display: none"), null);
+//   }
+//   onConnector(e) {
+//     e.type === "WALLET_CONNECT"
+//       ? Ze.isMobile()
+//         ? Ie.push("AllWallets")
+//         : Ie.push("ConnectingWalletConnect")
+//       : Ie.push("ConnectingExternal", { connector: e });
+//   }
+// };
+// BF([le()], B7.prototype, "connectors", void 0);
+// B7 = BF([Ce("w3m-connect-walletconnect-widget")], B7);
 const jve = $e`
   :host {
     margin-top: var(--wui-spacing-3xs);
@@ -75800,69 +75800,69 @@ var LF = function (t, e, n, r) {
       (s = t[a]) && (i = (o < 3 ? s(i) : o > 3 ? s(e, n, i) : s(e, n)) || i);
   return o > 3 && i && Object.defineProperty(e, n, i), i;
 };
-let _w = class extends Se {
-  constructor() {
-    super(),
-      (this.unsubscribe = []),
-      (this.connectors = ct.state.connectors),
-      this.unsubscribe.push(
-        ct.subscribeKey("connectors", (e) => (this.connectors = e)),
-      );
-  }
-  disconnectedCallback() {
-    this.unsubscribe.forEach((e) => e());
-  }
-  render() {
-    const {
-      custom: e,
-      recent: n,
-      announced: r,
-      coinbase: o,
-      injected: i,
-      recommended: s,
-      featured: a,
-      external: c,
-    } = this.getConnectorsByType();
-    return q`
-      <wui-flex flexDirection="column" gap="xs">
-        <w3m-connect-walletconnect-widget></w3m-connect-walletconnect-widget>
-        ${n.length ? q`<w3m-connect-recent-widget></w3m-connect-recent-widget>` : null}
-        ${r.length ? q`<w3m-connect-announced-widget></w3m-connect-announced-widget>` : null}
-        ${i.length ? q`<w3m-connect-injected-widget></w3m-connect-injected-widget>` : null}
-        ${a.length ? q`<w3m-connect-featured-widget></w3m-connect-featured-widget>` : null}
-        ${e != null && e.length ? q`<w3m-connect-custom-widget></w3m-connect-custom-widget>` : null}
-        ${o ? q`<w3m-connect-coinbase-widget></w3m-connect-coinbase-widget>` : null}
-        ${c.length ? q`<w3m-connect-external-widget></w3m-connect-external-widget>` : null}
-        ${s.length ? q`<w3m-connect-recommended-widget></w3m-connect-recommended-widget>` : null}
-      </wui-flex>
-    `;
-  }
-  getConnectorsByType() {
-    const { featured: e, recommended: n } = xt.state,
-      { customWallets: r } = et.state,
-      o = _n.getRecentWallets(),
-      i = yw.filterOutDuplicateWallets(n),
-      s = yw.filterOutDuplicateWallets(e),
-      a = this.connectors.filter((b) => b.type === "ANNOUNCED"),
-      c = this.connectors.filter((b) => b.type === "INJECTED"),
-      f = this.connectors.filter((b) => b.type === "EXTERNAL"),
-      u = this.connectors.find((b) => b.id === Mt.COINBASE_SDK_CONNECTOR_ID),
-      p = Ve.state.activeChain === Lr.CHAIN.EVM ? et.state.enableEIP6963 : !0;
-    return {
-      custom: r,
-      recent: o,
-      coinbase: u,
-      external: f,
-      announced: p ? a : [],
-      injected: p ? c : [],
-      recommended: i,
-      featured: s,
-    };
-  }
-};
-_w.styles = jve;
-LF([le()], _w.prototype, "connectors", void 0);
-_w = LF([Ce("w3m-connector-list")], _w);
+// let _w = class extends Se {
+//   constructor() {
+//     super(),
+//       (this.unsubscribe = []),
+//       (this.connectors = ct.state.connectors),
+//       this.unsubscribe.push(
+//         ct.subscribeKey("connectors", (e) => (this.connectors = e)),
+//       );
+//   }
+//   disconnectedCallback() {
+//     this.unsubscribe.forEach((e) => e());
+//   }
+//   render() {
+//     const {
+//       custom: e,
+//       recent: n,
+//       announced: r,
+//       coinbase: o,
+//       injected: i,
+//       recommended: s,
+//       featured: a,
+//       external: c,
+//     } = this.getConnectorsByType();
+//     return q`
+//       <wui-flex flexDirection="column" gap="xs">
+//         <w3m-connect-walletconnect-widget></w3m-connect-walletconnect-widget>
+//         ${n.length ? q`<w3m-connect-recent-widget></w3m-connect-recent-widget>` : null}
+//         ${r.length ? q`<w3m-connect-announced-widget></w3m-connect-announced-widget>` : null}
+//         ${i.length ? q`<w3m-connect-injected-widget></w3m-connect-injected-widget>` : null}
+//         ${a.length ? q`<w3m-connect-featured-widget></w3m-connect-featured-widget>` : null}
+//         ${e != null && e.length ? q`<w3m-connect-custom-widget></w3m-connect-custom-widget>` : null}
+//         ${o ? q`<w3m-connect-coinbase-widget></w3m-connect-coinbase-widget>` : null}
+//         ${c.length ? q`<w3m-connect-external-widget></w3m-connect-external-widget>` : null}
+//         ${s.length ? q`<w3m-connect-recommended-widget></w3m-connect-recommended-widget>` : null}
+//       </wui-flex>
+//     `;
+//   }
+//   getConnectorsByType() {
+//     const { featured: e, recommended: n } = xt.state,
+//       { customWallets: r } = et.state,
+//       o = _n.getRecentWallets(),
+//       i = yw.filterOutDuplicateWallets(n),
+//       s = yw.filterOutDuplicateWallets(e),
+//       a = this.connectors.filter((b) => b.type === "ANNOUNCED"),
+//       c = this.connectors.filter((b) => b.type === "INJECTED"),
+//       f = this.connectors.filter((b) => b.type === "EXTERNAL"),
+//       u = this.connectors.find((b) => b.id === Mt.COINBASE_SDK_CONNECTOR_ID),
+//       p = Ve.state.activeChain === Lr.CHAIN.EVM ? et.state.enableEIP6963 : !0;
+//     return {
+//       custom: r,
+//       recent: o,
+//       coinbase: u,
+//       external: f,
+//       announced: p ? a : [],
+//       injected: p ? c : [],
+//       recommended: i,
+//       featured: s,
+//     };
+//   }
+// };
+// _w.styles = jve;
+// LF([le()], _w.prototype, "connectors", void 0);
+// _w = LF([Ce("w3m-connector-list")], _w);
 var ME = function (t, e, n, r) {
   var o = arguments.length,
     i =
@@ -75875,49 +75875,49 @@ var ME = function (t, e, n, r) {
       (s = t[a]) && (i = (o < 3 ? s(i) : o > 3 ? s(e, n, i) : s(e, n)) || i);
   return o > 3 && i && Object.defineProperty(e, n, i), i;
 };
-let xw = class extends Se {
-  constructor() {
-    super(),
-      (this.unsubscribe = []),
-      (this.connectors = ct.state.connectors),
-      (this.count = xt.state.count),
-      this.unsubscribe.push(
-        ct.subscribeKey("connectors", (e) => (this.connectors = e)),
-        xt.subscribeKey("count", (e) => (this.count = e)),
-      );
-  }
-  disconnectedCallback() {
-    this.unsubscribe.forEach((e) => e());
-  }
-  render() {
-    const e = this.connectors.find((a) => a.type === "WALLET_CONNECT"),
-      { allWallets: n } = et.state;
-    if (!e || n === "HIDE" || (n === "ONLY_MOBILE" && !Ze.isMobile()))
-      return null;
-    const r = xt.state.featured.length,
-      o = this.count + r,
-      i = o < 10 ? o : Math.floor(o / 10) * 10,
-      s = i < o ? `${i}+` : `${i}`;
-    return q`
-      <wui-list-wallet
-        name="All Wallets"
-        walletIcon="allWallets"
-        showAllWallets
-        @click=${this.onAllWallets.bind(this)}
-        tagLabel=${s}
-        tagVariant="shade"
-        data-testid="all-wallets"
-      ></wui-list-wallet>
-    `;
-  }
-  onAllWallets() {
-    it.sendEvent({ type: "track", event: "CLICK_ALL_WALLETS" }),
-      Ie.push("AllWallets");
-  }
-};
-ME([le()], xw.prototype, "connectors", void 0);
-ME([le()], xw.prototype, "count", void 0);
-xw = ME([Ce("w3m-all-wallets-widget")], xw);
+// let xw = class extends Se {
+//   constructor() {
+//     super(),
+//       (this.unsubscribe = []),
+//       (this.connectors = ct.state.connectors),
+//       (this.count = xt.state.count),
+//       this.unsubscribe.push(
+//         ct.subscribeKey("connectors", (e) => (this.connectors = e)),
+//         xt.subscribeKey("count", (e) => (this.count = e)),
+//       );
+//   }
+//   disconnectedCallback() {
+//     this.unsubscribe.forEach((e) => e());
+//   }
+//   render() {
+//     const e = this.connectors.find((a) => a.type === "WALLET_CONNECT"),
+//       { allWallets: n } = et.state;
+//     if (!e || n === "HIDE" || (n === "ONLY_MOBILE" && !Ze.isMobile()))
+//       return null;
+//     const r = xt.state.featured.length,
+//       o = this.count + r,
+//       i = o < 10 ? o : Math.floor(o / 10) * 10,
+//       s = i < o ? `${i}+` : `${i}`;
+//     return q`
+//       <wui-list-wallet
+//         name="All Wallets"
+//         walletIcon="allWallets"
+//         showAllWallets
+//         @click=${this.onAllWallets.bind(this)}
+//         tagLabel=${s}
+//         tagVariant="shade"
+//         data-testid="all-wallets"
+//       ></wui-list-wallet>
+//     `;
+//   }
+//   onAllWallets() {
+//     it.sendEvent({ type: "track", event: "CLICK_ALL_WALLETS" }),
+//       Ie.push("AllWallets");
+//   }
+// };
+// ME([le()], xw.prototype, "connectors", void 0);
+// ME([le()], xw.prototype, "count", void 0);
+// xw = ME([Ce("w3m-all-wallets-widget")], xw);
 var zve = function (t, e, n, r) {
   var o = arguments.length,
     i =
@@ -75930,47 +75930,47 @@ var zve = function (t, e, n, r) {
       (s = t[a]) && (i = (o < 3 ? s(i) : o > 3 ? s(e, n, i) : s(e, n)) || i);
   return o > 3 && i && Object.defineProperty(e, n, i), i;
 };
-let rO = class extends Se {
-  constructor() {
-    super(...arguments),
-      (this.socialProvider = _n.getConnectedSocialProvider()),
-      (this.socialUsername = _n.getConnectedSocialUsername());
-  }
-  render() {
-    const e = _n.getConnectedConnector(),
-      n = ct.getAuthConnector();
-    if (!n || e !== "AUTH") return (this.style.cssText = "display: none"), null;
-    const r = n.provider.getEmail() ?? "";
-    return q`
-      <wui-list-item
-        variant="icon"
-        iconVariant="overlay"
-        icon=${this.socialProvider ?? "mail"}
-        iconSize=${this.socialProvider ? "xxl" : "sm"}
-        data-testid="w3m-account-email-update"
-        ?chevron=${!this.socialProvider}
-        @click=${() => {
-          this.onGoToUpdateEmail(r, this.socialProvider);
-        }}
-      >
-        <wui-text variant="paragraph-500" color="fg-100">${this.getAuthName(r)}</wui-text>
-      </wui-list-item>
-    `;
-  }
-  onGoToUpdateEmail(e, n) {
-    n || Ie.push("UpdateEmailWallet", { email: e });
-  }
-  getAuthName(e) {
-    return this.socialUsername
-      ? this.socialProvider === "discord" && this.socialUsername.endsWith("0")
-        ? this.socialUsername.slice(0, -1)
-        : this.socialUsername
-      : e.length > 30
-        ? `${e.slice(0, -3)}...`
-        : e;
-  }
-};
-rO = zve([Ce("w3m-account-auth-button")], rO);
+// let rO = class extends Se {
+//   constructor() {
+//     super(...arguments),
+//       (this.socialProvider = _n.getConnectedSocialProvider()),
+//       (this.socialUsername = _n.getConnectedSocialUsername());
+//   }
+//   render() {
+//     const e = _n.getConnectedConnector(),
+//       n = ct.getAuthConnector();
+//     if (!n || e !== "AUTH") return (this.style.cssText = "display: none"), null;
+//     const r = n.provider.getEmail() ?? "";
+//     return q`
+//       <wui-list-item
+//         variant="icon"
+//         iconVariant="overlay"
+//         icon=${this.socialProvider ?? "mail"}
+//         iconSize=${this.socialProvider ? "xxl" : "sm"}
+//         data-testid="w3m-account-email-update"
+//         ?chevron=${!this.socialProvider}
+//         @click=${() => {
+//           this.onGoToUpdateEmail(r, this.socialProvider);
+//         }}
+//       >
+//         <wui-text variant="paragraph-500" color="fg-100">${this.getAuthName(r)}</wui-text>
+//       </wui-list-item>
+//     `;
+//   }
+//   onGoToUpdateEmail(e, n) {
+//     n || Ie.push("UpdateEmailWallet", { email: e });
+//   }
+//   getAuthName(e) {
+//     return this.socialUsername
+//       ? this.socialProvider === "discord" && this.socialUsername.endsWith("0")
+//         ? this.socialUsername.slice(0, -1)
+//         : this.socialUsername
+//       : e.length > 30
+//         ? `${e.slice(0, -3)}...`
+//         : e;
+//   }
+// };
+// rO = zve([Ce("w3m-account-auth-button")], rO);
 let iO = !1;
 class Wve {
   constructor(e) {
@@ -76181,6 +76181,8 @@ class Wve {
     }
   }
   async initOrContinue() {
+    console.log("initOrContinue intercepted");
+    return;
     return (
       !this.initPromise &&
         !iO &&
@@ -87788,7 +87790,7 @@ const Gj = () => {
                 {
                   class: "w-full interact-button",
                   "style-type": i.buttonStyle,
-                  onClick: s[0] || (s[0] = (a) => o()),
+                  onClick: () => null,
                 },
                 { default: qs(() => [El(" Connect wallet ")]), _: 1 },
                 8,
@@ -91738,10 +91740,14 @@ function ud(t) {
   };
 }
 function $xe(t) {
+  console.log("intercepted $xe");
+  return;
   const e = "console";
   Cu(e, t), Su(e, Bxe);
 }
 function Bxe() {
+  console.log("intercepted BXE");
+  return;
   "console" in On &&
     Z7.forEach(function (t) {
       t in On.console &&
