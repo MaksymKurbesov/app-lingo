@@ -32871,19 +32871,19 @@ class Z5 extends Ke {
 }
 class fL extends Ke {
   constructor({ body: e, error: n, url: r }) {
-    super("RPC Request failed.", {
-      cause: n,
-      details: n.message,
-      metaMessages: [`URL: ${CA(r)}`, `Request body: ${Ma(e)}`],
-      name: "RpcRequestError",
-    }),
-      Object.defineProperty(this, "code", {
-        enumerable: !0,
-        configurable: !0,
-        writable: !0,
-        value: void 0,
-      }),
-      (this.code = n.code);
+    // super("RPC Request failed.", {
+    //   cause: n,
+    //   details: n.message,
+    //   metaMessages: [`URL: ${CA(r)}`, `Request body: ${Ma(e)}`],
+    //   name: "RpcRequestError",
+    // }),
+    //   Object.defineProperty(this, "code", {
+    //     enumerable: !0,
+    //     configurable: !0,
+    //     writable: !0,
+    //     value: void 0,
+    //   }),
+    //   (this.code = n.code);
   }
 }
 class NR extends Ke {
@@ -88077,8 +88077,8 @@ eC.beforeEach((t, e, n) =>
 );
 const cn = typeof __SENTRY_DEBUG__ > "u" || __SENTRY_DEBUG__,
   e0 = "8.43.0",
-  // On = globalThis;
-  On = {};
+  On = globalThis;
+// On = {};
 function Ty(t, e, n) {
   const r = On,
     o = (r.__SENTRY__ = r.__SENTRY__ || {}),
