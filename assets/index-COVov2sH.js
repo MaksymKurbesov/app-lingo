@@ -87776,7 +87776,7 @@ const Gj = () => {
       const { login: n } = Gj(),
         r = e,
         o = async () => {
-          r("connectClick"), await n();
+          // r("connectClick"), await n();
         };
       return (i, s) =>
         Vr(Da)
@@ -87786,9 +87786,9 @@ const Gj = () => {
               br(
                 Kj,
                 {
-                  class: "w-full",
+                  class: "w-full interact-button",
                   "style-type": i.buttonStyle,
-                  onClick: s[0] || (s[0] = (a) => o()),
+                  // onClick: s[0] || (s[0] = (a) => o()),
                 },
                 { default: qs(() => [El(" Connect wallet ")]), _: 1 },
                 8,
