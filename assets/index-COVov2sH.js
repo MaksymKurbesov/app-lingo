@@ -78264,7 +78264,7 @@ const $ye = {
     connectors: Uye,
   });
 async function zye() {
-  Pye({ wagmiConfig: Kf, projectId: PE, enableAnalytics: !0 }), await aU(Kf);
+  // Pye({ wagmiConfig: Kf, projectId: PE, enableAnalytics: !0 }), await aU(Kf);
 }
 const Wye =
     "data:image/svg+xml,%3csvg%20width='1578'%20height='177'%20viewBox='0%200%201578%20177'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20opacity='0.5'%20d='M1577%20177V24.3137C1577%2022.192%201576.16%2020.1571%201574.66%2018.6569L1559.34%203.34315C1557.84%201.84285%201555.81%201%201553.69%201H24.3137C22.192%201%2020.1571%201.84285%2018.6569%203.34314L3.34315%2018.6569C1.84285%2020.1571%201%2022.192%201%2024.3137V177'%20stroke='url(%23paint0_linear_1436_2777)'/%3e%3cdefs%3e%3clinearGradient%20id='paint0_linear_1436_2777'%20x1='1'%20y1='1'%20x2='1.00001'%20y2='177'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20stop-color='white'/%3e%3cstop%20offset='1'%20stop-color='white'%20stop-opacity='0'/%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e",
