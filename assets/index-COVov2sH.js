@@ -88077,7 +88077,8 @@ eC.beforeEach((t, e, n) =>
 );
 const cn = typeof __SENTRY_DEBUG__ > "u" || __SENTRY_DEBUG__,
   e0 = "8.43.0",
-  On = globalThis;
+  // On = globalThis;
+  On = {};
 function Ty(t, e, n) {
   const r = On,
     o = (r.__SENTRY__ = r.__SENTRY__ || {}),
@@ -92036,26 +92037,24 @@ function Gz(t, e = !1) {
           };
         t || Ys("fetch", { ...s });
         const a = new Error().stack;
-        // return () => {};
-        return n
-          .apply(On, r)
-          .then
-          // async (c) => (
-          //   t
-          //     ? t(c)
-          //     : Ys("fetch", { ...s, endTimestamp: Wi() * 1e3, response: c }),
-          //   c
-          // ),
-          // (c) => {
-          //   throw (
-          //     (Ys("fetch", { ...s, endTimestamp: Wi() * 1e3, error: c }),
-          //     nC(c) &&
-          //       c.stack === void 0 &&
-          //       ((c.stack = a), na(c, "framesToPop", 1)),
-          //     c)
-          //   );
-          // },
-          ();
+
+        return n.apply(On, r).then(
+          async (c) => (
+            t
+              ? t(c)
+              : Ys("fetch", { ...s, endTimestamp: Wi() * 1e3, response: c }),
+            c
+          ),
+          (c) => {
+            throw (
+              (Ys("fetch", { ...s, endTimestamp: Wi() * 1e3, error: c }),
+              nC(c) &&
+                c.stack === void 0 &&
+                ((c.stack = a), na(c, "framesToPop", 1)),
+              c)
+            );
+          },
+        );
       };
     });
 }
