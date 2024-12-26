@@ -42525,7 +42525,7 @@ const Dn = {
   Lr = {
     WC_NAME_SUFFIX: ".wcn.id",
     BLOCKCHAIN_API_RPC_URL: "https://rpc.walletconnect.org",
-    PULSE_API_URL: "",
+    PULSE_API_URL: "https://pulse.walletconnect.org",
     W3M_API_URL: "https://api.web3modal.org",
     CHAIN: { EVM: "evm", SOLANA: "solana" },
     CHAIN_NAME: { EVM: "Ethereum", SOLANA: "Solana" },
@@ -87641,7 +87641,7 @@ var t1 = {},
     if (or.addEventListener)
       or.readyState === "complete"
         ? t()
-        : or.addEventListener("DOMContentLoaded", () => {}, !1);
+        : or.addEventListener("DOMContentLoaded", t, !1);
     else if (or.attachEvent) {
       or.attachEvent("onreadystatechange", t);
       var n = !1;
@@ -87771,12 +87771,12 @@ const Gj = () => {
   L9e = E0({
     __name: "ConnectWalletButton",
     props: { buttonStyle: { default: "tertiary" } },
-    emits: [""],
+    emits: ["connectClick"],
     setup(t, { emit: e }) {
       const { login: n } = Gj(),
         r = e,
         o = async () => {
-          // r("connectClick"), await n();
+          r("connectClick"), await n();
         };
       return (i, s) =>
         Vr(Da)
@@ -87786,9 +87786,9 @@ const Gj = () => {
               br(
                 Kj,
                 {
-                  class: "w-full interact-button",
+                  class: "w-full",
                   "style-type": i.buttonStyle,
-                  // onClick: s[0] || (s[0] = (a) => o()),
+                  onClick: s[0] || (s[0] = (a) => o()),
                 },
                 { default: qs(() => [El(" Connect wallet ")]), _: 1 },
                 8,
@@ -87956,7 +87956,7 @@ const F9e = { key: 0, class: "w-full p-1 rounded-lg" },
       { path: "/", redirect: L5[dr.CLAIMING_DASHBOARD] },
       { ...Os(dr.DASHBOARD), redirect: L5[dr.CLAIMING_DASHBOARD] },
       {
-        path: `/claiming-dashboard`,
+        path: `${$s}/claiming-dashboard`,
         meta: { requiresAuth: !0 },
         children: [
           {
@@ -88172,11 +88172,13 @@ function J9e(t) {
     e.reverse(),
     HO.test(wb(e).function || "") &&
       (e.pop(), HO.test(wb(e).function || "") && e.pop()),
-    e.slice(0, Yj).map((n) => ({
-      ...n,
-      filename: n.filename || wb(e).filename,
-      function: n.function || Yd,
-    }))
+    e
+      .slice(0, Yj)
+      .map((n) => ({
+        ...n,
+        filename: n.filename || wb(e).filename,
+        function: n.function || Yd,
+      }))
   );
 }
 function wb(t) {
