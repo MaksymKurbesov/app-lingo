@@ -44023,10 +44023,10 @@ const n9 = "WALLETCONNECT_DEEPLINK_CHOICE",
   Tr = {
     state: Kr,
     fetchIdentity({ address: t }) {
-      // return Kr.api.get({
-      //   path: `/v1/identity/${t}`,
-      //   params: { projectId: et.state.projectId, sender: Me.state.address },
-      // });
+      return Kr.api.get({
+        path: `/v1/identity/${t}`,
+        params: { projectId: et.state.projectId, sender: Me.state.address },
+      });
     },
     fetchTransactions({
       account: t,
@@ -50140,10 +50140,10 @@ const fr = Ur({
       Ao._client = sd(t);
     },
     async connectWalletConnect() {
-      // _n.setConnectedConnector("WALLET_CONNECT"),
-      //   await this._getClient().connectWalletConnect((t) => {
-      //     (Ao.wcUri = t), (Ao.wcPairingExpiry = Ze.getPairingExpiry());
-      //   });
+      _n.setConnectedConnector("WALLET_CONNECT"),
+        await this._getClient().connectWalletConnect((t) => {
+          (Ao.wcUri = t), (Ao.wcPairingExpiry = Ze.getPairingExpiry());
+        });
     },
     async connectExternal(t, e) {
       var n, r;
