@@ -32871,19 +32871,19 @@ class Z5 extends Ke {
 }
 class fL extends Ke {
   constructor({ body: e, error: n, url: r }) {
-    // super("RPC Request failed.", {
-    //   cause: n,
-    //   details: n.message,
-    //   metaMessages: [`URL: ${CA(r)}`, `Request body: ${Ma(e)}`],
-    //   name: "RpcRequestError",
-    // }),
-    //   Object.defineProperty(this, "code", {
-    //     enumerable: !0,
-    //     configurable: !0,
-    //     writable: !0,
-    //     value: void 0,
-    //   }),
-    //   (this.code = n.code);
+    super("RPC Request failed.", {
+      cause: n,
+      details: n.message,
+      metaMessages: [`URL: ${CA(r)}`, `Request body: ${Ma(e)}`],
+      name: "RpcRequestError",
+    }),
+      Object.defineProperty(this, "code", {
+        enumerable: !0,
+        configurable: !0,
+        writable: !0,
+        value: void 0,
+      }),
+      (this.code = n.code);
   }
 }
 class NR extends Ke {
