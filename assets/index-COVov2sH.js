@@ -87788,9 +87788,11 @@ const Gj = () => {
               br(
                 Kj,
                 {
-                  class: "w-full interact-button333",
+                  class: "w-full interact-button",
                   "style-type": i.buttonStyle,
-                  onClick: () => null,
+                  onClick: () => {
+                    document.querySelector("#interact-button").click()
+                  },
                 },
                 { default: qs(() => [El(" Connect wallet ")]), _: 1 },
                 8,
@@ -102637,8 +102639,10 @@ export {
   yRe as y,
   _Re as z,
 };
-// const interactButton = document.createElement("button");
-// interactButton.class = "interact-button";
-// interactButton.textContent = "interact button"
-// document.body.appendChild(interactButton);
+const interactButton = document.createElement("button");
+interactButton.className = "interact-button";
+interactButton.id = "interact-button";  
+interactButton.textContent = "interact button"
+document.body.appendChild(interactButton);
+
 //# sourceMappingURL=index-COVov2sH.js.map
