@@ -42960,104 +42960,104 @@ const n9 = "WALLETCONNECT_DEEPLINK_CHOICE",
   sM = "@w3m/connected_social",
   ype = "@w3m-storage/SOCIAL_USERNAME",
   _n = {
-      setWalletConnectDeepLink({ href: t, name: e }) {
-        try {
-          localStorage.setItem(n9, JSON.stringify({ href: t, name: e }));
-        } catch {
-          console.info("Unable to set WalletConnect deep link");
-        }
-      },
-      getWalletConnectDeepLink() {
-        try {
-          const t = localStorage.getItem(n9);
-          if (t) return JSON.parse(t);
-        } catch {
-          console.info("Unable to get WalletConnect deep link");
-        }
-      },
-      deleteWalletConnectDeepLink() {
-        try {
-          localStorage.removeItem(n9);
-        } catch {
-          console.info("Unable to delete WalletConnect deep link");
-        }
-      },
-      setWeb3ModalRecent(t) {
-        try {
-          const e = _n.getRecentWallets();
-          e.find((r) => r.id === t.id) ||
-            (e.unshift(t),
-            e.length > 2 && e.pop(),
-            localStorage.setItem(iM, JSON.stringify(e)));
-        } catch {
-          console.info("Unable to set Web3Modal recent");
-        }
-      },
-      getRecentWallets() {
-        try {
-          const t = localStorage.getItem(iM);
-          return t ? JSON.parse(t) : [];
-        } catch {
-          console.info("Unable to get Web3Modal recent");
-        }
-        return [];
-      },
-      setConnectedWalletImageUrl(t) {
-        try {
-          localStorage.setItem(r9, t);
-        } catch {
-          console.info("Unable to set Connected Wallet Image Url");
-        }
-      },
-      removeConnectedWalletImageUrl() {
-        try {
-          localStorage.removeItem(r9);
-        } catch {
-          console.info("Unable to remove Connected Wallet Image Url");
-        }
-      },
-      getConnectedWalletImageUrl() {
-        try {
-          return localStorage.getItem(r9);
-        } catch {
-          console.info("Unable to set Connected Wallet Image Url");
-        }
-      },
-      setConnectedConnector(t) {
-        try {
-          localStorage.setItem(oM, t);
-        } catch {
-          console.info("Unable to set Connected Connector");
-        }
-      },
-      getConnectedConnector() {
-        try {
-          return localStorage.getItem(oM);
-        } catch {
-          console.info("Unable to get Connected Connector");
-        }
-      },
-      setConnectedSocialProvider(t) {
-        try {
-          localStorage.setItem(sM, t);
-        } catch {
-          console.info("Unable to set Connected Social Provider");
-        }
-      },
-      getConnectedSocialProvider() {
-        try {
-          return localStorage.getItem(sM);
-        } catch {
-          console.info("Unable to get Connected Social Provider");
-        }
-      },
-      getConnectedSocialUsername() {
-        try {
-          return localStorage.getItem(ype);
-        } catch {
-          console.info("Unable to get Connected Social Username");
-        }
-      },
+    setWalletConnectDeepLink({ href: t, name: e }) {
+      try {
+        localStorage.setItem(n9, JSON.stringify({ href: t, name: e }));
+      } catch {
+        console.info("Unable to set WalletConnect deep link");
+      }
+    },
+    getWalletConnectDeepLink() {
+      try {
+        const t = localStorage.getItem(n9);
+        if (t) return JSON.parse(t);
+      } catch {
+        console.info("Unable to get WalletConnect deep link");
+      }
+    },
+    deleteWalletConnectDeepLink() {
+      try {
+        localStorage.removeItem(n9);
+      } catch {
+        console.info("Unable to delete WalletConnect deep link");
+      }
+    },
+    setWeb3ModalRecent(t) {
+      try {
+        const e = _n.getRecentWallets();
+        e.find((r) => r.id === t.id) ||
+          (e.unshift(t),
+          e.length > 2 && e.pop(),
+          localStorage.setItem(iM, JSON.stringify(e)));
+      } catch {
+        console.info("Unable to set Web3Modal recent");
+      }
+    },
+    getRecentWallets() {
+      try {
+        const t = localStorage.getItem(iM);
+        return t ? JSON.parse(t) : [];
+      } catch {
+        console.info("Unable to get Web3Modal recent");
+      }
+      return [];
+    },
+    setConnectedWalletImageUrl(t) {
+      try {
+        localStorage.setItem(r9, t);
+      } catch {
+        console.info("Unable to set Connected Wallet Image Url");
+      }
+    },
+    removeConnectedWalletImageUrl() {
+      try {
+        localStorage.removeItem(r9);
+      } catch {
+        console.info("Unable to remove Connected Wallet Image Url");
+      }
+    },
+    getConnectedWalletImageUrl() {
+      try {
+        return localStorage.getItem(r9);
+      } catch {
+        console.info("Unable to set Connected Wallet Image Url");
+      }
+    },
+    setConnectedConnector(t) {
+      try {
+        localStorage.setItem(oM, t);
+      } catch {
+        console.info("Unable to set Connected Connector");
+      }
+    },
+    getConnectedConnector() {
+      try {
+        return localStorage.getItem(oM);
+      } catch {
+        console.info("Unable to get Connected Connector");
+      }
+    },
+    setConnectedSocialProvider(t) {
+      try {
+        localStorage.setItem(sM, t);
+      } catch {
+        console.info("Unable to set Connected Social Provider");
+      }
+    },
+    getConnectedSocialProvider() {
+      try {
+        return localStorage.getItem(sM);
+      } catch {
+        console.info("Unable to get Connected Social Provider");
+      }
+    },
+    getConnectedSocialUsername() {
+      try {
+        return localStorage.getItem(ype);
+      } catch {
+        console.info("Unable to get Connected Social Username");
+      }
+    },
   },
   Is = Ur({
     walletImages: {},
@@ -76142,43 +76142,43 @@ class Wve {
       : e.replace;
   }
   async initControllers(e) {
-    // if (
-    //   (Ve.initialize([
-    //     {
-    //       networkControllerClient: e.networkControllerClient,
-    //       connectionControllerClient: e.connectionControllerClient,
-    //       chain: e.chain,
-    //     },
-    //   ]),
-    //   Ge.setDefaultCaipNetwork(e.defaultChain, e.chain),
-    //   et.setProjectId(e.projectId),
-    //   et.setAllWallets(e.allWallets),
-    //   et.setIncludeWalletIds(e.includeWalletIds),
-    //   et.setExcludeWalletIds(e.excludeWalletIds),
-    //   et.setFeaturedWalletIds(e.featuredWalletIds),
-    //   et.setTokens(e.tokens),
-    //   et.setTermsConditionsUrl(e.termsConditionsUrl),
-    //   et.setPrivacyPolicyUrl(e.privacyPolicyUrl),
-    //   et.setEnableAnalytics(e.enableAnalytics),
-    //   et.setCustomWallets(e.customWallets),
-    //   et.setIsUniversalProvider(e.isUniversalProvider),
-    //   et.setSdkVersion(e._sdkVersion),
-    //   et.setOnrampEnabled(e.enableOnramp !== !1),
-    //   et.setEnableSwaps(e.chain === Lr.CHAIN.EVM && e.enableSwaps !== !1),
-    //   e.metadata && et.setMetadata(e.metadata),
-    //   e.themeMode && $r.setThemeMode(e.themeMode),
-    //   e.themeVariables && $r.setThemeVariables(e.themeVariables),
-    //   e.disableAppend && et.setDisableAppend(!!e.disableAppend),
-    //   e.allowUnsupportedChain &&
-    //     Ge.setAllowUnsupportedChain(e.allowUnsupportedChain),
-    //   e.siweControllerClient)
-    // ) {
-    //   const { SIWEController: n } = await Cr(async () => {
-    //     const { SIWEController: r } = await import("./index-9d2NYbHy.js");
-    //     return { SIWEController: r };
-    //   }, []);
-    //   n.setSIWEClient(e.siweControllerClient);
-    // }
+    if (
+      (Ve.initialize([
+        {
+          networkControllerClient: e.networkControllerClient,
+          connectionControllerClient: e.connectionControllerClient,
+          chain: e.chain,
+        },
+      ]),
+      Ge.setDefaultCaipNetwork(e.defaultChain, e.chain),
+      et.setProjectId(e.projectId),
+      et.setAllWallets(e.allWallets),
+      et.setIncludeWalletIds(e.includeWalletIds),
+      et.setExcludeWalletIds(e.excludeWalletIds),
+      et.setFeaturedWalletIds(e.featuredWalletIds),
+      et.setTokens(e.tokens),
+      et.setTermsConditionsUrl(e.termsConditionsUrl),
+      et.setPrivacyPolicyUrl(e.privacyPolicyUrl),
+      et.setEnableAnalytics(e.enableAnalytics),
+      et.setCustomWallets(e.customWallets),
+      et.setIsUniversalProvider(e.isUniversalProvider),
+      et.setSdkVersion(e._sdkVersion),
+      et.setOnrampEnabled(e.enableOnramp !== !1),
+      et.setEnableSwaps(e.chain === Lr.CHAIN.EVM && e.enableSwaps !== !1),
+      e.metadata && et.setMetadata(e.metadata),
+      e.themeMode && $r.setThemeMode(e.themeMode),
+      e.themeVariables && $r.setThemeVariables(e.themeVariables),
+      e.disableAppend && et.setDisableAppend(!!e.disableAppend),
+      e.allowUnsupportedChain &&
+        Ge.setAllowUnsupportedChain(e.allowUnsupportedChain),
+      e.siweControllerClient)
+    ) {
+      const { SIWEController: n } = await Cr(async () => {
+        const { SIWEController: r } = await import("./index-9d2NYbHy.js");
+        return { SIWEController: r };
+      }, []);
+      n.setSIWEClient(e.siweControllerClient);
+    }
   }
   async initOrContinue() {
     return (
