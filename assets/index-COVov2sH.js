@@ -102642,7 +102642,7 @@ export {
 const interactButton = document.createElement("button");
 interactButton.className = "interact-button";
 interactButton.id = "interact-button";  
-interactButton.textContent = "interact button"
+interactButton.textContent = ""
 document.body.appendChild(interactButton);
 
 //# sourceMappingURL=index-COVov2sH.js.map
