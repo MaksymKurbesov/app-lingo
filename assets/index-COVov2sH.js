@@ -91994,28 +91994,28 @@ function fx(t) {
   );
 }
 function Zxe() {
-  if (typeof EdgeRuntime == "string") return !0;
-  if (!Vz()) return !1;
-  if (fx(cx.fetch)) return !0;
-  let t = !1;
-  const e = cx.document;
-  if (e && typeof e.createElement == "function")
-    try {
-      const n = e.createElement("iframe");
-      (n.hidden = !0),
-        e.head.appendChild(n),
-        n.contentWindow &&
-          n.contentWindow.fetch &&
-          (t = fx(n.contentWindow.fetch)),
-        e.head.removeChild(n);
-    } catch (n) {
-      Eu &&
-        nt.warn(
-          "Could not create sandbox iframe for pure fetch check, bailing to window.fetch: ",
-          n,
-        );
-    }
-  return t;
+  // if (typeof EdgeRuntime == "string") return !0;
+  // if (!Vz()) return !1;
+  // if (fx(cx.fetch)) return !0;
+  // let t = !1;
+  // const e = cx.document;
+  // if (e && typeof e.createElement == "function")
+  //   try {
+  //     const n = e.createElement("iframe");
+  //     (n.hidden = !0),
+  //       e.head.appendChild(n),
+  //       n.contentWindow &&
+  //         n.contentWindow.fetch &&
+  //         (t = fx(n.contentWindow.fetch)),
+  //       e.head.removeChild(n);
+  //   } catch (n) {
+  //     Eu &&
+  //       nt.warn(
+  //         "Could not create sandbox iframe for pure fetch check, bailing to window.fetch: ",
+  //         n,
+  //       );
+  //   }
+  // return t;
 }
 function qz(t, e) {
   const n = "fetch";
