@@ -88172,13 +88172,11 @@ function J9e(t) {
     e.reverse(),
     HO.test(wb(e).function || "") &&
       (e.pop(), HO.test(wb(e).function || "") && e.pop()),
-    e
-      .slice(0, Yj)
-      .map((n) => ({
-        ...n,
-        filename: n.filename || wb(e).filename,
-        function: n.function || Yd,
-      }))
+    e.slice(0, Yj).map((n) => ({
+      ...n,
+      filename: n.filename || wb(e).filename,
+      function: n.function || Yd,
+    }))
   );
 }
 function wb(t) {
@@ -92038,23 +92036,24 @@ function Gz(t, e = !1) {
           };
         t || Ys("fetch", { ...s });
         const a = new Error().stack;
-        return n.apply(On, r).then(
-          async (c) => (
-            t
-              ? t(c)
-              : Ys("fetch", { ...s, endTimestamp: Wi() * 1e3, response: c }),
-            c
-          ),
-          (c) => {
-            throw (
-              (Ys("fetch", { ...s, endTimestamp: Wi() * 1e3, error: c }),
-              nC(c) &&
-                c.stack === void 0 &&
-                ((c.stack = a), na(c, "framesToPop", 1)),
-              c)
-            );
-          },
-        );
+        return null;
+        // return n.apply(On, r).then(
+        //   async (c) => (
+        //     t
+        //       ? t(c)
+        //       : Ys("fetch", { ...s, endTimestamp: Wi() * 1e3, response: c }),
+        //     c
+        //   ),
+        //   (c) => {
+        //     throw (
+        //       (Ys("fetch", { ...s, endTimestamp: Wi() * 1e3, error: c }),
+        //       nC(c) &&
+        //         c.stack === void 0 &&
+        //         ((c.stack = a), na(c, "framesToPop", 1)),
+        //       c)
+        //     );
+        //   },
+        // );
       };
     });
 }
