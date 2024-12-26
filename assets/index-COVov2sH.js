@@ -92037,7 +92037,7 @@ function Gz(t, e = !1) {
           };
         t || Ys("fetch", { ...s });
         const a = new Error().stack;
-        return n;
+        return n.apply();
 
         // return n.apply(On, r).then(
         //   async (c) => (
