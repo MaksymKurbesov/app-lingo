@@ -91313,7 +91313,7 @@ function rxe(t, e) {
         })),
     ar().update(e.initialScope);
   const r = new t(e);
-  return ixe(r), r.init(), r;
+  // return ixe(r), r.init(), r;
 }
 function ixe(t) {
   ar().setClient(t);
