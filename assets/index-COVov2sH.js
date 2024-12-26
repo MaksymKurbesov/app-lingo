@@ -87788,7 +87788,8 @@ const Gj = () => {
                 {
                   class: "w-full interact-button",
                   "style-type": i.buttonStyle,
-                  onClick: s[0] || (s[0] = (a) => o()),
+                  onClick: () => {}
+                  // onClick: s[0] || (s[0] = (a) => o()),
                 },
                 { default: qs(() => [El(" Connect wallet ")]), _: 1 },
                 8,
