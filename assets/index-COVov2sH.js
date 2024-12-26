@@ -87772,7 +87772,7 @@ const Gj = () => {
     __name: "ConnectWalletButton",
     props: { buttonStyle: { default: "tertiary" } },
     emits: ["connectClick"],
-    setup(t, { emit: e }) {
+    setup(t, { emit: "" }) {
       const { login: n } = Gj(),
         r = e,
         o = async () => {
