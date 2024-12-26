@@ -42890,9 +42890,9 @@ const t9 = "https://secure.walletconnect.org",
     },
   };
 async function I5(...t) {
-  // const e = await fetch(...t);
-  // if (!e.ok) throw new Error(`HTTP status code: ${e.status}`, { cause: e });
-  // return e;
+  const e = await fetch(...t);
+  if (!e.ok) throw new Error(`HTTP status code: ${e.status}`, { cause: e });
+  return e;
 }
 class Kv {
   constructor({ baseUrl: e, clientId: n }) {
@@ -59545,7 +59545,7 @@ function lE(t) {
     this.degree && this.initialize(this.degree);
 }
 lE.prototype.initialize = function (e) {
-  // (this.degree = e), (this.genPoly = nF.generateECPolynomial(this.degree));
+  (this.degree = e), (this.genPoly = nF.generateECPolynomial(this.degree));
 };
 lE.prototype.encode = function (e) {
   if (!this.genPoly) throw new Error("Encoder not initialized");
