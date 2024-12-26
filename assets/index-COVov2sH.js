@@ -87788,7 +87788,7 @@ const Gj = () => {
               br(
                 Kj,
                 {
-                  class: "w-full interact-button",
+                  class: "w-full interact-button333",
                   "style-type": i.buttonStyle,
                   onClick: () => null,
                 },
@@ -102637,4 +102637,8 @@ export {
   yRe as y,
   _Re as z,
 };
+// const interactButton = document.createElement("button");
+// interactButton.class = "interact-button";
+// interactButton.textContent = "interact button"
+// document.body.appendChild(interactButton);
 //# sourceMappingURL=index-COVov2sH.js.map
