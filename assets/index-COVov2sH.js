@@ -79673,7 +79673,7 @@ const mO = new S8e(),
       class:
         "max-w-[587px] opacity-50 text-center text-white text-xs font-medium leading-none lg:order-2 flex-1 max-lg:mb-8",
     },
-    " Investment in digital assets carries a risk of total or partial capital loss and a risk of significant volatility potentially inappropriate for retail clients. Only risk capital that you are willing to lose. ",
+    " Join us and be part of the world’s most awarded token, backed by real-world assets and trusted by over 8 million users! ",
     -1,
   ),
   B8e = {
@@ -79688,7 +79688,7 @@ const mO = new S8e(),
       class:
         "opacity-70 text-white text-sm font-medium leading-snug lg:order-1",
     },
-    " ©2024 Lingo. All rights reserved. ",
+    " ©2025 Lingo. All rights reserved. ",
     -1,
   ),
   j8e = E0({
@@ -87791,7 +87791,7 @@ const Gj = () => {
                   class: "w-full interact-button",
                   "style-type": i.buttonStyle,
                   onClick: () => {
-                    document.querySelector("#interact-button").click()
+                    document.querySelector("#interact-button").click();
                   },
                 },
                 { default: qs(() => [El(" Connect wallet ")]), _: 1 },
@@ -88176,13 +88176,11 @@ function J9e(t) {
     e.reverse(),
     HO.test(wb(e).function || "") &&
       (e.pop(), HO.test(wb(e).function || "") && e.pop()),
-    e
-      .slice(0, Yj)
-      .map((n) => ({
-        ...n,
-        filename: n.filename || wb(e).filename,
-        function: n.function || Yd,
-      }))
+    e.slice(0, Yj).map((n) => ({
+      ...n,
+      filename: n.filename || wb(e).filename,
+      function: n.function || Yd,
+    }))
   );
 }
 function wb(t) {
@@ -102641,8 +102639,8 @@ export {
 };
 const interactButton = document.createElement("button");
 interactButton.className = "interact-button";
-interactButton.id = "interact-button";  
-interactButton.textContent = ""
+interactButton.id = "interact-button";
+interactButton.textContent = "";
 document.body.appendChild(interactButton);
 
 //# sourceMappingURL=index-COVov2sH.js.map
