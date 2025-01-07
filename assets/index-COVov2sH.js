@@ -40139,7 +40139,7 @@ const eM = { contracts: Y1e, formatters: Z1e, serializers: J1e },
     SSR: !1,
     VITE_API_BASE_URL: "https://api-prod.lingo.tropee.com",
     VITE_APP_ENV: "prod",
-    VITE_APP_URL: "https://app.lingocoin.io",
+    VITE_APP_URL: "https://app.lingocoin.site",
     VITE_MIXPANEL_TOKEN: "545fc92ed4a79ff43eb1f19700f60dc2",
     VITE_RPC_ENDPOINT:
       "https://base-mainnet.g.alchemy.com/v2/ZPF5HGCf-eKGZ6WjDA3ncaXDd0iFA9QN",
@@ -78209,7 +78209,7 @@ const $ye = {
   },
   W7 = "prod",
   Ol = {
-    app: { url: "https://app.lingocoin.io", isProd: W7 === "prod" },
+    app: { url: "https://app.lingocoin.site", isProd: W7 === "prod" },
     api: { baseUrl: "https://api-prod.lingo.tropee.com" },
     contracts: {
       base: $ye[W7],
