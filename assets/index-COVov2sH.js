@@ -56024,17 +56024,17 @@ let Js = class extends Se {
     return null;
   }
 };
-Js.styles = [st, en, x2e];
-rf([ie()], Js.prototype, "networkSrc", void 0);
-rf([ie()], Js.prototype, "avatarSrc", void 0);
-rf([ie()], Js.prototype, "balance", void 0);
-rf([ie({ type: Boolean })], Js.prototype, "isUnsupportedChain", void 0);
-rf([ie({ type: Boolean })], Js.prototype, "disabled", void 0);
-rf([ie()], Js.prototype, "address", void 0);
-rf([ie()], Js.prototype, "profileName", void 0);
-rf([ie()], Js.prototype, "charsStart", void 0);
-rf([ie()], Js.prototype, "charsEnd", void 0);
-Js = rf([Ce("wui-account-button")], Js);
+// Js.styles = [st, en, x2e];
+// rf([ie()], Js.prototype, "networkSrc", void 0);
+// rf([ie()], Js.prototype, "avatarSrc", void 0);
+// rf([ie()], Js.prototype, "balance", void 0);
+// rf([ie({ type: Boolean })], Js.prototype, "isUnsupportedChain", void 0);
+// rf([ie({ type: Boolean })], Js.prototype, "disabled", void 0);
+// rf([ie()], Js.prototype, "address", void 0);
+// rf([ie()], Js.prototype, "profileName", void 0);
+// rf([ie()], Js.prototype, "charsStart", void 0);
+// rf([ie()], Js.prototype, "charsEnd", void 0);
+// Js = rf([Ce("wui-account-button")], Js);
 const A2e = $e`
   :host {
     position: relative;
@@ -56171,13 +56171,13 @@ let c0 = class extends Se {
   }
 };
 c0.styles = [st, A2e];
-ih([ie()], c0.prototype, "size", void 0);
-ih([ie()], c0.prototype, "name", void 0);
-ih([ie()], c0.prototype, "imageSrc", void 0);
-ih([ie()], c0.prototype, "walletIcon", void 0);
-ih([ie({ type: Boolean })], c0.prototype, "installed", void 0);
-ih([ie()], c0.prototype, "badgeSize", void 0);
-c0 = ih([Ce("wui-wallet-image")], c0);
+// ih([ie()], c0.prototype, "size", void 0);
+// ih([ie()], c0.prototype, "name", void 0);
+// ih([ie()], c0.prototype, "imageSrc", void 0);
+// ih([ie()], c0.prototype, "walletIcon", void 0);
+// ih([ie({ type: Boolean })], c0.prototype, "installed", void 0);
+// ih([ie()], c0.prototype, "badgeSize", void 0);
+// c0 = ih([Ce("wui-wallet-image")], c0);
 const E2e = $e`
   :host {
     position: relative;
@@ -64457,50 +64457,50 @@ var pF = function (t, e, n, r) {
       (s = t[a]) && (i = (o < 3 ? s(i) : o > 3 ? s(e, n, i) : s(e, n)) || i);
   return o > 3 && i && Object.defineProperty(e, n, i), i;
 };
-let w7 = class extends Se {
-  constructor() {
-    super(...arguments),
-      (this.search = ""),
-      (this.onDebouncedSearch = Ze.debounce((e) => {
-        this.search = e;
-      }));
-  }
-  render() {
-    const e = this.search.length >= 2;
-    return q`
-      <wui-flex .padding=${["0", "s", "s", "s"]} gap="s">
-        <wui-search-bar @inputChange=${this.onInputChange.bind(this)}></wui-search-bar>
-        ${this.qrButtonTemplate()}
-      </wui-flex>
-      ${e ? q`<w3m-all-wallets-search query=${this.search}></w3m-all-wallets-search>` : q`<w3m-all-wallets-list></w3m-all-wallets-list>`}
-    `;
-  }
-  onInputChange(e) {
-    this.onDebouncedSearch(e.detail);
-  }
-  qrButtonTemplate() {
-    return Ze.isMobile()
-      ? q`
-        <wui-icon-box
-          size="lg"
-          iconSize="xl"
-          iconColor="accent-100"
-          backgroundColor="accent-100"
-          icon="qrCode"
-          background="transparent"
-          border
-          borderColor="wui-accent-glass-010"
-          @click=${this.onWalletConnectQr.bind(this)}
-        ></wui-icon-box>
-      `
-      : null;
-  }
-  onWalletConnectQr() {
-    Ie.push("ConnectingWalletConnect");
-  }
-};
-pF([le()], w7.prototype, "search", void 0);
-w7 = pF([Ce("w3m-all-wallets-view")], w7);
+// let w7 = class extends Se {
+//   constructor() {
+//     super(...arguments),
+//       (this.search = ""),
+//       (this.onDebouncedSearch = Ze.debounce((e) => {
+//         this.search = e;
+//       }));
+//   }
+//   render() {
+//     const e = this.search.length >= 2;
+//     return q`
+//       <wui-flex .padding=${["0", "s", "s", "s"]} gap="s">
+//         <wui-search-bar @inputChange=${this.onInputChange.bind(this)}></wui-search-bar>
+//         ${this.qrButtonTemplate()}
+//       </wui-flex>
+//       ${e ? q`<w3m-all-wallets-search query=${this.search}></w3m-all-wallets-search>` : q`<w3m-all-wallets-list></w3m-all-wallets-list>`}
+//     `;
+//   }
+//   onInputChange(e) {
+//     this.onDebouncedSearch(e.detail);
+//   }
+//   qrButtonTemplate() {
+//     return Ze.isMobile()
+//       ? q`
+//         <wui-icon-box
+//           size="lg"
+//           iconSize="xl"
+//           iconColor="accent-100"
+//           backgroundColor="accent-100"
+//           icon="qrCode"
+//           background="transparent"
+//           border
+//           borderColor="wui-accent-glass-010"
+//           @click=${this.onWalletConnectQr.bind(this)}
+//         ></wui-icon-box>
+//       `
+//       : null;
+//   }
+//   onWalletConnectQr() {
+//     Ie.push("ConnectingWalletConnect");
+//   }
+// };
+// pF([le()], w7.prototype, "search", void 0);
+// w7 = pF([Ce("w3m-all-wallets-view")], w7);
 const G3e = $e`
   @keyframes shake {
     0% {
@@ -65255,171 +65255,171 @@ var xE = function (t, e, n, r) {
       (s = t[a]) && (i = (o < 3 ? s(i) : o > 3 ? s(e, n, i) : s(e, n)) || i);
   return o > 3 && i && Object.defineProperty(e, n, i), i;
 };
-let aw = class extends Se {
-  constructor() {
-    var e;
-    super(),
-      (this.interval = void 0),
-      (this.lastRetry = Date.now()),
-      (this.wallet = (e = Ie.state.data) == null ? void 0 : e.wallet),
-      (this.platform = void 0),
-      (this.platforms = []),
-      this.initializeConnection(),
-      (this.interval = setInterval(
-        this.initializeConnection.bind(this),
-        Xr.TEN_SEC_MS,
-      ));
-  }
-  disconnectedCallback() {
-    clearTimeout(this.interval);
-  }
-  render() {
-    return this.wallet
-      ? (this.determinePlatforms(),
-        q`
-      ${this.headerTemplate()}
-      <div>${this.platformTemplate()}</div>
-    `)
-      : q`<w3m-connecting-wc-qrcode></w3m-connecting-wc-qrcode>`;
-  }
-  async initializeConnection(e = !1) {
-    try {
-      const { wcPairingExpiry: n } = It.state;
-      if (e || Ze.isPairingExpired(n)) {
-        if (this.wallet) {
-          const r = Kn.getWalletImage(this.wallet);
-          r && _n.setConnectedWalletImageUrl(r);
-        } else {
-          const o = ct.state.connectors.find(
-              (s) => s.type === "WALLET_CONNECT",
-            ),
-            i = Kn.getConnectorImage(o);
-          i && _n.setConnectedWalletImageUrl(i);
-        }
-        if (
-          (await It.connectWalletConnect(),
-          this.finalizeConnection(),
-          _n.getConnectedConnector() === "AUTH" &&
-            et.state.hasMultipleAddresses)
-        )
-          Ie.push("SelectAddresses");
-        else if (et.state.isSiweEnabled) {
-          const { SIWEController: r } = await Cr(async () => {
-            const { SIWEController: o } = await import("./index-9d2NYbHy.js");
-            return { SIWEController: o };
-          }, []);
-          r.state.status === "success" ? kt.close() : Ie.push("ConnectingSiwe");
-        } else kt.close();
-      }
-    } catch (n) {
-      it.sendEvent({
-        type: "track",
-        event: "CONNECT_ERROR",
-        properties: { message: (n == null ? void 0 : n.message) ?? "Unknown" },
-      }),
-        It.setWcError(!0),
-        Ze.isAllowedRetry(this.lastRetry) &&
-          (yt.showError("Declined"),
-          (this.lastRetry = Date.now()),
-          this.initializeConnection(!0));
-    }
-  }
-  finalizeConnection() {
-    var r;
-    const { wcLinking: e, recentWallet: n } = It.state;
-    e && _n.setWalletConnectDeepLink(e),
-      n && _n.setWeb3ModalRecent(n),
-      it.sendEvent({
-        type: "track",
-        event: "CONNECT_SUCCESS",
-        properties: {
-          method: e ? "mobile" : "qrcode",
-          name: ((r = this.wallet) == null ? void 0 : r.name) || "Unknown",
-        },
-      });
-  }
-  determinePlatforms() {
-    if (!this.wallet)
-      throw new Error("w3m-connecting-wc-view:determinePlatforms No wallet");
-    if (this.platform) return;
-    const {
-        mobile_link: e,
-        desktop_link: n,
-        webapp_link: r,
-        injected: o,
-        rdns: i,
-      } = this.wallet,
-      s = o == null ? void 0 : o.map(({ injected_id: v }) => v).filter(Boolean),
-      a = i ? [i] : s ?? [],
-      c = et.state.isUniversalProvider ? !1 : a.length,
-      f = e,
-      u = r,
-      d = It.checkInstalled(a),
-      p = c && d,
-      b = n && !Ze.isMobile();
-    p && this.platforms.push("browser"),
-      f && this.platforms.push(Ze.isMobile() ? "mobile" : "qrcode"),
-      u && this.platforms.push("web"),
-      b && this.platforms.push("desktop"),
-      !p && c && this.platforms.push("unsupported"),
-      (this.platform = this.platforms[0]);
-  }
-  platformTemplate() {
-    switch (this.platform) {
-      case "browser":
-        return q`<w3m-connecting-wc-browser></w3m-connecting-wc-browser>`;
-      case "desktop":
-        return q`
-          <w3m-connecting-wc-desktop .onRetry=${() => this.initializeConnection(!0)}>
-          </w3m-connecting-wc-desktop>
-        `;
-      case "web":
-        return q`
-          <w3m-connecting-wc-web .onRetry=${() => this.initializeConnection(!0)}>
-          </w3m-connecting-wc-web>
-        `;
-      case "mobile":
-        return q`
-          <w3m-connecting-wc-mobile isMobile .onRetry=${() => this.initializeConnection(!0)}>
-          </w3m-connecting-wc-mobile>
-        `;
-      case "qrcode":
-        return q`<w3m-connecting-wc-qrcode></w3m-connecting-wc-qrcode>`;
-      default:
-        return q`<w3m-connecting-wc-unsupported></w3m-connecting-wc-unsupported>`;
-    }
-  }
-  headerTemplate() {
-    return this.platforms.length > 1
-      ? q`
-      <w3m-connecting-header
-        .platforms=${this.platforms}
-        .onSelectPlatfrom=${this.onSelectPlatform.bind(this)}
-      >
-      </w3m-connecting-header>
-    `
-      : null;
-  }
-  async onSelectPlatform(e) {
-    var r;
-    const n = (r = this.shadowRoot) == null ? void 0 : r.querySelector("div");
-    n &&
-      (await n.animate([{ opacity: 1 }, { opacity: 0 }], {
-        duration: 200,
-        fill: "forwards",
-        easing: "ease",
-      }).finished,
-      (this.platform = e),
-      n.animate([{ opacity: 0 }, { opacity: 1 }], {
-        duration: 200,
-        fill: "forwards",
-        easing: "ease",
-      }));
-  }
-};
-xE([le()], aw.prototype, "platform", void 0);
-xE([le()], aw.prototype, "platforms", void 0);
-aw = xE([Ce("w3m-connecting-wc-view")], aw);
+// let aw = class extends Se {
+//   constructor() {
+//     var e;
+//     super(),
+//       (this.interval = void 0),
+//       (this.lastRetry = Date.now()),
+//       (this.wallet = (e = Ie.state.data) == null ? void 0 : e.wallet),
+//       (this.platform = void 0),
+//       (this.platforms = []),
+//       this.initializeConnection(),
+//       (this.interval = setInterval(
+//         this.initializeConnection.bind(this),
+//         Xr.TEN_SEC_MS,
+//       ));
+//   }
+//   disconnectedCallback() {
+//     clearTimeout(this.interval);
+//   }
+//   render() {
+//     return this.wallet
+//       ? (this.determinePlatforms(),
+//         q`
+//       ${this.headerTemplate()}
+//       <div>${this.platformTemplate()}</div>
+//     `)
+//       : q`<w3m-connecting-wc-qrcode></w3m-connecting-wc-qrcode>`;
+//   }
+//   async initializeConnection(e = !1) {
+//     try {
+//       const { wcPairingExpiry: n } = It.state;
+//       if (e || Ze.isPairingExpired(n)) {
+//         if (this.wallet) {
+//           const r = Kn.getWalletImage(this.wallet);
+//           r && _n.setConnectedWalletImageUrl(r);
+//         } else {
+//           const o = ct.state.connectors.find(
+//               (s) => s.type === "WALLET_CONNECT",
+//             ),
+//             i = Kn.getConnectorImage(o);
+//           i && _n.setConnectedWalletImageUrl(i);
+//         }
+//         if (
+//           (await It.connectWalletConnect(),
+//           this.finalizeConnection(),
+//           _n.getConnectedConnector() === "AUTH" &&
+//             et.state.hasMultipleAddresses)
+//         )
+//           Ie.push("SelectAddresses");
+//         else if (et.state.isSiweEnabled) {
+//           const { SIWEController: r } = await Cr(async () => {
+//             const { SIWEController: o } = await import("./index-9d2NYbHy.js");
+//             return { SIWEController: o };
+//           }, []);
+//           r.state.status === "success" ? kt.close() : Ie.push("ConnectingSiwe");
+//         } else kt.close();
+//       }
+//     } catch (n) {
+//       it.sendEvent({
+//         type: "track",
+//         event: "CONNECT_ERROR",
+//         properties: { message: (n == null ? void 0 : n.message) ?? "Unknown" },
+//       }),
+//         It.setWcError(!0),
+//         Ze.isAllowedRetry(this.lastRetry) &&
+//           (yt.showError("Declined"),
+//           (this.lastRetry = Date.now()),
+//           this.initializeConnection(!0));
+//     }
+//   }
+//   finalizeConnection() {
+//     var r;
+//     const { wcLinking: e, recentWallet: n } = It.state;
+//     e && _n.setWalletConnectDeepLink(e),
+//       n && _n.setWeb3ModalRecent(n),
+//       it.sendEvent({
+//         type: "track",
+//         event: "CONNECT_SUCCESS",
+//         properties: {
+//           method: e ? "mobile" : "qrcode",
+//           name: ((r = this.wallet) == null ? void 0 : r.name) || "Unknown",
+//         },
+//       });
+//   }
+//   determinePlatforms() {
+//     if (!this.wallet)
+//       throw new Error("w3m-connecting-wc-view:determinePlatforms No wallet");
+//     if (this.platform) return;
+//     const {
+//         mobile_link: e,
+//         desktop_link: n,
+//         webapp_link: r,
+//         injected: o,
+//         rdns: i,
+//       } = this.wallet,
+//       s = o == null ? void 0 : o.map(({ injected_id: v }) => v).filter(Boolean),
+//       a = i ? [i] : s ?? [],
+//       c = et.state.isUniversalProvider ? !1 : a.length,
+//       f = e,
+//       u = r,
+//       d = It.checkInstalled(a),
+//       p = c && d,
+//       b = n && !Ze.isMobile();
+//     p && this.platforms.push("browser"),
+//       f && this.platforms.push(Ze.isMobile() ? "mobile" : "qrcode"),
+//       u && this.platforms.push("web"),
+//       b && this.platforms.push("desktop"),
+//       !p && c && this.platforms.push("unsupported"),
+//       (this.platform = this.platforms[0]);
+//   }
+//   platformTemplate() {
+//     switch (this.platform) {
+//       case "browser":
+//         return q`<w3m-connecting-wc-browser></w3m-connecting-wc-browser>`;
+//       case "desktop":
+//         return q`
+//           <w3m-connecting-wc-desktop .onRetry=${() => this.initializeConnection(!0)}>
+//           </w3m-connecting-wc-desktop>
+//         `;
+//       case "web":
+//         return q`
+//           <w3m-connecting-wc-web .onRetry=${() => this.initializeConnection(!0)}>
+//           </w3m-connecting-wc-web>
+//         `;
+//       case "mobile":
+//         return q`
+//           <w3m-connecting-wc-mobile isMobile .onRetry=${() => this.initializeConnection(!0)}>
+//           </w3m-connecting-wc-mobile>
+//         `;
+//       case "qrcode":
+//         return q`<w3m-connecting-wc-qrcode></w3m-connecting-wc-qrcode>`;
+//       default:
+//         return q`<w3m-connecting-wc-unsupported></w3m-connecting-wc-unsupported>`;
+//     }
+//   }
+//   headerTemplate() {
+//     return this.platforms.length > 1
+//       ? q`
+//       <w3m-connecting-header
+//         .platforms=${this.platforms}
+//         .onSelectPlatfrom=${this.onSelectPlatform.bind(this)}
+//       >
+//       </w3m-connecting-header>
+//     `
+//       : null;
+//   }
+//   async onSelectPlatform(e) {
+//     var r;
+//     const n = (r = this.shadowRoot) == null ? void 0 : r.querySelector("div");
+//     n &&
+//       (await n.animate([{ opacity: 1 }, { opacity: 0 }], {
+//         duration: 200,
+//         fill: "forwards",
+//         easing: "ease",
+//       }).finished,
+//       (this.platform = e),
+//       n.animate([{ opacity: 0 }, { opacity: 1 }], {
+//         duration: 200,
+//         fill: "forwards",
+//         easing: "ease",
+//       }));
+//   }
+// };
+// xE([le()], aw.prototype, "platform", void 0);
+// xE([le()], aw.prototype, "platforms", void 0);
+// aw = xE([Ce("w3m-connecting-wc-view")], aw);
 const J3e = $e`
   .continue-button-container {
     width: 100%;
@@ -70499,120 +70499,120 @@ var Im = function (t, e, n, r) {
   return o > 3 && i && Object.defineProperty(e, n, i), i;
 };
 const qM = "local-paginator";
-let zd = class extends Se {
-  constructor() {
-    super(),
-      (this.unsubscribe = []),
-      (this.paginationObserver = void 0),
-      (this.initial = !xt.state.wallets.length),
-      (this.wallets = xt.state.wallets),
-      (this.recommended = xt.state.recommended),
-      (this.featured = xt.state.featured),
-      this.unsubscribe.push(
-        xt.subscribeKey("wallets", (e) => (this.wallets = e)),
-        xt.subscribeKey("recommended", (e) => (this.recommended = e)),
-        xt.subscribeKey("featured", (e) => (this.featured = e)),
-      );
-  }
-  firstUpdated() {
-    this.initialFetch(), this.createPaginationObserver();
-  }
-  disconnectedCallback() {
-    var e;
-    this.unsubscribe.forEach((n) => n()),
-      (e = this.paginationObserver) == null || e.disconnect();
-  }
-  render() {
-    return q`
-      <wui-grid
-        data-scroll=${!this.initial}
-        .padding=${["0", "s", "s", "s"]}
-        columnGap="xxs"
-        rowGap="l"
-        justifyContent="space-between"
-      >
-        ${this.initial ? this.shimmerTemplate(16) : this.walletsTemplate()}
-        ${this.paginationLoaderTemplate()}
-      </wui-grid>
-    `;
-  }
-  async initialFetch() {
-    var n;
-    const e =
-      (n = this.shadowRoot) == null ? void 0 : n.querySelector("wui-grid");
-    this.initial &&
-      e &&
-      (await xt.fetchWallets({ page: 1 }),
-      await e.animate([{ opacity: 1 }, { opacity: 0 }], {
-        duration: 200,
-        fill: "forwards",
-        easing: "ease",
-      }).finished,
-      (this.initial = !1),
-      e.animate([{ opacity: 0 }, { opacity: 1 }], {
-        duration: 200,
-        fill: "forwards",
-        easing: "ease",
-      }));
-  }
-  shimmerTemplate(e, n) {
-    return [...Array(e)].map(
-      () => q`
-        <wui-card-select-loader type="wallet" id=${rt(n)}></wui-card-select-loader>
-      `,
-    );
-  }
-  walletsTemplate() {
-    const e = [...this.featured, ...this.recommended, ...this.wallets];
-    return AF(e).map(
-      (r) => q`
-        <w3m-all-wallets-list-item
-          @click=${() => this.onConnectWallet(r)}
-          .wallet=${r}
-        ></w3m-all-wallets-list-item>
-      `,
-    );
-  }
-  paginationLoaderTemplate() {
-    const { wallets: e, recommended: n, featured: r, count: o } = xt.state,
-      i = window.innerWidth < 352 ? 3 : 4,
-      s = e.length + n.length;
-    let c = Math.ceil(s / i) * i - s + i;
-    return (
-      (c -= e.length ? r.length % i : 0),
-      o === 0 && r.length > 0
-        ? null
-        : o === 0 || [...r, ...e, ...n].length < o
-          ? this.shimmerTemplate(c, qM)
-          : null
-    );
-  }
-  createPaginationObserver() {
-    var n;
-    const e =
-      (n = this.shadowRoot) == null ? void 0 : n.querySelector(`#${qM}`);
-    e &&
-      ((this.paginationObserver = new IntersectionObserver(([r]) => {
-        if (r != null && r.isIntersecting && !this.initial) {
-          const { page: o, count: i, wallets: s } = xt.state;
-          s.length < i && xt.fetchWallets({ page: o + 1 });
-        }
-      })),
-      this.paginationObserver.observe(e));
-  }
-  onConnectWallet(e) {
-    const n = ct.getConnector(e.id, e.rdns);
-    n
-      ? Ie.push("ConnectingExternal", { connector: n })
-      : Ie.push("ConnectingWalletConnect", { wallet: e });
-  }
-};
-zd.styles = Vwe;
-Im([le()], zd.prototype, "initial", void 0);
-Im([le()], zd.prototype, "wallets", void 0);
-Im([le()], zd.prototype, "recommended", void 0);
-Im([le()], zd.prototype, "featured", void 0);
-zd = Im([Ce("w3m-all-wallets-list")], zd);
+// let zd = class extends Se {
+//   constructor() {
+//     super(),
+//       (this.unsubscribe = []),
+//       (this.paginationObserver = void 0),
+//       (this.initial = !xt.state.wallets.length),
+//       (this.wallets = xt.state.wallets),
+//       (this.recommended = xt.state.recommended),
+//       (this.featured = xt.state.featured),
+//       this.unsubscribe.push(
+//         xt.subscribeKey("wallets", (e) => (this.wallets = e)),
+//         xt.subscribeKey("recommended", (e) => (this.recommended = e)),
+//         xt.subscribeKey("featured", (e) => (this.featured = e)),
+//       );
+//   }
+//   firstUpdated() {
+//     this.initialFetch(), this.createPaginationObserver();
+//   }
+//   disconnectedCallback() {
+//     var e;
+//     this.unsubscribe.forEach((n) => n()),
+//       (e = this.paginationObserver) == null || e.disconnect();
+//   }
+//   render() {
+//     return q`
+//       <wui-grid
+//         data-scroll=${!this.initial}
+//         .padding=${["0", "s", "s", "s"]}
+//         columnGap="xxs"
+//         rowGap="l"
+//         justifyContent="space-between"
+//       >
+//         ${this.initial ? this.shimmerTemplate(16) : this.walletsTemplate()}
+//         ${this.paginationLoaderTemplate()}
+//       </wui-grid>
+//     `;
+//   }
+//   async initialFetch() {
+//     var n;
+//     const e =
+//       (n = this.shadowRoot) == null ? void 0 : n.querySelector("wui-grid");
+//     this.initial &&
+//       e &&
+//       (await xt.fetchWallets({ page: 1 }),
+//       await e.animate([{ opacity: 1 }, { opacity: 0 }], {
+//         duration: 200,
+//         fill: "forwards",
+//         easing: "ease",
+//       }).finished,
+//       (this.initial = !1),
+//       e.animate([{ opacity: 0 }, { opacity: 1 }], {
+//         duration: 200,
+//         fill: "forwards",
+//         easing: "ease",
+//       }));
+//   }
+//   shimmerTemplate(e, n) {
+//     return [...Array(e)].map(
+//       () => q`
+//         <wui-card-select-loader type="wallet" id=${rt(n)}></wui-card-select-loader>
+//       `,
+//     );
+//   }
+//   walletsTemplate() {
+//     const e = [...this.featured, ...this.recommended, ...this.wallets];
+//     return AF(e).map(
+//       (r) => q`
+//         <w3m-all-wallets-list-item
+//           @click=${() => this.onConnectWallet(r)}
+//           .wallet=${r}
+//         ></w3m-all-wallets-list-item>
+//       `,
+//     );
+//   }
+//   paginationLoaderTemplate() {
+//     const { wallets: e, recommended: n, featured: r, count: o } = xt.state,
+//       i = window.innerWidth < 352 ? 3 : 4,
+//       s = e.length + n.length;
+//     let c = Math.ceil(s / i) * i - s + i;
+//     return (
+//       (c -= e.length ? r.length % i : 0),
+//       o === 0 && r.length > 0
+//         ? null
+//         : o === 0 || [...r, ...e, ...n].length < o
+//           ? this.shimmerTemplate(c, qM)
+//           : null
+//     );
+//   }
+//   createPaginationObserver() {
+//     var n;
+//     const e =
+//       (n = this.shadowRoot) == null ? void 0 : n.querySelector(`#${qM}`);
+//     e &&
+//       ((this.paginationObserver = new IntersectionObserver(([r]) => {
+//         if (r != null && r.isIntersecting && !this.initial) {
+//           const { page: o, count: i, wallets: s } = xt.state;
+//           s.length < i && xt.fetchWallets({ page: o + 1 });
+//         }
+//       })),
+//       this.paginationObserver.observe(e));
+//   }
+//   onConnectWallet(e) {
+//     const n = ct.getConnector(e.id, e.rdns);
+//     n
+//       ? Ie.push("ConnectingExternal", { connector: n })
+//       : Ie.push("ConnectingWalletConnect", { wallet: e });
+//   }
+// };
+// zd.styles = Vwe;
+// Im([le()], zd.prototype, "initial", void 0);
+// Im([le()], zd.prototype, "wallets", void 0);
+// Im([le()], zd.prototype, "recommended", void 0);
+// Im([le()], zd.prototype, "featured", void 0);
+// zd = Im([Ce("w3m-all-wallets-list")], zd);
 const qwe = $e`
   button {
     display: flex;
@@ -70672,73 +70672,73 @@ var km = function (t, e, n, r) {
       (s = t[a]) && (i = (o < 3 ? s(i) : o > 3 ? s(e, n, i) : s(e, n)) || i);
   return o > 3 && i && Object.defineProperty(e, n, i), i;
 };
-let Wd = class extends Se {
-  constructor() {
-    super(),
-      (this.observer = new IntersectionObserver(() => {})),
-      (this.visible = !1),
-      (this.imageSrc = void 0),
-      (this.imageLoading = !1),
-      (this.wallet = void 0),
-      (this.observer = new IntersectionObserver(
-        (e) => {
-          e.forEach((n) => {
-            n.isIntersecting
-              ? ((this.visible = !0), this.fetchImageSrc())
-              : (this.visible = !1);
-          });
-        },
-        { threshold: 0.01 },
-      ));
-  }
-  firstUpdated() {
-    this.observer.observe(this);
-  }
-  disconnectedCallback() {
-    this.observer.disconnect();
-  }
-  render() {
-    var e;
-    return q`
-      <button ontouchstart>
-        ${this.imageTemplate()}
-        <wui-text variant="tiny-500" color="inherit">${(e = this.wallet) == null ? void 0 : e.name}</wui-text>
-      </button>
-    `;
-  }
-  imageTemplate() {
-    var e, n;
-    return (!this.visible && !this.imageSrc) || this.imageLoading
-      ? this.shimmerTemplate()
-      : q`
-      <wui-wallet-image
-        size="md"
-        imageSrc=${rt(this.imageSrc)}
-        name=${(e = this.wallet) == null ? void 0 : e.name}
-        .installed=${(n = this.wallet) == null ? void 0 : n.installed}
-        badgeSize="sm"
-      >
-      </wui-wallet-image>
-    `;
-  }
-  shimmerTemplate() {
-    return q`<wui-shimmer width="56px" height="56px" borderRadius="xs"></wui-shimmer>`;
-  }
-  async fetchImageSrc() {
-    this.wallet &&
-      ((this.imageSrc = Kn.getWalletImage(this.wallet)),
-      !this.imageSrc &&
-        ((this.imageLoading = !0),
-        (this.imageSrc = await Kn.fetchWalletImage(this.wallet.image_id)),
-        (this.imageLoading = !1)));
-  }
-};
-Wd.styles = qwe;
-km([le()], Wd.prototype, "visible", void 0);
-km([le()], Wd.prototype, "imageSrc", void 0);
-km([le()], Wd.prototype, "imageLoading", void 0);
-km([ie()], Wd.prototype, "wallet", void 0);
-Wd = km([Ce("w3m-all-wallets-list-item")], Wd);
+// let Wd = class extends Se {
+//   constructor() {
+//     super(),
+//       (this.observer = new IntersectionObserver(() => {})),
+//       (this.visible = !1),
+//       (this.imageSrc = void 0),
+//       (this.imageLoading = !1),
+//       (this.wallet = void 0),
+//       (this.observer = new IntersectionObserver(
+//         (e) => {
+//           e.forEach((n) => {
+//             n.isIntersecting
+//               ? ((this.visible = !0), this.fetchImageSrc())
+//               : (this.visible = !1);
+//           });
+//         },
+//         { threshold: 0.01 },
+//       ));
+//   }
+//   firstUpdated() {
+//     this.observer.observe(this);
+//   }
+//   disconnectedCallback() {
+//     this.observer.disconnect();
+//   }
+//   render() {
+//     var e;
+//     return q`
+//       <button ontouchstart>
+//         ${this.imageTemplate()}
+//         <wui-text variant="tiny-500" color="inherit">${(e = this.wallet) == null ? void 0 : e.name}</wui-text>
+//       </button>
+//     `;
+//   }
+//   imageTemplate() {
+//     var e, n;
+//     return (!this.visible && !this.imageSrc) || this.imageLoading
+//       ? this.shimmerTemplate()
+//       : q`
+//       <wui-wallet-image
+//         size="md"
+//         imageSrc=${rt(this.imageSrc)}
+//         name=${(e = this.wallet) == null ? void 0 : e.name}
+//         .installed=${(n = this.wallet) == null ? void 0 : n.installed}
+//         badgeSize="sm"
+//       >
+//       </wui-wallet-image>
+//     `;
+//   }
+//   shimmerTemplate() {
+//     return q`<wui-shimmer width="56px" height="56px" borderRadius="xs"></wui-shimmer>`;
+//   }
+//   async fetchImageSrc() {
+//     this.wallet &&
+//       ((this.imageSrc = Kn.getWalletImage(this.wallet)),
+//       !this.imageSrc &&
+//         ((this.imageLoading = !0),
+//         (this.imageSrc = await Kn.fetchWalletImage(this.wallet.image_id)),
+//         (this.imageLoading = !1)));
+//   }
+// };
+// Wd.styles = qwe;
+// km([le()], Wd.prototype, "visible", void 0);
+// km([le()], Wd.prototype, "imageSrc", void 0);
+// km([le()], Wd.prototype, "imageLoading", void 0);
+// km([ie()], Wd.prototype, "wallet", void 0);
+// Wd = km([Ce("w3m-all-wallets-list-item")], Wd);
 const Gwe = $e`
   wui-grid,
   wui-loading-spinner,
@@ -70777,73 +70777,73 @@ var kE = function (t, e, n, r) {
       (s = t[a]) && (i = (o < 3 ? s(i) : o > 3 ? s(e, n, i) : s(e, n)) || i);
   return o > 3 && i && Object.defineProperty(e, n, i), i;
 };
-let S6 = class extends Se {
-  constructor() {
-    super(...arguments),
-      (this.prevQuery = ""),
-      (this.loading = !0),
-      (this.query = "");
-  }
-  render() {
-    return (
-      this.onSearch(),
-      this.loading
-        ? q`<wui-loading-spinner color="accent-100"></wui-loading-spinner>`
-        : this.walletsTemplate()
-    );
-  }
-  async onSearch() {
-    this.query.trim() !== this.prevQuery.trim() &&
-      ((this.prevQuery = this.query),
-      (this.loading = !0),
-      await xt.searchWallet({ search: this.query }),
-      (this.loading = !1));
-  }
-  walletsTemplate() {
-    const { search: e } = xt.state,
-      n = AF(e);
-    return e.length
-      ? q`
-      <wui-grid
-        .padding=${["0", "s", "s", "s"]}
-        gridTemplateColumns="repeat(4, 1fr)"
-        rowGap="l"
-        columnGap="xs"
-      >
-        ${n.map(
-          (r) => q`
-            <w3m-all-wallets-list-item
-              @click=${() => this.onConnectWallet(r)}
-              .wallet=${r}
-            ></w3m-all-wallets-list-item>
-          `,
-        )}
-      </wui-grid>
-    `
-      : q`
-        <wui-flex justifyContent="center" alignItems="center" gap="s" flexDirection="column">
-          <wui-icon-box
-            size="lg"
-            iconColor="fg-200"
-            backgroundColor="fg-300"
-            icon="wallet"
-            background="transparent"
-          ></wui-icon-box>
-          <wui-text color="fg-200" variant="paragraph-500">No Wallet found</wui-text>
-        </wui-flex>
-      `;
-  }
-  onConnectWallet(e) {
-    const n = ct.getConnector(e.id, e.rdns);
-    n
-      ? Ie.push("ConnectingExternal", { connector: n })
-      : Ie.push("ConnectingWalletConnect", { wallet: e });
-  }
-};
-S6.styles = Gwe;
-kE([le()], S6.prototype, "loading", void 0);
-kE([ie()], S6.prototype, "query", void 0);
-S6 = kE([Ce("w3m-all-wallets-search")], S6);
+// let S6 = class extends Se {
+//   constructor() {
+//     super(...arguments),
+//       (this.prevQuery = ""),
+//       (this.loading = !0),
+//       (this.query = "");
+//   }
+//   render() {
+//     return (
+//       this.onSearch(),
+//       this.loading
+//         ? q`<wui-loading-spinner color="accent-100"></wui-loading-spinner>`
+//         : this.walletsTemplate()
+//     );
+//   }
+//   async onSearch() {
+//     this.query.trim() !== this.prevQuery.trim() &&
+//       ((this.prevQuery = this.query),
+//       (this.loading = !0),
+//       await xt.searchWallet({ search: this.query }),
+//       (this.loading = !1));
+//   }
+//   walletsTemplate() {
+//     const { search: e } = xt.state,
+//       n = AF(e);
+//     return e.length
+//       ? q`
+//       <wui-grid
+//         .padding=${["0", "s", "s", "s"]}
+//         gridTemplateColumns="repeat(4, 1fr)"
+//         rowGap="l"
+//         columnGap="xs"
+//       >
+//         ${n.map(
+//           (r) => q`
+//             <w3m-all-wallets-list-item
+//               @click=${() => this.onConnectWallet(r)}
+//               .wallet=${r}
+//             ></w3m-all-wallets-list-item>
+//           `,
+//         )}
+//       </wui-grid>
+//     `
+//       : q`
+//         <wui-flex justifyContent="center" alignItems="center" gap="s" flexDirection="column">
+//           <wui-icon-box
+//             size="lg"
+//             iconColor="fg-200"
+//             backgroundColor="fg-300"
+//             icon="wallet"
+//             background="transparent"
+//           ></wui-icon-box>
+//           <wui-text color="fg-200" variant="paragraph-500">No Wallet found</wui-text>
+//         </wui-flex>
+//       `;
+//   }
+//   onConnectWallet(e) {
+//     const n = ct.getConnector(e.id, e.rdns);
+//     n
+//       ? Ie.push("ConnectingExternal", { connector: n })
+//       : Ie.push("ConnectingWalletConnect", { wallet: e });
+//   }
+// };
+// S6.styles = Gwe;
+// kE([le()], S6.prototype, "loading", void 0);
+// kE([ie()], S6.prototype, "query", void 0);
+// S6 = kE([Ce("w3m-all-wallets-search")], S6);
 var by = function (t, e, n, r) {
   var o = arguments.length,
     i =
@@ -71216,42 +71216,42 @@ var Xwe = function (t, e, n, r) {
       (s = t[a]) && (i = (o < 3 ? s(i) : o > 3 ? s(e, n, i) : s(e, n)) || i);
   return o > 3 && i && Object.defineProperty(e, n, i), i;
 };
-let ZM = class extends Se {
-  constructor() {
-    var e;
-    if (
-      (super(),
-      (this.wallet = (e = Ie.state.data) == null ? void 0 : e.wallet),
-      !this.wallet)
-    )
-      throw new Error("w3m-connecting-wc-unsupported: No wallet provided");
-    it.sendEvent({
-      type: "track",
-      event: "SELECT_WALLET",
-      properties: { name: this.wallet.name, platform: "browser" },
-    });
-  }
-  render() {
-    return q`
-      <wui-flex
-        flexDirection="column"
-        alignItems="center"
-        .padding=${["3xl", "xl", "xl", "xl"]}
-        gap="xl"
-      >
-        <wui-wallet-image
-          size="lg"
-          imageSrc=${rt(Kn.getWalletImage(this.wallet))}
-        ></wui-wallet-image>
+// let ZM = class extends Se {
+//   constructor() {
+//     var e;
+//     if (
+//       (super(),
+//       (this.wallet = (e = Ie.state.data) == null ? void 0 : e.wallet),
+//       !this.wallet)
+//     )
+//       throw new Error("w3m-connecting-wc-unsupported: No wallet provided");
+//     it.sendEvent({
+//       type: "track",
+//       event: "SELECT_WALLET",
+//       properties: { name: this.wallet.name, platform: "browser" },
+//     });
+//   }
+//   render() {
+//     return q`
+//       <wui-flex
+//         flexDirection="column"
+//         alignItems="center"
+//         .padding=${["3xl", "xl", "xl", "xl"]}
+//         gap="xl"
+//       >
+//         <wui-wallet-image
+//           size="lg"
+//           imageSrc=${rt(Kn.getWalletImage(this.wallet))}
+//         ></wui-wallet-image>
 
-        <wui-text variant="paragraph-500" color="fg-100">Not Detected</wui-text>
-      </wui-flex>
+//         <wui-text variant="paragraph-500" color="fg-100">Not Detected</wui-text>
+//       </wui-flex>
 
-      <w3m-mobile-download-links .wallet=${this.wallet}></w3m-mobile-download-links>
-    `;
-  }
-};
-ZM = Xwe([Ce("w3m-connecting-wc-unsupported")], ZM);
+//       <w3m-mobile-download-links .wallet=${this.wallet}></w3m-mobile-download-links>
+//     `;
+//   }
+// };
+// ZM = Xwe([Ce("w3m-connecting-wc-unsupported")], ZM);
 var eve = function (t, e, n, r) {
   var o = arguments.length,
     i =
@@ -71355,187 +71355,187 @@ var ds = function (t, e, n, r) {
   return o > 3 && i && Object.defineProperty(e, n, i), i;
 };
 const nve = Xr.CONVERT_SLIPPAGE_TOLERANCE;
-let co = class extends Se {
-  constructor() {
-    var e;
-    super(),
-      (this.unsubscribe = []),
-      (this.networkName = (e = Ge.state.caipNetwork) == null ? void 0 : e.name),
-      (this.detailsOpen = !1),
-      (this.sourceToken = tt.state.sourceToken),
-      (this.toToken = tt.state.toToken),
-      (this.toTokenAmount = tt.state.toTokenAmount),
-      (this.sourceTokenPriceInUSD = tt.state.sourceTokenPriceInUSD),
-      (this.toTokenPriceInUSD = tt.state.toTokenPriceInUSD),
-      (this.gasPriceInUSD = tt.state.gasPriceInUSD),
-      (this.priceImpact = tt.state.priceImpact),
-      (this.maxSlippage = tt.state.maxSlippage),
-      (this.networkTokenSymbol = tt.state.networkTokenSymbol),
-      (this.inputError = tt.state.inputError),
-      this.unsubscribe.push(
-        tt.subscribe((n) => {
-          (this.sourceToken = n.sourceToken),
-            (this.toToken = n.toToken),
-            (this.toTokenAmount = n.toTokenAmount),
-            (this.gasPriceInUSD = n.gasPriceInUSD),
-            (this.priceImpact = n.priceImpact),
-            (this.maxSlippage = n.maxSlippage),
-            (this.sourceTokenPriceInUSD = n.sourceTokenPriceInUSD),
-            (this.toTokenPriceInUSD = n.toTokenPriceInUSD),
-            (this.inputError = n.inputError);
-        }),
-      );
-  }
-  render() {
-    const e =
-      this.toTokenAmount && this.maxSlippage
-        ? Dn.bigNumber(this.toTokenAmount).minus(this.maxSlippage).toString()
-        : null;
-    if (!this.sourceToken || !this.toToken || this.inputError) return null;
-    const n =
-      this.sourceTokenPriceInUSD && this.toTokenPriceInUSD
-        ? (1 / this.toTokenPriceInUSD) * this.sourceTokenPriceInUSD
-        : 0;
-    return q`
-      <wui-flex flexDirection="column" alignItems="center" gap="1xs" class="details-container">
-        <wui-flex flexDirection="column">
-          <button @click=${this.toggleDetails.bind(this)}>
-            <wui-flex justifyContent="space-between" .padding=${["0", "xs", "0", "xs"]}>
-              <wui-flex justifyContent="flex-start" flexGrow="1" gap="xs">
-                <wui-text variant="small-400" color="fg-100">
-                  1 ${this.sourceToken.symbol} =
-                  ${At.formatNumberToLocalString(n, 3)}
-                  ${this.toToken.symbol}
-                </wui-text>
-                <wui-text variant="small-400" color="fg-200">
-                  $${At.formatNumberToLocalString(this.sourceTokenPriceInUSD)}
-                </wui-text>
-              </wui-flex>
-              <wui-icon name="chevronBottom"></wui-icon>
-            </wui-flex>
-          </button>
-          ${
-            this.detailsOpen
-              ? q`
-                <wui-flex flexDirection="column" gap="xs" class="details-content-container">
-                  <wui-flex flexDirection="column" gap="xs">
-                    <wui-flex
-                      justifyContent="space-between"
-                      alignItems="center"
-                      class="details-row"
-                    >
-                      <wui-flex alignItems="center" gap="xs">
-                        <wui-text class="details-row-title" variant="small-400" color="fg-150">
-                          Network cost
-                        </wui-text>
-                        <w3m-tooltip-trigger
-                          text=${`Network cost is paid in ${this.networkTokenSymbol} on the ${this.networkName} network in order to execute transaction.`}
-                        >
-                          <wui-icon size="xs" color="fg-250" name="infoCircle"></wui-icon>
-                        </w3m-tooltip-trigger>
-                      </wui-flex>
-                      <wui-text variant="small-400" color="fg-100">
-                        $${At.formatNumberToLocalString(this.gasPriceInUSD, 3)}
-                      </wui-text>
-                    </wui-flex>
-                  </wui-flex>
-                  ${
-                    this.priceImpact
-                      ? q` <wui-flex flexDirection="column" gap="xs">
-                        <wui-flex
-                          justifyContent="space-between"
-                          alignItems="center"
-                          class="details-row"
-                        >
-                          <wui-flex alignItems="center" gap="xs">
-                            <wui-text class="details-row-title" variant="small-400" color="fg-150">
-                              Price impact
-                            </wui-text>
-                            <w3m-tooltip-trigger
-                              text="Price impact reflects the change in market price due to your trade"
-                            >
-                              <wui-icon size="xs" color="fg-250" name="infoCircle"></wui-icon>
-                            </w3m-tooltip-trigger>
-                          </wui-flex>
-                          <wui-flex>
-                            <wui-text variant="small-400" color="fg-200">
-                              ${At.formatNumberToLocalString(this.priceImpact, 3)}%
-                            </wui-text>
-                          </wui-flex>
-                        </wui-flex>
-                      </wui-flex>`
-                      : null
-                  }
-                  ${
-                    this.maxSlippage && this.sourceToken.symbol
-                      ? q`<wui-flex flexDirection="column" gap="xs">
-                        <wui-flex
-                          justifyContent="space-between"
-                          alignItems="center"
-                          class="details-row"
-                        >
-                          <wui-flex alignItems="center" gap="xs">
-                            <wui-text class="details-row-title" variant="small-400" color="fg-150">
-                              Max. slippage
-                            </wui-text>
-                            <w3m-tooltip-trigger
-                              text=${`Max slippage sets the minimum amount you must receive for the transaction to proceed. ${e ? `Transaction will be reversed if you receive less than ${At.formatNumberToLocalString(e, 6)} ${this.toToken.symbol} due to price changes.` : ""}`}
-                            >
-                              <wui-icon size="xs" color="fg-250" name="infoCircle"></wui-icon>
-                            </w3m-tooltip-trigger>
-                          </wui-flex>
-                          <wui-flex>
-                            <wui-text variant="small-400" color="fg-200">
-                              ${At.formatNumberToLocalString(this.maxSlippage, 6)}
-                              ${this.toToken.symbol} ${nve}%
-                            </wui-text>
-                          </wui-flex>
-                        </wui-flex>
-                      </wui-flex>`
-                      : null
-                  }
-                  <wui-flex flexDirection="column" gap="xs">
-                    <wui-flex
-                      justifyContent="space-between"
-                      alignItems="center"
-                      class="details-row provider-free-row"
-                    >
-                      <wui-flex alignItems="center" gap="xs">
-                        <wui-text class="details-row-title" variant="small-400" color="fg-150">
-                          Provider fee
-                        </wui-text>
-                      </wui-flex>
-                      <wui-flex>
-                        <wui-text variant="small-400" color="fg-200">0.85%</wui-text>
-                      </wui-flex>
-                    </wui-flex>
-                  </wui-flex>
-                </wui-flex>
-              `
-              : null
-          }
-        </wui-flex>
-      </wui-flex>
-    `;
-  }
-  toggleDetails() {
-    this.detailsOpen = !this.detailsOpen;
-  }
-};
-co.styles = [tve];
-ds([le()], co.prototype, "networkName", void 0);
-ds([ie()], co.prototype, "detailsOpen", void 0);
-ds([le()], co.prototype, "sourceToken", void 0);
-ds([le()], co.prototype, "toToken", void 0);
-ds([le()], co.prototype, "toTokenAmount", void 0);
-ds([le()], co.prototype, "sourceTokenPriceInUSD", void 0);
-ds([le()], co.prototype, "toTokenPriceInUSD", void 0);
-ds([le()], co.prototype, "gasPriceInUSD", void 0);
-ds([le()], co.prototype, "priceImpact", void 0);
-ds([le()], co.prototype, "maxSlippage", void 0);
-ds([le()], co.prototype, "networkTokenSymbol", void 0);
-ds([le()], co.prototype, "inputError", void 0);
-co = ds([Ce("w3m-swap-details")], co);
+// let co = class extends Se {
+//   constructor() {
+//     var e;
+//     super(),
+//       (this.unsubscribe = []),
+//       (this.networkName = (e = Ge.state.caipNetwork) == null ? void 0 : e.name),
+//       (this.detailsOpen = !1),
+//       (this.sourceToken = tt.state.sourceToken),
+//       (this.toToken = tt.state.toToken),
+//       (this.toTokenAmount = tt.state.toTokenAmount),
+//       (this.sourceTokenPriceInUSD = tt.state.sourceTokenPriceInUSD),
+//       (this.toTokenPriceInUSD = tt.state.toTokenPriceInUSD),
+//       (this.gasPriceInUSD = tt.state.gasPriceInUSD),
+//       (this.priceImpact = tt.state.priceImpact),
+//       (this.maxSlippage = tt.state.maxSlippage),
+//       (this.networkTokenSymbol = tt.state.networkTokenSymbol),
+//       (this.inputError = tt.state.inputError),
+//       this.unsubscribe.push(
+//         tt.subscribe((n) => {
+//           (this.sourceToken = n.sourceToken),
+//             (this.toToken = n.toToken),
+//             (this.toTokenAmount = n.toTokenAmount),
+//             (this.gasPriceInUSD = n.gasPriceInUSD),
+//             (this.priceImpact = n.priceImpact),
+//             (this.maxSlippage = n.maxSlippage),
+//             (this.sourceTokenPriceInUSD = n.sourceTokenPriceInUSD),
+//             (this.toTokenPriceInUSD = n.toTokenPriceInUSD),
+//             (this.inputError = n.inputError);
+//         }),
+//       );
+//   }
+//   render() {
+//     const e =
+//       this.toTokenAmount && this.maxSlippage
+//         ? Dn.bigNumber(this.toTokenAmount).minus(this.maxSlippage).toString()
+//         : null;
+//     if (!this.sourceToken || !this.toToken || this.inputError) return null;
+//     const n =
+//       this.sourceTokenPriceInUSD && this.toTokenPriceInUSD
+//         ? (1 / this.toTokenPriceInUSD) * this.sourceTokenPriceInUSD
+//         : 0;
+//     return q`
+//       <wui-flex flexDirection="column" alignItems="center" gap="1xs" class="details-container">
+//         <wui-flex flexDirection="column">
+//           <button @click=${this.toggleDetails.bind(this)}>
+//             <wui-flex justifyContent="space-between" .padding=${["0", "xs", "0", "xs"]}>
+//               <wui-flex justifyContent="flex-start" flexGrow="1" gap="xs">
+//                 <wui-text variant="small-400" color="fg-100">
+//                   1 ${this.sourceToken.symbol} =
+//                   ${At.formatNumberToLocalString(n, 3)}
+//                   ${this.toToken.symbol}
+//                 </wui-text>
+//                 <wui-text variant="small-400" color="fg-200">
+//                   $${At.formatNumberToLocalString(this.sourceTokenPriceInUSD)}
+//                 </wui-text>
+//               </wui-flex>
+//               <wui-icon name="chevronBottom"></wui-icon>
+//             </wui-flex>
+//           </button>
+//           ${
+//             this.detailsOpen
+//               ? q`
+//                 <wui-flex flexDirection="column" gap="xs" class="details-content-container">
+//                   <wui-flex flexDirection="column" gap="xs">
+//                     <wui-flex
+//                       justifyContent="space-between"
+//                       alignItems="center"
+//                       class="details-row"
+//                     >
+//                       <wui-flex alignItems="center" gap="xs">
+//                         <wui-text class="details-row-title" variant="small-400" color="fg-150">
+//                           Network cost
+//                         </wui-text>
+//                         <w3m-tooltip-trigger
+//                           text=${`Network cost is paid in ${this.networkTokenSymbol} on the ${this.networkName} network in order to execute transaction.`}
+//                         >
+//                           <wui-icon size="xs" color="fg-250" name="infoCircle"></wui-icon>
+//                         </w3m-tooltip-trigger>
+//                       </wui-flex>
+//                       <wui-text variant="small-400" color="fg-100">
+//                         $${At.formatNumberToLocalString(this.gasPriceInUSD, 3)}
+//                       </wui-text>
+//                     </wui-flex>
+//                   </wui-flex>
+//                   ${
+//                     this.priceImpact
+//                       ? q` <wui-flex flexDirection="column" gap="xs">
+//                         <wui-flex
+//                           justifyContent="space-between"
+//                           alignItems="center"
+//                           class="details-row"
+//                         >
+//                           <wui-flex alignItems="center" gap="xs">
+//                             <wui-text class="details-row-title" variant="small-400" color="fg-150">
+//                               Price impact
+//                             </wui-text>
+//                             <w3m-tooltip-trigger
+//                               text="Price impact reflects the change in market price due to your trade"
+//                             >
+//                               <wui-icon size="xs" color="fg-250" name="infoCircle"></wui-icon>
+//                             </w3m-tooltip-trigger>
+//                           </wui-flex>
+//                           <wui-flex>
+//                             <wui-text variant="small-400" color="fg-200">
+//                               ${At.formatNumberToLocalString(this.priceImpact, 3)}%
+//                             </wui-text>
+//                           </wui-flex>
+//                         </wui-flex>
+//                       </wui-flex>`
+//                       : null
+//                   }
+//                   ${
+//                     this.maxSlippage && this.sourceToken.symbol
+//                       ? q`<wui-flex flexDirection="column" gap="xs">
+//                         <wui-flex
+//                           justifyContent="space-between"
+//                           alignItems="center"
+//                           class="details-row"
+//                         >
+//                           <wui-flex alignItems="center" gap="xs">
+//                             <wui-text class="details-row-title" variant="small-400" color="fg-150">
+//                               Max. slippage
+//                             </wui-text>
+//                             <w3m-tooltip-trigger
+//                               text=${`Max slippage sets the minimum amount you must receive for the transaction to proceed. ${e ? `Transaction will be reversed if you receive less than ${At.formatNumberToLocalString(e, 6)} ${this.toToken.symbol} due to price changes.` : ""}`}
+//                             >
+//                               <wui-icon size="xs" color="fg-250" name="infoCircle"></wui-icon>
+//                             </w3m-tooltip-trigger>
+//                           </wui-flex>
+//                           <wui-flex>
+//                             <wui-text variant="small-400" color="fg-200">
+//                               ${At.formatNumberToLocalString(this.maxSlippage, 6)}
+//                               ${this.toToken.symbol} ${nve}%
+//                             </wui-text>
+//                           </wui-flex>
+//                         </wui-flex>
+//                       </wui-flex>`
+//                       : null
+//                   }
+//                   <wui-flex flexDirection="column" gap="xs">
+//                     <wui-flex
+//                       justifyContent="space-between"
+//                       alignItems="center"
+//                       class="details-row provider-free-row"
+//                     >
+//                       <wui-flex alignItems="center" gap="xs">
+//                         <wui-text class="details-row-title" variant="small-400" color="fg-150">
+//                           Provider fee
+//                         </wui-text>
+//                       </wui-flex>
+//                       <wui-flex>
+//                         <wui-text variant="small-400" color="fg-200">0.85%</wui-text>
+//                       </wui-flex>
+//                     </wui-flex>
+//                   </wui-flex>
+//                 </wui-flex>
+//               `
+//               : null
+//           }
+//         </wui-flex>
+//       </wui-flex>
+//     `;
+//   }
+//   toggleDetails() {
+//     this.detailsOpen = !this.detailsOpen;
+//   }
+// };
+// co.styles = [tve];
+// ds([le()], co.prototype, "networkName", void 0);
+// ds([ie()], co.prototype, "detailsOpen", void 0);
+// ds([le()], co.prototype, "sourceToken", void 0);
+// ds([le()], co.prototype, "toToken", void 0);
+// ds([le()], co.prototype, "toTokenAmount", void 0);
+// ds([le()], co.prototype, "sourceTokenPriceInUSD", void 0);
+// ds([le()], co.prototype, "toTokenPriceInUSD", void 0);
+// ds([le()], co.prototype, "gasPriceInUSD", void 0);
+// ds([le()], co.prototype, "priceImpact", void 0);
+// ds([le()], co.prototype, "maxSlippage", void 0);
+// ds([le()], co.prototype, "networkTokenSymbol", void 0);
+// ds([le()], co.prototype, "inputError", void 0);
+// co = ds([Ce("w3m-swap-details")], co);
 const rve = $e`
   :host > wui-flex {
     display: flex;
@@ -93572,41 +93572,41 @@ function OEe(t) {
   };
   mp("event", e), mp("first-input", e);
 }
-function NEe(t, e = lW("fetch")) {
-  let n = 0,
-    r = 0;
-  function o(i) {
-    const s = i.body.length;
-    (n += s), r++;
-    const a = {
-      body: i.body,
-      method: "POST",
-      referrerPolicy: "origin",
-      headers: t.headers,
-      keepalive: n <= 6e4 && r < 15,
-      ...t.fetchOptions,
-    };
-    if (!e) return ON("fetch"), jw("No fetch implementation available");
-    try {
-      return e(t.url, a).then(
-        (c) => (
-          (n -= s),
-          r--,
-          {
-            statusCode: c.status,
-            headers: {
-              "x-sentry-rate-limits": c.headers.get("X-Sentry-Rate-Limits"),
-              "retry-after": c.headers.get("Retry-After"),
-            },
-          }
-        ),
-      );
-    } catch (c) {
-      return ON("fetch"), (n -= s), r--, jw(c);
-    }
-  }
-  return lxe(t, o);
-}
+// function NEe(t, e = lW("fetch")) {
+//   let n = 0,
+//     r = 0;
+//   function o(i) {
+//     const s = i.body.length;
+//     (n += s), r++;
+//     const a = {
+//       body: i.body,
+//       method: "POST",
+//       referrerPolicy: "origin",
+//       headers: t.headers,
+//       keepalive: n <= 6e4 && r < 15,
+//       ...t.fetchOptions,
+//     };
+//     if (!e) return ON("fetch"), jw("No fetch implementation available");
+//     try {
+//       return e(t.url, a).then(
+//         (c) => (
+//           (n -= s),
+//           r--,
+//           {
+//             statusCode: c.status,
+//             headers: {
+//               "x-sentry-rate-limits": c.headers.get("X-Sentry-Rate-Limits"),
+//               "retry-after": c.headers.get("Retry-After"),
+//             },
+//           }
+//         ),
+//       );
+//     } catch (c) {
+//       return ON("fetch"), (n -= s), r--, jw(c);
+//     }
+//   }
+//   return lxe(t, o);
+// }
 const DEe = 30,
   PEe = 50;
 function bx(t, e, n, r) {
@@ -94139,29 +94139,29 @@ function TCe() {
     a = typeof t.nw < "u";
   return !!r && !s && !a;
 }
-function ICe(t = {}) {
-  const e = SCe(t);
-  if (!e.skipBrowserExtensionCheck && TCe()) {
-    ec(() => {
-      console.error(
-        "[Sentry] You cannot run Sentry this way in a browser extension, check: https://docs.sentry.io/platforms/javascript/best-practices/browser-extensions/",
-      );
-    });
-    return;
-  }
-  Xc &&
-    (Vz() ||
-      nt.warn(
-        "No Fetch API detected. The Sentry SDK requires a Fetch API compatible environment to send events. Please add a Fetch API polyfill.",
-      ));
-  const n = {
-    ...e,
-    stackParser: Q9e(e.stackParser || qEe),
-    integrations: Q7e(e),
-    transport: e.transport || NEe,
-  };
-  return rxe(_Ae, n);
-}
+// function ICe(t = {}) {
+//   const e = SCe(t);
+//   if (!e.skipBrowserExtensionCheck && TCe()) {
+//     ec(() => {
+//       console.error(
+//         "[Sentry] You cannot run Sentry this way in a browser extension, check: https://docs.sentry.io/platforms/javascript/best-practices/browser-extensions/",
+//       );
+//     });
+//     return;
+//   }
+//   Xc &&
+//     (Vz() ||
+//       nt.warn(
+//         "No Fetch API detected. The Sentry SDK requires a Fetch API compatible environment to send events. Please add a Fetch API polyfill.",
+//       ));
+//   const n = {
+//     ...e,
+//     stackParser: Q9e(e.stackParser || qEe),
+//     integrations: Q7e(e),
+//     transport: e.transport || NEe,
+//   };
+//   return rxe(_Ae, n);
+// }
 const hr = On,
   vC = "sentryReplaySession",
   kCe = "replay_event",
@@ -101361,20 +101361,20 @@ const Ske = (t) => {
     e.attachErrorHandler && xke(t, e),
       x0(e) && t.mixin(Ske({ ...e, ...e.tracingOptions }));
   };
-function Mke(t = {}) {
-  const e = {
-    _metadata: {
-      sdk: {
-        name: "sentry.javascript.vue",
-        packages: [{ name: "npm:@sentry/vue", version: e0 }],
-        version: e0,
-      },
-    },
-    defaultIntegrations: [...pW(t), Rke()],
-    ...t,
-  };
-  return ICe(e);
-}
+// function Mke(t = {}) {
+//   const e = {
+//     _metadata: {
+//       sdk: {
+//         name: "sentry.javascript.vue",
+//         packages: [{ name: "npm:@sentry/vue", version: e0 }],
+//         version: e0,
+//       },
+//     },
+//     defaultIntegrations: [...pW(t), Rke()],
+//     ...t,
+//   };
+//   return ICe(e);
+// }
 function Oke(t, e, n) {
   let r = !0;
   t.onError((o) => Ny(o, { mechanism: { handled: !1 } })),
@@ -102381,21 +102381,21 @@ function wRe(t, e, n, r, o, i) {
 }
 const vRe = DC(oRe, [["render", wRe]]),
   Hy = FX(K9e);
-Mke({
-  app: Hy,
-  dsn: Ol.sentryDsn,
-  maxValueLength: 4096,
-  allowUrls: [
-    new RegExp("^https://app.lingocoin.io/"),
-    new RegExp("^https://lingo-staking-webapp-dev.pages.dev/"),
-  ],
-  integrations: [Dke({ router: eC }), nke()],
-  tracesSampleRate: 1,
-  tracePropagationTargets: [/^https:\/\/api-(dev|prod).lingo.tropee.com/],
-  replaysSessionSampleRate: 0.1,
-  replaysOnErrorSampleRate: 1,
-  environment: W7,
-});
+// Mke({
+//   app: Hy,
+//   dsn: Ol.sentryDsn,
+//   maxValueLength: 4096,
+//   allowUrls: [
+//     new RegExp("^https://app.lingocoin.io/"),
+//     new RegExp("^https://lingo-staking-webapp-dev.pages.dev/"),
+//   ],
+//   integrations: [Dke({ router: eC }), nke()],
+//   tracesSampleRate: 1,
+//   tracePropagationTargets: [/^https:\/\/api-(dev|prod).lingo.tropee.com/],
+//   replaysSessionSampleRate: 0.1,
+//   replaysOnErrorSampleRate: 1,
+//   environment: W7,
+// });
 qj.init(Ol.mixpanelToken, { persistence: "localStorage" });
 Hy.use(eC);
 Hy.component("VSelect", vRe);
