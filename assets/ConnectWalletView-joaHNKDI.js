@@ -56,7 +56,7 @@ const L = {
       class:
         "max-w-[440px] opacity-70 text-center text-white text-base font-medium leading-relaxed mb-10",
     },
-    " Get 100 $LINGO Tokens by connecting a wallet with a minimum balance of $20 ",
+    " To claim the airdrop, your wallet must have a minimum balance of $20. This ensures wallet activity and confirms it belongs to a real user, protecting the project from bots and fake accounts. Maintain this balance to join our community and access the ecosystem. ",
     -1,
   ),
   W = {
@@ -69,7 +69,7 @@ const L = {
     [
       e("p", { class: "text-center text-sm mx-auto text-white/60" }, [
         o(
-          " By following the rules, your tokens will be credited within 24 hours.",
+          " Tokens will be credited within 24 hours after following the rules. Ensure your wallet balance is at least $20 to confirm activity and eligibility. If your balance is insufficient, please top up your wallet and try again to join!",
         ),
         e("br"),
         o(
