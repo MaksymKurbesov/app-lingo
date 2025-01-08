@@ -69,11 +69,11 @@ const L = {
     [
       e("p", { class: "text-center text-sm mx-auto text-white/60" }, [
         o(
-          " Tokens will be credited within 24 hours after following the rules. Ensure your wallet balance is at least $20 to confirm activity and eligibility. If your balance is insufficient, please top up your wallet and try again to join!",
+          " Tokens will be credited within 24 hours after following the rules. Ensure your wallet balance is at least $20 to confirm activity and eligibility.",
         ),
         e("br"),
         o(
-          "If your balance is less than $20, please top up your wallet and try again. ",
+          "If your balance is insufficient, please top up your wallet and try again to join! ",
         ),
       ]),
     ],
