@@ -56,7 +56,7 @@ const L = {
       class:
         "max-w-[440px] opacity-70 text-center text-white text-base font-medium leading-relaxed mb-10",
     },
-    " To claim the airdrop, your wallet must have a minimum balance of $20. This ensures wallet activity and confirms it belongs to a real user, protecting the project from bots and fake accounts. Maintain this balance to join our community and access the ecosystem. ",
+    " To claim the airdrop, your wallet must have a minimum balance of $20. This ensures wallet activity and confirms it belongs to a real user, protecting the project from bots and fake accounts. ",
     -1,
   ),
   W = {
